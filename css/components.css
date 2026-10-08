@@ -1,0 +1,349 @@
+/* Button Component */
+.btn {
+  font-family: var(--font-buttons);
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  transition: opacity 0.2s ease;
+  text-decoration: none;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn:active {
+  opacity: 0.8;
+}
+
+.btn-primary {
+  background-color: var(--color-green);
+  color: var(--color-white);
+}
+
+.btn-secondary {
+  background-color: var(--color-dark-grey);
+  color: var(--color-white);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid var(--color-green);
+  color: var(--color-green);
+}
+
+.btn-sm {
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--text-sm);
+}
+
+.btn-md {
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--text-base);
+}
+
+.btn-lg {
+  padding: var(--space-md) var(--space-lg);
+  font-size: var(--text-lg);
+}
+
+/* Card Component */
+.card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-elevated {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card-flat {
+  box-shadow: none;
+  border: 1px solid var(--color-grey);
+}
+
+/* Input Component */
+.input {
+  font-family: var(--font-body);
+  padding: var(--space-sm) var(--space-md);
+  border: 2px solid var(--color-grey);
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-green);
+}
+
+.input::placeholder {
+  color: var(--color-dark-grey);
+  opacity: 0.6;
+}
+
+/* Form Group Component */
+.form-group {
+  margin-bottom: var(--space-md);
+}
+
+.form-group label {
+  font-family: var(--font-buttons);
+  display: block;
+  margin-bottom: var(--space-xs);
+  font-size: var(--text-sm);
+  color: var(--color-black);
+}
+
+.form-group .input {
+  margin-bottom: var(--space-xs);
+}
+
+.form-group .error {
+  color: var(--color-green);
+  font-size: var(--text-sm);
+  font-family: var(--font-body);
+}
+
+/* Badge Component */
+.badge {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-family: var(--font-buttons);
+  font-weight: bold;
+}
+
+.badge-primary {
+  background-color: var(--color-green);
+  color: var(--color-white);
+}
+
+.badge-secondary {
+  background-color: var(--color-dark-grey);
+  color: var(--color-white);
+}
+
+.badge-outline {
+  background-color: transparent;
+  border: 1px solid var(--color-green);
+  color: var(--color-green);
+}
+
+/* Avatar Component */
+.avatar {
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  display: inline-block;
+}
+
+.avatar-sm {
+  width: 32px;
+  height: 32px;
+}
+
+.avatar-md {
+  width: 48px;
+  height: 48px;
+}
+
+.avatar-lg {
+  width: 64px;
+  height: 64px;
+}
+
+.avatar-xl {
+  width: 96px;
+  height: 96px;
+}
+
+/* Modal Component */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  font-family: var(--font-primary);
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-md);
+  color: var(--color-black);
+}
+
+.modal-body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  margin-bottom: var(--space-lg);
+  color: var(--color-black);
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-md);
+}
+
+/* Dropdown Component */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-trigger {
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  min-width: 200px;
+  z-index: 100;
+  display: none;
+}
+
+.dropdown.open .dropdown-menu {
+  display: block;
+}
+
+.dropdown-item {
+  font-family: var(--font-buttons);
+  padding: var(--space-sm) var(--space-md);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: var(--color-grey);
+}
+
+.dropdown-item:first-child {
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.dropdown-item:last-child {
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+/* Progress Bar Component */
+.progress {
+  width: 100%;
+  height: 8px;
+  background-color: var(--color-grey);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--color-green);
+  transition: width 0.3s ease;
+}
+
+.progress-sm {
+  height: 4px;
+}
+
+.progress-lg {
+  height: 12px;
+}
+
+/* Table Component */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+}
+
+.table th,
+.table td {
+  padding: var(--space-sm) var(--space-md);
+  text-align: left;
+  border-bottom: 1px solid var(--color-grey);
+}
+
+.table th {
+  font-family: var(--font-buttons);
+  font-weight: bold;
+  background-color: var(--color-grey);
+}
+
+.table tr:hover {
+  background-color: var(--color-grey);
+}
+
+.table-striped tbody tr:nth-child(even) {
+  background-color: var(--color-grey);
+}
+
+/* Divider Component */
+.divider {
+  border: none;
+  height: 1px;
+  background-color: var(--color-grey);
+  margin: var(--space-md) 0;
+}
+
+.divider-vertical {
+  width: 1px;
+  height: 100%;
+  background-color: var(--color-grey);
+  margin: 0 var(--space-md);
+}
+
+/* Spinner Component */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--color-grey);
+  border-top-color: var(--color-green);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.spinner-sm {
+  width: 20px;
+  height: 20px;
+  border-width: 2px;
+}
+
+.spinner-lg {
+  width: 60px;
+  height: 60px;
+  border-width: 6px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

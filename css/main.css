@@ -1,0 +1,51 @@
+/* Import fonts */
+@import url('./fonts.css');
+
+/* Import CSS variables */
+@import url('./variables.css');
+
+/* Import utility classes */
+@import url('./utilities.css');
+
+/* Import standard UI components */
+@import url('./components.css');
+
+/* Import app-specific components */
+@import url('./app-components.css');
+
+/* Global defaults */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-grey);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-black);
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-family: var(--font-primary);
+  color: var(--color-black);
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--color-green);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-dark-grey);
+}
