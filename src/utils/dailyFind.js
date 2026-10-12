@@ -1,17 +1,11 @@
-import { focusLists, getMoonPhaseItem } from '../data/focusLists';
+import { focusLists } from '../data/focusLists';
 
 // Get today's daily find for a specific list
 export function getDailyFindForList(listId, capturedItemIds, date = new Date()) {
   const list = focusLists.find((l) => l.id === listId);
   if (!list) return null;
 
-  // Special handling for moon phases - based on date
-  if (listId === 'moon-phases') {
-    const moonItem = getMoonPhaseItem(date);
-    return moonItem;
-  }
-
-  // For other lists, get uncaptured items
+  // Get uncaptured items
   const uncapturedItems = list.items.filter(
     (item) => !capturedItemIds.includes(item.id)
   );
