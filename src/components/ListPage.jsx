@@ -103,12 +103,22 @@ export default function ListPage({
                     : 'bg-dark-grey/10 opacity-50'
                 }`}
               >
-                <div className="w-full h-24 rounded-lg bg-grey mb-md flex items-center justify-center overflow-hidden">
+                <div className="w-full h-24 rounded-lg bg-grey mb-md flex items-center justify-center overflow-hidden relative">
                   {isCaptured ? (
-                    <span className="font-body text-xs text-dark-grey">Photo</span>
-                  ) : (
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      loading="lazy"
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'flex';
+                      }}
+                    />
+                  ) : null}
+                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-green/20 to-blue/20" style={{ display: isCaptured ? 'none' : 'flex' }}>
                     <span className="font-body text-xs text-dark-grey">?</span>
-                  )}
+                  </div>
                 </div>
                 {isCaptured && (
                   <p className="font-buttons text-sm text-black text-center">
