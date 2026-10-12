@@ -4,7 +4,7 @@ A comprehensive vanilla CSS design system with custom fonts, color palette, and 
 
 ## Color Palette
 
-- **Grey**: `#f2f2f2` - Default background color for all pages
+- **Grey**: `#f2f2f2` -  Default background color for all pages
 - **Black**: `#000000` - Primary text color
 - **Green**: `#5e7333` - Accent color for headings and primary actions
 - **Dark Grey**: `#333333` - Secondary UI elements (buttons, etc.)
