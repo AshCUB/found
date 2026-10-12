@@ -4,7 +4,7 @@ export default function Intro({ onGetStarted }) {
   return (
     <div className="min-h-screen bg-grey flex flex-col items-center justify-center p-lg animate-fade-in">
       <div className="max-w-md w-full text-center">
-        <h1 className="font-primary text-4xl text-green mb-lg">Foound</h1>
+        <h1 className="font-primary text-4xl text-green mb-lg">Found</h1>
         <p className="font-body text-base text-black mb-xl">
           reclaim the moment
         </p>
