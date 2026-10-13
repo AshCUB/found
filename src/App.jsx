@@ -8,7 +8,7 @@ import ListPage from './components/ListPage';
 import Collection from './components/Collection';
 import Streak from './components/Streak';
 import { useSubscribedLists, useCaptures, useStreakData, useSettings, useEventLogs } from './hooks/useAppData';
-import { getAllDailyFinds, storeDailyFinds, loadDailyFinds, shouldRefreshDailyFind, getAlternativeItem } from './utils/dailyFind';
+import { getAllDailyFinds, storeDailyFinds, loadDailyFinds, shouldRefreshDailyFind } from './utils/dailyFind';
 
 export default function App() {
   // Screen state
@@ -102,22 +102,6 @@ export default function App() {
     }
   };
 
-  const handleTryAnother = (dailyFind) => {
-    const capturedItemIds = getCapturedItemIds(dailyFind.listId);
-    const alternativeItem = getAlternativeItem(dailyFind.listId, capturedItemIds, dailyFind.item.id);
-    
-    if (alternativeItem) {
-      const newDailyFinds = dailyFinds.map(df => {
-        if (df.listId === dailyFind.listId) {
-          return { ...df, item: alternativeItem, captured: false };
-        }
-        return df;
-      });
-      setDailyFinds(newDailyFinds);
-      storeDailyFinds(newDailyFinds);
-    }
-  };
-
   const handleCaptureItem = (listId, item) => {
     setCurrentCaptureFind({ listId, item });
     setCurrentScreen('capture');
@@ -163,7 +147,6 @@ export default function App() {
             dailyFinds={dailyFinds}
             currentIndex={dailyFindIndex}
             onCapture={handleCapture}
-            onTryAnother={handleTryAnother}
             onClose={() => setCurrentScreen('home')}
           />
         );

@@ -5,15 +5,16 @@ export default function DailyFind({
   dailyFinds,
   currentIndex,
   onCapture,
-  onTryAnother,
   onClose,
 }) {
   const [localIndex, setLocalIndex] = useState(currentIndex);
+  const [itemIndex, setItemIndex] = useState(0);
   const [swipeDirection, setSwipeDirection] = useState(null);
   const [touchStart, setTouchStart] = useState(null);
 
   useEffect(() => {
     setLocalIndex(currentIndex);
+    setItemIndex(0);
   }, [currentIndex]);
 
   if (!dailyFinds || dailyFinds.length === 0) {
@@ -22,6 +23,7 @@ export default function DailyFind({
 
   const currentFind = dailyFinds[localIndex];
   const list = focusLists.find((l) => l.id === currentFind.listId);
+  const currentItem = list?.items[itemIndex] || currentFind.item;
 
   const handleTouchStart = (e) => {
     setTouchStart(e.touches[0].clientX);
@@ -41,12 +43,32 @@ export default function DailyFind({
     if (swipeDirection === 'left' && localIndex < dailyFinds.length - 1) {
       // Swipe left - show next list
       setLocalIndex(localIndex + 1);
+      setItemIndex(0);
     } else if (swipeDirection === 'right' && localIndex > 0) {
       // Swipe right - show previous list
       setLocalIndex(localIndex - 1);
+      setItemIndex(0);
     }
     setSwipeDirection(null);
     setTouchStart(null);
+  };
+
+  const handlePreviousItem = () => {
+    if (itemIndex > 0) {
+      setItemIndex(itemIndex - 1);
+    } else {
+      // Cycle to the last item
+      setItemIndex(list.items.length - 1);
+    }
+  };
+
+  const handleNextItem = () => {
+    if (itemIndex < list.items.length - 1) {
+      setItemIndex(itemIndex + 1);
+    } else {
+      // Cycle to the first item
+      setItemIndex(0);
+    }
   };
 
   return (
@@ -74,10 +96,10 @@ export default function DailyFind({
 
         <div className="bg-white p-lg rounded-lg shadow-sm mb-lg">
           <div className="w-full h-48 rounded-lg bg-grey mb-lg flex items-center justify-center overflow-hidden relative">
-            {currentFind.item.image ? (
+            {currentItem.image ? (
               <img
-                src={currentFind.item.image}
-                alt={currentFind.item.name}
+                src={currentItem.image}
+                alt={currentItem.name}
                 loading="lazy"
                 className="w-full h-full object-cover"
                 onError={(e) => {
@@ -86,17 +108,17 @@ export default function DailyFind({
                 }}
               />
             ) : null}
-            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-green/20 to-blue/20" style={{ display: currentFind.item.image ? 'none' : 'flex' }}>
+            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-green/20 to-blue/20" style={{ display: currentItem.image ? 'none' : 'flex' }}>
               <span className="font-body text-sm text-dark-grey">Image</span>
             </div>
           </div>
 
           <h3 className="font-primary text-2xl text-green mb-md">
-            Today's daily find is {currentFind.item.name}
+            Today's daily find is {currentItem.name}
           </h3>
 
           <p className="font-body text-sm text-dark-grey mb-lg">
-            {currentFind.item.fact}
+            {currentItem.fact}
           </p>
 
           {list?.warning && (
@@ -117,7 +139,7 @@ export default function DailyFind({
             </div>
           ) : (
             <button
-              onClick={() => onCapture(currentFind)}
+              onClick={() => onCapture({ ...currentFind, item: currentItem })}
               className="font-buttons text-lg bg-green text-white px-xl py-md rounded-full w-full hover:opacity-90 transition-opacity"
             >
               Capture it
@@ -125,14 +147,27 @@ export default function DailyFind({
           )}
         </div>
 
-        {/* Try Another Button */}
-        {!currentFind.captured && (
-          <button
-            onClick={() => onTryAnother(currentFind)}
-            className="font-buttons text-sm text-dark-grey hover:text-green transition-colors w-full"
-          >
-            Try another
-          </button>
+        {/* Arrow Navigation */}
+        {list && list.items.length > 1 && (
+          <div className="flex items-center justify-center gap-lg mb-lg">
+            <button
+              onClick={handlePreviousItem}
+              className="font-buttons text-2xl text-dark-grey hover:text-green transition-colors p-md"
+              aria-label="Previous item"
+            >
+              ←
+            </button>
+            <span className="font-body text-sm text-dark-grey">
+              {itemIndex + 1} / {list.items.length}
+            </span>
+            <button
+              onClick={handleNextItem}
+              className="font-buttons text-2xl text-dark-grey hover:text-green transition-colors p-md"
+              aria-label="Next item"
+            >
+              →
+            </button>
+          </div>
         )}
 
         {/* Swipe Indicator */}
