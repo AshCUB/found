@@ -63,43 +63,6 @@ export default function Streak({
           </div>
         </div>
 
-        {/* Weekly Saver */}
-        <div className="bg-white p-md rounded-lg shadow-sm mb-lg">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="font-buttons text-sm text-black mb-xs">
-                Weekly Saver
-              </p>
-              <p className="font-body text-xs text-dark-grey">
-                One missed day per week won't reset your streak
-              </p>
-            </div>
-            <div
-              className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
-                streakData.isWeeklySaverAvailable
-                  ? 'border-green bg-green'
-                  : 'border-dark-grey'
-              }`}
-            >
-              {streakData.isWeeklySaverAvailable && (
-                <svg
-                  className="w-4 h-4 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-              )}
-            </div>
-          </div>
-        </div>
-
         {/* Week View */}
         <div className="bg-white p-lg rounded-lg shadow-sm mb-lg">
           <h3 className="font-buttons text-sm text-black mb-md">This Week</h3>

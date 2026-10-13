@@ -33,12 +33,6 @@ export default function Home({
                   {streakData.currentStreak} days
                 </p>
               </div>
-              {streakData.isWeeklySaverAvailable && (
-                <div className="text-right">
-                  <p className="font-body text-xs text-dark-grey mb-xs">Weekly saver</p>
-                  <p className="font-buttons text-sm text-green">Available</p>
-                </div>
-              )}
             </div>
           </div>
         )}
