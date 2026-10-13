@@ -26,6 +26,10 @@ const UNSPLASH_ACCESS_KEY = process.env.UNSPLASH_ACCESS_KEY;
 const PEXELS_API_KEY = process.env.PEXELS_API_KEY;
 const PIXABAY_API_KEY = process.env.PIXABAY_API_KEY;
 
+// Categories whose images are generated locally and must never be scraped
+// letters-numbers: scripts/generate-letters-numbers.mjs
+const GENERATED_CATEGORIES = new Set(['letters-numbers']);
+
 // Image optimization settings
 const MAX_WIDTH = 1200;
 const TARGET_SIZE_KB = 200;
@@ -50,12 +54,6 @@ function buildSearchQuery(category, itemName) {
     shapes: (name) => `${name} shape`,
     textures: (name) => `${name} texture`,
     patterns: (name) => `${name} pattern`,
-    'letters-numbers': (name) => {
-      // Special handling for complex queries
-      if (name.includes('ascending order')) return 'ascending numbers';
-      if (name.includes('descending order')) return 'descending numbers';
-      return name.replace('Find the ', '').replace('Find a ', '');
-    },
     materials: (name) => `${name} material`,
     'plants-trees': (name) => name.replace('A ', '').replace('An ', ''),
     'signs-symbols': (name) => name.replace('A ', '').replace('An ', ''),
@@ -444,6 +442,10 @@ async function main() {
 
   // Process each category
   for (const category of focusLists) {
+    if (GENERATED_CATEGORIES.has(category.id)) {
+      console.log(`\nSkipping category: ${category.name} (generated locally)`);
+      continue;
+    }
     const result = await processCategory(category, cache, credits);
     cache = result.cache;
     credits = result.credits;

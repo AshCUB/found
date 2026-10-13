@@ -120,28 +120,6 @@ All images are sourced from free-to-use stock photo sites under licenses that pe
 
 | Item | Photographer | Source | License |
 |------|-------------|--------|---------|
-| Find the number 5 | [Pix-Off](https://pixabay.com/users/Pix-Off-26199248/) | [pixabay](https://pixabay.com/photos/motorcycle-street-mountain-7511707/) | Pixabay License (free to use) |
-| Find the letter D | [Mollyroselee](https://pixabay.com/users/Mollyroselee-9214707/) | [pixabay](https://pixabay.com/photos/orangutan-primate-monkey-ape-8406310/) | Pixabay License (free to use) |
-| Find the number 2 | [MabelAmber](https://pixabay.com/users/MabelAmber-1377835/) | [pixabay](https://pixabay.com/photos/two-2-number-two-number-numeral-3109835/) | Pixabay License (free to use) |
-| Find the letter S | [HOerwin56](https://pixabay.com/users/HOerwin56-2108907/) | [pixabay](https://pixabay.com/photos/keyboard-laptop-datailaufnahme-s-w-1747081/) | Pixabay License (free to use) |
-| Find the number 8 | [qimono](https://pixabay.com/users/qimono-1962238/) | [pixabay](https://pixabay.com/photos/eight-ball-8-ball-8-ball-eight-3721944/) | Pixabay License (free to use) |
-| Find the letter A | [NomeVisualizzato](https://pixabay.com/users/NomeVisualizzato-9517909/) | [pixabay](https://pixabay.com/photos/english-letter-correspondence-4152699/) | Pixabay License (free to use) |
-| Find the number 0 | [aitoff](https://pixabay.com/users/aitoff-388338/) | [pixabay](https://pixabay.com/photos/error-not-found-404-lego-mistake-2129569/) | Pixabay License (free to use) |
-| Find the letter M | [athree23](https://pixabay.com/users/athree23-6195572/) | [pixabay](https://pixabay.com/photos/letter-m-wood-cut-out-laser-cut-3950968/) | Pixabay License (free to use) |
-| Find the number 7 | [Dragon77](https://pixabay.com/users/Dragon77-7686405/) | [pixabay](https://pixabay.com/photos/ice-artificial-ice-studio-ice-macro-6215207/) | Pixabay License (free to use) |
-| Find the letter R | [artemtation](https://pixabay.com/users/artemtation-45390/) | [pixabay](https://pixabay.com/photos/letter-rust-writing-module-r-249074/) | Pixabay License (free to use) |
-| Find the number 3 | [Pix-Off](https://pixabay.com/users/Pix-Off-26199248/) | [pixabay](https://pixabay.com/photos/golf-mini-golf-no-3-hole-number-3-7504480/) | Pixabay License (free to use) |
-| Find the letter O | [Mollyroselee](https://pixabay.com/users/Mollyroselee-9214707/) | [pixabay](https://pixabay.com/photos/orangutan-primate-monkey-ape-8406310/) | Pixabay License (free to use) |
-| Find the number 1 | [Projekt_Kaffeebart](https://pixabay.com/users/Projekt_Kaffeebart-5458960/) | [pixabay](https://pixabay.com/photos/number-1-one-number-anniversary-5098366/) | Pixabay License (free to use) |
-| Find the letter T | [HeteroSapiens](https://pixabay.com/users/HeteroSapiens-958714/) | [pixabay](https://pixabay.com/photos/dont-give-up-motivation-writing-3403779/) | Pixabay License (free to use) |
-| Find the number 6 | [cocozi](https://pixabay.com/users/cocozi-328623/) | [pixabay](https://pixabay.com/photos/dice-game-craps-multicoloured-568059/) | Pixabay License (free to use) |
-| Find the letter K | [iemlee](https://pixabay.com/users/iemlee-5726489/) | [pixabay](https://pixabay.com/photos/flower-cosmos-wild-flower-7540214/) | Pixabay License (free to use) |
-| Find the number 4 | [aitoff](https://pixabay.com/users/aitoff-388338/) | [pixabay](https://pixabay.com/photos/error-not-found-404-lego-mistake-2129569/) | Pixabay License (free to use) |
-| Find the letter B | [blickpixel](https://pixabay.com/users/blickpixel-52945/) | [pixabay](https://pixabay.com/photos/letters-abc-alphabet-leaflet-451487/) | Pixabay License (free to use) |
-| Find the number 9 | [6657176](https://pixabay.com/users/6657176-6657176/) | [pixabay](https://pixabay.com/photos/angel-angel-figure-grave-of-angels-2953924/) | Pixabay License (free to use) |
-| Find the letter W | [HOerwin56](https://pixabay.com/users/HOerwin56-2108907/) | [pixabay](https://pixabay.com/photos/keyboard-laptop-datailaufnahme-s-w-1747081/) | Pixabay License (free to use) |
-| Find the number 5 written in red | [Andrys](https://pixabay.com/users/Andrys-439428/) | [pixabay](https://pixabay.com/photos/letter-calligraphy-ink-written-447577/) | Pixabay License (free to use) |
-| Find the letter D written in blue | [Andrys](https://pixabay.com/users/Andrys-439428/) | [pixabay](https://pixabay.com/photos/letter-calligraphy-ink-written-447577/) | Pixabay License (free to use) |
 | Find a letter written in white | [Andrys](https://pixabay.com/users/Andrys-439428/) | [pixabay](https://pixabay.com/photos/letter-calligraphy-ink-written-447577/) | Pixabay License (free to use) |
 | Find a number written in black | [Andrys](https://pixabay.com/users/Andrys-439428/) | [pixabay](https://pixabay.com/photos/letter-calligraphy-ink-written-447577/) | Pixabay License (free to use) |
 | Find a number written in green | [Andrys](https://pixabay.com/users/Andrys-439428/) | [pixabay](https://pixabay.com/photos/letter-calligraphy-ink-written-447577/) | Pixabay License (free to use) |
