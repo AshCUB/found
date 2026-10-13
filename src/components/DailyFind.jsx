@@ -77,15 +77,6 @@ export default function DailyFind({
     setTouchStart(null);
   };
 
-  const handlePreviousItem = () => {
-    if (itemIndex > 0) {
-      setItemIndex(itemIndex - 1);
-    } else {
-      // Cycle to the last item
-      setItemIndex(list.items.length - 1);
-    }
-  };
-
   const handleNextItem = () => {
     if (itemIndex < list.items.length - 1) {
       setItemIndex(itemIndex + 1);
@@ -141,15 +132,6 @@ export default function DailyFind({
 
         <div className="bg-white p-lg rounded-lg shadow-sm mb-lg">
           <div className="flex items-center gap-sm mb-sm">
-            {list && list.items.length > 1 && (
-              <button
-                onClick={handlePreviousItem}
-                className="flex-shrink-0 w-8 h-8 font-buttons text-xl text-dark-grey hover:text-green transition-colors flex items-center justify-center"
-                aria-label="Previous item"
-              >
-                ←
-              </button>
-            )}
             <div className="flex-1 min-w-0 h-48 rounded-lg bg-grey flex items-center justify-center overflow-hidden relative">
               {showImage ? (
                 <img
@@ -166,15 +148,6 @@ export default function DailyFind({
                 </div>
               )}
             </div>
-            {list && list.items.length > 1 && (
-              <button
-                onClick={handleNextItem}
-                className="flex-shrink-0 w-8 h-8 font-buttons text-xl text-dark-grey hover:text-green transition-colors flex items-center justify-center"
-                aria-label="Next item"
-              >
-                →
-              </button>
-            )}
           </div>
 
           {list && list.items.length > 1 && (
@@ -214,6 +187,14 @@ export default function DailyFind({
               className="font-buttons text-lg bg-green text-white px-xl py-md rounded-full w-full hover:opacity-90 transition-opacity"
             >
               Capture it
+            </button>
+          )}
+          {list && list.items.length > 1 && (
+            <button
+              onClick={handleNextItem}
+              className="font-buttons text-sm text-dark-grey hover:text-green transition-colors w-full mt-md"
+            >
+              Swap
             </button>
           )}
         </div>
