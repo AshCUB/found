@@ -2,6 +2,7 @@
 
 /**
  * Update focusLists.js to replace .svg with .webp for image paths
+ * Also converts absolute paths to relative paths for Vite base path compatibility
  */
 
 import { readFileSync, writeFileSync } from 'fs';
@@ -14,7 +15,9 @@ const DATA_FILE = join(ROOT_DIR, 'src/data/focusLists.js');
 
 const content = readFileSync(DATA_FILE, 'utf-8');
 // Replace .svg with .webp but keep moon-phases-cover.svg as is (it's from the old data)
-const updated = content.replace(/image: '\/images\/(?!moon-phases)[^']+\.svg'/g, (match) => match.replace('.svg', '.webp'));
+let updated = content.replace(/image: '\/images\/(?!moon-phases)[^']+\.svg'/g, (match) => match.replace('.svg', '.webp'));
+// Convert absolute paths (/images/) to relative paths (images/) for Vite base path compatibility
+updated = updated.replace(/image: '\/images\//g, "image: 'images/");
 
 writeFileSync(DATA_FILE, updated);
-console.log('Updated focusLists.js: replaced .svg with .webp (except moon-phases-cover.svg)');
+console.log('Updated focusLists.js: replaced .svg with .webp and converted to relative paths');
