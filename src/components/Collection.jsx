@@ -22,6 +22,12 @@ export default function Collection({
     return item?.name || 'Unknown';
   };
 
+  const getItemImage = (listId, itemId) => {
+    const list = focusLists.find((l) => l.id === listId);
+    const item = list?.items.find((i) => i.id === itemId);
+    return item?.image || null;
+  };
+
   const getListName = (listId) => {
     const list = focusLists.find((l) => l.id === listId);
     return list?.name || 'Unknown';
@@ -104,20 +110,34 @@ export default function Collection({
                       />
                     </div>
                   ) : (
-                    <div className="w-20 h-20 rounded-lg bg-grey flex-shrink-0 flex items-center justify-center">
-                      <svg
-                        className="w-8 h-8 text-dark-grey"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    <div className="w-20 h-20 rounded-lg bg-grey flex-shrink-0 overflow-hidden relative">
+                      {getItemImage(capture.listId, capture.itemId) ? (
+                        <img
+                          src={getItemImage(capture.listId, capture.itemId)}
+                          alt={getItemName(capture.listId, capture.itemId)}
+                          loading="lazy"
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            e.target.style.display = 'none';
+                            e.target.nextSibling.style.display = 'flex';
+                          }}
                         />
-                      </svg>
+                      ) : null}
+                      <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-green/20 to-blue/20" style={{ display: getItemImage(capture.listId, capture.itemId) ? 'none' : 'flex' }}>
+                        <svg
+                          className="w-8 h-8 text-dark-grey"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                          />
+                        </svg>
+                      </div>
                     </div>
                   )}
                   <div className="flex-1">

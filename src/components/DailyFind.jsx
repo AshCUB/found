@@ -73,8 +73,22 @@ export default function DailyFind({
         </h2>
 
         <div className="bg-white p-lg rounded-lg shadow-sm mb-lg">
-          <div className="w-full h-48 rounded-lg bg-grey mb-lg flex items-center justify-center">
-            <span className="font-body text-sm text-dark-grey">Image</span>
+          <div className="w-full h-48 rounded-lg bg-grey mb-lg flex items-center justify-center overflow-hidden relative">
+            {currentFind.item.image ? (
+              <img
+                src={currentFind.item.image}
+                alt={currentFind.item.name}
+                loading="lazy"
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.nextSibling.style.display = 'flex';
+                }}
+              />
+            ) : null}
+            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-green/20 to-blue/20" style={{ display: currentFind.item.image ? 'none' : 'flex' }}>
+              <span className="font-body text-sm text-dark-grey">Image</span>
+            </div>
           </div>
 
           <h3 className="font-primary text-2xl text-green mb-md">

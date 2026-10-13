@@ -42,8 +42,22 @@ export default function Subscribe({ onSubscribe, subscribedLists }) {
               }`}
             >
               <div className="flex items-center gap-md">
-                <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-grey flex items-center justify-center">
-                  <span className="font-body text-xs text-dark-grey">Image</span>
+                <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-grey relative">
+                  {list.image ? (
+                    <img
+                      src={list.image}
+                      alt={list.name}
+                      loading="lazy"
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'flex';
+                      }}
+                    />
+                  ) : null}
+                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-green/20 to-blue/20" style={{ display: list.image ? 'none' : 'flex' }}>
+                    <span className="font-body text-xs text-dark-grey">Image</span>
+                  </div>
                 </div>
                 <div className="flex-1">
                   <h3 className="font-buttons text-lg text-black mb-xs">
