@@ -194,7 +194,7 @@ export default function DailyFind({
               onClick={handleNextItem}
               className="font-buttons text-sm text-dark-grey hover:text-green transition-colors w-full mt-md"
             >
-              Swap
+              Swap it
             </button>
           )}
         </div>

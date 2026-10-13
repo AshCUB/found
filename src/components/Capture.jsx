@@ -87,7 +87,7 @@ export default function Capture({
           {/* Photo Input */}
           <div className="mb-lg">
             <label className="font-buttons text-sm text-black mb-md block">
-              Photo (optional)
+              Photo
             </label>
             <div className="w-full h-48 rounded-lg bg-grey flex items-center justify-center mb-md overflow-hidden">
               {photo ? (
@@ -174,7 +174,7 @@ export default function Capture({
           {/* Note Input */}
           <div className="mb-lg">
             <label className="font-buttons text-sm text-black mb-md block">
-              Note (optional)
+              Note
             </label>
             <textarea
               value={note}
