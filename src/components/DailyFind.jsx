@@ -7,14 +7,20 @@ export default function DailyFind({
   onCapture,
   onClose,
 }) {
+  const getTodayItemIndex = (findIndex) => {
+    const find = dailyFinds?.[findIndex];
+    const findList = focusLists.find((l) => l.id === find?.listId);
+    return Math.max(0, findList?.items.findIndex((i) => i.id === find?.item?.id) ?? 0);
+  };
+
   const [localIndex, setLocalIndex] = useState(currentIndex);
-  const [itemIndex, setItemIndex] = useState(0);
+  const [itemIndex, setItemIndex] = useState(() => getTodayItemIndex(currentIndex));
   const [swipeDirection, setSwipeDirection] = useState(null);
   const [touchStart, setTouchStart] = useState(null);
 
   useEffect(() => {
     setLocalIndex(currentIndex);
-    setItemIndex(0);
+    setItemIndex(getTodayItemIndex(currentIndex));
   }, [currentIndex]);
 
   if (!dailyFinds || dailyFinds.length === 0) {
@@ -24,6 +30,13 @@ export default function DailyFind({
   const currentFind = dailyFinds[localIndex];
   const list = focusLists.find((l) => l.id === currentFind.listId);
   const currentItem = list?.items[itemIndex] || currentFind.item;
+  const isShape = currentItem.image?.includes('shape-');
+
+  const goToList = (index) => {
+    const wrapped = (index + dailyFinds.length) % dailyFinds.length;
+    setLocalIndex(wrapped);
+    setItemIndex(getTodayItemIndex(wrapped));
+  };
 
   const handleTouchStart = (e) => {
     setTouchStart(e.touches[0].clientX);
@@ -42,12 +55,10 @@ export default function DailyFind({
   const handleTouchEnd = () => {
     if (swipeDirection === 'left' && localIndex < dailyFinds.length - 1) {
       // Swipe left - show next list
-      setLocalIndex(localIndex + 1);
-      setItemIndex(0);
+      goToList(localIndex + 1);
     } else if (swipeDirection === 'right' && localIndex > 0) {
       // Swipe right - show previous list
-      setLocalIndex(localIndex - 1);
-      setItemIndex(0);
+      goToList(localIndex - 1);
     }
     setSwipeDirection(null);
     setTouchStart(null);
@@ -73,7 +84,7 @@ export default function DailyFind({
 
   return (
     <div
-      className="fixed inset-0 bg-grey z-50 animate-fade-in"
+      className="fixed inset-0 bg-grey z-50 animate-fade-in overflow-y-auto"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
@@ -90,18 +101,39 @@ export default function DailyFind({
 
       {/* Content */}
       <div className="px-lg pb-lg max-w-md mx-auto">
-        <h2 className="font-buttons text-lg text-black mb-md">
-          {list?.name}
-        </h2>
+        {/* List Navigation */}
+        <div className="flex items-center justify-between mb-md">
+          {dailyFinds.length > 1 && (
+            <button
+              onClick={() => goToList(localIndex - 1)}
+              className="font-buttons text-xl text-dark-grey hover:text-green transition-colors px-sm"
+              aria-label="Previous list"
+            >
+              ‹
+            </button>
+          )}
+          <h2 className="font-buttons text-lg text-black flex-1 text-center">
+            {list?.name}
+          </h2>
+          {dailyFinds.length > 1 && (
+            <button
+              onClick={() => goToList(localIndex + 1)}
+              className="font-buttons text-xl text-dark-grey hover:text-green transition-colors px-sm"
+              aria-label="Next list"
+            >
+              ›
+            </button>
+          )}
+        </div>
 
         <div className="bg-white p-lg rounded-lg shadow-sm mb-lg">
-          <div className="w-full h-48 rounded-lg bg-grey mb-lg flex items-center justify-center overflow-hidden relative">
+          <div className="w-full h-48 rounded-lg bg-grey mb-sm flex items-center justify-center overflow-hidden relative">
             {currentItem.image ? (
               <img
                 src={currentItem.image}
                 alt={currentItem.name}
                 loading="lazy"
-                className={`w-full h-full ${currentItem.image.endsWith('.svg') ? 'object-contain p-lg' : 'object-cover'}`}
+                className={`w-full h-full ${isShape ? 'object-contain p-lg' : 'object-cover'}`}
                 onError={(e) => {
                   e.target.style.display = 'none';
                   e.target.nextSibling.style.display = 'flex';
@@ -111,10 +143,35 @@ export default function DailyFind({
             <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-green/20 to-blue/20" style={{ display: currentItem.image ? 'none' : 'flex' }}>
               <span className="font-body text-sm text-dark-grey">Image</span>
             </div>
+            {list && list.items.length > 1 && (
+              <>
+                <button
+                  onClick={handlePreviousItem}
+                  className="absolute left-sm top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 shadow-sm font-buttons text-xl text-dark-grey hover:text-green transition-colors flex items-center justify-center"
+                  aria-label="Previous item"
+                >
+                  ←
+                </button>
+                <button
+                  onClick={handleNextItem}
+                  className="absolute right-sm top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 shadow-sm font-buttons text-xl text-dark-grey hover:text-green transition-colors flex items-center justify-center"
+                  aria-label="Next item"
+                >
+                  →
+                </button>
+              </>
+            )}
           </div>
 
-          <h3 className="font-primary text-2xl text-green mb-md">
-            Today's daily find is {currentItem.name}
+          {list && list.items.length > 1 && (
+            <p className="font-body text-xs text-dark-grey text-center mb-lg">
+              {itemIndex + 1} / {list.items.length}
+            </p>
+          )}
+
+          <h3 className="mb-md">
+            <span className="block font-buttons text-base text-dark-grey">Today's daily find is</span>
+            <span className="block font-primary text-2xl text-green">{currentItem.name}</span>
           </h3>
 
           <p className="font-body text-sm text-dark-grey mb-lg">
@@ -147,35 +204,14 @@ export default function DailyFind({
           )}
         </div>
 
-        {/* Arrow Navigation */}
-        {list && list.items.length > 1 && (
-          <div className="flex items-center justify-center gap-lg mb-lg">
-            <button
-              onClick={handlePreviousItem}
-              className="font-buttons text-2xl text-dark-grey hover:text-green transition-colors p-md"
-              aria-label="Previous item"
-            >
-              ←
-            </button>
-            <span className="font-body text-sm text-dark-grey">
-              {itemIndex + 1} / {list.items.length}
-            </span>
-            <button
-              onClick={handleNextItem}
-              className="font-buttons text-2xl text-dark-grey hover:text-green transition-colors p-md"
-              aria-label="Next item"
-            >
-              →
-            </button>
-          </div>
-        )}
-
         {/* Swipe Indicator */}
         {dailyFinds.length > 1 && (
           <div className="flex justify-center gap-xs mt-lg">
-            {dailyFinds.map((_, index) => (
-              <div
-                key={index}
+            {dailyFinds.map((find, index) => (
+              <button
+                key={find.listId}
+                onClick={() => goToList(index)}
+                aria-label={`Go to list ${index + 1}`}
                 className={`w-2 h-2 rounded-full ${
                   index === localIndex ? 'bg-green' : 'bg-dark-grey/30'
                 }`}
