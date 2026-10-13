@@ -1,10 +1,12 @@
 # Image Credits
 
-All images are sourced from free-to-use stock photo sites under licenses that permit commercial use without attribution. Attribution is provided below for transparency and to honor the photographers.
+All images are sourced from free-to-use stock photo sites and Openverse under licenses that permit commercial use. Attribution is provided below for transparency, to honor the photographers, and where the license requires it.
 
 ## License Summary
 
 - **Pixabay License**: Free to use, no attribution required (but we provide it anyway)
+- **CC0 / Public Domain Mark**: Free to use, no attribution required
+- **CC BY / CC BY-SA**: Free to use with attribution (provided below); BY-SA adaptations must keep the same license
 - Images may be used for commercial purposes
 - Images may be modified and adapted
 
@@ -124,8 +126,6 @@ All images are sourced from free-to-use stock photo sites under licenses that pe
 | Find a number written in black | [Andrys](https://pixabay.com/users/Andrys-439428/) | [pixabay](https://pixabay.com/photos/letter-calligraphy-ink-written-447577/) | Pixabay License (free to use) |
 | Find a number written in green | [Andrys](https://pixabay.com/users/Andrys-439428/) | [pixabay](https://pixabay.com/photos/letter-calligraphy-ink-written-447577/) | Pixabay License (free to use) |
 | Find a letter written in yellow | [Andrys](https://pixabay.com/users/Andrys-439428/) | [pixabay](https://pixabay.com/photos/letter-calligraphy-ink-written-447577/) | Pixabay License (free to use) |
-| Find a letter written in gold | [Andrys](https://pixabay.com/users/Andrys-439428/) | [pixabay](https://pixabay.com/photos/letter-calligraphy-ink-written-447577/) | Pixabay License (free to use) |
-| Find a letter written in silver | [Andrys](https://pixabay.com/users/Andrys-439428/) | [pixabay](https://pixabay.com/photos/letter-calligraphy-ink-written-447577/) | Pixabay License (free to use) |
 | Find a number written in orange | [Andrys](https://pixabay.com/users/Andrys-439428/) | [pixabay](https://pixabay.com/photos/letter-calligraphy-ink-written-447577/) | Pixabay License (free to use) |
 | Find a letter written in cursive | [Andrys](https://pixabay.com/users/Andrys-439428/) | [pixabay](https://pixabay.com/photos/letter-calligraphy-ink-written-447577/) | Pixabay License (free to use) |
 | Letters and Numbers cover | [ArminEP](https://pixabay.com/users/ArminEP-8300920/) | [pixabay](https://pixabay.com/photos/airport-departure-board-6911566/) | Pixabay License (free to use) |
@@ -135,7 +135,6 @@ All images are sourced from free-to-use stock photo sites under licenses that pe
 | Find a two-digit number | [Liza](https://pixabay.com/users/Liza-43162/) | [pixabay](https://pixabay.com/photos/number-number-2-two-silver-metal-170404/) | Pixabay License (free to use) |
 | Find a number that is even | [riteshman](https://pixabay.com/users/riteshman-3198304/) | [pixabay](https://pixabay.com/photos/dice-probability-game-chance-luck-3743593/) | Pixabay License (free to use) |
 | Find a number that is odd | [riteshman](https://pixabay.com/users/riteshman-3198304/) | [pixabay](https://pixabay.com/photos/dice-probability-game-chance-luck-3743593/) | Pixabay License (free to use) |
-| Find a word that starts with the letter P | [Ralf1403](https://pixabay.com/users/Ralf1403-21380246/) | [pixabay](https://pixabay.com/photos/love-valentines-day-dice-game-9344644/) | Pixabay License (free to use) |
 | Find two matching numbers side by side | [MabelAmber](https://pixabay.com/users/MabelAmber-1377835/) | [pixabay](https://pixabay.com/photos/person-people-woman-man-couple-3471540/) | Pixabay License (free to use) |
 | Find a two-digit number over 50 | [Liza](https://pixabay.com/users/Liza-43162/) | [pixabay](https://pixabay.com/photos/number-number-2-two-silver-metal-170404/) | Pixabay License (free to use) |
 | Find two numbers in ascending order (like 3, 4) | [Tama66](https://pixabay.com/users/Tama66-1032521/) | [pixabay](https://pixabay.com/photos/steps-stairs-architecture-masonry-3614468/) | Pixabay License (free to use) |
@@ -153,25 +152,25 @@ All images are sourced from free-to-use stock photo sites under licenses that pe
 | Paper | [congerdesign](https://pixabay.com/users/congerdesign-509903/) | [pixabay](https://pixabay.com/photos/book-read-book-pages-literature-3964050/) | Pixabay License (free to use) |
 | Stone | [soramang](https://pixabay.com/users/soramang-1594796/) | [pixabay](https://pixabay.com/photos/wall-stone-wall-brick-wall-1475318/) | Pixabay License (free to use) |
 | Plastic | [wal_172619](https://pixabay.com/users/wal_172619-12138562/) | [pixabay](https://pixabay.com/photos/tube-structure-stack-plastic-8155664/) | Pixabay License (free to use) |
-| Ceramic | [Pexels](https://pixabay.com/users/Pexels-2286921/) | [pixabay](https://pixabay.com/photos/tiles-backdrop-bathroom-ceramic-1846980/) | Pixabay License (free to use) |
+| Ceramic | [Unknown](https://www.rawpixel.com/image/3283727/free-photo-image-coffee-table-wooden) | [openverse/rawpixel](https://www.rawpixel.com/image/3283727/free-photo-image-coffee-table-wooden) | [CC0 1.0 (public domain)](https://creativecommons.org/publicdomain/zero/1.0/) |
 | Leather | [AKuptsova](https://pixabay.com/users/AKuptsova-1176597/) | [pixabay](https://pixabay.com/photos/pink-leather-leather-texture-skin-2001739/) | Pixabay License (free to use) |
 | Rubber | [Simon](https://pixabay.com/users/Simon-3/) | [pixabay](https://pixabay.com/photos/rubber-tree-rubber-raw-material-471/) | Pixabay License (free to use) |
 | Cardboard | [ulotkidruk](https://pixabay.com/users/ulotkidruk-1016503/) | [pixabay](https://pixabay.com/photos/paper-brown-texture-background-1468883/) | Pixabay License (free to use) |
 | Brick | [Nikiko](https://pixabay.com/users/Nikiko-268709/) | [pixabay](https://pixabay.com/photos/bricks-wall-stones-structure-459299/) | Pixabay License (free to use) |
-| Concrete | [Pexels](https://pixabay.com/users/Pexels-2286921/) | [pixabay](https://pixabay.com/photos/abstract-art-backdrop-background-1850417/) | Pixabay License (free to use) |
+| Concrete | [Michał Grosicki](https://stocksnap.io/author/40727) | [openverse/stocksnap](https://stocksnap.io/photo/concrete-wall-JROB238L72) | [CC0 1.0 (public domain)](https://creativecommons.org/publicdomain/zero/1.0/) |
 | Wool | [Coernl](https://pixabay.com/users/Coernl-4096898/) | [pixabay](https://pixabay.com/photos/yarn-thread-spindle-sewing-7246102/) | Pixabay License (free to use) |
 | Cotton | [Kranich17](https://pixabay.com/users/Kranich17-11197573/) | [pixabay](https://pixabay.com/photos/jeans-heart-trousers-cotton-8170757/) | Pixabay License (free to use) |
 | Denim | [stux](https://pixabay.com/users/stux-12364/) | [pixabay](https://pixabay.com/photos/jeans-fabric-denim-structure-blue-1161035/) | Pixabay License (free to use) |
 | Steel | [Hans](https://pixabay.com/users/Hans-2/) | [pixabay](https://pixabay.com/photos/iron-rods-reinforcing-bars-474792/) | Pixabay License (free to use) |
 | Copper or brass | [Alexas_Fotos](https://pixabay.com/users/Alexas_Fotos-686414/) | [pixabay](https://pixabay.com/photos/copper-thrash-metal-scrap-metal-1504071/) | Pixabay License (free to use) |
-| Aluminum | [analogicus](https://pixabay.com/users/analogicus-8164369/) | [pixabay](https://pixabay.com/photos/aluminum-foil-abstract-texture-6961638/) | Pixabay License (free to use) |
+| Aluminum | [Unknown](https://www.rawpixel.com/image/5920977/photo-image-texture-public-domain-abstract) | [openverse/rawpixel](https://www.rawpixel.com/image/5920977/photo-image-texture-public-domain-abstract) | [CC0 1.0 (public domain)](https://creativecommons.org/publicdomain/zero/1.0/) |
 | Cork | [fotoblend](https://pixabay.com/users/fotoblend-87167/) | [pixabay](https://pixabay.com/photos/cork-wine-corks-drink-tree-bark-9894789/) | Pixabay License (free to use) |
 | Wicker or rope | [aitoff](https://pixabay.com/users/aitoff-388338/) | [pixabay](https://pixabay.com/photos/woven-cords-weave-pattern-texture-1577429/) | Pixabay License (free to use) |
 | Foam | [rkit](https://pixabay.com/users/rkit-646249/) | [pixabay](https://pixabay.com/photos/packing-material-foam-gray-wavy-833665/) | Pixabay License (free to use) |
 | Clay | [Pexels](https://pixabay.com/users/Pexels-2286921/) | [pixabay](https://pixabay.com/photos/abstract-aged-backdrop-background-1846822/) | Pixabay License (free to use) |
-| Tile | [652234](https://pixabay.com/users/652234-652234/) | [pixabay](https://pixabay.com/photos/roof-tiles-brick-red-roof-panels-3422238/) | Pixabay License (free to use) |
-| Wax | [domeckopol](https://pixabay.com/users/domeckopol-610494/) | [pixabay](https://pixabay.com/photos/still-life-bottles-glass-beads-840079/) | Pixabay License (free to use) |
-| Wire | [manfredrichter](https://pixabay.com/users/manfredrichter-4055600/) | [pixabay](https://pixabay.com/photos/fence-wire-fence-wire-mesh-metal-6902676/) | Pixabay License (free to use) |
+| Tile | [joncutrer](https://www.flickr.com/photos/47121680@N00) | [openverse/flickr](https://www.flickr.com/photos/47121680@N00/50102368486) | [CC0 1.0 (public domain)](https://creativecommons.org/publicdomain/zero/1.0/) |
+| Wax | [comedy_nose](https://www.flickr.com/photos/23408922@N07) | [openverse/flickr](https://www.flickr.com/photos/23408922@N07/49190446762) | [Public Domain Mark](https://creativecommons.org/publicdomain/mark/1.0/) |
+| Wire | [brenkee](https://www.flickr.com/photos/55128416@N05) | [openverse/flickr](https://www.flickr.com/photos/55128416@N05/14647781466) | [CC0 1.0 (public domain)](https://creativecommons.org/publicdomain/zero/1.0/) |
 
 ### Patterns
 
@@ -240,26 +239,26 @@ All images are sourced from free-to-use stock photo sites under licenses that pe
 | A green leaf | [5598375](https://pixabay.com/users/5598375-5598375/) | [pixabay](https://pixabay.com/photos/ferns-leaf-plant-nature-3378058/) | Pixabay License (free to use) |
 | A tree | [susnpics](https://pixabay.com/users/susnpics-10235783/) | [pixabay](https://pixabay.com/photos/hill-tree-drumlin-landscape-5324149/) | Pixabay License (free to use) |
 | Grass | [Alexas_Fotos](https://pixabay.com/users/Alexas_Fotos-686414/) | [pixabay](https://pixabay.com/photos/meadow-field-grass-green-nature-3375052/) | Pixabay License (free to use) |
-| A houseplant | [ZenAga](https://pixabay.com/users/ZenAga-25514880/) | [pixabay](https://pixabay.com/photos/cactus-pink-flower-plant-blossom-7760970/) | Pixabay License (free to use) |
-| A flower, any kind | [Lucasverm](https://pixabay.com/users/Lucasverm-28798413/) | [pixabay](https://pixabay.com/photos/bird-parrot-ornithology-kind-fauna-8165143/) | Pixabay License (free to use) |
-| A weed growing through a crack | [congerdesign](https://pixabay.com/users/congerdesign-509903/) | [pixabay](https://pixabay.com/photos/a-book-read-relax-lilac-bank-old-759873/) | Pixabay License (free to use) |
-| A leaf bigger than your hand | [educadormarcossv](https://pixabay.com/users/educadormarcossv-5883596/) | [pixabay](https://pixabay.com/photos/your-hands-are-wet-hands-smile-4946162/) | Pixabay License (free to use) |
-| A leaf smaller than your thumb | [educadormarcossv](https://pixabay.com/users/educadormarcossv-5883596/) | [pixabay](https://pixabay.com/photos/your-hands-are-wet-hands-smile-4946162/) | Pixabay License (free to use) |
+| A houseplant | [Alina Kakshapati](https://wordpress.org/photos/author/aleenak19/) | [openverse/wordpress](https://wordpress.org/photos/photo/46368a2e37/) | [CC0 1.0 (public domain)](https://creativecommons.org/publicdomain/zero/1.0/) |
+| A flower, any kind | [ksblack99](https://www.flickr.com/photos/91064752@N03) | [openverse/flickr](https://www.flickr.com/photos/91064752@N03/36089542524) | [Public Domain Mark](https://creativecommons.org/publicdomain/mark/1.0/) |
+| A weed growing through a crack | [Mary Hutchison](https://www.flickr.com/photos/25828087@N05) | [openverse/flickr](https://www.flickr.com/photos/25828087@N05/5716981690) | [Public Domain Mark](https://creativecommons.org/publicdomain/mark/1.0/) |
+| A leaf bigger than your hand | [Unknown](https://www.rawpixel.com/image/5915701/photo-image-public-domain-leaf-plant) | [openverse/rawpixel](https://www.rawpixel.com/image/5915701/photo-image-public-domain-leaf-plant) | [CC0 1.0 (public domain)](https://creativecommons.org/publicdomain/zero/1.0/) |
+| A leaf smaller than your thumb | [Unknown](https://www.rawpixel.com/image/3301266/free-photo-image-animal-blossom-cc0) | [openverse/rawpixel](https://www.rawpixel.com/image/3301266/free-photo-image-animal-blossom-cc0) | [CC0 1.0 (public domain)](https://creativecommons.org/publicdomain/zero/1.0/) |
 | Moss | [Hans](https://pixabay.com/users/Hans-2/) | [pixabay](https://pixabay.com/photos/elsach-bach-moss-nature-767590/) | Pixabay License (free to use) |
 | A bush or hedge | [manfredrichter](https://pixabay.com/users/manfredrichter-4055600/) | [pixabay](https://pixabay.com/photos/blackthorn-slough-black-thorn-flower-4971511/) | Pixabay License (free to use) |
 | A tree trunk | [Pexels](https://pixabay.com/users/Pexels-2286921/) | [pixabay](https://pixabay.com/photos/tree-trunk-leaves-nature-plants-1839959/) | Pixabay License (free to use) |
 | A fallen leaf | [Nennieinszweidrei](https://pixabay.com/users/Nennieinszweidrei-10084616/) | [pixabay](https://pixabay.com/photos/red-leaf-sweetgum-fallen-leaf-9266941/) | Pixabay License (free to use) |
 | A yellow flower | [mariya_m](https://pixabay.com/users/mariya_m-12752456/) | [pixabay](https://pixabay.com/photos/chrysanthemum-garden-chrysanthemums-5668882/) | Pixabay License (free to use) |
-| Something blooming | [KingsRoz](https://pixabay.com/users/KingsRoz-1073757/) | [pixabay](https://pixabay.com/photos/sneaky-cat-looks-teeth-or-something-792772/) | Pixabay License (free to use) |
-| A leaf with a pointed tip | [HeckiMG](https://pixabay.com/users/HeckiMG-24974271/) | [pixabay](https://pixabay.com/photos/metal-tip-ornament-curlicue-metal-7649305/) | Pixabay License (free to use) |
-| A leaf with a rounded edge | [congerdesign](https://pixabay.com/users/congerdesign-509903/) | [pixabay](https://pixabay.com/photos/a-book-bible-gilt-edge-believe-610334/) | Pixabay License (free to use) |
+| Something blooming | [Unknown](https://www.rawpixel.com/image/5803526/photo-image-background-flower-public-domain) | [openverse/rawpixel](https://www.rawpixel.com/image/5803526/photo-image-background-flower-public-domain) | [CC0 1.0 (public domain)](https://creativecommons.org/publicdomain/zero/1.0/) |
+| A leaf with a pointed tip | [Image Catalog](https://www.flickr.com/photos/132795455@N08) | [openverse/flickr](https://www.flickr.com/photos/132795455@N08/18066463475) | [CC0 1.0 (public domain)](https://creativecommons.org/publicdomain/zero/1.0/) |
+| A leaf with a rounded edge | [lisafree54](https://www.flickr.com/photos/136594255@N06) | [openverse/flickr](https://www.flickr.com/photos/136594255@N06/25898604292) | [CC0 1.0 (public domain)](https://creativecommons.org/publicdomain/zero/1.0/) |
 | A tree with visible roots | [Pezibear](https://pixabay.com/users/Pezibear-526143/) | [pixabay](https://pixabay.com/photos/path-roots-forest-nature-close-up-1040726/) | Pixabay License (free to use) |
 | A leaf with jagged edges | [JenniferStr](https://pixabay.com/users/JenniferStr-376282/) | [pixabay](https://pixabay.com/photos/green-plant-nature-frozen-green-2995761/) | Pixabay License (free to use) |
 | A pine tree or evergreen | [LUM3N](https://pixabay.com/users/LUM3N-1066559/) | [pixabay](https://pixabay.com/photos/pine-plant-tree-branch-conifer-1884335/) | Pixabay License (free to use) |
 | A leaf with a visible vein pattern | [ebor](https://pixabay.com/users/ebor-10853241/) | [pixabay](https://pixabay.com/photos/gunnera-leaf-green-leaf-details-5195132/) | Pixabay License (free to use) |
 | A tree casting a shadow | [miroslavkaclik](https://pixabay.com/users/miroslavkaclik-11698513/) | [pixabay](https://pixabay.com/photos/a-tree-nature-heart-cherry-flowers-5255288/) | Pixabay License (free to use) |
 | Berries on a plant | [mariya_m](https://pixabay.com/users/mariya_m-12752456/) | [pixabay](https://pixabay.com/photos/holly-ilex-red-berries-berry-fruit-7602422/) | Pixabay License (free to use) |
-| A leaf with a heart shape | [neelam279](https://pixabay.com/users/neelam279-9820894/) | [pixabay](https://pixabay.com/photos/apple-read-relax-study-break-7020336/) | Pixabay License (free to use) |
+| A leaf with a heart shape | [wavesummit](https://www.flickr.com/photos/78225097@N08) | [openverse/flickr](https://www.flickr.com/photos/78225097@N08/7576953820) | [CC0 1.0 (public domain)](https://creativecommons.org/publicdomain/zero/1.0/) |
 
 ### Shapes
 
@@ -327,13 +326,13 @@ All images are sourced from free-to-use stock photo sites under licenses that pe
 |------|-------------|--------|---------|
 | Textures cover | [analogicus](https://pixabay.com/users/analogicus-8164369/) | [pixabay](https://pixabay.com/photos/aluminum-foil-abstract-texture-6961638/) | Pixabay License (free to use) |
 | Rough | [Pexels](https://pixabay.com/users/Pexels-2286921/) | [pixabay](https://pixabay.com/photos/nature-texture-wood-bark-rough-1845974/) | Pixabay License (free to use) |
-| Smooth | [sarajuggernaut](https://pixabay.com/users/sarajuggernaut-28237/) | [pixabay](https://pixabay.com/photos/stones-rocks-pebbles-colorful-167089/) | Pixabay License (free to use) |
-| Fuzzy | [wal_172619](https://pixabay.com/users/wal_172619-12138562/) | [pixabay](https://pixabay.com/photos/wool-texture-colorful-blanket-warm-10238586/) | Pixabay License (free to use) |
-| Glossy | [eismannhans](https://pixabay.com/users/eismannhans-5686/) | [pixabay](https://pixabay.com/photos/candy-confectionery-sweet-smarties-50838/) | Pixabay License (free to use) |
+| Smooth | [Travel Photographer](https://stocksnap.io) | [openverse/stocksnap](https://stocksnap.io/photo/smooth-rocks-HPCYYGTGOO) | [CC0 1.0 (public domain)](https://creativecommons.org/publicdomain/zero/1.0/) |
+| Fuzzy | [suzannelong](https://www.flickr.com/photos/49501395@N00) | [openverse/flickr](https://www.flickr.com/photos/49501395@N00/2622294864) | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) |
+| Glossy | [Unknown](https://www.rawpixel.com/image/5905503/photo-image-christmas-public-domain-fruit) | [openverse/rawpixel](https://www.rawpixel.com/image/5905503/photo-image-christmas-public-domain-fruit) | [CC0 1.0 (public domain)](https://creativecommons.org/publicdomain/zero/1.0/) |
 | Bumpy | [Alexas_Fotos](https://pixabay.com/users/Alexas_Fotos-686414/) | [pixabay](https://pixabay.com/photos/pumpkin-autumn-green-yellow-10473797/) | Pixabay License (free to use) |
 | Soft | [birgl](https://pixabay.com/users/birgl-6508325/) | [pixabay](https://pixabay.com/photos/feather-bird-feather-white-feather-7095765/) | Pixabay License (free to use) |
-| Gritty | [real-napster](https://pixabay.com/users/real-napster-323187/) | [pixabay](https://pixabay.com/photos/cobblestones-road-street-pavement-393455/) | Pixabay License (free to use) |
-| Slippery | [Gallila-Photo](https://pixabay.com/users/Gallila-Photo-695085/) | [pixabay](https://pixabay.com/photos/ice-cold-ice-world-frozen-soil-2090584/) | Pixabay License (free to use) |
+| Gritty | [Dietmar Down Under](https://www.flickr.com/photos/38229010@N02) | [openverse/flickr](https://www.flickr.com/photos/38229010@N02/6951067967) | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) |
+| Slippery | [tlianza](https://www.flickr.com/photos/20133719@N00) | [openverse/flickr](https://www.flickr.com/photos/20133719@N00/3127743450) | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) |
 | Prickly | [Pexels](https://pixabay.com/users/Pexels-2286921/) | [pixabay](https://pixabay.com/photos/plants-cacti-botany-growth-desert-1834749/) | Pixabay License (free to use) |
 | Woven | [virin000](https://pixabay.com/users/virin000-4559233/) | [pixabay](https://pixabay.com/photos/textile-jute-brown-fabric-texture-2918844/) | Pixabay License (free to use) |
 | Cracked | [Pexels](https://pixabay.com/users/Pexels-2286921/) | [pixabay](https://pixabay.com/photos/abstract-wall-backdrop-background-1850424/) | Pixabay License (free to use) |
@@ -345,14 +344,14 @@ All images are sourced from free-to-use stock photo sites under licenses that pe
 | Frosty | [Goumbik](https://pixabay.com/users/Goumbik-3752482/) | [pixabay](https://pixabay.com/photos/winter-cold-surface-ice-texture-2054297/) | Pixabay License (free to use) |
 | Leathery | [pasja1000](https://pixabay.com/users/pasja1000-6355831/) | [pixabay](https://pixabay.com/photos/old-shoes-wear-shoes-footwear-sole-3499451/) | Pixabay License (free to use) |
 | Silky | [analogicus](https://pixabay.com/users/analogicus-8164369/) | [pixabay](https://pixabay.com/photos/horse-mane-strand-close-up-animal-8332315/) | Pixabay License (free to use) |
-| Hairy | [MASTERSYSTEM60](https://pixabay.com/users/MASTERSYSTEM60-30356571/) | [pixabay](https://pixabay.com/photos/caterpillar-larva-nature-forest-7546984/) | Pixabay License (free to use) |
+| Hairy | [Picdrome Public Domain Pictures](https://www.flickr.com/photos/65798313@N06) | [openverse/flickr](https://www.flickr.com/photos/65798313@N06/6167085416) | [CC0 1.0 (public domain)](https://creativecommons.org/publicdomain/zero/1.0/) |
 | Peeling | [LisaRedfern](https://pixabay.com/users/LisaRedfern-910282/) | [pixabay](https://pixabay.com/photos/texture-background-blue-wood-2613518/) | Pixabay License (free to use) |
 | Crumbly | [planet_fox](https://pixabay.com/users/planet_fox-4691618/) | [pixabay](https://pixabay.com/photos/biscuit-corner-to-bake-pastries-7064697/) | Pixabay License (free to use) |
 | Wet | [martin_hetto](https://pixabay.com/users/martin_hetto-3003735/) | [pixabay](https://pixabay.com/photos/leaf-plant-texture-drops-water-5533218/) | Pixabay License (free to use) |
 | Dusty | [Joa70](https://pixabay.com/users/Joa70-16807463/) | [pixabay](https://pixabay.com/photos/books-leather-old-antique-binding-8405721/) | Pixabay License (free to use) |
-| Metallic | [Pexels](https://pixabay.com/users/Pexels-2286921/) | [pixabay](https://pixabay.com/photos/abstract-aged-aluminum-backdrop-1846847/) | Pixabay License (free to use) |
+| Metallic | [shaire productions](https://www.flickr.com/photos/9822107@N08) | [openverse/flickr](https://www.flickr.com/photos/9822107@N08/7501404862) | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) |
 | Fluffy | [jplenio](https://pixabay.com/users/jplenio-7645255/) | [pixabay](https://pixabay.com/photos/nature-dandelion-macro-close-up-3092555/) | Pixabay License (free to use) |
-| Engraved | [ThreeMilesPerHour](https://pixabay.com/users/ThreeMilesPerHour-9661546/) | [pixabay](https://pixabay.com/photos/words-print-metal-letters-font-3583294/) | Pixabay License (free to use) |
+| Engraved | [themet](https://www.rawpixel.com/image/12837669/plate) | [openverse/rawpixel](https://www.rawpixel.com/image/12837669/plate) | [CC0 1.0 (public domain)](https://creativecommons.org/publicdomain/zero/1.0/) |
 
 ---
 

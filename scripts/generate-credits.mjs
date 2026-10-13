@@ -104,9 +104,11 @@ const sortedCategories = Object.keys(byCategory).sort();
 
 // Generate markdown
 let markdown = '# Image Credits\n\n';
-markdown += 'All images are sourced from free-to-use stock photo sites under licenses that permit commercial use without attribution. Attribution is provided below for transparency and to honor the photographers.\n\n';
+markdown += 'All images are sourced from free-to-use stock photo sites and Openverse under licenses that permit commercial use. Attribution is provided below for transparency, to honor the photographers, and where the license requires it.\n\n';
 markdown += '## License Summary\n\n';
 markdown += '- **Pixabay License**: Free to use, no attribution required (but we provide it anyway)\n';
+markdown += '- **CC0 / Public Domain Mark**: Free to use, no attribution required\n';
+markdown += '- **CC BY / CC BY-SA**: Free to use with attribution (provided below); BY-SA adaptations must keep the same license\n';
 markdown += '- Images may be used for commercial purposes\n';
 markdown += '- Images may be modified and adapted\n\n';
 
@@ -123,7 +125,8 @@ for (const categoryId of sortedCategories) {
     const photographerName = item.photographer || 'Unknown';
     const photographerLink = item.photographerUrl ? `[${photographerName}](${item.photographerUrl})` : photographerName;
     const sourceLink = `[${item.source}](${item.pageUrl})`;
-    markdown += `| ${item.name} | ${photographerLink} | ${sourceLink} | ${item.license} |\n`;
+    const license = item.licenseUrl ? `[${item.license}](${item.licenseUrl})` : item.license;
+    markdown += `| ${item.name} | ${photographerLink} | ${sourceLink} | ${license} |\n`;
   }
 
   markdown += '\n';
