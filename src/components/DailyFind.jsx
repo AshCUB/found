@@ -150,11 +150,6 @@ export default function DailyFind({
             </div>
           </div>
 
-          {list && list.items.length > 1 && (
-            <p className="font-body text-xs text-dark-grey text-center mb-lg">
-              {itemIndex + 1} / {list.items.length}
-            </p>
-          )}
 
           <h3 className="mb-md">
             <span className="block font-buttons text-base text-dark-grey">Today's daily find is</span>
@@ -170,10 +165,6 @@ export default function DailyFind({
               {list.warning}
             </p>
           )}
-
-          <p className="font-body text-sm text-black font-normal mb-lg">
-            Take a minute. Look around for it.
-          </p>
 
           {currentFind.captured ? (
             <div className="text-center p-md bg-green/10 rounded-lg">
