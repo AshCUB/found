@@ -10,12 +10,9 @@ export default function Intro({ onGetStarted }) {
         </p>
         
         <div className="bg-white p-lg rounded-lg mb-xl shadow-sm">
-          <p className="font-body text-sm text-dark-grey mb-md">
+          <p className="font-body text-sm text-dark-grey">
             It's easy to get caught up in worry and miss what's right in front of us.
             Found helps you slow down and notice the world around you.
-          </p>
-          <p className="font-body text-sm text-dark-grey">
-            [STAT TO BE ADDED]
           </p>
         </div>
 

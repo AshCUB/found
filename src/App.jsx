@@ -209,7 +209,7 @@ export default function App() {
     <div className="min-h-screen">
       {renderScreen()}
       {/* TEMP: dev-only shortcut back to the intro screen. Remove later. */}
-      {currentScreen !== 'intro' && (
+      {import.meta.env.DEV && currentScreen !== 'intro' && (
         <button
           onClick={() => setCurrentScreen('intro')}
           className="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 font-buttons text-xs bg-black text-white px-md py-xs rounded-full opacity-70 hover:opacity-100"
