@@ -282,7 +282,7 @@ export const focusLists = [
     id: 'materials',
     name: 'Materials',
     itemCount: 30,
-    image: 'images/materials-cover.webp',
+    image: 'images/material-wood.webp',
     description: '30 materials to find',
     promptFormat: 'Find something made of [material].',
     items: [
