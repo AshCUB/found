@@ -9,6 +9,7 @@ import Collection from './components/Collection';
 import Streak from './components/Streak';
 import { useSubscribedLists, useCaptures, useStreakData, useSettings, useEventLogs } from './hooks/useAppData';
 import { getAllDailyFinds, storeDailyFinds, loadDailyFinds, shouldRefreshDailyFind } from './utils/dailyFind';
+import { isListVisible } from './data/focusLists';
 
 export default function App() {
   // Screen state
@@ -16,7 +17,8 @@ export default function App() {
   const [dailyFindIndex, setDailyFindIndex] = useState(0);
 
   // Data hooks
-  const [subscribedLists, setSubscribedLists] = useSubscribedLists();
+  const [allSubscribedLists, setSubscribedLists] = useSubscribedLists();
+  const subscribedLists = allSubscribedLists.filter(isListVisible);
   const { captures, addCapture, getCapturedItemIds, isItemCaptured } = useCaptures();
   const { streakData, markDayComplete, checkAndResetStreak, isWeeklySaverAvailable, getWeekData } = useStreakData();
   const [settings, setSettings] = useSettings();
@@ -44,7 +46,7 @@ export default function App() {
     // Load or generate daily finds
     const storedDailyFinds = loadDailyFinds();
     if (storedDailyFinds && !shouldRefreshDailyFind(storedDailyFinds.date)) {
-      setDailyFinds(storedDailyFinds.finds);
+      setDailyFinds(storedDailyFinds.finds.filter((find) => isListVisible(find.listId)));
     } else {
       refreshDailyFinds();
     }
@@ -55,7 +57,7 @@ export default function App() {
     if (subscribedLists.length > 0) {
       refreshDailyFinds();
     }
-  }, [subscribedLists, captures]);
+  }, [allSubscribedLists, captures]);
 
   const refreshDailyFinds = () => {
     const capturedItemIdsByList = {};
