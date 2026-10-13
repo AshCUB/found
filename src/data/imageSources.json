@@ -13,9 +13,9 @@
     "name": "Glossy",
     "category": "textures",
     "localPath": "images/texture-glossy.webp",
-    "imageUrl": "https://pixabay.com/get/gdb3bae383489614ba93de330e15fc7fdb5540c2e019d16cb1e7b5c366023b8e494d3e2d278513c0808dc036af7f7cea210140c88da9e4c284dcea223a9c9df28_1280.jpg",
-    "pageUrl": "https://pixabay.com/photos/coffee-beans-roasted-coffee-10361873/",
-    "fetchedAt": "2026-10-13T02:14:26.677Z"
+    "imageUrl": "https://images.rawpixel.com/editor_1024/cHJpdmF0ZS9zdGF0aWMvaW1hZ2Uvd2Vic2l0ZS8yMDIyLTA0L2xyL3B4ODM4MjIwLWltYWdlLWt3dnV6d2ttLmpwZw.jpg",
+    "pageUrl": "https://www.rawpixel.com/image/5905503/photo-image-christmas-public-domain-fruit",
+    "fetchedAt": "2026-10-13T03:38:36.239Z"
   },
   "prickly": {
     "id": "prickly",
@@ -94,9 +94,9 @@
     "name": "Hairy",
     "category": "textures",
     "localPath": "images/texture-hairy.webp",
-    "imageUrl": "https://pixabay.com/get/g11aee65ee34c936872378f776e25d71016de04f422e783334768d21fa563baa0b8aef8a6ba6d24866ea42a29c96a882d86d37e6b842ef4bf43ca123013f8b49a_1280.jpg",
-    "pageUrl": "https://pixabay.com/photos/macro-fly-compound-eyes-insect-2300109/",
-    "fetchedAt": "2026-10-13T02:14:44.918Z"
+    "imageUrl": "https://live.staticflickr.com/6155/6167085416_9891796166_b.jpg",
+    "pageUrl": "https://www.flickr.com/photos/65798313@N06/6167085416",
+    "fetchedAt": "2026-10-13T03:38:36.239Z"
   },
   "wet": {
     "id": "wet",
@@ -112,9 +112,9 @@
     "name": "Engraved",
     "category": "textures",
     "localPath": "images/texture-engraved.webp",
-    "imageUrl": "https://pixabay.com/get/g7793c2040ec2c98c1fd92f01d58834db055c820993421b2b45fa8d29521fdf0e5746cc99dc75cf92da0bfaa92f565eaa51a3c7cf5c1462f5f13ad72212f1dbd6_1280.jpg",
-    "pageUrl": "https://pixabay.com/photos/pentagram-pagan-symbol-carved-tree-243724/",
-    "fetchedAt": "2026-10-13T02:14:51.214Z"
+    "imageUrl": "https://images.rawpixel.com/editor_1024/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTExL21ldDE4OTExMC1pbWFnZS5qcGc.jpg",
+    "pageUrl": "https://www.rawpixel.com/image/12837669/plate",
+    "fetchedAt": "2026-10-13T03:38:36.239Z"
   },
   "ascending": {
     "id": "ascending",
@@ -223,33 +223,6 @@
     "imageUrl": "https://pixabay.com/get/gc126fbc2a0b5ef4f822619f2402953254f6962cec2eb978bd45a8e26c4c93f12b152cb2d3c0d52e1c50032d01c6489c3b3ba2dc3ac35be9d9abe6c66a1c2c03e_1280.jpg",
     "pageUrl": "https://pixabay.com/photos/number-symbol-thirteen-pay-odd-605342/",
     "fetchedAt": "2026-10-13T02:15:33.378Z"
-  },
-  "letter-gold": {
-    "id": "letter-gold",
-    "name": "Find a letter written in gold",
-    "category": "letters-numbers",
-    "localPath": "images/letter-gold.webp",
-    "imageUrl": "https://pixabay.com/get/gbd89a2468804b1eda1fc0bffad905b1a5afb546dfc6d879ed2736e12944081cb205fa713f936d7c8daff2d0c404c8ab4130ccbc0d9d95e8819903a9f361b5afc_1280.jpg",
-    "pageUrl": "https://pixabay.com/photos/letter-calligraphy-ink-written-447577/",
-    "fetchedAt": "2026-10-13T02:15:34.223Z"
-  },
-  "letter-silver": {
-    "id": "letter-silver",
-    "name": "Find a letter written in silver",
-    "category": "letters-numbers",
-    "localPath": "images/letter-silver.webp",
-    "imageUrl": "https://pixabay.com/get/g934a3e2cc1ab5360f4d399f67c3d60a0000cba388b698b49c31716e6d09b35aa4185e7e4d75615efc62ed952ce617859f8ce5ff0a7c3b22582115fbb5b5c7c7e_1280.jpg",
-    "pageUrl": "https://pixabay.com/photos/letter-calligraphy-ink-written-447577/",
-    "fetchedAt": "2026-10-13T02:15:35.132Z"
-  },
-  "word-starts-p": {
-    "id": "word-starts-p",
-    "name": "Find a word that starts with the letter P",
-    "category": "letters-numbers",
-    "localPath": "images/letter-word-starts-p.webp",
-    "imageUrl": "https://pixabay.com/get/g10d4b6dd85e386f3bfbe055cd781afed8d9a776c31771b21dfacce5fb2e2b3aa87bb5e73ef7cf9325e5a8677b18f0f5ba041e3efb58f895f35efba90877ea97b_1280.jpg",
-    "pageUrl": "https://pixabay.com/photos/love-valentines-day-dice-game-9344644/",
-    "fetchedAt": "2026-10-13T02:15:35.997Z"
   },
   "matching-numbers": {
     "id": "matching-numbers",
@@ -391,9 +364,9 @@
     "name": "Concrete",
     "category": "materials",
     "localPath": "images/material-concrete.webp",
-    "imageUrl": "https://pixabay.com/get/g668e385652e792ca651b78b68e0ac0070ce886f69a5e3aad88da9920a0ca7486049d002088241df078a17276b37677e3deb0f2ae264fdb2e43892f29ac06aeae_1280.jpg",
-    "pageUrl": "https://pixabay.com/photos/iron-bars-reinforcing-bars-474810/",
-    "fetchedAt": "2026-10-13T02:16:01.918Z"
+    "imageUrl": "https://cdn.stocksnap.io/img-thumbs/960w/JROB238L72.jpg",
+    "pageUrl": "https://stocksnap.io/photo/concrete-wall-JROB238L72",
+    "fetchedAt": "2026-10-13T03:38:36.239Z"
   },
   "wool": {
     "id": "wool",
@@ -436,9 +409,9 @@
     "name": "Aluminum",
     "category": "materials",
     "localPath": "images/material-aluminum.webp",
-    "imageUrl": "https://pixabay.com/get/ga96a69b45f50c821ad1d319d1485bd769932e1c4b96dd94118901728b3b8f8c9c19ce5b4d5a61c9cdd39f30b3cede44463771ebf7c30abeda7165437ea658418_1280.jpg",
-    "pageUrl": "https://pixabay.com/photos/aluminum-aluminum-recycling-7288134/",
-    "fetchedAt": "2026-10-13T02:16:09.531Z"
+    "imageUrl": "https://images.rawpixel.com/editor_1024/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3B4OTAzODg1LWltYWdlLWt3dnhlaW0xLmpwZw.jpg",
+    "pageUrl": "https://www.rawpixel.com/image/5920977/photo-image-texture-public-domain-abstract",
+    "fetchedAt": "2026-10-13T03:38:36.239Z"
   },
   "cork": {
     "id": "cork",
@@ -481,18 +454,18 @@
     "name": "Tile",
     "category": "materials",
     "localPath": "images/material-tile.webp",
-    "imageUrl": "https://pixabay.com/get/gbb9d2449dd94f0c4462b555bab340ececf2834a0fe9225bdb90fb65a701e4e87553947fbe4a87d38db5123a1d9487b8bc9b9f7885aa467560aa42b75a35116e4_1280.jpg",
-    "pageUrl": "https://pixabay.com/photos/roof-roof-tiles-pattern-house-8193787/",
-    "fetchedAt": "2026-10-13T02:16:18.791Z"
+    "imageUrl": "https://live.staticflickr.com/65535/50102368486_5f5ac3050a_b.jpg",
+    "pageUrl": "https://www.flickr.com/photos/47121680@N00/50102368486",
+    "fetchedAt": "2026-10-13T03:38:36.239Z"
   },
   "wire": {
     "id": "wire",
     "name": "Wire",
     "category": "materials",
     "localPath": "images/material-wire.webp",
-    "imageUrl": "https://pixabay.com/get/g59b003bafd9e6fb1be4f6de97c1cc58d2d39b010cff4acbce354ca850a1bb3b65fb9e6d86e301280659d4ec624e1c4e8a9142672e31b2674a0559f617da4be07_1280.jpg",
-    "pageUrl": "https://pixabay.com/photos/barbed-wire-frost-frozen-cold-ice-1938842/",
-    "fetchedAt": "2026-10-13T02:16:21.100Z"
+    "imageUrl": "https://live.staticflickr.com/2913/14647781466_ee793ff2a2_b.jpg",
+    "pageUrl": "https://www.flickr.com/photos/55128416@N05/14647781466",
+    "fetchedAt": "2026-10-13T03:38:36.239Z"
   },
   "green-leaf": {
     "id": "green-leaf",
@@ -526,45 +499,45 @@
     "name": "A houseplant",
     "category": "plants-trees",
     "localPath": "images/plant-houseplant.webp",
-    "imageUrl": "https://pixabay.com/get/g9a4436c727493431b976ec4a96d913f74ca30f0cc306f9d2295fb347a8e0af7209c5a7a6fc1a73be657f1e8460bb107252df0acce431e5a7ca079f57c2128e5f_1280.jpg",
-    "pageUrl": "https://pixabay.com/photos/cactus-pink-flower-plant-blossom-7760970/",
-    "fetchedAt": "2026-10-13T02:16:26.748Z"
+    "imageUrl": "https://pd.w.org/2025/08/46368a2e375ce87c1.77609160-1536x2048.jpg",
+    "pageUrl": "https://wordpress.org/photos/photo/46368a2e37/",
+    "fetchedAt": "2026-10-13T03:38:36.239Z"
   },
   "flower": {
     "id": "flower",
     "name": "A flower, any kind",
     "category": "plants-trees",
     "localPath": "images/plant-flower.webp",
-    "imageUrl": "https://pixabay.com/get/gd51f1466843f522f5cdcd2b8b7485706508c3c87656981e30e82ed30694fbe2ad9f38bed7c82ba8f2bb14a5351b91b3536983a4ef1b2520c0cb357c3f7d08321_1280.jpg",
-    "pageUrl": "https://pixabay.com/photos/bird-parrot-ornithology-kind-fauna-8165143/",
-    "fetchedAt": "2026-10-13T02:16:28.013Z"
+    "imageUrl": "https://live.staticflickr.com/4389/36089542524_fc9c1046de_b.jpg",
+    "pageUrl": "https://www.flickr.com/photos/91064752@N03/36089542524",
+    "fetchedAt": "2026-10-13T03:38:36.239Z"
   },
   "weed-crack": {
     "id": "weed-crack",
     "name": "A weed growing through a crack",
     "category": "plants-trees",
     "localPath": "images/plant-weed-crack.webp",
-    "imageUrl": "https://pixabay.com/get/g1840c101f530634144632aa377be6e4e919ea0dd809d898e1f54d6522a5d9fe08583c31c9eb8b9541fe35daaac661ed14a56a1c7489acbd796201999b417e9cf_1280.jpg",
-    "pageUrl": "https://pixabay.com/photos/a-book-read-relax-lilac-bank-old-759873/",
-    "fetchedAt": "2026-10-13T02:16:29.318Z"
+    "imageUrl": "https://live.staticflickr.com/3149/5716981690_b153b8ebc4_b.jpg",
+    "pageUrl": "https://www.flickr.com/photos/25828087@N05/5716981690",
+    "fetchedAt": "2026-10-13T03:38:36.239Z"
   },
   "leaf-big": {
     "id": "leaf-big",
     "name": "A leaf bigger than your hand",
     "category": "plants-trees",
     "localPath": "images/plant-leaf-big.webp",
-    "imageUrl": "https://pixabay.com/get/gd527d06498df53631149eea052e09a6336c0c725696238952fef9ff19f398696c996b8b228d6a6e64e1796c923ca3567d5dfe355903206af13e308ed2d6b6ae3_1280.jpg",
-    "pageUrl": "https://pixabay.com/photos/your-hands-are-wet-hands-smile-4946162/",
-    "fetchedAt": "2026-10-13T02:16:30.538Z"
+    "imageUrl": "https://images.rawpixel.com/editor_1024/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcHUyMzMxOTUxLWltYWdlLWt3dndsNXYwLmpwZw.jpg",
+    "pageUrl": "https://www.rawpixel.com/image/5915701/photo-image-public-domain-leaf-plant",
+    "fetchedAt": "2026-10-13T03:38:36.239Z"
   },
   "leaf-small": {
     "id": "leaf-small",
     "name": "A leaf smaller than your thumb",
     "category": "plants-trees",
     "localPath": "images/plant-leaf-small.webp",
-    "imageUrl": "https://pixabay.com/get/gb3a4c6c8bebefdabe4b0f787801b33ad0c5153b8213994c5f8f7c39db36f9e36e58a5d95905f7c1b1733ddd19ad70ad48c86b4297d9176732fe48e8a57664a7c_1280.jpg",
-    "pageUrl": "https://pixabay.com/photos/thumbs-up-positive-gesture-thumb-4589867/",
-    "fetchedAt": "2026-10-13T02:16:31.647Z"
+    "imageUrl": "https://images.rawpixel.com/editor_1024/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA2L3Vwd2s2MTgxODgxNy13aWtpbWVkaWEtaW1hZ2Uta293cHNhOGouanBn.jpg",
+    "pageUrl": "https://www.rawpixel.com/image/3301266/free-photo-image-animal-blossom-cc0",
+    "fetchedAt": "2026-10-13T03:38:36.239Z"
   },
   "moss": {
     "id": "moss",
@@ -616,27 +589,27 @@
     "name": "Something blooming",
     "category": "plants-trees",
     "localPath": "images/plant-blooming.webp",
-    "imageUrl": "https://pixabay.com/get/g7994ed6bc477f3f0dbb844e1ba9d8bc9ae2bbd3173d008607b5ea583163f88d36e776d83160b115b7ecaa93699bf0323d464d289c970846d7fb70fd2dd85da1c_1280.jpg",
-    "pageUrl": "https://pixabay.com/photos/sneaky-cat-looks-teeth-or-something-792772/",
-    "fetchedAt": "2026-10-13T02:16:40.662Z"
+    "imageUrl": "https://images.rawpixel.com/editor_1024/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvZmw0NTY5MTc0MzQ0LWltYWdlLWt3a2ZvMW5pLmpwZw.jpg",
+    "pageUrl": "https://www.rawpixel.com/image/5803526/photo-image-background-flower-public-domain",
+    "fetchedAt": "2026-10-13T03:38:36.239Z"
   },
   "leaf-pointed": {
     "id": "leaf-pointed",
     "name": "A leaf with a pointed tip",
     "category": "plants-trees",
     "localPath": "images/plant-leaf-pointed.webp",
-    "imageUrl": "https://pixabay.com/get/gb78464e4d0d217259992ee6d491dc4b80002e45454106f14c5f11a96248c6ea66e975d3b3cde66f3f192797199533c28679f4358705f679c03c295860ac5a484_1280.jpg",
-    "pageUrl": "https://pixabay.com/photos/metal-tip-ornament-curlicue-metal-7649305/",
-    "fetchedAt": "2026-10-13T02:16:41.868Z"
+    "imageUrl": "https://live.staticflickr.com/5459/18066463475_0f077e4beb_b.jpg",
+    "pageUrl": "https://www.flickr.com/photos/132795455@N08/18066463475",
+    "fetchedAt": "2026-10-13T03:38:36.239Z"
   },
   "leaf-rounded": {
     "id": "leaf-rounded",
     "name": "A leaf with a rounded edge",
     "category": "plants-trees",
     "localPath": "images/plant-leaf-rounded.webp",
-    "imageUrl": "https://pixabay.com/get/ge32d947b02ec3262f782f9ea620c9241c6d8c3a88dcfe0923a0b986e412ded25433178499b82209923f5841c72f5d9c217d2478ecee2e2034845e872907d4bee_1280.jpg",
-    "pageUrl": "https://pixabay.com/photos/a-book-bible-gilt-edge-believe-610334/",
-    "fetchedAt": "2026-10-13T02:16:43.143Z"
+    "imageUrl": "https://live.staticflickr.com/1482/25898604292_f3487e94c4_b.jpg",
+    "pageUrl": "https://www.flickr.com/photos/136594255@N06/25898604292",
+    "fetchedAt": "2026-10-13T03:38:36.239Z"
   },
   "plant-indoors": {
     "id": "plant-indoors",
@@ -706,9 +679,9 @@
     "name": "A leaf with a heart shape",
     "category": "plants-trees",
     "localPath": "images/plant-leaf-heart.webp",
-    "imageUrl": "https://pixabay.com/get/gfde5f45cfe2254e3bb8b7f59d9f7a2c2f8dcde9369bdb6955360a64f30f1568c66f744c7de44002d683b2ebd7e3dcc7476465124996242ea5f791cf56542f261_1280.jpg",
-    "pageUrl": "https://pixabay.com/photos/apple-read-relax-study-break-7020336/",
-    "fetchedAt": "2026-10-13T02:16:54.288Z"
+    "imageUrl": "https://live.staticflickr.com/8287/7576953820_78ba22c7f5_b.jpg",
+    "pageUrl": "https://www.flickr.com/photos/78225097@N08/7576953820",
+    "fetchedAt": "2026-10-13T03:38:36.239Z"
   },
   "arrow": {
     "id": "arrow",
@@ -934,5 +907,68 @@
     "imageUrl": "https://pixabay.com/get/g2c7e5e2c165e42b95b1231a6c6b78aac173937bf0fc1faf9d61b102da02b61dae09f23769aa2f8d88b05f1ac5cfc40e87a2090799bf15379df71e803bf135368_1280.jpg",
     "pageUrl": "https://pixabay.com/photos/girl-sleep-lying-down-dog-pet-1733352/",
     "fetchedAt": "2026-10-13T02:17:32.661Z"
+  },
+  "gritty": {
+    "id": "gritty",
+    "name": "Gritty",
+    "category": "textures",
+    "localPath": "images/texture-gritty.webp",
+    "imageUrl": "https://live.staticflickr.com/7059/6951067967_5239fb0c6a_b.jpg",
+    "pageUrl": "https://www.flickr.com/photos/38229010@N02/6951067967",
+    "fetchedAt": "2026-10-13T03:38:36.239Z"
+  },
+  "smooth": {
+    "id": "smooth",
+    "name": "Smooth",
+    "category": "textures",
+    "localPath": "images/texture-smooth.webp",
+    "imageUrl": "https://cdn.stocksnap.io/img-thumbs/960w/HPCYYGTGOO.jpg",
+    "pageUrl": "https://stocksnap.io/photo/smooth-rocks-HPCYYGTGOO",
+    "fetchedAt": "2026-10-13T03:38:36.239Z"
+  },
+  "fuzzy": {
+    "id": "fuzzy",
+    "name": "Fuzzy",
+    "category": "textures",
+    "localPath": "images/texture-fuzzy.webp",
+    "imageUrl": "https://live.staticflickr.com/3046/2622294864_fd6731bca0_b.jpg",
+    "pageUrl": "https://www.flickr.com/photos/49501395@N00/2622294864",
+    "fetchedAt": "2026-10-13T03:38:36.239Z"
+  },
+  "slippery": {
+    "id": "slippery",
+    "name": "Slippery",
+    "category": "textures",
+    "localPath": "images/texture-slippery.webp",
+    "imageUrl": "https://live.staticflickr.com/3066/3127743450_18efda5b7c_b.jpg",
+    "pageUrl": "https://www.flickr.com/photos/20133719@N00/3127743450",
+    "fetchedAt": "2026-10-13T03:38:36.239Z"
+  },
+  "metallic": {
+    "id": "metallic",
+    "name": "Metallic",
+    "category": "textures",
+    "localPath": "images/texture-metallic.webp",
+    "imageUrl": "https://live.staticflickr.com/8167/7501404862_b7ed2ac431_b.jpg",
+    "pageUrl": "https://www.flickr.com/photos/9822107@N08/7501404862",
+    "fetchedAt": "2026-10-13T03:38:36.239Z"
+  },
+  "ceramic": {
+    "id": "ceramic",
+    "name": "Ceramic",
+    "category": "materials",
+    "localPath": "images/material-ceramic.webp",
+    "imageUrl": "https://images.rawpixel.com/editor_1024/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3Vwd2s2MTc4Mjk3NS13aWtpbWVkaWEtaW1hZ2Uta293Ym40cnUuanBn.jpg",
+    "pageUrl": "https://www.rawpixel.com/image/3283727/free-photo-image-coffee-table-wooden",
+    "fetchedAt": "2026-10-13T03:38:36.239Z"
+  },
+  "wax": {
+    "id": "wax",
+    "name": "Wax",
+    "category": "materials",
+    "localPath": "images/material-wax.webp",
+    "imageUrl": "https://live.staticflickr.com/65535/49190446762_8c3aaa877e_b.jpg",
+    "pageUrl": "https://www.flickr.com/photos/23408922@N07/49190446762",
+    "fetchedAt": "2026-10-13T03:38:36.239Z"
   }
 }

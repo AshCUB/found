@@ -30,14 +30,32 @@ const VIEWBOX = 200;
 const CAP_HEIGHT = 110;
 const MAX_WIDTH = 160;
 
-// "Find the number 5", "Find the letter D", "Find the letter D written in blue"
-const LITERAL_PATTERN = /^Find the (?:number|letter) ([A-Za-z0-9]+)(?: written in [a-z]+)?$/;
+// Gradient stops for metallic fills, plus a darker outline so they read on the grey background
+const METALLIC = {
+  gold: { stops: ['#F9E27D', '#D4AF37', '#A67C00', '#E8C547'], stroke: '#8A6D1A' },
+  silver: { stops: ['#FAFAFA', '#C0C0C0', '#8A8A8A', '#D9D9D9'], stroke: '#666' },
+};
+const COLOR_FILLS = { red: '#E53935', blue: '#1E88E5' };
 
-const getLiteral = (name) => name.match(LITERAL_PATTERN)?.[1] ?? null;
+// "Find the number 5", "Find the letter D", "Find the letter D written in blue"
+const LITERAL_PATTERN = /^Find the (?:number|letter) ([A-Za-z0-9]+)(?: written in ([a-z]+))?$/;
+// "Find a letter written in gold" -> sample character to draw in that color
+const ANY_LETTER_PATTERN = /^Find a letter written in (gold|silver)$/;
+const SAMPLE_LETTERS = { gold: 'G', silver: 'S' };
+// Descriptive items that still get a generated sample
+const SAMPLE_TEXT = { 'word-starts-p': 'Park' };
+
+function getLiteral({ id, name }) {
+  if (SAMPLE_TEXT[id]) return { text: SAMPLE_TEXT[id], color: null };
+  const literal = name.match(LITERAL_PATTERN);
+  if (literal) return { text: literal[1], color: literal[2] ?? null };
+  const anyLetter = name.match(ANY_LETTER_PATTERN);
+  return anyLetter ? { text: SAMPLE_LETTERS[anyLetter[1]], color: anyLetter[1] } : null;
+}
 const imagePathFor = (id) => `images/letters-numbers/${id}.svg`;
 const escapeHtml = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-function renderSvg(font, text) {
+function renderSvg(font, text, color) {
   const capHeight = font.tables.os2.sCapHeight || font.unitsPerEm * 0.7;
   let size = (CAP_HEIGHT / capHeight) * font.unitsPerEm;
 
@@ -52,7 +70,12 @@ function renderSvg(font, text) {
   const y = (VIEWBOX - (box.y2 - box.y1)) / 2 - box.y1;
   const d = font.getPath(text, x, y, size).toPathData(2);
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${VIEWBOX}" height="${VIEWBOX}" viewBox="0 0 ${VIEWBOX} ${VIEWBOX}"><path fill="${FILL}" d="${d}"/></svg>\n`;
+  const metallic = METALLIC[color];
+  const defs = metallic
+    ? `<defs><linearGradient id="m" x1="0" y1="0" x2="0.4" y2="1">${metallic.stops.map((c, i) => `<stop offset="${(i / (metallic.stops.length - 1)).toFixed(2)}" stop-color="${c}"/>`).join('')}</linearGradient></defs>`
+    : '';
+  const paint = metallic ? `fill="url(#m)" stroke="${metallic.stroke}" stroke-width="1.5"` : `fill="${COLOR_FILLS[color] ?? FILL}"`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${VIEWBOX}" height="${VIEWBOX}" viewBox="0 0 ${VIEWBOX} ${VIEWBOX}">${defs}<path ${paint} d="${d}"/></svg>\n`;
 }
 
 function updateImagePaths(generated) {
@@ -106,13 +129,13 @@ async function main() {
   const skipped = [];
 
   for (const item of list.items) {
-    const text = getLiteral(item.name);
-    (text ? generated : skipped).push({ id: item.id, name: item.name, text });
+    const literal = getLiteral(item);
+    (literal ? generated : skipped).push({ id: item.id, name: item.name, ...literal });
   }
 
   mkdirSync(OUTPUT_DIR, { recursive: true });
-  for (const { id, text } of generated) {
-    writeFileSync(join(OUTPUT_DIR, `${id}.svg`), renderSvg(font, text));
+  for (const { id, text, color } of generated) {
+    writeFileSync(join(OUTPUT_DIR, `${id}.svg`), renderSvg(font, text, color));
   }
 
   const keep = new Set(generated.map(({ id }) => `${id}.svg`));

@@ -165,11 +165,11 @@ function generateShape(shapeId, outputPath) {
     'oval': '<ellipse cx="100" cy="100" rx="90" ry="60" fill="#333"/>',
     'diamond': '<polygon points="100,20 180,100 100,180 20,100" fill="#333"/>',
     'star': '<polygon points="100,20 120,80 180,80 130,120 150,180 100,140 50,180 70,120 20,80 80,80" fill="#333"/>',
-    'heart': '<path d="M100,180 C20,100 20,40 100,40 C180,40 180,100 100,180" fill="#333"/>',
+    'heart': '<path d="M100,172 C40,128 15,98 15,66 C15,38 37,20 61,20 C79,20 93,31 100,46 C107,31 121,20 139,20 C163,20 185,38 185,66 C185,98 160,128 100,172 Z" fill="#333"/>',
     'arch': '<path d="M20,180 L20,100 A80,80 0 0,1 180,100 L180,180" fill="#333"/>',
     'spiral': '<path d="M100,100 m0,0 a10,10 0 1,0 20,0 a30,30 0 1,0 -60,0 a50,50 0 1,0 100,0 a70,70 0 1,0 -140,0" fill="none" stroke="#333" stroke-width="8"/>',
     'cross': '<rect x="85" y="20" width="30" height="160" fill="#333"/><rect x="20" y="85" width="160" height="30" fill="#333"/>',
-    'crescent': '<path d="M100,20 A80,80 0 1,1 100,180 A60,60 0 1,0 100,20" fill="#333"/>',
+    'crescent': '<path d="M150,22.5 A80,80 0 1,0 150,177.5 A85,85 0 0,1 150,22.5 Z" fill="#333"/>',
     'hexagon': '<polygon points="100,20 170,60 170,140 100,180 30,140 30,60" fill="#333"/>',
     'pentagon': '<polygon points="100,20 180,75 155,175 45,175 20,75" fill="#333"/>',
     'octagon': '<polygon points="60,20 140,20 180,60 180,140 140,180 60,180 20,140 20,60" fill="#333"/>',
@@ -185,7 +185,7 @@ function generateShape(shapeId, outputPath) {
     'arrow': '<polygon points="100,20 180,100 100,180 120,100" fill="#333"/><rect x="20" y="85" width="100" height="30" fill="#333"/>',
     'parallelogram': '<polygon points="40,20 180,20 160,180 20,180" fill="#333"/>',
     'trapezoid': '<polygon points="40,20 160,20 180,180 20,180" fill="#333"/>',
-    'teardrop': '<path d="M100,20 Q100,100 180,160 A80,80 0 1,1 20,160 Q100,100 100,20" fill="#333"/>',
+    'teardrop': '<path d="M100,12 C100,12 40,88 40,128 A60,60 0 0,0 160,128 C160,88 100,12 100,12 Z" fill="#333"/>',
   };
 
   const shape = shapes[shapeId];
@@ -194,7 +194,7 @@ function generateShape(shapeId, outputPath) {
     return;
   }
 
-  const viewBox = shapeId === 'teardrop' ? '-20 10 240 240' : '0 0 200 200';
+  const viewBox = '0 0 200 200';
   const [, , vbWidth, vbHeight] = viewBox.split(' ');
 
   const svg = `<?xml version="1.0" encoding="UTF-8"?>
@@ -209,7 +209,7 @@ function generateShape(shapeId, outputPath) {
 // Generate SVG pattern
 function generatePattern(patternId, outputPath) {
   const patterns = {
-    'stripes-two-colors': '<defs><pattern id="p" width="40" height="40" patternUnits="userSpaceOnUse"><rect width="20" height="40" fill="#333"/><rect x="20" width="20" height="40" fill="#666"/></pattern></defs><rect width="200" height="200" fill="url(#p)"/>',
+    'stripes-two-colors': '<defs><pattern id="p" width="40" height="40" patternUnits="userSpaceOnUse"><rect width="20" height="40" fill="#7851A9"/><rect x="20" width="20" height="40" fill="#E1AD01"/></pattern></defs><rect width="200" height="200" fill="url(#p)"/>',
     'polka-dots': '<defs><pattern id="p" width="40" height="40" patternUnits="userSpaceOnUse"><rect width="40" height="40" fill="#fff"/><circle cx="20" cy="20" r="10" fill="#333"/></pattern></defs><rect width="200" height="200" fill="url(#p)"/>',
     'black-white': '<defs><pattern id="p" width="40" height="40" patternUnits="userSpaceOnUse"><rect width="20" height="40" fill="#000"/><rect x="20" width="20" height="40" fill="#fff"/></pattern></defs><rect width="200" height="200" fill="url(#p)"/>',
     'red-white': '<defs><pattern id="p" width="40" height="40" patternUnits="userSpaceOnUse"><rect width="20" height="40" fill="#E53935"/><rect x="20" width="20" height="40" fill="#fff"/></pattern></defs><rect width="200" height="200" fill="url(#p)"/>',
