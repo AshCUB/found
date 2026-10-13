@@ -17,20 +17,33 @@ export default function DailyFind({
   const [itemIndex, setItemIndex] = useState(() => getTodayItemIndex(currentIndex));
   const [swipeDirection, setSwipeDirection] = useState(null);
   const [touchStart, setTouchStart] = useState(null);
+  const [brokenImage, setBrokenImage] = useState(null);
 
   useEffect(() => {
     setLocalIndex(currentIndex);
     setItemIndex(getTodayItemIndex(currentIndex));
   }, [currentIndex]);
 
-  if (!dailyFinds || dailyFinds.length === 0) {
+  const currentFind = dailyFinds?.[localIndex];
+  const list = focusLists.find((l) => l.id === currentFind?.listId);
+
+  // Warm the cache for the items the arrows lead to so switching is instant
+  useEffect(() => {
+    if (!list) return;
+    const count = list.items.length;
+    [itemIndex + 1, itemIndex - 1, itemIndex + 2].forEach((i) => {
+      const src = list.items[(i + count) % count]?.image;
+      if (src) new Image().src = src;
+    });
+  }, [list, itemIndex]);
+
+  if (!currentFind) {
     return null;
   }
 
-  const currentFind = dailyFinds[localIndex];
-  const list = focusLists.find((l) => l.id === currentFind.listId);
   const currentItem = list?.items[itemIndex] || currentFind.item;
   const isFitted = /shape-|letters-numbers\//.test(currentItem.image ?? '');
+  const showImage = currentItem.image && brokenImage !== currentItem.image;
 
   const goToList = (index) => {
     const wrapped = (index + dailyFinds.length) % dailyFinds.length;
@@ -138,21 +151,20 @@ export default function DailyFind({
               </button>
             )}
             <div className="flex-1 min-w-0 h-48 rounded-lg bg-grey flex items-center justify-center overflow-hidden relative">
-              {currentItem.image ? (
+              {showImage ? (
                 <img
+                  key={currentItem.image}
                   src={currentItem.image}
                   alt={currentItem.name}
-                  loading="lazy"
+                  decoding="async"
                   className={`w-full h-full ${isFitted ? 'object-contain p-lg' : 'object-cover'}`}
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                    e.target.nextSibling.style.display = 'flex';
-                  }}
+                  onError={() => setBrokenImage(currentItem.image)}
                 />
-              ) : null}
-              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-green/20 to-blue/20" style={{ display: currentItem.image ? 'none' : 'flex' }}>
-                <span className="font-body text-sm text-dark-grey">Image</span>
-              </div>
+              ) : (
+                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-green/20 to-blue/20">
+                  <span className="font-body text-sm text-dark-grey">Image</span>
+                </div>
+              )}
             </div>
             {list && list.items.length > 1 && (
               <button
