@@ -140,6 +140,7 @@ export default function App() {
             onAddList={() => setCurrentScreen('subscribe')}
             onViewCollection={() => setCurrentScreen('collection')}
             onViewStreak={() => setCurrentScreen('streak')}
+            onGoToIntro={() => setCurrentScreen('intro')}
           />
         );
       

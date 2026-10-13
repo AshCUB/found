@@ -8,13 +8,18 @@ export default function Home({
   onAddList,
   onViewCollection,
   onViewStreak,
+  onGoToIntro,
 }) {
   return (
     <div className="min-h-screen bg-grey animate-fade-in">
       {/* Header */}
       <div className="p-lg pb-md">
         <div className="flex justify-between items-center mb-lg">
-          <h1 className="font-primary text-3xl text-green">Found</h1>
+          <h1>
+            <button onClick={onGoToIntro} className="font-primary text-3xl text-green hover:opacity-80 transition-opacity">
+              Found
+            </button>
+          </h1>
           <button
             onClick={onViewStreak}
             className="font-buttons text-sm text-dark-grey hover:text-green transition-colors"
