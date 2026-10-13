@@ -101,7 +101,7 @@ export default function DailyFind({
                 src={currentItem.image}
                 alt={currentItem.name}
                 loading="lazy"
-                className="w-full h-full object-cover"
+                className={`w-full h-full ${currentItem.image.endsWith('.svg') ? 'object-contain p-lg' : 'object-cover'}`}
                 onError={(e) => {
                   e.target.style.display = 'none';
                   e.target.nextSibling.style.display = 'flex';

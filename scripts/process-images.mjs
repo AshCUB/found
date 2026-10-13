@@ -194,8 +194,11 @@ function generateShape(shapeId, outputPath) {
     return;
   }
 
+  const viewBox = shapeId === 'teardrop' ? '-20 10 240 240' : '0 0 200 200';
+  const [, , vbWidth, vbHeight] = viewBox.split(' ');
+
   const svg = `<?xml version="1.0" encoding="UTF-8"?>
-<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<svg width="${vbWidth}" height="${vbHeight}" viewBox="${viewBox}" xmlns="http://www.w3.org/2000/svg">
   ${shape}
 </svg>`;
 

@@ -116,7 +116,7 @@ export default function Collection({
                           src={getItemImage(capture.listId, capture.itemId)}
                           alt={getItemName(capture.listId, capture.itemId)}
                           loading="lazy"
-                          className="w-full h-full object-cover"
+                          className={`w-full h-full ${getItemImage(capture.listId, capture.itemId).endsWith('.svg') ? 'object-contain p-sm' : 'object-cover'}`}
                           onError={(e) => {
                             e.target.style.display = 'none';
                             e.target.nextSibling.style.display = 'flex';

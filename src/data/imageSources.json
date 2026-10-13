@@ -1,1 +1,1127 @@
-{}
+{
+  "rough": {
+    "id": "rough",
+    "name": "Rough",
+    "category": "textures",
+    "localPath": "images/texture-rough.webp",
+    "imageUrl": "https://pixabay.com/get/g70ca56c73f2f25731fe1a2cab76211605e75ee4de7dbbae34848589528e3782ada3fd4dc525c6ed4c829bbb2c863a9ac3cc46c532f2aabe86e71b2edc736c56e_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/tree-bark-texture-forest-rough-10115602/",
+    "fetchedAt": "2026-10-13T02:14:24.394Z"
+  },
+  "glossy": {
+    "id": "glossy",
+    "name": "Glossy",
+    "category": "textures",
+    "localPath": "images/texture-glossy.webp",
+    "imageUrl": "https://pixabay.com/get/gdb3bae383489614ba93de330e15fc7fdb5540c2e019d16cb1e7b5c366023b8e494d3e2d278513c0808dc036af7f7cea210140c88da9e4c284dcea223a9c9df28_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/coffee-beans-roasted-coffee-10361873/",
+    "fetchedAt": "2026-10-13T02:14:26.677Z"
+  },
+  "prickly": {
+    "id": "prickly",
+    "name": "Prickly",
+    "category": "textures",
+    "localPath": "images/texture-prickly.webp",
+    "imageUrl": "https://pixabay.com/get/g8d05129bb46767490ab3be425adb37d7b6cc866fae095cdeda81a801da5cb78684d7c6a69af50b99e5209bc78b1087f80738cca54bb786389a6fdd4bac36a7c4_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/wild-plant-flower-shoots-prickly-7880509/",
+    "fetchedAt": "2026-10-13T02:14:30.165Z"
+  },
+  "woven": {
+    "id": "woven",
+    "name": "Woven",
+    "category": "textures",
+    "localPath": "images/texture-woven.webp",
+    "imageUrl": "https://pixabay.com/get/g9dae8578bbc0fe2f5125185356d8387e78b574355a4d01fa4cb23a66f7bec455ccdd51ce6acdf80727bfe81c01726b7aa654bd6142397d9dcb3a3f2eca9aa599_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/leaf-woven-texture-fiber-close-up-8867169/",
+    "fetchedAt": "2026-10-13T02:14:31.574Z"
+  },
+  "cracked": {
+    "id": "cracked",
+    "name": "Cracked",
+    "category": "textures",
+    "localPath": "images/texture-cracked.webp",
+    "imageUrl": "https://pixabay.com/get/g9fbbb5ca248ba65452d0049edf6ebcdbf74011e47613f5e8d4e0c4a6c8d324928a427ffe9f9ee9fef515cc43c54f3822c4f9c1992637fc47de087bc607e43b2b_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/earth-drought-floor-dryness-3355931/",
+    "fetchedAt": "2026-10-13T02:14:33.429Z"
+  },
+  "sticky": {
+    "id": "sticky",
+    "name": "Sticky",
+    "category": "textures",
+    "localPath": "images/texture-sticky.webp",
+    "imageUrl": "https://pixabay.com/get/g84450e1134082876b2d05fa8043ca29d4d4f96130c9b82b577c0d3e87d3d126c2aa45b238e7c46b5082f2083b70785a313ccf840b21d91c84b6ebd854f171b7e_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/gecko-hand-sticky-nature-reptile-800887/",
+    "fetchedAt": "2026-10-13T02:14:34.504Z"
+  },
+  "wrinkled": {
+    "id": "wrinkled",
+    "name": "Wrinkled",
+    "category": "textures",
+    "localPath": "images/texture-wrinkled.webp",
+    "imageUrl": "https://pixabay.com/get/g35ecbc2ca45a9f021d04b26fa973a4d4b12c16c84cd8c3e416a63621eb2984304614c0743b28f4665ca365a496667bff7364e065680f97f60588b88cc92fb403_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/man-hands-wrinkled-old-skin-aging-8060589/",
+    "fetchedAt": "2026-10-13T02:14:36.726Z"
+  },
+  "frosty": {
+    "id": "frosty",
+    "name": "Frosty",
+    "category": "textures",
+    "localPath": "images/texture-frosty.webp",
+    "imageUrl": "https://pixabay.com/get/ga6627ec5372c36e4033122332c6373c242d8e8ddc78bd3772efbb7567f46d240c79bfaf5481a717e97054e62f396520231a33154c4a7934e46304cad6b55d8da_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/leaves-ice-crystals-frosty-macro-8517219/",
+    "fetchedAt": "2026-10-13T02:14:38.377Z"
+  },
+  "leathery": {
+    "id": "leathery",
+    "name": "Leathery",
+    "category": "textures",
+    "localPath": "images/texture-leathery.webp",
+    "imageUrl": "https://pixabay.com/get/g8679de9c2078d8c1507527f94167756fbf8b3aad91dca60a1c9c0a669e81e1597097fbfdbf3f86493e8e4470d61619474333d17eef5ffcdef2f32bc614cf9542_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/leather-cowhide-leather-template-2981074/",
+    "fetchedAt": "2026-10-13T02:14:40.655Z"
+  },
+  "silky": {
+    "id": "silky",
+    "name": "Silky",
+    "category": "textures",
+    "localPath": "images/texture-silky.webp",
+    "imageUrl": "https://pixabay.com/get/g67ff985cddbc1cf3c7054ddd6405b4dfe693a35912e1e65945263b214059d50f89909d9ba2515f19fbee4609979477fd6b273948d1a108e7198bcc789356694f_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/background-patchwork-flowers-blue-1241208/",
+    "fetchedAt": "2026-10-13T02:14:43.238Z"
+  },
+  "hairy": {
+    "id": "hairy",
+    "name": "Hairy",
+    "category": "textures",
+    "localPath": "images/texture-hairy.webp",
+    "imageUrl": "https://pixabay.com/get/g11aee65ee34c936872378f776e25d71016de04f422e783334768d21fa563baa0b8aef8a6ba6d24866ea42a29c96a882d86d37e6b842ef4bf43ca123013f8b49a_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/macro-fly-compound-eyes-insect-2300109/",
+    "fetchedAt": "2026-10-13T02:14:44.918Z"
+  },
+  "wet": {
+    "id": "wet",
+    "name": "Wet",
+    "category": "textures",
+    "localPath": "images/texture-wet.webp",
+    "imageUrl": "https://pixabay.com/get/g1e67685d204c9732ef33b6e20cfac1775089ad746fc6781d892510f7f7fa5f12f029e61b6dea50e403c68c80e93214dad899b3ea1a8ac08dbf10e46e3119ce25_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/leaf-water-droplets-green-nature-10415416/",
+    "fetchedAt": "2026-10-13T02:14:47.046Z"
+  },
+  "engraved": {
+    "id": "engraved",
+    "name": "Engraved",
+    "category": "textures",
+    "localPath": "images/texture-engraved.webp",
+    "imageUrl": "https://pixabay.com/get/g7793c2040ec2c98c1fd92f01d58834db055c820993421b2b45fa8d29521fdf0e5746cc99dc75cf92da0bfaa92f565eaa51a3c7cf5c1462f5f13ad72212f1dbd6_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/pentagram-pagan-symbol-carved-tree-243724/",
+    "fetchedAt": "2026-10-13T02:14:51.214Z"
+  },
+  "letter-d": {
+    "id": "letter-d",
+    "name": "Find the letter D",
+    "category": "letters-numbers",
+    "localPath": "images/letter-d.webp",
+    "imageUrl": "https://pixabay.com/get/g44c93fabccbb9f2d925143a301ede83a7154edcf7944bbe0f947728f4cf2f1cd162764d74af289c0f12d6b377960495e07c9d191ca29f16052322d4ef8eb0595_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/orangutan-primate-monkey-ape-8406310/",
+    "fetchedAt": "2026-10-13T02:14:52.860Z"
+  },
+  "number-2": {
+    "id": "number-2",
+    "name": "Find the number 2",
+    "category": "letters-numbers",
+    "localPath": "images/letter-number-2.webp",
+    "imageUrl": "https://pixabay.com/get/g6e5ecf9e2ba8ecd8c5cc62ebd9ea3637173d0eaae270cc1e089613b8259563903f95c270cfa1592e97efd557e395f4649b1a88a99281a3f7a990ffac09f87932_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/two-2-number-two-number-numeral-3109835/",
+    "fetchedAt": "2026-10-13T02:14:54.936Z"
+  },
+  "letter-s": {
+    "id": "letter-s",
+    "name": "Find the letter S",
+    "category": "letters-numbers",
+    "localPath": "images/letter-s.webp",
+    "imageUrl": "https://pixabay.com/get/g186e3744e993e4ba6f079b75c2e423d334da188c5b831d9584309282807b14c6ad8bf5c55bb2cd26fc14d2a098b536595c9d34f12586ea0716f4db1371c959c3_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/keyboard-laptop-datailaufnahme-s-w-1747081/",
+    "fetchedAt": "2026-10-13T02:14:56.142Z"
+  },
+  "number-8": {
+    "id": "number-8",
+    "name": "Find the number 8",
+    "category": "letters-numbers",
+    "localPath": "images/letter-number-8.webp",
+    "imageUrl": "https://pixabay.com/get/g08dd409a45166b7a92fdc0f5525054cb8696111ab8ab8ec2a57afcf82cd43894f2dec3598a64e35292e0ee54e52eb9ec8cd08f9a62b995100a2efcece4e3eec0_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/given-rpg-dices-play-die-roller-4804499/",
+    "fetchedAt": "2026-10-13T02:14:57.013Z"
+  },
+  "letter-a": {
+    "id": "letter-a",
+    "name": "Find the letter A",
+    "category": "letters-numbers",
+    "localPath": "images/letter-a.webp",
+    "imageUrl": "https://pixabay.com/get/g545201286431882936216cae107ad1f16d0a2a86a407866e62d0ce430d6b2c22d7c36e77331188b61b904cefdd966bedddabb05fca5d28ded6d7f5cbcf1de8af_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/message-in-a-bottle-sea-wreck-3437294/",
+    "fetchedAt": "2026-10-13T02:14:58.217Z"
+  },
+  "number-0": {
+    "id": "number-0",
+    "name": "Find the number 0",
+    "category": "letters-numbers",
+    "localPath": "images/letter-number-0.webp",
+    "imageUrl": "https://pixabay.com/get/g27ad27286dcae552077b2e5caedbf2e9ab0061f4e74cd275c842b2c64f956b2dd7301bfd6d87d0c119ae8840cd5142f57426f715bb07977bedaa22ba0b08ecd9_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/error-not-found-404-lego-mistake-2129569/",
+    "fetchedAt": "2026-10-13T02:14:59.324Z"
+  },
+  "letter-m": {
+    "id": "letter-m",
+    "name": "Find the letter M",
+    "category": "letters-numbers",
+    "localPath": "images/letter-m.webp",
+    "imageUrl": "https://pixabay.com/get/g3ad7099f0c019a3b024dc5feb9c7ccdede5756f756bf12bc2a597c3bee23d5c9f86945cbdd15a1dc2514f9fe16d68ca655d147f6725b0863de9b7ae965d2fac3_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/letter-m-wood-cut-out-laser-cut-3950968/",
+    "fetchedAt": "2026-10-13T02:15:00.785Z"
+  },
+  "number-7": {
+    "id": "number-7",
+    "name": "Find the number 7",
+    "category": "letters-numbers",
+    "localPath": "images/letter-number-7.webp",
+    "imageUrl": "https://pixabay.com/get/gfcde20746b5b522f6038b0294f4f1b08d8d487e565abe35cdb41a7c57ddd75d3c8a284d2bbc042d3804d1dc5cdd5def3976438c4c24ad843086f32896a726e96_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/foreshore-ocean-low-tide-mudflat-5741708/",
+    "fetchedAt": "2026-10-13T02:15:02.448Z"
+  },
+  "letter-r": {
+    "id": "letter-r",
+    "name": "Find the letter R",
+    "category": "letters-numbers",
+    "localPath": "images/letter-r.webp",
+    "imageUrl": "https://pixabay.com/get/ge648fb1301e226148ff76876164719cb6af2843f485ab18ddf1dd1cb7775dfa5a948142703c75d0685c5db36447b1b096fba6fac114f4765342cae715593f1a1_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/letter-rust-writing-module-r-249074/",
+    "fetchedAt": "2026-10-13T02:15:03.504Z"
+  },
+  "number-3": {
+    "id": "number-3",
+    "name": "Find the number 3",
+    "category": "letters-numbers",
+    "localPath": "images/letter-number-3.webp",
+    "imageUrl": "https://pixabay.com/get/g97a63c84b8444f9937b514aa699431bc756d1456ede6d24ca8e155cd4c8b1b2c1260eb5e555a85191d092ef1a81a45a6f2fd232b906b069d5595725c470512fc_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/golf-mini-golf-no-3-hole-number-3-7504480/",
+    "fetchedAt": "2026-10-13T02:15:04.952Z"
+  },
+  "letter-o": {
+    "id": "letter-o",
+    "name": "Find the letter O",
+    "category": "letters-numbers",
+    "localPath": "images/letter-o.webp",
+    "imageUrl": "https://pixabay.com/get/g4cbd6183815139151629b1f30327570b925633d69969c644110a73786cee6acbe2380c77dae3d30b804fb6d76c3ec682dc8071a00b83d2eea2ba2f029eee3e07_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/orangutan-primate-monkey-ape-8406310/",
+    "fetchedAt": "2026-10-13T02:15:05.993Z"
+  },
+  "number-1": {
+    "id": "number-1",
+    "name": "Find the number 1",
+    "category": "letters-numbers",
+    "localPath": "images/letter-number-1.webp",
+    "imageUrl": "https://pixabay.com/get/g67d94c0a346a7e28bd3813937761c7d5bb20bb62d13601506b362ba27231163fc96b0795633faf88f66b88d0f4038100374cc351f2370b4b2eea89a853e5f731_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/number-1-one-number-anniversary-5098366/",
+    "fetchedAt": "2026-10-13T02:15:07.168Z"
+  },
+  "letter-t": {
+    "id": "letter-t",
+    "name": "Find the letter T",
+    "category": "letters-numbers",
+    "localPath": "images/letter-t.webp",
+    "imageUrl": "https://pixabay.com/get/ga2d9e4cb2e8408370136005ee8344b2bae560e5f0a08318a786ed46fa3e954570a63d604fc81806b38f587d1e77b8aa4929480e1c3b422571dd5004e73b0b21a_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/dont-give-up-motivation-writing-3403779/",
+    "fetchedAt": "2026-10-13T02:15:08.238Z"
+  },
+  "number-6": {
+    "id": "number-6",
+    "name": "Find the number 6",
+    "category": "letters-numbers",
+    "localPath": "images/letter-number-6.webp",
+    "imageUrl": "https://pixabay.com/get/gbd85f7e5818bbee6ca3efe9e3fb975bd565b70769e4ca7d51c2eafc00e58222917ce2bd41d55c29c0634ed7061dfea723baac0b1e9f267421f9decfd10c476a1_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/dice-game-craps-multicoloured-568059/",
+    "fetchedAt": "2026-10-13T02:15:09.765Z"
+  },
+  "letter-k": {
+    "id": "letter-k",
+    "name": "Find the letter K",
+    "category": "letters-numbers",
+    "localPath": "images/letter-k.webp",
+    "imageUrl": "https://pixabay.com/get/g94f421746e2ed7e3c904d10bca28d039fb194b047898886cfecc3f147f47e8b4644034dd08fbb168ec40191c5bc0798fa6e8fc45e0f723ab15e2e3fd67ea7273_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/flower-cosmos-wild-flower-7540214/",
+    "fetchedAt": "2026-10-13T02:15:10.668Z"
+  },
+  "number-4": {
+    "id": "number-4",
+    "name": "Find the number 4",
+    "category": "letters-numbers",
+    "localPath": "images/letter-number-4.webp",
+    "imageUrl": "https://pixabay.com/get/g58a66d5cd9dd43201f7a4f041b3451c4e4ca6d52e91d3486e54e854b4a24a2284d5254759bc0f26c3ae8ce48b9b1f34c1e5be81aaf68f35a312df7b452107311_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/error-not-found-404-lego-mistake-2129569/",
+    "fetchedAt": "2026-10-13T02:15:11.455Z"
+  },
+  "letter-b": {
+    "id": "letter-b",
+    "name": "Find the letter B",
+    "category": "letters-numbers",
+    "localPath": "images/letter-b.webp",
+    "imageUrl": "https://pixabay.com/get/gc35b3d351387f22b621fba2d5eaf7c3c387f07f955e9d519d896b7d41f9775133f02d5223dbec254611698e6865546157bdda02c777633c2582e0cdcf8e60d19_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/letters-abc-alphabet-leaflet-451487/",
+    "fetchedAt": "2026-10-13T02:15:12.334Z"
+  },
+  "number-9": {
+    "id": "number-9",
+    "name": "Find the number 9",
+    "category": "letters-numbers",
+    "localPath": "images/letter-number-9.webp",
+    "imageUrl": "https://pixabay.com/get/gd13acbb5fd1fe96800dc89cc134b8480d77cc4b3e1730bb1aa18a0a174a0d29bdb24e6b33dbf5e05275df3c1ff7bc67dda8c7985e38291dfa64e0ed887ac9fb6_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/angel-angel-figure-grave-of-angels-2953924/",
+    "fetchedAt": "2026-10-13T02:15:13.626Z"
+  },
+  "letter-w": {
+    "id": "letter-w",
+    "name": "Find the letter W",
+    "category": "letters-numbers",
+    "localPath": "images/letter-w.webp",
+    "imageUrl": "https://pixabay.com/get/g2209f246dbcc9ee5a4358c7a18921e232e8209146cc7ccba87268168627bf7340944cd965f53976193c84a34bfc0df0b1fafbb20640fc2e6dab32f84a1d9464d_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/keyboard-laptop-datailaufnahme-s-w-1747081/",
+    "fetchedAt": "2026-10-13T02:15:14.627Z"
+  },
+  "number-5-red": {
+    "id": "number-5-red",
+    "name": "Find the number 5 written in red",
+    "category": "letters-numbers",
+    "localPath": "images/letter-number-5-red.webp",
+    "imageUrl": "https://pixabay.com/get/gb56708221fb37b8a2368bfad21288756aa6d4cabfd3a0d079a2c89085fbcdf12ad550d41088b29cd4d7bfff9d01ae2231192d826b340a48f5c4e24cfa69b8004_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/rose-snow-frozen-covered-in-snow-8521466/",
+    "fetchedAt": "2026-10-13T02:15:15.605Z"
+  },
+  "letter-d-blue": {
+    "id": "letter-d-blue",
+    "name": "Find the letter D written in blue",
+    "category": "letters-numbers",
+    "localPath": "images/letter-d-blue.webp",
+    "imageUrl": "https://pixabay.com/get/gb89b1dfcb4ed60b1a37930b9e4ca5336c0a590a542138e3239c3d8d9835b8ab5c73dfad9b53e1b086345974381aec2b982097bc8c4f17fb224943651f517130d_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/letter-calligraphy-ink-written-447577/",
+    "fetchedAt": "2026-10-13T02:15:16.598Z"
+  },
+  "ascending": {
+    "id": "ascending",
+    "name": "Find two numbers in ascending order (like 3, 4)",
+    "category": "letters-numbers",
+    "localPath": "images/letter-ascending.webp",
+    "imageUrl": "https://pixabay.com/get/g83973f86b44220d079c8bd6f24e402ce6cc12859b94dfceb6c14b6f49782c5ee466b01ad1a96a6ece24c21080f67ba0dbb32307f505128620ecfaff4213ac89d_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/bitstream-toilet-numbers-5904446/",
+    "fetchedAt": "2026-10-13T02:15:18.769Z"
+  },
+  "descending": {
+    "id": "descending",
+    "name": "Find two numbers in descending order (like 9, 8)",
+    "category": "letters-numbers",
+    "localPath": "images/letter-descending.webp",
+    "imageUrl": "https://pixabay.com/get/gdb4a1175934c21edc121d824604b143fc329413f26c1e8f79566fb115ca89b186d1348e47d9860f17798ffd31fc1b09e64ed7fef109facf6fb389f92a4e16028_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/bitstream-toilet-numbers-5904446/",
+    "fetchedAt": "2026-10-13T02:15:19.762Z"
+  },
+  "letter-white": {
+    "id": "letter-white",
+    "name": "Find a letter written in white",
+    "category": "letters-numbers",
+    "localPath": "images/letter-white.webp",
+    "imageUrl": "https://pixabay.com/get/g4ebff1efa034dcb5ffc0766440ca7de843251b62fc016378fe268ec3d7fd1a3f1c709433b22f90b9795004ea2536a1afd8a76c84c31d04c0f72435ab04903dad_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/letter-calligraphy-ink-written-447577/",
+    "fetchedAt": "2026-10-13T02:15:20.638Z"
+  },
+  "number-black": {
+    "id": "number-black",
+    "name": "Find a number written in black",
+    "category": "letters-numbers",
+    "localPath": "images/letter-number-black.webp",
+    "imageUrl": "https://pixabay.com/get/g277233121c3ff6d2a1370381e3315601783fea67c4c059c8eedcba68ecae8ae469cc4c430f8343f7785ab321376c708a8ab79b3ea014d469ca6009eed26c7a77_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/board-drawing-black-dark-white-3323693/",
+    "fetchedAt": "2026-10-13T02:15:22.103Z"
+  },
+  "number-green": {
+    "id": "number-green",
+    "name": "Find a number written in green",
+    "category": "letters-numbers",
+    "localPath": "images/letter-number-green.webp",
+    "imageUrl": "https://pixabay.com/get/gcbccac60f979b89258e7db3d834e4bfd696d353761d7f16ee0a229d10af4150a470ab14d3efff8f5ee373ac29169f3ec2e47954b69802bf79f1769c41bc6ccf2_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/green-fern-flora-plants-botany-4183977/",
+    "fetchedAt": "2026-10-13T02:15:23.538Z"
+  },
+  "three-digit": {
+    "id": "three-digit",
+    "name": "Find a three-digit number",
+    "category": "letters-numbers",
+    "localPath": "images/letter-three-digit.webp",
+    "imageUrl": "https://pixabay.com/get/gcb8cc05dac58b5485279d60deba4360bca23a86b5a4c8c0c970fa80ed10cbee68955a2c64229cdc4b90ea9c395de21e100640768010efaffd66faf6d7c2a171c_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/three-number-digit-numeral-symbol-3085368/",
+    "fetchedAt": "2026-10-13T02:15:25.247Z"
+  },
+  "four-digit": {
+    "id": "four-digit",
+    "name": "Find a four-digit number",
+    "category": "letters-numbers",
+    "localPath": "images/letter-four-digit.webp",
+    "imageUrl": "https://pixabay.com/get/gd079632781ba95c655e19b44747231d2ffc54716303155b26e076632c730abb358e31aba27fab91c0df52534fe57819793f60572f2c9eda2a45f939e2a56b1f8_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/running-track-numbers-fog-1201014/",
+    "fetchedAt": "2026-10-13T02:15:26.650Z"
+  },
+  "five-digit": {
+    "id": "five-digit",
+    "name": "Find a five-digit number",
+    "category": "letters-numbers",
+    "localPath": "images/letter-five-digit.webp",
+    "imageUrl": "https://pixabay.com/get/gea27791909fcf4f49094fa7d7484490a71f693c009685c373a77e80d86eb21542178368c6080ab9c1a6f774d2f3155efa45062d7be92cee87bd871997ae09a5a_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/house-number-number-172512/",
+    "fetchedAt": "2026-10-13T02:15:28.150Z"
+  },
+  "two-digit": {
+    "id": "two-digit",
+    "name": "Find a two-digit number",
+    "category": "letters-numbers",
+    "localPath": "images/letter-two-digit.webp",
+    "imageUrl": "https://pixabay.com/get/g229a5b09cdc20bceffe0ef2bdc907435076b40cc332b5bcef5173a94273d93c24a740b4f060705a97e5117ec086b628a9dccacd007f2a8a3c0cc0664cfd7f5c8_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/two-digit-number-pay-rust-old-695282/",
+    "fetchedAt": "2026-10-13T02:15:29.947Z"
+  },
+  "letter-yellow": {
+    "id": "letter-yellow",
+    "name": "Find a letter written in yellow",
+    "category": "letters-numbers",
+    "localPath": "images/letter-yellow.webp",
+    "imageUrl": "https://pixabay.com/get/g34f4c4937e9a5417af89fb7dd9e39f9dd9b4626462d70e06144f1b7625550579c55a10001d5ccf5976fcab9aa403b54b32cadd1fe55ccdbef1a240783d595b9f_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/letter-calligraphy-ink-written-447577/",
+    "fetchedAt": "2026-10-13T02:15:30.840Z"
+  },
+  "even": {
+    "id": "even",
+    "name": "Find a number that is even",
+    "category": "letters-numbers",
+    "localPath": "images/letter-even.webp",
+    "imageUrl": "https://pixabay.com/get/g514184eb408244acadff6bfc7231b4e9804905f01f112eb0b24b2582e78983e9ec1b6585d6a38a8de87a603b4ebc75ae301b933485180e9f81a8df8e1414902b_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/east-sea-gangneung-beach-comb-out-3580954/",
+    "fetchedAt": "2026-10-13T02:15:32.066Z"
+  },
+  "odd": {
+    "id": "odd",
+    "name": "Find a number that is odd",
+    "category": "letters-numbers",
+    "localPath": "images/letter-odd.webp",
+    "imageUrl": "https://pixabay.com/get/gc126fbc2a0b5ef4f822619f2402953254f6962cec2eb978bd45a8e26c4c93f12b152cb2d3c0d52e1c50032d01c6489c3b3ba2dc3ac35be9d9abe6c66a1c2c03e_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/number-symbol-thirteen-pay-odd-605342/",
+    "fetchedAt": "2026-10-13T02:15:33.378Z"
+  },
+  "letter-gold": {
+    "id": "letter-gold",
+    "name": "Find a letter written in gold",
+    "category": "letters-numbers",
+    "localPath": "images/letter-gold.webp",
+    "imageUrl": "https://pixabay.com/get/gbd89a2468804b1eda1fc0bffad905b1a5afb546dfc6d879ed2736e12944081cb205fa713f936d7c8daff2d0c404c8ab4130ccbc0d9d95e8819903a9f361b5afc_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/letter-calligraphy-ink-written-447577/",
+    "fetchedAt": "2026-10-13T02:15:34.223Z"
+  },
+  "letter-silver": {
+    "id": "letter-silver",
+    "name": "Find a letter written in silver",
+    "category": "letters-numbers",
+    "localPath": "images/letter-silver.webp",
+    "imageUrl": "https://pixabay.com/get/g934a3e2cc1ab5360f4d399f67c3d60a0000cba388b698b49c31716e6d09b35aa4185e7e4d75615efc62ed952ce617859f8ce5ff0a7c3b22582115fbb5b5c7c7e_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/letter-calligraphy-ink-written-447577/",
+    "fetchedAt": "2026-10-13T02:15:35.132Z"
+  },
+  "word-starts-p": {
+    "id": "word-starts-p",
+    "name": "Find a word that starts with the letter P",
+    "category": "letters-numbers",
+    "localPath": "images/letter-word-starts-p.webp",
+    "imageUrl": "https://pixabay.com/get/g10d4b6dd85e386f3bfbe055cd781afed8d9a776c31771b21dfacce5fb2e2b3aa87bb5e73ef7cf9325e5a8677b18f0f5ba041e3efb58f895f35efba90877ea97b_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/love-valentines-day-dice-game-9344644/",
+    "fetchedAt": "2026-10-13T02:15:35.997Z"
+  },
+  "matching-numbers": {
+    "id": "matching-numbers",
+    "name": "Find two matching numbers side by side",
+    "category": "letters-numbers",
+    "localPath": "images/letter-matching-numbers.webp",
+    "imageUrl": "https://pixabay.com/get/g89fead184c47f35b2bdb1e8990bdb9facef3d9d59364361708a848deb136da70b3839eb00c9234d86927674682e2a1687e67c9aedd13b5148ede526a36567272_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/kangaroo-animal-side-close-up-7582773/",
+    "fetchedAt": "2026-10-13T02:15:37.165Z"
+  },
+  "number-orange": {
+    "id": "number-orange",
+    "name": "Find a number written in orange",
+    "category": "letters-numbers",
+    "localPath": "images/letter-number-orange.webp",
+    "imageUrl": "https://pixabay.com/get/gd92e379d22da422fd8668246e67c7a9095907c596360f8f16d36119cb96295813bcd227317ecbff1c1b44d13f5bf6a4a7b9ff261615dcdfdf622616e54350076_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/oranges-slices-orange-slices-5010270/",
+    "fetchedAt": "2026-10-13T02:15:38.617Z"
+  },
+  "two-digit-over-50": {
+    "id": "two-digit-over-50",
+    "name": "Find a two-digit number over 50",
+    "category": "letters-numbers",
+    "localPath": "images/letter-two-digit-over-50.webp",
+    "imageUrl": "https://pixabay.com/get/g2d657b8188c02952e2eece092cad3190766e7dd3395533f8c8359cd971ec6222e2ddb82a0d687c1d23096fc096b37479f4d3866538b707f9e3ff517c61cae5a4_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/two-digit-number-pay-rust-old-695282/",
+    "fetchedAt": "2026-10-13T02:15:40.422Z"
+  },
+  "letter-cursive": {
+    "id": "letter-cursive",
+    "name": "Find a letter written in cursive",
+    "category": "letters-numbers",
+    "localPath": "images/letter-cursive.webp",
+    "imageUrl": "https://pixabay.com/get/g43e2059c8544aefb5514e7563cf89fdb917318e144e2aedbe94e856a8d966f31d0cfb0a944f26feb120dc5b7a7bf00441fe92da0c563488f455de1f68504e293_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/letter-calligraphy-ink-written-447577/",
+    "fetchedAt": "2026-10-13T02:15:41.284Z"
+  },
+  "wood": {
+    "id": "wood",
+    "name": "Wood",
+    "category": "materials",
+    "localPath": "images/material-wood.webp",
+    "imageUrl": "https://pixabay.com/get/g0690e0a9271b0768ae52ba083d2b8e3073809893abb2986aaa83195ebca7b76558b58819b74c6c6b083de354b66d4bbb7676df96e3707f3547e2276c2754b4ae_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/fence-wood-wooden-fence-boards-3689461/",
+    "fetchedAt": "2026-10-13T02:15:42.779Z"
+  },
+  "metal": {
+    "id": "metal",
+    "name": "Metal",
+    "category": "materials",
+    "localPath": "images/material-metal.webp",
+    "imageUrl": "https://pixabay.com/get/g226d42b96232371a087e906f10d8ac97257f95dc612da44797d66d562118bf94711e291863597b24eb2f8fcac10bb7f38b902af8496bbedad24c0a521555087e_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/aluminum-aluminum-recycling-7288134/",
+    "fetchedAt": "2026-10-13T02:15:43.897Z"
+  },
+  "glass": {
+    "id": "glass",
+    "name": "Glass",
+    "category": "materials",
+    "localPath": "images/material-glass.webp",
+    "imageUrl": "https://pixabay.com/get/gc3b9001868c6bd3cef6adc4b6e078535668d0122865a82a8d012356231114389410c46bec8fc35fb1840d062c37800854c64b3dace027da43cf2e25ec876f09c_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/glass-beads-pearls-glass-plastic-455446/",
+    "fetchedAt": "2026-10-13T02:15:45.870Z"
+  },
+  "fabric": {
+    "id": "fabric",
+    "name": "Fabric",
+    "category": "materials",
+    "localPath": "images/material-fabric.webp",
+    "imageUrl": "https://pixabay.com/get/gc330728768ab39eaacaef68509defe781cc5b93c2f0401707cbd6d505783b8e2c276ccf409a6c30c57bac8d62498c956_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/jute-bag-sack-beige-color-brown-1655/",
+    "fetchedAt": "2026-10-13T02:15:47.657Z"
+  },
+  "paper": {
+    "id": "paper",
+    "name": "Paper",
+    "category": "materials",
+    "localPath": "images/material-paper.webp",
+    "imageUrl": "https://pixabay.com/get/g7330d182118b3a5aee8bed719ec055f9917511f4e2e207f63af49de3a65836f8a7bef31971e411a39008ec66be4de4ecf9d23d0351f11f89f5120f3811e299ef_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/sandpaper-close-up-texture-paper-654698/",
+    "fetchedAt": "2026-10-13T02:15:49.086Z"
+  },
+  "stone": {
+    "id": "stone",
+    "name": "Stone",
+    "category": "materials",
+    "localPath": "images/material-stone.webp",
+    "imageUrl": "https://pixabay.com/get/g3b04f5073070e3c978280945ebef48e1e50a89a36243643407abc56d1a76fa898d6b5a9093617d46f81a2484f4d86e3d6292ba6fc1b2901a4c0d4a6d9343aabe_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/rocks-stones-gray-gravel-rocky-1869970/",
+    "fetchedAt": "2026-10-13T02:15:51.283Z"
+  },
+  "plastic": {
+    "id": "plastic",
+    "name": "Plastic",
+    "category": "materials",
+    "localPath": "images/material-plastic.webp",
+    "imageUrl": "https://pixabay.com/get/g8b30b360ee9713ffa3af781e81c7a03676698a8645e344957a0f176234828c480ed226a38dabcdf0b5cf2b8cca9515fdd7b355f0de6323badf5f25f65e569447_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/plastic-bottle-bottle-bottom-light-440365/",
+    "fetchedAt": "2026-10-13T02:15:52.598Z"
+  },
+  "leather": {
+    "id": "leather",
+    "name": "Leather",
+    "category": "materials",
+    "localPath": "images/material-leather.webp",
+    "imageUrl": "https://pixabay.com/get/g57288bb2f78786032af43250f2d8b5eb8f1d176459e49aeec3be8305b926033b35a4002a787f7fdfe5c2a0403953bef270d7dce3590831fe52bf214eabbd5971_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/leather-fashion-texture-wallet-3179515/",
+    "fetchedAt": "2026-10-13T02:15:55.117Z"
+  },
+  "rubber": {
+    "id": "rubber",
+    "name": "Rubber",
+    "category": "materials",
+    "localPath": "images/material-rubber.webp",
+    "imageUrl": "https://pixabay.com/get/g1b459449547ec4b2948b67e17507a70cf80c5e00309051dc1cb20ef34e321943fee301ed2a33306f07faaf96ac566ee556b4839962096d27f96c98baacd068e4_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/pile-tires-rubber-stacked-used-1868894/",
+    "fetchedAt": "2026-10-13T02:15:56.592Z"
+  },
+  "cardboard": {
+    "id": "cardboard",
+    "name": "Cardboard",
+    "category": "materials",
+    "localPath": "images/material-cardboard.webp",
+    "imageUrl": "https://pixabay.com/get/g1339e3d8c289e788945a632c7f56b64336ce3c7f2b5b59932fee6def56738daa3ed1be3af1556ae615b03f6af395266f9c6ff7399ff3f9ad1273742c8c2a42fd_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/packaging-packing-material-cardboard-3981072/",
+    "fetchedAt": "2026-10-13T02:15:58.446Z"
+  },
+  "brick": {
+    "id": "brick",
+    "name": "Brick",
+    "category": "materials",
+    "localPath": "images/material-brick.webp",
+    "imageUrl": "https://pixabay.com/get/g1a1e3c52e2f8b10568cdb948431334e5a7bf78452e5155b7b71761c69e07ba55ca4f9a009659db80a24e8d47e7886aebdbe7f2ec1d66d0b2b1e0eaef9ce14801_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/bricks-wall-stones-structure-459299/",
+    "fetchedAt": "2026-10-13T02:16:00.390Z"
+  },
+  "concrete": {
+    "id": "concrete",
+    "name": "Concrete",
+    "category": "materials",
+    "localPath": "images/material-concrete.webp",
+    "imageUrl": "https://pixabay.com/get/g668e385652e792ca651b78b68e0ac0070ce886f69a5e3aad88da9920a0ca7486049d002088241df078a17276b37677e3deb0f2ae264fdb2e43892f29ac06aeae_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/iron-bars-reinforcing-bars-474810/",
+    "fetchedAt": "2026-10-13T02:16:01.918Z"
+  },
+  "wool": {
+    "id": "wool",
+    "name": "Wool",
+    "category": "materials",
+    "localPath": "images/material-wool.webp",
+    "imageUrl": "https://pixabay.com/get/gc7aaa62049a8a6489d7f33c55a69b2f1b909b558cbd2c5226853243d4577baf7a580320da87d87aab39b3c9db0fde114_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/material-template-knit-textile-5650/",
+    "fetchedAt": "2026-10-13T02:16:03.399Z"
+  },
+  "cotton": {
+    "id": "cotton",
+    "name": "Cotton",
+    "category": "materials",
+    "localPath": "images/material-cotton.webp",
+    "imageUrl": "https://pixabay.com/get/g797a86435e71dc63213299355a32056bf43a6ef69a4ac98b4eae340355ae4cef4f53bcb8c30e3d277ef48f23025d123dd442e212a19efe052637ded6b83f1484_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/woven-fabric-texture-cloth-fiber-2607340/",
+    "fetchedAt": "2026-10-13T02:16:05.191Z"
+  },
+  "denim": {
+    "id": "denim",
+    "name": "Denim",
+    "category": "materials",
+    "localPath": "images/material-denim.webp",
+    "imageUrl": "https://pixabay.com/get/gf0e2d1740a5845d75c3605692d37ebc0dab67cf86bdfbf3d11f53c2f7a200cf3571cc403ee59eb9a1f331afbcd17371190f820d21b55a8b87653adbf6c0b3b44_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/denim-jeans-material-cloth-texture-1039517/",
+    "fetchedAt": "2026-10-13T02:16:06.775Z"
+  },
+  "steel": {
+    "id": "steel",
+    "name": "Steel",
+    "category": "materials",
+    "localPath": "images/material-steel.webp",
+    "imageUrl": "https://pixabay.com/get/ga17bbd19ef49b467b5d5b790b863b50c7bc6d6beebcedd5dbe3222a191e4b8dcedbf1f0611beb45bcc541a01d7d1b64a7c6698e36c9104e80750f0be3e1c947d_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/iron-bars-reinforcing-bars-474810/",
+    "fetchedAt": "2026-10-13T02:16:07.974Z"
+  },
+  "aluminum": {
+    "id": "aluminum",
+    "name": "Aluminum",
+    "category": "materials",
+    "localPath": "images/material-aluminum.webp",
+    "imageUrl": "https://pixabay.com/get/ga96a69b45f50c821ad1d319d1485bd769932e1c4b96dd94118901728b3b8f8c9c19ce5b4d5a61c9cdd39f30b3cede44463771ebf7c30abeda7165437ea658418_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/aluminum-aluminum-recycling-7288134/",
+    "fetchedAt": "2026-10-13T02:16:09.531Z"
+  },
+  "cork": {
+    "id": "cork",
+    "name": "Cork",
+    "category": "materials",
+    "localPath": "images/material-cork.webp",
+    "imageUrl": "https://pixabay.com/get/gcbc1d72cf441e00cfb8b66b4b86da329dcdc809cb5bea81931c5c6e4a5cfef9bab68281e63414c36e23155468c1ec9eb05d3db2d7d0c22178356177c8bcb9c2e_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/cork-wine-corks-bottle-corks-360370/",
+    "fetchedAt": "2026-10-13T02:16:11.089Z"
+  },
+  "wicker-rope": {
+    "id": "wicker-rope",
+    "name": "Wicker or rope",
+    "category": "materials",
+    "localPath": "images/material-wicker-rope.webp",
+    "imageUrl": "https://pixabay.com/get/gbb945c2b0360d0954fa2eaee9839aa32d0d62220e5a2a7747fd6994ba06a2a5615761117890a351a141a867908a280b2e92a22fd03ca2f51c2ac8a3d7220732f_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/straw-wicker-braid-rope-basket-2356440/",
+    "fetchedAt": "2026-10-13T02:16:12.796Z"
+  },
+  "foam": {
+    "id": "foam",
+    "name": "Foam",
+    "category": "materials",
+    "localPath": "images/material-foam.webp",
+    "imageUrl": "https://pixabay.com/get/g7b7706b590da0c447f091e8e42f2632e90f874f3acae814028402930c03fb82c6a1b00ea7a04f66fb390561e42aad68a7b332dcf92942fe3c729c7fc9e9ee5c7_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/packing-material-foam-gray-wavy-833665/",
+    "fetchedAt": "2026-10-13T02:16:14.384Z"
+  },
+  "clay": {
+    "id": "clay",
+    "name": "Clay",
+    "category": "materials",
+    "localPath": "images/material-clay.webp",
+    "imageUrl": "https://pixabay.com/get/g5877ef2e2382530ac43d70d9ba3aa0a831e9c3af96abd0ba535a2f04936200c1b1428fb507da12f1deda55b8b45fdf015dbc27c3746f2236ad76029f5d060cce_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/abstract-aged-backdrop-background-1846822/",
+    "fetchedAt": "2026-10-13T02:16:16.103Z"
+  },
+  "tile": {
+    "id": "tile",
+    "name": "Tile",
+    "category": "materials",
+    "localPath": "images/material-tile.webp",
+    "imageUrl": "https://pixabay.com/get/gbb9d2449dd94f0c4462b555bab340ececf2834a0fe9225bdb90fb65a701e4e87553947fbe4a87d38db5123a1d9487b8bc9b9f7885aa467560aa42b75a35116e4_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/roof-roof-tiles-pattern-house-8193787/",
+    "fetchedAt": "2026-10-13T02:16:18.791Z"
+  },
+  "wire": {
+    "id": "wire",
+    "name": "Wire",
+    "category": "materials",
+    "localPath": "images/material-wire.webp",
+    "imageUrl": "https://pixabay.com/get/g59b003bafd9e6fb1be4f6de97c1cc58d2d39b010cff4acbce354ca850a1bb3b65fb9e6d86e301280659d4ec624e1c4e8a9142672e31b2674a0559f617da4be07_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/barbed-wire-frost-frozen-cold-ice-1938842/",
+    "fetchedAt": "2026-10-13T02:16:21.100Z"
+  },
+  "green-leaf": {
+    "id": "green-leaf",
+    "name": "A green leaf",
+    "category": "plants-trees",
+    "localPath": "images/plant-green-leaf.webp",
+    "imageUrl": "https://pixabay.com/get/g6c7cb26eb5ac9bbe242709dd3c1e1f361ee54b82e697e732e21dc9aef784a0a36c27ea228cde3d5a53563066475b2f6c721bbb3e41763361a636323c0063094d_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/ferns-leaf-plant-nature-3378058/",
+    "fetchedAt": "2026-10-13T02:16:22.836Z"
+  },
+  "tree": {
+    "id": "tree",
+    "name": "A tree",
+    "category": "plants-trees",
+    "localPath": "images/plant-tree.webp",
+    "imageUrl": "https://pixabay.com/get/g4f0af9b60ada5f8be3c84efee3170520146daa4a4519283ea53efa4e00b1119f49e3ee01a4977bfd66e5c2d68c46964f127c1e1182a36c88058635575643208a_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/hill-tree-drumlin-landscape-5324149/",
+    "fetchedAt": "2026-10-13T02:16:24.225Z"
+  },
+  "grass": {
+    "id": "grass",
+    "name": "Grass",
+    "category": "plants-trees",
+    "localPath": "images/plant-grass.webp",
+    "imageUrl": "https://pixabay.com/get/g404dff2a6940374b6dd8c6c193ac874e92bd0620829da47975b8a9a738b2de4bb2aa5d8104419a4c1d864cff1c73e519584ad60f1f0e8bb807c5386bfdf64581_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/meadow-field-grass-green-nature-3375052/",
+    "fetchedAt": "2026-10-13T02:16:25.748Z"
+  },
+  "houseplant": {
+    "id": "houseplant",
+    "name": "A houseplant",
+    "category": "plants-trees",
+    "localPath": "images/plant-houseplant.webp",
+    "imageUrl": "https://pixabay.com/get/g9a4436c727493431b976ec4a96d913f74ca30f0cc306f9d2295fb347a8e0af7209c5a7a6fc1a73be657f1e8460bb107252df0acce431e5a7ca079f57c2128e5f_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/cactus-pink-flower-plant-blossom-7760970/",
+    "fetchedAt": "2026-10-13T02:16:26.748Z"
+  },
+  "flower": {
+    "id": "flower",
+    "name": "A flower, any kind",
+    "category": "plants-trees",
+    "localPath": "images/plant-flower.webp",
+    "imageUrl": "https://pixabay.com/get/gd51f1466843f522f5cdcd2b8b7485706508c3c87656981e30e82ed30694fbe2ad9f38bed7c82ba8f2bb14a5351b91b3536983a4ef1b2520c0cb357c3f7d08321_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/bird-parrot-ornithology-kind-fauna-8165143/",
+    "fetchedAt": "2026-10-13T02:16:28.013Z"
+  },
+  "weed-crack": {
+    "id": "weed-crack",
+    "name": "A weed growing through a crack",
+    "category": "plants-trees",
+    "localPath": "images/plant-weed-crack.webp",
+    "imageUrl": "https://pixabay.com/get/g1840c101f530634144632aa377be6e4e919ea0dd809d898e1f54d6522a5d9fe08583c31c9eb8b9541fe35daaac661ed14a56a1c7489acbd796201999b417e9cf_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/a-book-read-relax-lilac-bank-old-759873/",
+    "fetchedAt": "2026-10-13T02:16:29.318Z"
+  },
+  "leaf-big": {
+    "id": "leaf-big",
+    "name": "A leaf bigger than your hand",
+    "category": "plants-trees",
+    "localPath": "images/plant-leaf-big.webp",
+    "imageUrl": "https://pixabay.com/get/gd527d06498df53631149eea052e09a6336c0c725696238952fef9ff19f398696c996b8b228d6a6e64e1796c923ca3567d5dfe355903206af13e308ed2d6b6ae3_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/your-hands-are-wet-hands-smile-4946162/",
+    "fetchedAt": "2026-10-13T02:16:30.538Z"
+  },
+  "leaf-small": {
+    "id": "leaf-small",
+    "name": "A leaf smaller than your thumb",
+    "category": "plants-trees",
+    "localPath": "images/plant-leaf-small.webp",
+    "imageUrl": "https://pixabay.com/get/gb3a4c6c8bebefdabe4b0f787801b33ad0c5153b8213994c5f8f7c39db36f9e36e58a5d95905f7c1b1733ddd19ad70ad48c86b4297d9176732fe48e8a57664a7c_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/thumbs-up-positive-gesture-thumb-4589867/",
+    "fetchedAt": "2026-10-13T02:16:31.647Z"
+  },
+  "moss": {
+    "id": "moss",
+    "name": "Moss",
+    "category": "plants-trees",
+    "localPath": "images/plant-moss.webp",
+    "imageUrl": "https://pixabay.com/get/g94405aad66421e11198b4bc416dc729882c8e4f2e606a567a33935ed10a168d754a35941458247fe75d027304f1b495b20b3bd73ab3341eb984c629aa91bc1b9_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/elsach-bach-moss-nature-767590/",
+    "fetchedAt": "2026-10-13T02:16:33.496Z"
+  },
+  "bush-hedge": {
+    "id": "bush-hedge",
+    "name": "A bush or hedge",
+    "category": "plants-trees",
+    "localPath": "images/plant-bush-hedge.webp",
+    "imageUrl": "https://pixabay.com/get/g16be9c5c91a603bd3562a708dba55c22957b8f4d3fb3cc9e18d028b379fd113a30e26a2594a67147a0e891b632642adce4d6e12b6e6a29fa0ff86bdde5e58cfd_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/blackthorn-slough-black-thorn-flower-4971511/",
+    "fetchedAt": "2026-10-13T02:16:34.893Z"
+  },
+  "tree-trunk": {
+    "id": "tree-trunk",
+    "name": "A tree trunk",
+    "category": "plants-trees",
+    "localPath": "images/plant-tree-trunk.webp",
+    "imageUrl": "https://pixabay.com/get/g121c3ebbe959a791f294d6deebef88e9d46932b3023f4e3146921cb6f0c7897d05efcfb642f03117e0ea2ca9a18b6e53c16d6586690b5c0aead57d06a467f5d3_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/tree-trunk-leaves-nature-plants-1839959/",
+    "fetchedAt": "2026-10-13T02:16:36.416Z"
+  },
+  "fallen-leaf": {
+    "id": "fallen-leaf",
+    "name": "A fallen leaf",
+    "category": "plants-trees",
+    "localPath": "images/plant-fallen-leaf.webp",
+    "imageUrl": "https://pixabay.com/get/g0e0a9db63b6c93f4615e51adf2764287b861bd2b9729df44dd52bd73a4933176042f831d3dcc68997a23db8b3dc1c18cf9206b5fbe8ae7454608aad51a35aa5f_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/red-leaf-sweetgum-fallen-leaf-9266941/",
+    "fetchedAt": "2026-10-13T02:16:37.806Z"
+  },
+  "yellow-flower": {
+    "id": "yellow-flower",
+    "name": "A yellow flower",
+    "category": "plants-trees",
+    "localPath": "images/plant-yellow-flower.webp",
+    "imageUrl": "https://pixabay.com/get/g8d1df5ef88da1564ac771625c79e8454e127f0d1a737f059b75d9f03e25c1d385f5b0d1b53830c1e847b2e52c0cf8bfd15fb37fd4115ede3a1a0bfeb80aed74e_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/yellow-rose-rose-flower-cereal-6162613/",
+    "fetchedAt": "2026-10-13T02:16:38.954Z"
+  },
+  "blooming": {
+    "id": "blooming",
+    "name": "Something blooming",
+    "category": "plants-trees",
+    "localPath": "images/plant-blooming.webp",
+    "imageUrl": "https://pixabay.com/get/g7994ed6bc477f3f0dbb844e1ba9d8bc9ae2bbd3173d008607b5ea583163f88d36e776d83160b115b7ecaa93699bf0323d464d289c970846d7fb70fd2dd85da1c_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/sneaky-cat-looks-teeth-or-something-792772/",
+    "fetchedAt": "2026-10-13T02:16:40.662Z"
+  },
+  "leaf-pointed": {
+    "id": "leaf-pointed",
+    "name": "A leaf with a pointed tip",
+    "category": "plants-trees",
+    "localPath": "images/plant-leaf-pointed.webp",
+    "imageUrl": "https://pixabay.com/get/gb78464e4d0d217259992ee6d491dc4b80002e45454106f14c5f11a96248c6ea66e975d3b3cde66f3f192797199533c28679f4358705f679c03c295860ac5a484_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/metal-tip-ornament-curlicue-metal-7649305/",
+    "fetchedAt": "2026-10-13T02:16:41.868Z"
+  },
+  "leaf-rounded": {
+    "id": "leaf-rounded",
+    "name": "A leaf with a rounded edge",
+    "category": "plants-trees",
+    "localPath": "images/plant-leaf-rounded.webp",
+    "imageUrl": "https://pixabay.com/get/ge32d947b02ec3262f782f9ea620c9241c6d8c3a88dcfe0923a0b986e412ded25433178499b82209923f5841c72f5d9c217d2478ecee2e2034845e872907d4bee_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/a-book-bible-gilt-edge-believe-610334/",
+    "fetchedAt": "2026-10-13T02:16:43.143Z"
+  },
+  "plant-indoors": {
+    "id": "plant-indoors",
+    "name": "A plant indoors",
+    "category": "plants-trees",
+    "localPath": "images/plant-plant-indoors.webp",
+    "imageUrl": "https://pixabay.com/get/g661e40a249479480550c7428162ea78e09c93093f1d4685ffbc29f8777d7ebbe64d163cd7b6ff95e512e24e19aa38a2b0058e62b26018a2f9e6b2955686cf59c_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/curtains-decoration-indoors-plant-1854110/",
+    "fetchedAt": "2026-10-13T02:16:44.295Z"
+  },
+  "tree-roots": {
+    "id": "tree-roots",
+    "name": "A tree with visible roots",
+    "category": "plants-trees",
+    "localPath": "images/plant-tree-roots.webp",
+    "imageUrl": "https://pixabay.com/get/g3be08bc7c819085057655561091d70de84ede673859cba66520730051be72454a584aae4229563659465759ccfbc21ac9f78933f5be2593fd315a86da2d37e0d_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/path-roots-forest-nature-close-up-1040726/",
+    "fetchedAt": "2026-10-13T02:16:45.887Z"
+  },
+  "leaf-jagged": {
+    "id": "leaf-jagged",
+    "name": "A leaf with jagged edges",
+    "category": "plants-trees",
+    "localPath": "images/plant-leaf-jagged.webp",
+    "imageUrl": "https://pixabay.com/get/gd5f4613467e5170cbbc8f55fc4cbc70147b29a3dd5feb95e928f6606a67ec686a0f280d23d045de658448815a65d2c9571d8b055aa355813bbf1322f289b4f70_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/green-plant-nature-frozen-green-2995761/",
+    "fetchedAt": "2026-10-13T02:16:47.250Z"
+  },
+  "pine-tree": {
+    "id": "pine-tree",
+    "name": "A pine tree or evergreen",
+    "category": "plants-trees",
+    "localPath": "images/plant-pine-tree.webp",
+    "imageUrl": "https://pixabay.com/get/g111bf25f5ff069e58f48e5f7c8d3dc771d01b5b09a1b71b5c97735423d78f6b4763984d6d5b0216485bcb1620fac65c475c3e079b3ace2d8e6695210d4b08c04_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/pine-plant-tree-branch-conifer-1884335/",
+    "fetchedAt": "2026-10-13T02:16:48.778Z"
+  },
+  "leaf-veins": {
+    "id": "leaf-veins",
+    "name": "A leaf with a visible vein pattern",
+    "category": "plants-trees",
+    "localPath": "images/plant-leaf-veins.webp",
+    "imageUrl": "https://pixabay.com/get/gd9710a4106918553421dc9afb060bf8094b7c0e6f6315633e1d90975cc0522aefcd94e7b9971976a4239d7f3991e5bd66336be1f278d21d19639ca41a4b471eb_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/gunnera-leaf-green-leaf-details-5195132/",
+    "fetchedAt": "2026-10-13T02:16:50.615Z"
+  },
+  "tree-shadow": {
+    "id": "tree-shadow",
+    "name": "A tree casting a shadow",
+    "category": "plants-trees",
+    "localPath": "images/plant-tree-shadow.webp",
+    "imageUrl": "https://pixabay.com/get/g90ea6afb3b5a23ebae10d93904a48b170f7ada0722a35b115bafc1ee1c57aa9fbef11ecbed73bb0f398e002802675595bec97454e0eb557988c0326b9a782a68_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/a-tree-nature-heart-cherry-flowers-5255288/",
+    "fetchedAt": "2026-10-13T02:16:52.213Z"
+  },
+  "berries": {
+    "id": "berries",
+    "name": "Berries on a plant",
+    "category": "plants-trees",
+    "localPath": "images/plant-berries.webp",
+    "imageUrl": "https://pixabay.com/get/g1c0baf926ce142a4d9f475ae7cabd957c916bb7dec7e7cef8c80af5a01e4d576354a5fe037214b5473ce9daeefa156a3dba989bdc06c3597fe1e8457fdb616bb_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/holly-ilex-red-berries-berry-fruit-7602422/",
+    "fetchedAt": "2026-10-13T02:16:53.189Z"
+  },
+  "leaf-heart": {
+    "id": "leaf-heart",
+    "name": "A leaf with a heart shape",
+    "category": "plants-trees",
+    "localPath": "images/plant-leaf-heart.webp",
+    "imageUrl": "https://pixabay.com/get/gfde5f45cfe2254e3bb8b7f59d9f7a2c2f8dcde9369bdb6955360a64f30f1568c66f744c7de44002d683b2ebd7e3dcc7476465124996242ea5f791cf56542f261_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/apple-read-relax-study-break-7020336/",
+    "fetchedAt": "2026-10-13T02:16:54.288Z"
+  },
+  "arrow": {
+    "id": "arrow",
+    "name": "An arrow",
+    "category": "signs-symbols",
+    "localPath": "images/sign-arrow.webp",
+    "imageUrl": "https://pixabay.com/get/gec6968c2037e6c1156817d691201f77205c1b32e46eddd2c985b2525cadd8d39a0040f100d9848689a86152be571c96734c99684d48c638ea3f26e0c1de203e0_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/sunset-roads-traffic-cars-vehicles-5809870/",
+    "fetchedAt": "2026-10-13T02:16:55.391Z"
+  },
+  "stop-sign": {
+    "id": "stop-sign",
+    "name": "A stop sign",
+    "category": "signs-symbols",
+    "localPath": "images/sign-stop-sign.webp",
+    "imageUrl": "https://pixabay.com/get/gee96de7517ed33992cbad7c4f1084d0c39c554563eeeff2d1e89bab8b0ede8dae1e80d863b4aea2fe10d4fbefbca56b171f2da966d0f1e0dce60b830aae03146_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/road-one-way-rain-street-4606351/",
+    "fetchedAt": "2026-10-13T02:16:56.749Z"
+  },
+  "street-name": {
+    "id": "street-name",
+    "name": "A street name sign",
+    "category": "signs-symbols",
+    "localPath": "images/sign-street-name.webp",
+    "imageUrl": "https://pixabay.com/get/g4b3c5c78db6c5d4e18c112814fac7d386f7aefe02855791b43e19abf05eb62eeec691f061ef69095ab0d2d52a02c2547efd12bd7dc77af66d7cea36907e4c101_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/greece-sign-wall-orange-greek-3793480/",
+    "fetchedAt": "2026-10-13T02:16:58.288Z"
+  },
+  "speed-limit": {
+    "id": "speed-limit",
+    "name": "A speed limit sign",
+    "category": "signs-symbols",
+    "localPath": "images/sign-speed-limit.webp",
+    "imageUrl": "https://pixabay.com/get/g042a10bfb860c4f0d67d810c9fc590759f40c6e8b9924ef662456b6e6a7e66ec3b516e89123810383093195213f4814c742be1a3d7ae19307164f2cab4fb296b_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/road-sign-speed-limit-4876930/",
+    "fetchedAt": "2026-10-13T02:16:59.569Z"
+  },
+  "logo": {
+    "id": "logo",
+    "name": "A logo",
+    "category": "signs-symbols",
+    "localPath": "images/sign-logo.webp",
+    "imageUrl": "https://pixabay.com/get/gfb9db00f805987163696491315f84dc59e27b2928b590afd819d243f27ce32f467c020e25b7f2f4da2a8d639f13eb5bcf3974216fef18e441f0d9ce593992b33_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/volkswagen-automobile-antique-car-7647805/",
+    "fetchedAt": "2026-10-13T02:17:00.678Z"
+  },
+  "one-way": {
+    "id": "one-way",
+    "name": "A one-way sign",
+    "category": "signs-symbols",
+    "localPath": "images/sign-one-way.webp",
+    "imageUrl": "https://pixabay.com/get/g969c6effdc60543e39ddf25c2b772c26d92eb051b6fd8a95ad33e77c20054fc1a7e73943cee289088b974d70e66cf33bbcb77138f19ac36a67d1afd54d020900_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/road-one-way-rain-street-4606351/",
+    "fetchedAt": "2026-10-13T02:17:01.995Z"
+  },
+  "exit": {
+    "id": "exit",
+    "name": "An exit sign",
+    "category": "signs-symbols",
+    "localPath": "images/sign-exit.webp",
+    "imageUrl": "https://pixabay.com/get/g1fc67e3cbe28982aef310b6deae2a0955e91b9e55278ebd76b35fd41d011a5d3bf6cfd829a1c0f004681f538ba129108782cdaffa51f255c1bd986cc066636bf_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/exit-sign-light-exit-light-8443453/",
+    "fetchedAt": "2026-10-13T02:17:03.186Z"
+  },
+  "crosswalk": {
+    "id": "crosswalk",
+    "name": "A crosswalk symbol",
+    "category": "signs-symbols",
+    "localPath": "images/sign-crosswalk.webp",
+    "imageUrl": "https://pixabay.com/get/ge449ff5a20dc7f756c26d29770a87bb9ed03b66d65927e18cc5206a798fbef26ca8bc0f677115679ece0c1f383d98e17367ca1194c37be3ab19289417879bb66_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/signal-walking-walk-stop-traffic-5065588/",
+    "fetchedAt": "2026-10-13T02:17:04.094Z"
+  },
+  "restroom": {
+    "id": "restroom",
+    "name": "A restroom sign",
+    "category": "signs-symbols",
+    "localPath": "images/sign-restroom.webp",
+    "imageUrl": "https://pixabay.com/get/g57ecf73d56225803295fdd97ee38c95c25de577e98dadb75679a47949f668b50f4f2a29328eefbc497907eb2c8d0e1c0da45dbefd4c380ed053ac59ce56c9f04_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/restroom-sign-restroom-sign-toilet-3859135/",
+    "fetchedAt": "2026-10-13T02:17:06.041Z"
+  },
+  "no-parking": {
+    "id": "no-parking",
+    "name": "A no-parking sign",
+    "category": "signs-symbols",
+    "localPath": "images/sign-no-parking.webp",
+    "imageUrl": "https://pixabay.com/get/g5fa801b778f7b28ad87b3625d408ae083632e08150466cbd838ed5e03de9d7da4762c2ec8710c36f772a08eb1c02f802f201cfbe33bc88fc3e3e380aef627950_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/no-parking-sign-board-fence-wood-8007241/",
+    "fetchedAt": "2026-10-13T02:17:07.282Z"
+  },
+  "welcome-open": {
+    "id": "welcome-open",
+    "name": "A \"Welcome\" or \"Open\" sign",
+    "category": "signs-symbols",
+    "localPath": "images/sign-welcome-open.webp",
+    "imageUrl": "https://pixabay.com/get/g09a8a96804531d3e5251b8fd345764b6a78caaeb030226cb1e5128d8d3e083d86ce0345c89b07394689a9c7947e941290523ef912dd4d4cc9b5feef02bdb2699_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/sign-open-sign-signage-business-8032702/",
+    "fetchedAt": "2026-10-13T02:17:08.317Z"
+  },
+  "picture-sign": {
+    "id": "picture-sign",
+    "name": "A sign with a picture instead of words",
+    "category": "signs-symbols",
+    "localPath": "images/sign-picture-sign.webp",
+    "imageUrl": "https://pixabay.com/get/g91751a63a6574e2b5094057f617732f9363167f01a62fab694af898667f979ecad247981c1ba11a1ac63e3b8bdcf32f726cb955da4dee523192945bb3c07506b_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/beautiful-girl-instead-woman-1127092/",
+    "fetchedAt": "2026-10-13T02:17:09.390Z"
+  },
+  "other-language": {
+    "id": "other-language",
+    "name": "A sign in a language other than yours",
+    "category": "signs-symbols",
+    "localPath": "images/sign-other-language.webp",
+    "imageUrl": "https://pixabay.com/get/gdb666a32d9043cc1540680b26752481b8a56409aed2a7a428c7171768d0091e905046f08179d7896887d5276b61624a3dacbf287a821ad9bc91f600aa2cb10e6_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/thumbs-up-positive-gesture-thumb-4589867/",
+    "fetchedAt": "2026-10-13T02:17:10.241Z"
+  },
+  "handwritten": {
+    "id": "handwritten",
+    "name": "A handwritten sign",
+    "category": "signs-symbols",
+    "localPath": "images/sign-handwritten.webp",
+    "imageUrl": "https://pixabay.com/get/g894c109903e4f8a2602602293845298612fea23ef5896ea8c452eec217dac3d190da34d612ed67a1927dfedf750f060f2d1094b5aefdbfef9b8cbc5711e472fc_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/marriage-married-love-sign-923660/",
+    "fetchedAt": "2026-10-13T02:17:11.742Z"
+  },
+  "warning": {
+    "id": "warning",
+    "name": "A warning symbol",
+    "category": "signs-symbols",
+    "localPath": "images/sign-warning.webp",
+    "imageUrl": "https://pixabay.com/get/g359409d37b598324b1f9f11e9073ef44b69bfbd2442e7079ff7a3b1d4c33dcba272593be7623e1b6726e7d5a56dc9d70b9945e6727f0801a13bc90ad13c8ff17_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/road-signs-sign-symbols-warning-7055475/",
+    "fetchedAt": "2026-10-13T02:17:12.715Z"
+  },
+  "red-sign": {
+    "id": "red-sign",
+    "name": "A sign with red on it",
+    "category": "signs-symbols",
+    "localPath": "images/sign-red-sign.webp",
+    "imageUrl": "https://pixabay.com/get/gb1f730ee5e7999bc98da14d3c56baa620afee319b91cf7da0966dfe1236a1b6c4af53daa5f748fbf07e1122a4b5cec13720b91a8164fc1216d63eaf7559c9aa6_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/open-sign-neon-lights-illuminated-1836961/",
+    "fetchedAt": "2026-10-13T02:17:13.677Z"
+  },
+  "blue-sign": {
+    "id": "blue-sign",
+    "name": "A sign with blue on it",
+    "category": "signs-symbols",
+    "localPath": "images/sign-blue-sign.webp",
+    "imageUrl": "https://pixabay.com/get/gb6bfb79ffbda51635e3dee331577acf8f148829ac6b379e209bf43bdfa8124bba8af9e7512dcfb189ec7e0bc2a9fd70ba842dd1509efa0ce969761ffbca5f533_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/open-sign-neon-lights-illuminated-1836961/",
+    "fetchedAt": "2026-10-13T02:17:14.567Z"
+  },
+  "yellow-sign": {
+    "id": "yellow-sign",
+    "name": "A sign with yellow on it",
+    "category": "signs-symbols",
+    "localPath": "images/sign-yellow-sign.webp",
+    "imageUrl": "https://pixabay.com/get/gcecb92723c9e986be1906110f7c8b5a81d8fb07db1b9fabbeaf5b487978a14c5127df6e5654ef7220ccf44cc6c7d1a5c7dcb08e4bc087e4b7ab741a2af0b6b4a_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/snail-without-shell-nature-portiat-8095143/",
+    "fetchedAt": "2026-10-13T02:17:16.042Z"
+  },
+  "faded-damaged": {
+    "id": "faded-damaged",
+    "name": "A faded or damaged sign",
+    "category": "signs-symbols",
+    "localPath": "images/sign-faded-damaged.webp",
+    "imageUrl": "https://pixabay.com/get/g0553c85f03953ecb3e7543b61681e94930a6fac6972ea0c3350f4bc7c877ab56099b41bc793deacc3163b19b0a9068a071a047ab6cf1dffde2d001e50148baaf_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/umbel-flower-faded-seed-stand-7578435/",
+    "fetchedAt": "2026-10-13T02:17:17.216Z"
+  },
+  "recycling": {
+    "id": "recycling",
+    "name": "A recycling symbol",
+    "category": "signs-symbols",
+    "localPath": "images/sign-recycling.webp",
+    "imageUrl": "https://pixabay.com/get/ge252c44ec0a66c06ea1616db777318eb7151d6f36df48c594cbc9142cd8c2580b1c9e3db8ad5781a98ffccbc171a8f942fb7a94efef32844437fa3875e72db4c_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/badge-icon-recycle-recycling-7305818/",
+    "fetchedAt": "2026-10-13T02:17:18.490Z"
+  },
+  "building-number": {
+    "id": "building-number",
+    "name": "A number on a building",
+    "category": "signs-symbols",
+    "localPath": "images/sign-building-number.webp",
+    "imageUrl": "https://pixabay.com/get/g0028aec0ea087e29835047ecabe5283417999548716677e8ac1f06257c5e3b9ebb8cbda4346b2f20b97748a0cbb87d1ea82166a2db07af741baf7b74b6cab1ec_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/skopje-north-macedonia-city-4732418/",
+    "fetchedAt": "2026-10-13T02:17:19.909Z"
+  },
+  "look-up": {
+    "id": "look-up",
+    "name": "Look up: photograph what's above you",
+    "category": "perspective",
+    "localPath": "images/perspective-look-up.webp",
+    "imageUrl": "https://pixabay.com/get/g460e69e989ef24f33b7c19d4ac0bd0a19b0e697a4b23f0873ba84c038a683bf34fd476687f2d0809ee523ac867d36cb0f41d04b3dffed625562e99cbe9ef3f79_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/horizontal-india-looking-at-camera-8199205/",
+    "fetchedAt": "2026-10-13T02:17:21.445Z"
+  },
+  "through-fence": {
+    "id": "through-fence",
+    "name": "Shoot through a fence or railing",
+    "category": "perspective",
+    "localPath": "images/perspective-through-fence.webp",
+    "imageUrl": "https://pixabay.com/get/g351de4e97656bf9aa40c38be5384055fc32806a90875497fed57f132f21bc24c4bd8e50ba744b0e188264a8c28f503715c39acacf48679aab0cf9a466f160f17_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/a-book-read-relax-lilac-bank-old-759873/",
+    "fetchedAt": "2026-10-13T02:17:30.412Z"
+  },
+  "highest-place": {
+    "id": "highest-place",
+    "name": "Shoot from the highest place you can reach today",
+    "category": "perspective",
+    "localPath": "images/perspective-highest-place.webp",
+    "imageUrl": "https://pixabay.com/get/g837afe9938f9d2c3bd40e141d9e37c103f81b3677ed803c4e19ffb1b285086ae5361696675d3c17d463c02a8b1ba88ff700dd8ed315e9d544e903c7c9829144f_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/hand-reach-reaching-fingers-5961660/",
+    "fetchedAt": "2026-10-13T02:17:31.469Z"
+  },
+  "upside-down": {
+    "id": "upside-down",
+    "name": "Shoot something upside down",
+    "category": "perspective",
+    "localPath": "images/perspective-upside-down.webp",
+    "imageUrl": "https://pixabay.com/get/g2c7e5e2c165e42b95b1231a6c6b78aac173937bf0fc1faf9d61b102da02b61dae09f23769aa2f8d88b05f1ac5cfc40e87a2090799bf15379df71e803bf135368_1280.jpg",
+    "pageUrl": "https://pixabay.com/photos/girl-sleep-lying-down-dog-pet-1733352/",
+    "fetchedAt": "2026-10-13T02:17:32.661Z"
+  }
+}
