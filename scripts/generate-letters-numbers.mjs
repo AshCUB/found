@@ -1,0 +1,141 @@
+#!/usr/bin/env node
+
+/**
+ * Letters and Numbers Generator
+ * - Renders the literal characters named in each Letters and Numbers item as outlined SVG paths
+ * - Writes public/images/letters-numbers/<item-id>.svg
+ * - Points each generated item's `image` in focusLists.js at its SVG
+ * - Writes the review page scripts/review/letters-numbers.html
+ *
+ * Idempotent: rerun after editing the list. Items whose name is a description rather than
+ * literal characters are skipped and reported.
+ */
+
+import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'fs';
+import { dirname, join } from 'path';
+import { fileURLToPath, pathToFileURL } from 'url';
+import opentype from 'opentype.js';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const ROOT_DIR = join(__dirname, '..');
+const DATA_FILE = join(ROOT_DIR, 'src/data/focusLists.js');
+const FONT_FILE = join(__dirname, 'fonts/Inter-Bold.ttf');
+const OUTPUT_DIR = join(ROOT_DIR, 'public/images/letters-numbers');
+const REVIEW_FILE = join(__dirname, 'review/letters-numbers.html');
+const LIST_ID = 'letters-numbers';
+
+// Matches the Shapes list foreground color
+const FILL = '#333';
+const VIEWBOX = 200;
+const CAP_HEIGHT = 110;
+const MAX_WIDTH = 160;
+
+// "Find the number 5", "Find the letter D", "Find the letter D written in blue"
+const LITERAL_PATTERN = /^Find the (?:number|letter) ([A-Za-z0-9]+)(?: written in [a-z]+)?$/;
+
+const getLiteral = (name) => name.match(LITERAL_PATTERN)?.[1] ?? null;
+const imagePathFor = (id) => `images/letters-numbers/${id}.svg`;
+const escapeHtml = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+function renderSvg(font, text) {
+  const capHeight = font.tables.os2.sCapHeight || font.unitsPerEm * 0.7;
+  let size = (CAP_HEIGHT / capHeight) * font.unitsPerEm;
+
+  let box = font.getPath(text, 0, 0, size).getBoundingBox();
+  const width = box.x2 - box.x1;
+  if (width > MAX_WIDTH) {
+    size *= MAX_WIDTH / width;
+    box = font.getPath(text, 0, 0, size).getBoundingBox();
+  }
+
+  const x = (VIEWBOX - (box.x2 - box.x1)) / 2 - box.x1;
+  const y = (VIEWBOX - (box.y2 - box.y1)) / 2 - box.y1;
+  const d = font.getPath(text, x, y, size).toPathData(2);
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${VIEWBOX}" height="${VIEWBOX}" viewBox="0 0 ${VIEWBOX} ${VIEWBOX}"><path fill="${FILL}" d="${d}"/></svg>\n`;
+}
+
+function updateImagePaths(generated) {
+  let source = readFileSync(DATA_FILE, 'utf-8');
+  for (const { id } of generated) {
+    const linePattern = new RegExp(`(\\{ id: '${id}',[^\\n]*?image: ')[^']*(')`);
+    source = source.replace(linePattern, `$1${imagePathFor(id)}$2`);
+  }
+  writeFileSync(DATA_FILE, source);
+}
+
+function writeReviewPage(generated, skipped) {
+  const cards = generated.map(({ id, name, text }) => `    <div class="card">
+      <img src="../../public/${imagePathFor(id)}" loading="lazy" alt="${escapeHtml(name)}">
+      <div class="prompt">${escapeHtml(name)}</div>
+      <div class="meta">${id} · "${escapeHtml(text)}"</div>
+    </div>`).join('\n');
+  const skippedRows = skipped.map(({ id, name }) => `    <li><code>${id}</code> ${escapeHtml(name)}</li>`).join('\n');
+
+  const html = `<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Review: Letters and Numbers</title>
+<style>
+  body { font-family: system-ui, sans-serif; background: #f2f2f2; margin: 24px; color: #333; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+  .card { background: #fff; border-radius: 8px; padding: 12px; }
+  .card img { width: 100%; aspect-ratio: 1; background: #f2f2f2; border-radius: 8px; display: block; }
+  .prompt { font-weight: 600; margin-top: 8px; }
+  .meta { font-size: 12px; color: #777; margin-top: 4px; }
+</style></head><body>
+<h1>Letters and Numbers — ${generated.length} generated, ${skipped.length} skipped</h1>
+<div class="grid">
+${cards}
+</div>
+<h2>Skipped (name is a description, not literal characters)</h2>
+<ul>
+${skippedRows}
+</ul>
+</body></html>
+`;
+  mkdirSync(dirname(REVIEW_FILE), { recursive: true });
+  writeFileSync(REVIEW_FILE, html);
+}
+
+async function main() {
+  const { focusLists } = await import(`${pathToFileURL(DATA_FILE).href}?t=${Date.now()}`);
+  const list = focusLists.find((l) => l.id === LIST_ID);
+  if (!list) throw new Error(`List "${LIST_ID}" not found in ${DATA_FILE}`);
+
+  const font = opentype.loadSync(FONT_FILE);
+  const generated = [];
+  const skipped = [];
+
+  for (const item of list.items) {
+    const text = getLiteral(item.name);
+    (text ? generated : skipped).push({ id: item.id, name: item.name, text });
+  }
+
+  mkdirSync(OUTPUT_DIR, { recursive: true });
+  for (const { id, text } of generated) {
+    writeFileSync(join(OUTPUT_DIR, `${id}.svg`), renderSvg(font, text));
+  }
+
+  const keep = new Set(generated.map(({ id }) => `${id}.svg`));
+  for (const file of readdirSync(OUTPUT_DIR)) {
+    if (!keep.has(file)) {
+      unlinkSync(join(OUTPUT_DIR, file));
+      console.log(`  removed stale ${file}`);
+    }
+  }
+
+  updateImagePaths(generated);
+  writeReviewPage(generated, skipped);
+
+  const missing = generated.filter(({ id }) => !existsSync(join(OUTPUT_DIR, `${id}.svg`)));
+  if (missing.length) throw new Error(`Missing output for: ${missing.map((m) => m.id).join(', ')}`);
+
+  console.log(`Generated ${generated.length} SVGs in public/images/letters-numbers/`);
+  generated.forEach(({ id, text }) => console.log(`  ✓ ${id} → "${text}"`));
+  console.log(`\nSkipped ${skipped.length} items (not literal characters):`);
+  skipped.forEach(({ id, name }) => console.log(`  - ${id}: ${name}`));
+}
+
+main().catch((err) => {
+  console.error('Fatal error:', err);
+  process.exit(1);
+});

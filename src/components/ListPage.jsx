@@ -109,7 +109,7 @@ export default function ListPage({
                       src={item.image}
                       alt={item.name}
                       loading="lazy"
-                      className={`w-full h-full ${item.image?.includes('shape-') ? 'object-contain p-sm' : 'object-cover'}`}
+                      className={`w-full h-full ${/shape-|letters-numbers\//.test(item.image ?? '') ? 'object-contain p-sm' : 'object-cover'}`}
                       onError={(e) => {
                         e.target.style.display = 'none';
                         e.target.nextSibling.style.display = 'flex';

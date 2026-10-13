@@ -30,7 +30,7 @@ export default function DailyFind({
   const currentFind = dailyFinds[localIndex];
   const list = focusLists.find((l) => l.id === currentFind.listId);
   const currentItem = list?.items[itemIndex] || currentFind.item;
-  const isShape = currentItem.image?.includes('shape-');
+  const isFitted = /shape-|letters-numbers\//.test(currentItem.image ?? '');
 
   const goToList = (index) => {
     const wrapped = (index + dailyFinds.length) % dailyFinds.length;
@@ -127,39 +127,41 @@ export default function DailyFind({
         </div>
 
         <div className="bg-white p-lg rounded-lg shadow-sm mb-lg">
-          <div className="w-full h-48 rounded-lg bg-grey mb-sm flex items-center justify-center overflow-hidden relative">
-            {currentItem.image ? (
-              <img
-                src={currentItem.image}
-                alt={currentItem.name}
-                loading="lazy"
-                className={`w-full h-full ${isShape ? 'object-contain p-lg' : 'object-cover'}`}
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.nextSibling.style.display = 'flex';
-                }}
-              />
-            ) : null}
-            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-green/20 to-blue/20" style={{ display: currentItem.image ? 'none' : 'flex' }}>
-              <span className="font-body text-sm text-dark-grey">Image</span>
+          <div className="flex items-center gap-sm mb-sm">
+            {list && list.items.length > 1 && (
+              <button
+                onClick={handlePreviousItem}
+                className="flex-shrink-0 w-8 h-8 font-buttons text-xl text-dark-grey hover:text-green transition-colors flex items-center justify-center"
+                aria-label="Previous item"
+              >
+                ←
+              </button>
+            )}
+            <div className="flex-1 min-w-0 h-48 rounded-lg bg-grey flex items-center justify-center overflow-hidden relative">
+              {currentItem.image ? (
+                <img
+                  src={currentItem.image}
+                  alt={currentItem.name}
+                  loading="lazy"
+                  className={`w-full h-full ${isFitted ? 'object-contain p-lg' : 'object-cover'}`}
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextSibling.style.display = 'flex';
+                  }}
+                />
+              ) : null}
+              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-green/20 to-blue/20" style={{ display: currentItem.image ? 'none' : 'flex' }}>
+                <span className="font-body text-sm text-dark-grey">Image</span>
+              </div>
             </div>
             {list && list.items.length > 1 && (
-              <>
-                <button
-                  onClick={handlePreviousItem}
-                  className="absolute left-sm top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 shadow-sm font-buttons text-xl text-dark-grey hover:text-green transition-colors flex items-center justify-center"
-                  aria-label="Previous item"
-                >
-                  ←
-                </button>
-                <button
-                  onClick={handleNextItem}
-                  className="absolute right-sm top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 shadow-sm font-buttons text-xl text-dark-grey hover:text-green transition-colors flex items-center justify-center"
-                  aria-label="Next item"
-                >
-                  →
-                </button>
-              </>
+              <button
+                onClick={handleNextItem}
+                className="flex-shrink-0 w-8 h-8 font-buttons text-xl text-dark-grey hover:text-green transition-colors flex items-center justify-center"
+                aria-label="Next item"
+              >
+                →
+              </button>
             )}
           </div>
 

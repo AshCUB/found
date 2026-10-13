@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { focusLists } from '../data/focusLists';
+import { visibleFocusLists } from '../data/focusLists';
 
 export default function Subscribe({ onSubscribe, subscribedLists }) {
   const [selectedLists, setSelectedLists] = useState([]);
@@ -31,7 +31,7 @@ export default function Subscribe({ onSubscribe, subscribedLists }) {
         </p>
 
         <div className="space-y-md mb-xl">
-          {focusLists.map((list) => (
+          {visibleFocusLists.map((list) => (
             <div
               key={list.id}
               onClick={() => toggleList(list.id)}

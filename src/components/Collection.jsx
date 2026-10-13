@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { focusLists } from '../data/focusLists';
+import { focusLists, visibleFocusLists } from '../data/focusLists';
 
 export default function Collection({
   captures,
@@ -69,7 +69,7 @@ export default function Collection({
           >
             All
           </button>
-          {focusLists.map((list) => (
+          {visibleFocusLists.map((list) => (
             <button
               key={list.id}
               onClick={() => setFilterListId(list.id)}
@@ -116,7 +116,7 @@ export default function Collection({
                           src={getItemImage(capture.listId, capture.itemId)}
                           alt={getItemName(capture.listId, capture.itemId)}
                           loading="lazy"
-                          className={`w-full h-full ${getItemImage(capture.listId, capture.itemId).includes('shape-') ? 'object-contain p-sm' : 'object-cover'}`}
+                          className={`w-full h-full ${/shape-|letters-numbers\//.test(getItemImage(capture.listId, capture.itemId)) ? 'object-contain p-sm' : 'object-cover'}`}
                           onError={(e) => {
                             e.target.style.display = 'none';
                             e.target.nextSibling.style.display = 'flex';
