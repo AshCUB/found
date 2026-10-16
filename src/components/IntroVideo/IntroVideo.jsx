@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import './IntroVideo.css';
 
 const SESSION_KEY = 'found_intro_video_played';
+const ACTIVE_CLASS = 'intro-video-active';
+const FADING_CLASS = 'intro-video-fading';
 const PHONE_QUERY = '(pointer: coarse) and (hover: none) and (max-width: 500px) and (orientation: portrait)';
 const BASE = import.meta.env.BASE_URL;
 const VIDEO_SRC = `${BASE}video/intro.mp4`;
@@ -66,6 +69,7 @@ export default function IntroVideo({ onFinish }) {
     leavingRef.current = true;
     clearTimeout(iconTimerRef.current);
     setLeaving(true);
+    document.documentElement.classList.replace(ACTIVE_CLASS, FADING_CLASS);
 
     const video = videoRef.current;
     const startVolume = video ? video.volume : 0;
@@ -101,8 +105,7 @@ export default function IntroVideo({ onFinish }) {
       /* ignore */
     }
 
-    const prevOverflow = document.documentElement.style.overflow;
-    document.documentElement.style.overflow = 'hidden';
+    document.documentElement.classList.add(ACTIVE_CLASS);
 
     video.muted = true;
     video.defaultMuted = true;
@@ -176,7 +179,7 @@ export default function IntroVideo({ onFinish }) {
       video.removeEventListener('ended', finish);
       video.removeEventListener('error', finish);
       document.removeEventListener('visibilitychange', onVisibility);
-      document.documentElement.style.overflow = prevOverflow;
+      document.documentElement.classList.remove(ACTIVE_CLASS, FADING_CLASS);
       video.pause();
     };
   }, [finish]);
@@ -206,7 +209,7 @@ export default function IntroVideo({ onFinish }) {
     }
   };
 
-  return (
+  return createPortal(
     <div className={`intro-video${leaving ? ' is-leaving' : ''}`}>
       <video
         ref={videoRef}
@@ -233,6 +236,7 @@ export default function IntroVideo({ onFinish }) {
           {soundOn ? <SoundOnIcon /> : <MutedIcon />}
         </span>
       </button>
-    </div>
+    </div>,
+    document.body
   );
 }
