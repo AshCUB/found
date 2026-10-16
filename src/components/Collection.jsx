@@ -3,6 +3,7 @@ import { focusLists, visibleFocusLists } from '../data/focusLists';
 
 export default function Collection({
   captures,
+  subscribedLists,
   onClose,
 }) {
   const [filterListId, setFilterListId] = useState('all');
@@ -69,7 +70,7 @@ export default function Collection({
           >
             All
           </button>
-          {visibleFocusLists.map((list) => (
+          {visibleFocusLists.filter((list) => subscribedLists.includes(list.id)).map((list) => (
             <button
               key={list.id}
               onClick={() => setFilterListId(list.id)}

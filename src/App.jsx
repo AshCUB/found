@@ -7,6 +7,7 @@ import Capture from './components/Capture';
 import ListPage from './components/ListPage';
 import Collection from './components/Collection';
 import Streak from './components/Streak';
+import IntroVideo, { shouldShowIntroVideo } from './components/IntroVideo';
 import { useSubscribedLists, useCaptures, useStreakData, useSettings, useEventLogs } from './hooks/useAppData';
 import { getAllDailyFinds, storeDailyFinds, loadDailyFinds, shouldRefreshDailyFind } from './utils/dailyFind';
 import { isListVisible } from './data/focusLists';
@@ -15,6 +16,7 @@ export default function App() {
   // Screen state
   const [currentScreen, setCurrentScreen] = useState('intro');
   const [dailyFindIndex, setDailyFindIndex] = useState(0);
+  const [showIntroVideo, setShowIntroVideo] = useState(shouldShowIntroVideo);
 
   // Data hooks
   const [allSubscribedLists, setSubscribedLists] = useSubscribedLists();
@@ -183,6 +185,7 @@ export default function App() {
         return (
           <Collection
             captures={captures}
+            subscribedLists={subscribedLists}
             onClose={() => setCurrentScreen('home')}
           />
         );
@@ -209,6 +212,7 @@ export default function App() {
   return (
     <div className="min-h-screen">
       {renderScreen()}
+      {showIntroVideo && <IntroVideo onFinish={() => setShowIntroVideo(false)} />}
       {/* TEMP: dev-only shortcut back to the intro screen. Remove later. */}
       {false && import.meta.env.DEV && currentScreen !== 'intro' && (
         <button
