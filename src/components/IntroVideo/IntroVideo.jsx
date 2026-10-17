@@ -51,12 +51,14 @@ function SoundOnIcon() {
   );
 }
 
-export default function IntroVideo({ onFinish }) {
+export default function IntroVideo({ onFinish, onLeaveStart }) {
   const videoRef = useRef(null);
   const leavingRef = useRef(false);
   const iconTimerRef = useRef(null);
   const onFinishRef = useRef(onFinish);
   onFinishRef.current = onFinish;
+  const onLeaveStartRef = useRef(onLeaveStart);
+  onLeaveStartRef.current = onLeaveStart;
 
   const [leaving, setLeaving] = useState(false);
   const [soundOn, setSoundOn] = useState(false);
@@ -72,6 +74,7 @@ export default function IntroVideo({ onFinish }) {
     leavingRef.current = true;
     clearTimeout(iconTimerRef.current);
     setLeaving(true);
+    onLeaveStartRef.current?.();
     document.documentElement.classList.replace(ACTIVE_CLASS, FADING_CLASS);
 
     const video = videoRef.current;

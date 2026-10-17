@@ -1,0 +1,157 @@
+html.logged-out-home-active,
+html.logged-out-home-active body {
+  overflow: hidden;
+  overscroll-behavior: none;
+  background-color: #ffffff;
+}
+
+/* Desktop / tablet / other devices: simple centered layout. */
+.logged-out-home {
+  position: fixed;
+  inset: 0;
+  height: 100vh;
+  height: 100dvh;
+  margin: 0;
+  overflow: hidden;
+  background-color: #ffffff;
+  display: grid;
+  grid-template-rows: 1fr auto 1fr;
+  justify-items: center;
+  font-family: 'PT Mono', monospace;
+  text-transform: lowercase;
+}
+
+.logged-out-home.is-fade-in {
+  animation: logged-out-home-fade 500ms ease both;
+}
+
+.logged-out-home__stage {
+  grid-row: 2;
+}
+
+.logged-out-home__wordmark {
+  display: block;
+  width: min(clamp(220px, 28vw, 360px), 80vw, 100vh * 1.1);
+  height: auto;
+  max-width: none;
+  -webkit-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+.logged-out-home__links {
+  grid-row: 3;
+  align-self: end;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 0 calc(32px + env(safe-area-inset-bottom, 0px));
+  font-size: 17px;
+  line-height: 1.5;
+  opacity: 1;
+  transition: opacity 400ms ease 200ms;
+}
+
+.logged-out-home__links.is-playing {
+  opacity: 0;
+  pointer-events: none;
+  transition: none;
+}
+
+.logged-out-home__link {
+  position: relative;
+  display: inline-block;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.logged-out-home__link--primary {
+  color: #000000;
+  text-decoration-color: rgba(0, 0, 0, 0.45);
+}
+
+.logged-out-home__link--secondary {
+  color: #767676;
+}
+
+/* Invisible 44px tap areas; they extend away from each other so they never overlap. */
+.logged-out-home__link::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  width: calc(100% + 24px);
+  min-width: 44px;
+  height: 44px;
+  transform: translateX(-50%);
+}
+
+.logged-out-home__link--primary::after {
+  bottom: 0;
+}
+
+.logged-out-home__link--secondary::after {
+  top: 0;
+}
+
+.logged-out-home__link:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 4px;
+}
+
+/* Phones: must match PHONE_QUERY in IntroVideo.jsx. The 9:16 stage uses the same
+   cover scaling as the intro video so the wordmark lines up with its last frame. */
+@media (pointer: coarse) and (hover: none) and (max-width: 500px) and (orientation: portrait) {
+  .logged-out-home {
+    display: block;
+  }
+
+  .logged-out-home__stage {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: max(100vw, calc(100vh * 9 / 16));
+    width: max(100vw, calc(100dvh * 9 / 16));
+    aspect-ratio: 9 / 16;
+    transform: translate(-50%, -50%);
+  }
+
+  .logged-out-home__wordmark {
+    position: absolute;
+    left: 50%;
+    top: 50.275%;
+    width: 45.401%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* "sign in" is centered 4% above the bottom (~96%), "create an account" one line above (~93%). */
+  .logged-out-home__links {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: calc(4% + env(safe-area-inset-bottom, 0px) - 0.75em);
+    padding: 0;
+    font-size: clamp(15px, 4vw, 20px);
+  }
+}
+
+@keyframes logged-out-home-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logged-out-home.is-fade-in {
+    animation: none;
+  }
+
+  .logged-out-home__links {
+    transition: none;
+  }
+}

@@ -8,6 +8,11 @@ import ListPage from './components/ListPage';
 import Collection from './components/Collection';
 import Streak from './components/Streak';
 import IntroVideo, { shouldShowIntroVideo, isIntroVideoDevice } from './components/IntroVideo';
+import LoggedOutHome from './components/LoggedOutHome';
+import CreateAccountPlaceholder from './components/placeholders/CreateAccountPlaceholder';
+import SignInPlaceholder from './components/placeholders/SignInPlaceholder';
+import { getCachedSignedIn, resolveSignedIn } from './auth/session';
+import { useRoute } from './utils/router';
 import { useSubscribedLists, useCaptures, useStreakData, useSettings, useEventLogs } from './hooks/useAppData';
 import { getAllDailyFinds, storeDailyFinds, loadDailyFinds, shouldRefreshDailyFind } from './utils/dailyFind';
 import { isListVisible } from './data/focusLists';
@@ -17,6 +22,19 @@ export default function App() {
   const [currentScreen, setCurrentScreen] = useState('intro');
   const [dailyFindIndex, setDailyFindIndex] = useState(0);
   const [showIntroVideo, setShowIntroVideo] = useState(shouldShowIntroVideo);
+  const [introLeaving, setIntroLeaving] = useState(false);
+  const [isPhone] = useState(isIntroVideoDevice);
+  const route = useRoute();
+
+  // Auth: null while resolving (max ~1s), so neither home screen flashes before the answer is known.
+  const [signedIn, setSignedIn] = useState(getCachedSignedIn);
+  useEffect(() => {
+    let active = true;
+    resolveSignedIn().then((value) => active && setSignedIn(value));
+    return () => {
+      active = false;
+    };
+  }, []);
 
   // Data hooks
   const [allSubscribedLists, setSubscribedLists] = useSubscribedLists();
@@ -212,10 +230,31 @@ export default function App() {
     }
   };
 
+  const renderRoute = () => {
+    if (route === '/create-account') return <CreateAccountPlaceholder />;
+    if (route === '/sign-in') return <SignInPlaceholder />;
+    if (signedIn === null) return null;
+    if (signedIn) return renderScreen();
+    return (
+      <LoggedOutHome
+        introPhase={showIntroVideo ? (introLeaving ? 'leaving' : 'playing') : 'done'}
+        fadeIn={!isPhone}
+      />
+    );
+  };
+
   return (
     <div className="min-h-screen">
-      {renderScreen()}
-      {showIntroVideo && <IntroVideo onFinish={() => setShowIntroVideo(false)} />}
+      {renderRoute()}
+      {showIntroVideo && (
+        <IntroVideo
+          onLeaveStart={() => setIntroLeaving(true)}
+          onFinish={() => {
+            setShowIntroVideo(false);
+            setIntroLeaving(false);
+          }}
+        />
+      )}
       {/* TEMP: dev-only shortcut back to the intro screen. Remove later. */}
       {false && import.meta.env.DEV && currentScreen !== 'intro' && (
         <button
