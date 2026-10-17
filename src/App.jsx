@@ -7,7 +7,7 @@ import Capture from './components/Capture';
 import ListPage from './components/ListPage';
 import Collection from './components/Collection';
 import Streak from './components/Streak';
-import IntroVideo, { shouldShowIntroVideo } from './components/IntroVideo';
+import IntroVideo, { shouldShowIntroVideo, isIntroVideoDevice } from './components/IntroVideo';
 import { useSubscribedLists, useCaptures, useStreakData, useSettings, useEventLogs } from './hooks/useAppData';
 import { getAllDailyFinds, storeDailyFinds, loadDailyFinds, shouldRefreshDailyFind } from './utils/dailyFind';
 import { isListVisible } from './data/focusLists';
@@ -142,7 +142,10 @@ export default function App() {
             onAddList={() => setCurrentScreen('subscribe')}
             onViewCollection={() => setCurrentScreen('collection')}
             onViewStreak={() => setCurrentScreen('streak')}
-            onGoToIntro={() => setCurrentScreen('intro')}
+            onGoToIntro={() => {
+              setCurrentScreen('intro');
+              setShowIntroVideo(isIntroVideoDevice());
+            }}
           />
         );
       

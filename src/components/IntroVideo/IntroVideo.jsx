@@ -18,14 +18,17 @@ const ICON_FAINT_AFTER_MS = 4000;
 const ICON_SOUND_ON_HIDE_MS = 1500;
 const ICON_REMUTE_FAINT_MS = 1500;
 
+export function isIntroVideoDevice() {
+  return typeof window !== 'undefined' && !!window.matchMedia && window.matchMedia(PHONE_QUERY).matches;
+}
+
 export function shouldShowIntroVideo() {
-  if (typeof window === 'undefined' || !window.matchMedia) return false;
   try {
     if (sessionStorage.getItem(SESSION_KEY)) return false;
   } catch {
     return false;
   }
-  return window.matchMedia(PHONE_QUERY).matches;
+  return isIntroVideoDevice();
 }
 
 function MutedIcon() {

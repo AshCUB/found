@@ -1,1 +1,1 @@
-export { default, shouldShowIntroVideo } from './IntroVideo';
+export { default, shouldShowIntroVideo, isIntroVideoDevice } from './IntroVideo';
