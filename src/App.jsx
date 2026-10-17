@@ -23,7 +23,6 @@ export default function App() {
   const [dailyFindIndex, setDailyFindIndex] = useState(0);
   const [showIntroVideo, setShowIntroVideo] = useState(shouldShowIntroVideo);
   const [introLeaving, setIntroLeaving] = useState(false);
-  const [isPhone] = useState(isIntroVideoDevice);
   const route = useRoute();
 
   // Auth: null while resolving (max ~1s), so neither home screen flashes before the answer is known.
@@ -235,12 +234,7 @@ export default function App() {
     if (route === '/sign-in') return <SignInPlaceholder />;
     if (signedIn === null) return null;
     if (signedIn) return renderScreen();
-    return (
-      <LoggedOutHome
-        introPhase={showIntroVideo ? (introLeaving ? 'leaving' : 'playing') : 'done'}
-        fadeIn={!isPhone}
-      />
-    );
+    return <LoggedOutHome introPhase={showIntroVideo ? (introLeaving ? 'leaving' : 'playing') : 'done'} />;
   };
 
   return (

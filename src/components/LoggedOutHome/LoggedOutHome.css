@@ -21,8 +21,19 @@ html.logged-out-home-active body {
   text-transform: lowercase;
 }
 
-.logged-out-home.is-fade-in {
-  animation: logged-out-home-fade 500ms ease both;
+/* Reveal: wordmark fades in over 2s, short pause, then the links fade in over 2s. */
+.logged-out-home.is-waiting .logged-out-home__wordmark,
+.logged-out-home.is-waiting .logged-out-home__links {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.logged-out-home.is-revealing .logged-out-home__wordmark {
+  animation: logged-out-home-fade 2000ms ease both;
+}
+
+.logged-out-home.is-revealing .logged-out-home__links {
+  animation: logged-out-home-fade 2000ms ease 2400ms both;
 }
 
 .logged-out-home__stage {
@@ -46,16 +57,9 @@ html.logged-out-home-active body {
   flex-direction: column;
   align-items: center;
   padding: 16px 0 calc(32px + env(safe-area-inset-bottom, 0px));
+  gap: 0.4em;
   font-size: 17px;
   line-height: 1.5;
-  opacity: 1;
-  transition: opacity 400ms ease 200ms;
-}
-
-.logged-out-home__links.is-playing {
-  opacity: 0;
-  pointer-events: none;
-  transition: none;
 }
 
 .logged-out-home__link {
@@ -137,21 +141,21 @@ html.logged-out-home-active body {
   }
 }
 
+/* visibility keeps the links untappable until their fade actually starts. */
 @keyframes logged-out-home-fade {
   from {
     opacity: 0;
+    visibility: hidden;
   }
   to {
     opacity: 1;
+    visibility: visible;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .logged-out-home.is-fade-in {
+  .logged-out-home.is-revealing .logged-out-home__wordmark,
+  .logged-out-home.is-revealing .logged-out-home__links {
     animation: none;
-  }
-
-  .logged-out-home__links {
-    transition: none;
   }
 }
