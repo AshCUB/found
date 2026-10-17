@@ -37,7 +37,7 @@ function friendlyError(error) {
     case 'email_exists':
       return ALREADY_REGISTERED;
     case 'email_address_invalid':
-      return "that email address can't be used. please try a different one.";
+      return "that email can't be found. please try a different one.";
     case 'weak_password':
       return 'that password is too easy to guess. try a longer one with a mix of letters, numbers, and symbols.';
     case 'signup_disabled':
