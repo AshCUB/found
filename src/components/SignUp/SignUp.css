@@ -1,0 +1,226 @@
+html.sign-up-active,
+html.sign-up-active body {
+  background-color: #ffffff;
+}
+
+/* Scrolls (not fixed like the placeholders) so the form stays reachable above a mobile keyboard. */
+.sign-up {
+  position: relative;
+  box-sizing: border-box;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+  padding: calc(env(safe-area-inset-top, 0px) + 72px) calc(env(safe-area-inset-right, 0px) + 20px)
+    calc(env(safe-area-inset-bottom, 0px) + 32px) calc(env(safe-area-inset-left, 0px) + 20px);
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'PT Mono', monospace;
+  text-transform: lowercase;
+  color: #000000;
+}
+
+.sign-up__panel {
+  width: 100%;
+  max-width: 360px;
+}
+
+.sign-up__title {
+  margin: 0 0 32px;
+  font-family: 'TAY Makawao', sans-serif;
+  font-size: 32px;
+  font-weight: normal;
+  line-height: 1.2;
+  text-align: center;
+  color: #5e7333;
+  outline: none;
+}
+
+.sign-up__field {
+  margin-bottom: 24px;
+}
+
+.sign-up__label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* 16px text keeps iOS from zooming in on focus. */
+.sign-up__input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 15px;
+  border: 2px solid #f2f2f2;
+  border-radius: 12px;
+  background-color: #f2f2f2;
+  font-family: 'PT Mono', monospace;
+  font-size: 16px;
+  line-height: 1.5;
+  text-transform: none;
+  color: #000000;
+  transition: border-color 0.2s ease;
+}
+
+.sign-up__input:focus {
+  outline: none;
+  border-color: #5e7333;
+}
+
+.sign-up__input[aria-invalid='true'] {
+  border-color: #c62828;
+}
+
+.sign-up__password {
+  position: relative;
+}
+
+.sign-up__password .sign-up__input {
+  padding-right: 72px;
+}
+
+.sign-up__toggle {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  bottom: 2px;
+  min-width: 64px;
+  padding: 0 15px;
+  border: none;
+  border-radius: 0 10px 10px 0;
+  background: transparent;
+  font-family: 'PT Mono', monospace;
+  font-size: 14px;
+  text-transform: lowercase;
+  color: #767676;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.sign-up__toggle:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: -6px;
+}
+
+.sign-up__error {
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #c62828;
+}
+
+.sign-up__error--form {
+  margin: 0 0 24px;
+}
+
+.sign-up__submit {
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  margin-top: 32px;
+  padding: 15px 32px;
+  border: none;
+  border-radius: 9999px;
+  background-color: #5e7333;
+  font-family: 'Roboto Slab', serif;
+  font-size: 18px;
+  line-height: 1.2;
+  text-transform: lowercase;
+  color: #ffffff;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.sign-up__submit:hover {
+  opacity: 0.9;
+}
+
+.sign-up__submit:focus-visible {
+  outline: 1px solid #000000;
+  outline-offset: 4px;
+}
+
+.sign-up__submit:disabled {
+  background-color: #333333;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.sign-up__text {
+  margin: 0 0 16px;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.sign-up__text--muted {
+  color: #767676;
+  font-size: 14px;
+}
+
+.sign-up__email {
+  text-transform: none;
+  word-break: break-all;
+}
+
+.sign-up__footer {
+  margin: 24px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+  color: #767676;
+}
+
+.sign-up__back,
+.sign-up__link {
+  position: relative;
+  color: #000000;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.sign-up__back {
+  position: absolute;
+  top: calc(env(safe-area-inset-top, 0px) + 16px);
+  left: calc(env(safe-area-inset-left, 0px) + 20px);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Invisible 44px tap areas, same as the logged-out home links. */
+.sign-up__back::after,
+.sign-up__link::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100% + 24px, 44px);
+  height: 44px;
+  transform: translate(-50%, -50%);
+}
+
+.sign-up__back:focus-visible,
+.sign-up__link:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sign-up__input,
+  .sign-up__submit {
+    transition: none;
+  }
+}

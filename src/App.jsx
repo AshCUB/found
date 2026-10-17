@@ -9,7 +9,7 @@ import Collection from './components/Collection';
 import Streak from './components/Streak';
 import IntroVideo, { shouldShowIntroVideo, isIntroVideoDevice } from './components/IntroVideo';
 import LoggedOutHome from './components/LoggedOutHome';
-import CreateAccountPlaceholder from './components/placeholders/CreateAccountPlaceholder';
+import SignUp from './components/SignUp';
 import SignInPlaceholder from './components/placeholders/SignInPlaceholder';
 import { getCachedSignedIn, resolveSignedIn } from './auth/session';
 import { useRoute } from './utils/router';
@@ -230,7 +230,7 @@ export default function App() {
   };
 
   const renderRoute = () => {
-    if (route === '/create-account') return <CreateAccountPlaceholder />;
+    if (route === '/create-account') return <SignUp />;
     if (route === '/sign-in') return <SignInPlaceholder />;
     if (signedIn === null) return null;
     if (signedIn) return renderScreen();
