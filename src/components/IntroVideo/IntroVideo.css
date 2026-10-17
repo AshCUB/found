@@ -3,7 +3,7 @@ html.intro-video-active body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #929463;
+  background-color: #ffffff;
 }
 
 html.intro-video-fading,
@@ -18,7 +18,7 @@ html.intro-video-fading body {
   z-index: 9999;
   margin: 0;
   padding: 0;
-  background-color: #929463;
+  background-color: #ffffff;
   opacity: 1;
   transition: opacity 500ms ease;
   overflow: hidden;
@@ -44,7 +44,7 @@ html.intro-video-fading body {
   padding: 0;
   object-fit: cover;
   object-position: center center;
-  background-color: #929463;
+  background-color: #ffffff;
   pointer-events: none;
   display: block;
 }
