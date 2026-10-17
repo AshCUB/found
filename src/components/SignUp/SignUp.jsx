@@ -44,8 +44,8 @@ function friendlyError(error) {
 
 export default function SignUp() {
   const [values, setValues] = useState({ name: '', email: '', password: '' });
-  const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
+  const [submitted, setSubmitted] = useState(false);
   const [formError, setFormError] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -62,25 +62,24 @@ export default function SignUp() {
     if (sentTo) successRef.current?.focus();
   }, [sentTo]);
 
-  const handleChange = (e) => {
-    const next = { ...values, [e.target.name]: e.target.value };
-    setValues(next);
-    if (touched[e.target.name]) setErrors(validate(next));
-  };
+  // Before the first submit, only fields the user has filled in and left show errors (never "please enter …").
+  const allErrors = validate(values);
+  const errors = Object.fromEntries(
+    FIELDS.filter((f) => allErrors[f] && (submitted || (touched[f] && values[f]))).map((f) => [f, allErrors[f]])
+  );
+
+  const handleChange = (e) => setValues({ ...values, [e.target.name]: e.target.value });
 
   const handleBlur = (e) => {
     const { name } = e.target;
-    if (!values[name]) return;
-    setTouched((t) => ({ ...t, [name]: true }));
-    setErrors(validate(values));
+    if (values[name]) setTouched((t) => ({ ...t, [name]: true }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (submitting) return;
     const found = validate(values);
-    setErrors(found);
-    setTouched({ name: true, email: true, password: true });
+    setSubmitted(true);
     setFormError('');
     const firstInvalid = FIELDS.find((f) => found[f]);
     if (firstInvalid) {
