@@ -10,8 +10,8 @@ import Streak from './components/Streak';
 import IntroVideo, { shouldShowIntroVideo, isIntroVideoDevice } from './components/IntroVideo';
 import LoggedOutHome from './components/LoggedOutHome';
 import SignUp from './components/SignUp';
-import SignInPlaceholder from './components/placeholders/SignInPlaceholder';
-import { getCachedSignedIn, resolveSignedIn } from './auth/session';
+import SignIn from './components/SignIn';
+import { getCachedSignedIn, onSignedInChange, resolveSignedIn } from './auth/session';
 import { useRoute } from './utils/router';
 import { useSubscribedLists, useCaptures, useStreakData, useSettings, useEventLogs } from './hooks/useAppData';
 import { getAllDailyFinds, storeDailyFinds, loadDailyFinds, shouldRefreshDailyFind } from './utils/dailyFind';
@@ -30,8 +30,10 @@ export default function App() {
   useEffect(() => {
     let active = true;
     resolveSignedIn().then((value) => active && setSignedIn(value));
+    const unsubscribe = onSignedInChange(setSignedIn);
     return () => {
       active = false;
+      unsubscribe();
     };
   }, []);
 
@@ -231,7 +233,7 @@ export default function App() {
 
   const renderRoute = () => {
     if (route === '/create-account') return <SignUp />;
-    if (route === '/sign-in') return <SignInPlaceholder />;
+    if (route === '/sign-in') return <SignIn />;
     if (signedIn === null) return null;
     if (signedIn) return renderScreen();
     return <LoggedOutHome introPhase={showIntroVideo ? (introLeaving ? 'leaving' : 'playing') : 'done'} />;

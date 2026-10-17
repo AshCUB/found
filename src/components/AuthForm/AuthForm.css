@@ -1,10 +1,10 @@
-html.sign-up-active,
-html.sign-up-active body {
+html.auth-page-active,
+html.auth-page-active body {
   background-color: #ffffff;
 }
 
 /* Scrolls (not fixed like the placeholders) so the form stays reachable above a mobile keyboard. */
-.sign-up {
+.auth-page {
   position: relative;
   box-sizing: border-box;
   min-height: 100vh;
@@ -21,12 +21,12 @@ html.sign-up-active body {
   color: #000000;
 }
 
-.sign-up__panel {
+.auth-page__panel {
   width: 100%;
   max-width: 360px;
 }
 
-.sign-up__title {
+.auth-page__title {
   margin: 0 0 32px;
   font-family: 'TAY Makawao', sans-serif;
   font-size: 32px;
@@ -37,11 +37,11 @@ html.sign-up-active body {
   outline: none;
 }
 
-.sign-up__field {
+.auth-page__field {
   margin-bottom: 24px;
 }
 
-.sign-up__label {
+.auth-page__label {
   display: block;
   margin-bottom: 8px;
   font-size: 14px;
@@ -49,7 +49,7 @@ html.sign-up-active body {
 }
 
 /* 16px text keeps iOS from zooming in on focus. */
-.sign-up__input {
+.auth-page__input {
   display: block;
   box-sizing: border-box;
   width: 100%;
@@ -66,24 +66,24 @@ html.sign-up-active body {
   transition: border-color 0.2s ease;
 }
 
-.sign-up__input:focus {
+.auth-page__input:focus {
   outline: none;
   border-color: #5e7333;
 }
 
-.sign-up__input[aria-invalid='true'] {
+.auth-page__input[aria-invalid='true'] {
   border-color: #c62828;
 }
 
-.sign-up__password {
+.auth-page__password {
   position: relative;
 }
 
-.sign-up__password .sign-up__input {
+.auth-page__password .auth-page__input {
   padding-right: 72px;
 }
 
-.sign-up__toggle {
+.auth-page__toggle {
   position: absolute;
   top: 2px;
   right: 2px;
@@ -105,23 +105,23 @@ html.sign-up-active body {
   touch-action: manipulation;
 }
 
-.sign-up__toggle:focus-visible {
+.auth-page__toggle:focus-visible {
   outline: 1px solid currentColor;
   outline-offset: -6px;
 }
 
-.sign-up__error {
+.auth-page__error {
   margin: 8px 0 0;
   font-size: 14px;
   line-height: 1.5;
   color: #c62828;
 }
 
-.sign-up__error--form {
+.auth-page__error--form {
   margin: 0 0 24px;
 }
 
-.sign-up__submit {
+.auth-page__submit {
   display: block;
   width: 100%;
   min-height: 48px;
@@ -141,39 +141,39 @@ html.sign-up-active body {
   touch-action: manipulation;
 }
 
-.sign-up__submit:hover {
+.auth-page__submit:hover {
   opacity: 0.9;
 }
 
-.sign-up__submit:focus-visible {
+.auth-page__submit:focus-visible {
   outline: 1px solid #000000;
   outline-offset: 4px;
 }
 
-.sign-up__submit:disabled {
+.auth-page__submit:disabled {
   background-color: #333333;
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-.sign-up__text {
+.auth-page__text {
   margin: 0 0 16px;
   font-size: 16px;
   line-height: 1.5;
   text-align: center;
 }
 
-.sign-up__text--muted {
+.auth-page__text--muted {
   color: #767676;
   font-size: 14px;
 }
 
-.sign-up__email {
+.auth-page__email {
   text-transform: none;
   word-break: break-all;
 }
 
-.sign-up__footer {
+.auth-page__footer {
   margin: 24px 0 0;
   font-size: 14px;
   line-height: 1.5;
@@ -181,8 +181,8 @@ html.sign-up-active body {
   color: #767676;
 }
 
-.sign-up__back,
-.sign-up__link {
+.auth-page__back,
+.auth-page__link {
   position: relative;
   color: #000000;
   text-decoration: underline;
@@ -192,7 +192,7 @@ html.sign-up-active body {
   touch-action: manipulation;
 }
 
-.sign-up__back {
+.auth-page__back {
   position: absolute;
   top: calc(env(safe-area-inset-top, 0px) + 16px);
   left: calc(env(safe-area-inset-left, 0px) + 20px);
@@ -201,8 +201,8 @@ html.sign-up-active body {
 }
 
 /* Invisible 44px tap areas, same as the logged-out home links. */
-.sign-up__back::after,
-.sign-up__link::after {
+.auth-page__back::after,
+.auth-page__link::after {
   content: '';
   position: absolute;
   top: 50%;
@@ -212,15 +212,15 @@ html.sign-up-active body {
   transform: translate(-50%, -50%);
 }
 
-.sign-up__back:focus-visible,
-.sign-up__link:focus-visible {
+.auth-page__back:focus-visible,
+.auth-page__link:focus-visible {
   outline: 1px solid currentColor;
   outline-offset: 4px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sign-up__input,
-  .sign-up__submit {
+  .auth-page__input,
+  .auth-page__submit {
     transition: none;
   }
 }
