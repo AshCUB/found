@@ -8,34 +8,93 @@ import ListPage from './components/ListPage';
 import Collection from './components/Collection';
 import Streak from './components/Streak';
 import IntroVideo, { shouldShowIntroVideo, isIntroVideoDevice } from './components/IntroVideo';
-import LoggedOutHome from './components/LoggedOutHome';
+import LoggedOutHome, { replayReveal } from './components/LoggedOutHome';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
-import { getCachedSignedIn, onSignedInChange, resolveSignedIn } from './auth/session';
-import { useRoute } from './utils/router';
+import { getCachedUserId, onUserIdChange, resolveUserId, signOut } from './auth/session';
+import { navigate, useRoute } from './utils/router';
 import { useSubscribedLists, useCaptures, useStreakData, useSettings, useEventLogs } from './hooks/useAppData';
+import { useOnboarding } from './hooks/useOnboarding';
 import { getAllDailyFinds, storeDailyFinds, loadDailyFinds, shouldRefreshDailyFind } from './utils/dailyFind';
 import { isListVisible } from './data/focusLists';
 
+const SIGNED_OUT_ONLY_ROUTES = ['/sign-in', '/create-account'];
+const GET_STARTED_ROUTE = '/get-started';
+const CHOOSE_LISTS_ROUTE = '/choose-lists';
+const ONBOARDING_ROUTES = [GET_STARTED_ROUTE, CHOOSE_LISTS_ROUTE];
+
+// Where the current route should send the user: a path to redirect to, null to render the route,
+// or undefined while the session or onboarding status is still loading.
+function getRedirect(route, userId, onboardingCompleted) {
+  if (userId === undefined) return undefined;
+  if (!userId) {
+    if (ONBOARDING_ROUTES.includes(route)) return '/sign-in';
+    return route === '/' || SIGNED_OUT_ONLY_ROUTES.includes(route) ? null : '/';
+  }
+  if (SIGNED_OUT_ONLY_ROUTES.includes(route)) return '/';
+  if (onboardingCompleted === undefined) return undefined;
+  if (!onboardingCompleted) return ONBOARDING_ROUTES.includes(route) ? null : GET_STARTED_ROUTE;
+  // The list picker stays reachable on demand (e.g. "Add a list") after onboarding.
+  return route === '/' || route === CHOOSE_LISTS_ROUTE ? null : '/';
+}
+
+function LoadingScreen() {
+  return (
+    <div className="min-h-screen bg-grey" role="status">
+      <span className="sr-only">loading…</span>
+    </div>
+  );
+}
+
+function LoadErrorScreen({ onRetry }) {
+  return (
+    <div className="min-h-screen bg-grey flex flex-col items-center justify-center p-lg">
+      <div className="max-w-md w-full text-center" role="alert">
+        <p className="font-body text-sm text-dark-grey mb-lg">
+          we couldn't load your account. check your connection and try again.
+        </p>
+        <button
+          onClick={onRetry}
+          className="font-buttons text-lg bg-green text-white px-xl py-md rounded-full w-full hover:opacity-90 transition-opacity"
+        >
+          try again
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   // Screen state
-  const [currentScreen, setCurrentScreen] = useState('intro');
+  const [currentScreen, setCurrentScreen] = useState('home');
   const [dailyFindIndex, setDailyFindIndex] = useState(0);
   const [showIntroVideo, setShowIntroVideo] = useState(shouldShowIntroVideo);
   const [introLeaving, setIntroLeaving] = useState(false);
   const route = useRoute();
 
-  // Auth: null while resolving (max ~1s), so neither home screen flashes before the answer is known.
-  const [signedIn, setSignedIn] = useState(getCachedSignedIn);
+  // Auth: undefined while resolving, so no page renders before the answer is known.
+  const [userId, setUserId] = useState(getCachedUserId);
+  const [signingOut, setSigningOut] = useState(false);
   useEffect(() => {
     let active = true;
-    resolveSignedIn().then((value) => active && setSignedIn(value));
-    const unsubscribe = onSignedInChange(setSignedIn);
+    resolveUserId().then((value) => active && setUserId(value));
+    const unsubscribe = onUserIdChange(setUserId);
     return () => {
       active = false;
       unsubscribe();
     };
   }, []);
+
+  // Onboarding status lives on the user's Supabase profile, so it follows them across sign-outs and devices.
+  const onboarding = useOnboarding(userId);
+  const redirect = getRedirect(route, userId, onboarding.completed);
+  useEffect(() => {
+    if (redirect) navigate(redirect, { replace: true });
+  }, [redirect]);
+
+  useEffect(() => {
+    setCurrentScreen('home');
+  }, [userId]);
 
   // Data hooks
   const [allSubscribedLists, setSubscribedLists] = useSubscribedLists();
@@ -55,14 +114,6 @@ export default function App() {
   useEffect(() => {
     logAppOpen();
     checkAndResetStreak();
-
-    // Check if user has already gone through intro
-    const hasOnboarded = localStorage.getItem('found_onboarded');
-    if (hasOnboarded && subscribedLists.length > 0) {
-      setCurrentScreen('home');
-    } else if (hasOnboarded) {
-      setCurrentScreen('subscribe');
-    }
 
     // Load or generate daily finds
     const storedDailyFinds = loadDailyFinds();
@@ -92,14 +143,27 @@ export default function App() {
   };
 
   // Screen handlers
-  const handleGetStarted = () => {
-    localStorage.setItem('found_onboarded', 'true');
-    setCurrentScreen('subscribe');
+  // Opens the list picker outside onboarding; finishing returns to the page it was opened from.
+  const openListPicker = () => {
+    setCurrentScreen('home');
+    navigate(CHOOSE_LISTS_ROUTE, { state: { returnTo: route } });
   };
 
-  const handleSubscribe = (listIds) => {
+  const handleSubscribe = async (listIds) => {
+    if (onboarding.completed) {
+      setSubscribedLists((prev) => [...new Set([...prev, ...listIds])]);
+      if (window.history.state?.returnTo) window.history.back();
+      else navigate('/', { replace: true });
+      return;
+    }
     setSubscribedLists(listIds);
-    setCurrentScreen('home');
+    try {
+      await onboarding.complete();
+      navigate('/', { replace: true });
+    } catch (error) {
+      console.error('Error completing onboarding:', error);
+      alert("we couldn't save your progress. check your connection and try again.");
+    }
   };
 
   const handleViewDailyFind = (dailyFind) => {
@@ -130,6 +194,18 @@ export default function App() {
     setCurrentScreen('capture');
   };
 
+  // Shows the loading screen until the session is cleared, so the logged-out landing page doesn't flash first.
+  const handleSignOut = async () => {
+    setSigningOut(true);
+    await signOut();
+    replayReveal();
+    setShowIntroVideo(false);
+    setIntroLeaving(false);
+    setUserId(null);
+    navigate('/', { replace: true });
+    setSigningOut(false);
+  };
+
   const handleToggleStreak = (show) => {
     setSettings({ ...settings, showStreak: show });
   };
@@ -138,15 +214,7 @@ export default function App() {
   const renderScreen = () => {
     switch (currentScreen) {
       case 'intro':
-        return <Intro onGetStarted={handleGetStarted} />;
-      
-      case 'subscribe':
-        return (
-          <Subscribe
-            onSubscribe={handleSubscribe}
-            subscribedLists={subscribedLists}
-          />
-        );
+        return <Intro onGetStarted={openListPicker} />;
       
       case 'home':
         return (
@@ -158,9 +226,10 @@ export default function App() {
             showStreak={settings.showStreak}
             dailyFinds={dailyFinds}
             onViewDailyFind={handleViewDailyFind}
-            onAddList={() => setCurrentScreen('subscribe')}
+            onAddList={openListPicker}
             onViewCollection={() => setCurrentScreen('collection')}
             onViewStreak={() => setCurrentScreen('streak')}
+            onSignOut={handleSignOut}
             onGoToIntro={() => {
               setCurrentScreen('intro');
               setShowIntroVideo(isIntroVideoDevice());
@@ -227,16 +296,29 @@ export default function App() {
         );
       
       default:
-        return <Intro onGetStarted={handleGetStarted} />;
+        return <Intro onGetStarted={openListPicker} />;
     }
   };
 
   const renderRoute = () => {
-    if (route === '/create-account') return <SignUp />;
-    if (route === '/sign-in') return <SignIn />;
-    if (signedIn === null) return null;
-    if (signedIn) return renderScreen();
-    return <LoggedOutHome introPhase={showIntroVideo ? (introLeaving ? 'leaving' : 'playing') : 'done'} />;
+    if (signingOut) return <LoadingScreen />;
+    if (redirect === undefined) {
+      return userId && onboarding.error ? <LoadErrorScreen onRetry={onboarding.retry} /> : <LoadingScreen />;
+    }
+    if (redirect) return <LoadingScreen />;
+    switch (route) {
+      case '/create-account':
+        return <SignUp />;
+      case '/sign-in':
+        return <SignIn />;
+      case GET_STARTED_ROUTE:
+        return <Intro onGetStarted={() => navigate(CHOOSE_LISTS_ROUTE)} />;
+      case CHOOSE_LISTS_ROUTE:
+        return <Subscribe onSubscribe={handleSubscribe} subscribedLists={subscribedLists} />;
+      default:
+        if (userId) return renderScreen();
+        return <LoggedOutHome introPhase={showIntroVideo ? (introLeaving ? 'leaving' : 'playing') : 'done'} />;
+    }
   };
 
   return (

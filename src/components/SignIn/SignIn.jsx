@@ -43,7 +43,7 @@ export default function SignIn() {
     onSubmit: async ({ email, password }) => {
       const { error } = await supabase.auth.signInWithPassword({ email: email.trim(), password });
       if (error) return friendlyError(error);
-      navigate('/');
+      navigate('/', { replace: true });
     },
   });
 

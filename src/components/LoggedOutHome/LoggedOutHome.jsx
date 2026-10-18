@@ -8,6 +8,11 @@ const WORDMARK_SRC = `${import.meta.env.BASE_URL}images/found-wordmark.svg`;
 // The reveal animation plays once per page load (not again when returning from the placeholder pages).
 let hasRevealed = false;
 
+// Makes the next visit play the reveal again (e.g. after signing out).
+export function replayReveal() {
+  hasRevealed = false;
+}
+
 // introPhase: 'playing' (intro video is on top), 'leaving' (video crossfading out), 'done' (no video).
 export default function LoggedOutHome({ introPhase = 'done' }) {
   const [animate] = useState(() => !hasRevealed);

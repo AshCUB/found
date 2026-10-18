@@ -9,9 +9,11 @@ function currentPath() {
   return rel.replace(/\/+$/, '') || '/';
 }
 
-export function navigate(path) {
+// replace: swap the current history entry instead of adding one (used for redirects).
+// state: stored on the history entry, readable via window.history.state.
+export function navigate(path, { replace = false, state = null } = {}) {
   if (path === currentPath()) return;
-  window.history.pushState(null, '', BASE + path);
+  window.history[replace ? 'replaceState' : 'pushState'](state, '', BASE + path);
   window.dispatchEvent(new Event(NAVIGATE_EVENT));
 }
 

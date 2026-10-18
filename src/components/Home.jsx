@@ -9,6 +9,7 @@ export default function Home({
   onViewCollection,
   onViewStreak,
   onGoToIntro,
+  onSignOut,
 }) {
   return (
     <div className="min-h-screen bg-grey animate-fade-in">
@@ -21,10 +22,10 @@ export default function Home({
             </button>
           </h1>
           <button
-            onClick={onViewStreak}
+            onClick={onSignOut}
             className="font-buttons text-sm text-dark-grey hover:text-green transition-colors"
           >
-            Streak
+            Sign out
           </button>
         </div>
 

@@ -1,1 +1,1 @@
-export { default } from './LoggedOutHome';
+export { default, replayReveal } from './LoggedOutHome';
