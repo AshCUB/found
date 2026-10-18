@@ -64,6 +64,8 @@ export default function Home({
           <div className="space-y-md">
             {dailyFinds.map((dailyFind) => {
               const list = focusLists.find((l) => l.id === dailyFind.listId);
+              const image = dailyFind.item.image || list?.image;
+              const isFitted = /shape-|letters-numbers\//.test(image ?? '');
               return (
                 <div
                   key={dailyFind.listId}
@@ -76,19 +78,20 @@ export default function Home({
                 >
                   <div className="flex items-center gap-md">
                     <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-grey relative">
-                      {list?.image ? (
+                      {image ? (
                         <img
-                          src={list.image}
-                          alt={list?.name}
+                          key={image}
+                          src={image}
+                          alt={dailyFind.item.name}
                           loading="lazy"
-                          className="w-full h-full object-cover"
+                          className={`w-full h-full ${isFitted ? 'object-contain p-xs' : 'object-cover'}`}
                           onError={(e) => {
                             e.target.style.display = 'none';
                             e.target.nextSibling.style.display = 'flex';
                           }}
                         />
                       ) : null}
-                      <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-green/20 to-blue/20" style={{ display: list?.image ? 'none' : 'flex' }}>
+                      <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-green/20 to-blue/20" style={{ display: image ? 'none' : 'flex' }}>
                         <span className="font-body text-xs text-dark-grey">Image</span>
                       </div>
                     </div>
