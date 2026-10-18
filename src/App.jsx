@@ -18,7 +18,7 @@ import { useOnboarding } from './hooks/useOnboarding';
 import { DEFAULT_STREAK, clearUserCache, useUserData } from './hooks/useUserData';
 import { clearSignedUrlCache } from './services/userData';
 import { getAllDailyFinds, storeDailyFinds, loadDailyFinds, shouldRefreshDailyFind, clearDailyFinds } from './utils/dailyFind';
-import { isListVisible } from './data/focusLists';
+import { focusLists, isListVisible } from './data/focusLists';
 
 const SIGNED_OUT_ONLY_ROUTES = ['/sign-in', '/create-account'];
 const GET_STARTED_ROUTE = '/get-started';
@@ -145,16 +145,31 @@ export default function App() {
     }
   }, [allSubscribedLists, captures]);
 
+  // Keeps today's existing finds and only picks new ones for lists that don't have one yet.
   const refreshDailyFinds = () => {
+    const stored = userId ? loadDailyFinds(userId) : null;
+    const existing = stored && !shouldRefreshDailyFind(stored.date) ? stored.finds : [];
+    const missing = subscribedLists.filter((listId) => !existing.some((find) => find.listId === listId));
     const capturedItemIdsByList = {};
-    subscribedLists.forEach((listId) => {
+    missing.forEach((listId) => {
       capturedItemIdsByList[listId] = getCapturedItemIds(listId);
     });
 
-    const newDailyFinds = getAllDailyFinds(subscribedLists, capturedItemIdsByList);
+    const fresh = getAllDailyFinds(missing, capturedItemIdsByList);
+    const newDailyFinds = subscribedLists
+      .map((listId) => existing.find((find) => find.listId === listId) ?? fresh.find((find) => find.listId === listId))
+      .filter(Boolean);
     setDailyFinds(newDailyFinds);
     if (userId) storeDailyFinds(newDailyFinds, userId);
   };
+
+  // A daily find is complete once something from its list has been logged today; show the item that was found.
+  const todaysDailyFinds = dailyFinds.map((find) => {
+    const log = captures.find((c) => c.listId === find.listId && !shouldRefreshDailyFind(c.date));
+    if (!log) return { ...find, captured: false };
+    const item = focusLists.find((l) => l.id === find.listId)?.items.find((i) => i.id === log.itemId);
+    return { ...find, item: item ?? find.item, captured: true };
+  }).sort((a, b) => a.captured - b.captured);
 
   // Screen handlers
   // Opens the list picker outside onboarding; finishing returns to the page it was opened from.
@@ -187,7 +202,7 @@ export default function App() {
   };
 
   const handleViewDailyFind = (dailyFind) => {
-    const index = dailyFinds.findIndex(df => df.listId === dailyFind.listId);
+    const index = todaysDailyFinds.findIndex(df => df.listId === dailyFind.listId);
     setDailyFindIndex(index);
     setCurrentScreen('dailyFind');
   };
@@ -249,7 +264,7 @@ export default function App() {
               isWeeklySaverAvailable: isWeeklySaverAvailable(),
             }}
             showStreak={settings.showStreak}
-            dailyFinds={dailyFinds}
+            dailyFinds={todaysDailyFinds}
             onViewDailyFind={handleViewDailyFind}
             onAddList={openListPicker}
             onViewCollection={() => setCurrentScreen('collection')}
@@ -265,7 +280,7 @@ export default function App() {
       case 'dailyFind':
         return (
           <DailyFind
-            dailyFinds={dailyFinds}
+            dailyFinds={todaysDailyFinds}
             currentIndex={dailyFindIndex}
             onCapture={handleCapture}
             onClose={() => setCurrentScreen('home')}

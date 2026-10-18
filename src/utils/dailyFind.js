@@ -99,7 +99,7 @@ const dailyFindsKey = (userId) => `found_daily_finds:${userId}`;
 // Store daily finds in localStorage with date
 export function storeDailyFinds(dailyFinds, userId) {
   const data = {
-    date: new Date().toISOString().split('T')[0],
+    date: new Date().toISOString(),
     finds: dailyFinds,
   };
   try {

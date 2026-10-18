@@ -70,7 +70,7 @@ export default function Home({
                   onClick={() => onViewDailyFind(dailyFind)}
                   className={`p-md rounded-lg cursor-pointer transition-all ${
                     dailyFind.captured
-                      ? 'bg-white border-2 border-green'
+                      ? 'bg-green border-2 border-green'
                       : 'bg-white border-2 border-transparent hover:border-green'
                   } shadow-sm`}
                 >
@@ -93,17 +93,17 @@ export default function Home({
                       </div>
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-buttons text-lg text-black mb-xs">
+                      <h3 className={`font-buttons text-lg mb-xs ${dailyFind.captured ? 'text-white' : 'text-black'}`}>
                         {list?.name}
                       </h3>
-                      <p className="font-body text-sm text-dark-grey">
+                      <p className={`font-body text-sm ${dailyFind.captured ? 'text-white' : 'text-dark-grey'}`}>
                         {dailyFind.item.name}
                       </p>
                     </div>
                     {dailyFind.captured && (
-                      <div className="w-6 h-6 rounded-full bg-green flex items-center justify-center">
+                      <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center">
                         <svg
-                          className="w-4 h-4 text-white"
+                          className="w-4 h-4 text-green"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
