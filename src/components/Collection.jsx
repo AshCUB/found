@@ -1,21 +1,124 @@
 import { useState, useMemo } from 'react';
 import { focusLists, visibleFocusLists } from '../data/focusLists';
+import { useSignedPhotoUrls } from '../hooks/useSignedPhotoUrls';
+
+const PhotoIcon = () => (
+  <svg
+    className="w-8 h-8 text-dark-grey"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+    />
+  </svg>
+);
+
+const smallButton = 'font-buttons text-xs text-dark-grey hover:text-green transition-colors disabled:opacity-50';
+
+// Edit-note and delete controls for one find. Changes are saved to the account before the card updates.
+function CaptureActions({ capture, itemName, onUpdateNote, onDelete }) {
+  const [editing, setEditing] = useState(false);
+  const [note, setNote] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState(null);
+
+  const run = async (action) => {
+    setBusy(true);
+    setError(null);
+    try {
+      await action();
+      return true;
+    } catch (e) {
+      console.error('Error updating find:', e.cause ?? e);
+      setError(e.message || 'something went wrong. try again.');
+      return false;
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const saveNote = async () => {
+    if (await run(() => onUpdateNote(capture.id, note.trim() || null))) setEditing(false);
+  };
+
+  const remove = () => {
+    if (window.confirm(`Delete ${itemName} from your collection? This can't be undone.`)) run(() => onDelete(capture.id));
+  };
+
+  return (
+    <div className="mt-xs">
+      {editing ? (
+        <>
+          <textarea
+            value={note}
+            onChange={(e) => setNote(e.target.value)}
+            placeholder="Add a short note..."
+            className="w-full p-sm rounded-lg border-2 border-grey font-body text-xs text-black focus:border-green focus:outline-none resize-none"
+            rows={2}
+            maxLength={100}
+            autoFocus
+          />
+          <div className="flex gap-md">
+            <button onClick={saveNote} disabled={busy} className={smallButton}>
+              {busy ? 'Saving…' : 'Save'}
+            </button>
+            <button onClick={() => setEditing(false)} disabled={busy} className={smallButton}>
+              Cancel
+            </button>
+          </div>
+        </>
+      ) : (
+        <div className="flex gap-md">
+          <button
+            onClick={() => {
+              setNote(capture.note || '');
+              setError(null);
+              setEditing(true);
+            }}
+            disabled={busy}
+            className={smallButton}
+          >
+            Edit note
+          </button>
+          <button onClick={remove} disabled={busy} className={smallButton}>
+            {busy ? 'Deleting…' : 'Delete'}
+          </button>
+        </div>
+      )}
+      {error && (
+        <p className="font-body text-xs text-dark-grey mt-xs" role="alert">
+          {error}
+        </p>
+      )}
+    </div>
+  );
+}
 
 export default function Collection({
   captures,
   subscribedLists,
+  onUpdateNote,
+  onDelete,
   onClose,
 }) {
   const [filterListId, setFilterListId] = useState('all');
 
   const filteredCaptures = useMemo(() => {
     if (filterListId === 'all') {
-      return captures.sort((a, b) => new Date(b.date) - new Date(a.date));
+      return [...captures].sort((a, b) => new Date(b.date) - new Date(a.date));
     }
     return captures
       .filter((c) => c.listId === filterListId)
       .sort((a, b) => new Date(b.date) - new Date(a.date));
   }, [captures, filterListId]);
+
+  // Only the small thumbnails are needed here, signed in one batch.
+  const photos = useSignedPhotoUrls(filteredCaptures.map((c) => c.thumbPath).filter(Boolean));
 
   const getItemName = (listId, itemId) => {
     const list = focusLists.find((l) => l.id === listId);
@@ -102,13 +205,24 @@ export default function Collection({
                 className="bg-white p-md rounded-lg shadow-sm"
               >
                 <div className="flex gap-md">
-                  {capture.photo ? (
-                    <div className="w-20 h-20 rounded-lg bg-grey flex-shrink-0 overflow-hidden">
-                      <img
-                        src={capture.photo}
-                        alt={getItemName(capture.listId, capture.itemId)}
-                        className="w-full h-full object-cover"
-                      />
+                  {capture.thumbPath ? (
+                    <div
+                      className={`w-20 h-20 rounded-lg bg-grey flex-shrink-0 overflow-hidden flex items-center justify-center ${
+                        photos.urls[capture.thumbPath] || photos.failed ? '' : 'animate-pulse'
+                      }`}
+                    >
+                      {photos.urls[capture.thumbPath] ? (
+                        <img
+                          src={photos.urls[capture.thumbPath]}
+                          alt={getItemName(capture.listId, capture.itemId)}
+                          decoding="async"
+                          className="w-full h-full object-cover"
+                        />
+                      ) : photos.failed ? (
+                        <PhotoIcon />
+                      ) : (
+                        <span className="sr-only">loading photo…</span>
+                      )}
                     </div>
                   ) : (
                     <div className="w-20 h-20 rounded-lg bg-grey flex-shrink-0 overflow-hidden relative">
@@ -125,19 +239,7 @@ export default function Collection({
                         />
                       ) : null}
                       <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-green/20 to-blue/20" style={{ display: getItemImage(capture.listId, capture.itemId) ? 'none' : 'flex' }}>
-                        <svg
-                          className="w-8 h-8 text-dark-grey"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                          />
-                        </svg>
+                        <PhotoIcon />
                       </div>
                     </div>
                   )}
@@ -156,6 +258,12 @@ export default function Collection({
                         "{capture.note}"
                       </p>
                     )}
+                    <CaptureActions
+                      capture={capture}
+                      itemName={getItemName(capture.listId, capture.itemId)}
+                      onUpdateNote={onUpdateNote}
+                      onDelete={onDelete}
+                    />
                   </div>
                 </div>
               </div>

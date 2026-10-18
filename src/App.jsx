@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import Intro from './components/Intro';
 import Subscribe from './components/Subscribe';
 import Home from './components/Home';
@@ -11,11 +11,15 @@ import IntroVideo, { shouldShowIntroVideo, isIntroVideoDevice } from './componen
 import LoggedOutHome, { replayReveal } from './components/LoggedOutHome';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
-import { getCachedUserId, onUserIdChange, resolveUserId, signOut } from './auth/session';
+import ImportLocalData from './components/ImportLocalData';
+import { DEV_USER_ID, getCachedUserId, onUserIdChange, resolveUserId, signOut } from './auth/session';
 import { navigate, useRoute } from './utils/router';
-import { useSubscribedLists, useCaptures, useStreakData, useSettings, useEventLogs } from './hooks/useAppData';
+import { useCaptures, useStreakData, useEventLogs } from './hooks/useAppData';
 import { useOnboarding } from './hooks/useOnboarding';
-import { getAllDailyFinds, storeDailyFinds, loadDailyFinds, shouldRefreshDailyFind } from './utils/dailyFind';
+import { DEFAULT_STREAK, clearUserCache, useUserData } from './hooks/useUserData';
+import { clearSignedUrlCache } from './services/userData';
+import { getImportState, readLegacyData } from './services/legacyImport';
+import { getAllDailyFinds, storeDailyFinds, loadDailyFinds, shouldRefreshDailyFind, clearDailyFinds } from './utils/dailyFind';
 import { isListVisible } from './data/focusLists';
 
 const SIGNED_OUT_ONLY_ROUTES = ['/sign-in', '/create-account'];
@@ -96,13 +100,17 @@ export default function App() {
     setCurrentScreen('home');
   }, [userId]);
 
-  // Data hooks
-  const [allSubscribedLists, setSubscribedLists] = useSubscribedLists();
+  // Data hooks. Lists, logs, streak and settings are loaded from (and saved to) the user's Supabase account.
+  const userData = useUserData(userId);
+  const allSubscribedLists = useMemo(() => userData.data?.lists ?? [], [userData.data?.lists]);
   const subscribedLists = allSubscribedLists.filter(isListVisible);
-  const { captures, addCapture, getCapturedItemIds, isItemCaptured } = useCaptures();
-  const { streakData, markDayComplete, checkAndResetStreak, isWeeklySaverAvailable, getWeekData } = useStreakData();
-  const [settings, setSettings] = useSettings();
+  const captures = useMemo(() => userData.data?.logs ?? [], [userData.data?.logs]);
+  const { getCapturedItemIds, isItemCaptured } = useCaptures(captures);
+  const streakData = userData.data?.streak ?? DEFAULT_STREAK;
+  const { markDayComplete, checkAndResetStreak, isWeeklySaverAvailable, getWeekData } = useStreakData(streakData, userData.setStreak);
+  const settings = { showStreak: userData.data?.showStreak ?? true };
   const { logAppOpen, logDailyFindCompleted } = useEventLogs();
+  const dataLoaded = !!userData.data;
 
   // Daily finds state
   const [dailyFinds, setDailyFinds] = useState([]);
@@ -110,19 +118,48 @@ export default function App() {
   // Current capture state
   const [currentCaptureFind, setCurrentCaptureFind] = useState(null);
 
-  // Initialize app
+  // One-time offer to import this browser's pre-account data: 'offer' | 'imported' | null.
+  const [importPrompt, setImportPrompt] = useState(null);
+  const [legacyData, setLegacyData] = useState(null);
+
   useEffect(() => {
     logAppOpen();
-    checkAndResetStreak();
+  }, []);
+
+  // Only check the streak against fresh data from Supabase, so a stale cache can't overwrite it.
+  useEffect(() => {
+    if (userId && userData.synced) checkAndResetStreak();
+  }, [userId, userData.synced]);
+
+  // Initialize the signed-in user's daily finds once their data is available
+  useEffect(() => {
+    if (!userId || !dataLoaded) return;
 
     // Load or generate daily finds
-    const storedDailyFinds = loadDailyFinds();
+    const storedDailyFinds = loadDailyFinds(userId);
     if (storedDailyFinds && !shouldRefreshDailyFind(storedDailyFinds.date)) {
       setDailyFinds(storedDailyFinds.finds.filter((find) => isListVisible(find.listId)));
     } else {
       refreshDailyFinds();
     }
-  }, []);
+  }, [userId, dataLoaded]);
+
+  const importCheckedFor = useRef(null);
+  useEffect(() => {
+    setImportPrompt(null);
+    importCheckedFor.current = null;
+  }, [userId]);
+
+  // Offer the import (once per sign-in) after fresh data has arrived from Supabase.
+  useEffect(() => {
+    if (!userId || userId === DEV_USER_ID || !userData.synced || importCheckedFor.current === userId) return;
+    importCheckedFor.current = userId;
+    const legacy = readLegacyData();
+    const state = getImportState(userId);
+    if (!legacy || state === 'dismissed') return;
+    setLegacyData(legacy);
+    setImportPrompt(state === 'imported' ? 'imported' : 'offer');
+  }, [userId, userData.synced]);
 
   // Refresh daily finds when subscribed lists change
   useEffect(() => {
@@ -139,7 +176,7 @@ export default function App() {
 
     const newDailyFinds = getAllDailyFinds(subscribedLists, capturedItemIdsByList);
     setDailyFinds(newDailyFinds);
-    storeDailyFinds(newDailyFinds);
+    if (userId) storeDailyFinds(newDailyFinds, userId);
   };
 
   // Screen handlers
@@ -151,13 +188,19 @@ export default function App() {
 
   const handleSubscribe = async (listIds) => {
     if (onboarding.completed) {
-      setSubscribedLists((prev) => [...new Set([...prev, ...listIds])]);
+      try {
+        await userData.addLists(listIds);
+      } catch (error) {
+        console.error('Error saving lists:', error.cause ?? error);
+        alert(error.message);
+        return;
+      }
       if (window.history.state?.returnTo) window.history.back();
       else navigate('/', { replace: true });
       return;
     }
-    setSubscribedLists(listIds);
     try {
+      await userData.replaceLists(listIds);
       await onboarding.complete();
       navigate('/', { replace: true });
     } catch (error) {
@@ -177,16 +220,12 @@ export default function App() {
     setCurrentScreen('capture');
   };
 
+  // Throws if the find couldn't be saved, so the capture screen can show the error and let the user retry.
   const handleSaveCapture = async (dailyFind, photo, note, foundWithoutPhoto) => {
-    try {
-      await addCapture(dailyFind.listId, dailyFind.item.id, photo, note, foundWithoutPhoto);
-      markDayComplete();
-      logDailyFindCompleted(dailyFind.listId, dailyFind.item.id);
-      refreshDailyFinds();
-    } catch (error) {
-      console.error('Error saving capture:', error);
-      alert('Storage is full. Please remove some captures to add more.');
-    }
+    await userData.addLog({ listId: dailyFind.listId, itemId: dailyFind.item.id, photo, note, foundWithoutPhoto });
+    markDayComplete();
+    logDailyFindCompleted(dailyFind.listId, dailyFind.item.id);
+    refreshDailyFinds();
   };
 
   const handleCaptureItem = (listId, item) => {
@@ -197,6 +236,12 @@ export default function App() {
   // Shows the loading screen until the session is cleared, so the logged-out landing page doesn't flash first.
   const handleSignOut = async () => {
     setSigningOut(true);
+    // Don't leave this account's cached data on the device after signing out.
+    if (userId) {
+      clearUserCache(userId);
+      clearDailyFinds(userId);
+    }
+    clearSignedUrlCache();
     await signOut();
     replayReveal();
     setShowIntroVideo(false);
@@ -207,7 +252,10 @@ export default function App() {
   };
 
   const handleToggleStreak = (show) => {
-    setSettings({ ...settings, showStreak: show });
+    userData.setShowStreak(show).catch((error) => {
+      console.error('Error saving settings:', error.cause ?? error);
+      alert(error.message);
+    });
   };
 
   // Render current screen
@@ -277,6 +325,8 @@ export default function App() {
           <Collection
             captures={captures}
             subscribedLists={subscribedLists}
+            onUpdateNote={userData.updateLogNote}
+            onDelete={userData.deleteLog}
             onClose={() => setCurrentScreen('home')}
           />
         );
@@ -306,6 +356,10 @@ export default function App() {
       return userId && onboarding.error ? <LoadErrorScreen onRetry={onboarding.retry} /> : <LoadingScreen />;
     }
     if (redirect) return <LoadingScreen />;
+    // Signed-in pages that need the user's lists and collection wait for them (instant when cached).
+    if (userId && !userData.data && (route === CHOOSE_LISTS_ROUTE || !ONBOARDING_ROUTES.includes(route))) {
+      return userData.error ? <LoadErrorScreen onRetry={userData.retry} /> : <LoadingScreen />;
+    }
     switch (route) {
       case '/create-account':
         return <SignUp />;
@@ -324,6 +378,16 @@ export default function App() {
   return (
     <div className="min-h-screen">
       {renderRoute()}
+      {importPrompt && legacyData && route === '/' && currentScreen === 'home' && !signingOut && (
+        <ImportLocalData
+          key={userId}
+          userId={userId}
+          legacy={legacyData}
+          initialStep={importPrompt}
+          onImported={userData.retry}
+          onClose={() => setImportPrompt(null)}
+        />
+      )}
       {showIntroVideo && (
         <IntroVideo
           onLeaveStart={() => setIntroLeaving(true)}

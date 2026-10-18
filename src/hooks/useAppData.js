@@ -1,37 +1,7 @@
-import { useLocalStorage, blobToBase64, downscaleImage, isStorageFull } from './useLocalStorage';
+import { useLocalStorage } from './useLocalStorage';
 
-// Subscribed lists hook
-export function useSubscribedLists() {
-  return useLocalStorage('found_subscribed_lists', []);
-}
-
-// Captures hook
-export function useCaptures() {
-  const [captures, setCaptures] = useLocalStorage('found_captures', []);
-
-  const addCapture = async (listId, itemId, photo = null, note = null, foundWithoutPhoto = false) => {
-    if (isStorageFull()) {
-      throw new Error('Storage is full. Please remove some captures to add more.');
-    }
-
-    const capture = {
-      id: `${listId}-${itemId}-${Date.now()}`,
-      listId,
-      itemId,
-      date: new Date().toISOString(),
-      photo: photo ? await blobToBase64(photo) : null,
-      note,
-      foundWithoutPhoto,
-    };
-
-    setCaptures((prev) => [...prev, capture]);
-    return capture;
-  };
-
-  const removeCapture = (captureId) => {
-    setCaptures((prev) => prev.filter((c) => c.id !== captureId));
-  };
-
+// Helpers over the user's logs (loaded from and saved to Supabase by useUserData)
+export function useCaptures(captures) {
   const getCapturesByList = (listId) => {
     return captures.filter((c) => c.listId === listId);
   };
@@ -48,24 +18,14 @@ export function useCaptures() {
 
   return {
     captures,
-    setCaptures,
-    addCapture,
-    removeCapture,
     getCapturesByList,
     getCapturedItemIds,
     isItemCaptured,
   };
 }
 
-// Streak data hook
-export function useStreakData() {
-  const [streakData, setStreakData] = useLocalStorage('found_streak_data', {
-    currentStreak: 0,
-    longestStreak: 0,
-    completedDates: [], // Array of date strings (YYYY-MM-DD)
-    weeklySaverUsed: false,
-    weeklySaverDate: null, // Date when weekly saver was used
-  });
+// Streak data hook. The data is saved to the user's Supabase profile by useUserData.
+export function useStreakData(streakData, setStreakData) {
 
   const markDayComplete = (date = new Date()) => {
     const dateStr = date.toISOString().split('T')[0];
@@ -175,13 +135,6 @@ export function useStreakData() {
     isWeeklySaverAvailable,
     getWeekData,
   };
-}
-
-// Settings hook
-export function useSettings() {
-  return useLocalStorage('found_settings', {
-    showStreak: true,
-  });
 }
 
 // Event logs hook

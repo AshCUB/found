@@ -93,18 +93,25 @@ export function shouldRefreshDailyFind(lastRefreshDate, date = new Date()) {
   );
 }
 
+// Kept per user so accounts sharing a browser don't see each other's finds.
+const dailyFindsKey = (userId) => (userId ? `found_daily_finds:${userId}` : 'found_daily_finds');
+
 // Store daily finds in localStorage with date
-export function storeDailyFinds(dailyFinds) {
+export function storeDailyFinds(dailyFinds, userId) {
   const data = {
     date: new Date().toISOString().split('T')[0],
     finds: dailyFinds,
   };
-  localStorage.setItem('found_daily_finds', JSON.stringify(data));
+  try {
+    localStorage.setItem(dailyFindsKey(userId), JSON.stringify(data));
+  } catch (e) {
+    console.error('Error storing daily finds:', e);
+  }
 }
 
 // Load daily finds from localStorage
-export function loadDailyFinds() {
-  const stored = localStorage.getItem('found_daily_finds');
+export function loadDailyFinds(userId) {
+  const stored = localStorage.getItem(dailyFindsKey(userId));
   if (!stored) return null;
 
   try {
@@ -117,6 +124,6 @@ export function loadDailyFinds() {
 }
 
 // Clear daily finds (called when user unsubscribes from a list)
-export function clearDailyFinds() {
-  localStorage.removeItem('found_daily_finds');
+export function clearDailyFinds(userId) {
+  localStorage.removeItem(dailyFindsKey(userId));
 }

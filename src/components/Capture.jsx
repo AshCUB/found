@@ -9,6 +9,8 @@ export default function Capture({
   const [photo, setPhoto] = useState(null);
   const [note, setNote] = useState('');
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState(null);
 
   const handlePhotoChange = (e) => {
     const file = e.target.files[0];
@@ -17,16 +19,27 @@ export default function Capture({
     }
   };
 
-  const handleSave = () => {
-    if (photo || note.trim()) {
-      onSave(dailyFind, photo, note || null, false);
+  // Only confirms once the find is saved to the account; on failure the photo and note stay so the user can retry.
+  const save = async (savePhoto, foundWithoutPhoto) => {
+    setSaving(true);
+    setError(null);
+    try {
+      await onSave(dailyFind, savePhoto, note || null, foundWithoutPhoto);
       setShowConfirmation(true);
+    } catch (e) {
+      console.error('Error saving capture:', e.cause ?? e);
+      setError(e.message || "we couldn't save your find. check your connection and try again.");
+    } finally {
+      setSaving(false);
     }
   };
 
+  const handleSave = () => {
+    if (!saving && (photo || note.trim())) save(photo, false);
+  };
+
   const handleMarkWithoutPhoto = () => {
-    onSave(dailyFind, null, note || null, true);
-    setShowConfirmation(true);
+    if (!saving) save(null, true);
   };
 
   if (showConfirmation) {
@@ -191,20 +204,26 @@ export default function Capture({
 
           {/* Action Buttons */}
           <div className="space-y-md">
+            {error && (
+              <p className="font-body text-sm text-dark-grey text-center" role="alert">
+                {error}
+              </p>
+            )}
             <button
               onClick={handleSave}
-              disabled={!photo && !note.trim()}
+              disabled={saving || (!photo && !note.trim())}
               className={`font-buttons text-lg px-xl py-md rounded-full w-full transition-opacity ${
                 photo || note.trim()
-                  ? 'bg-green text-white hover:opacity-90'
+                  ? `bg-green text-white ${saving ? 'opacity-50 cursor-wait' : 'hover:opacity-90'}`
                   : 'bg-dark-grey text-white opacity-50 cursor-not-allowed'
               }`}
             >
-              Save
+              {saving ? 'Saving…' : 'Save'}
             </button>
 
             <button
               onClick={handleMarkWithoutPhoto}
+              disabled={saving}
               className="font-buttons text-sm text-dark-grey hover:text-green transition-colors w-full"
             >
               Mark as found without photo
