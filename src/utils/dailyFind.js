@@ -94,7 +94,7 @@ export function shouldRefreshDailyFind(lastRefreshDate, date = new Date()) {
 }
 
 // Kept per user so accounts sharing a browser don't see each other's finds.
-const dailyFindsKey = (userId) => (userId ? `found_daily_finds:${userId}` : 'found_daily_finds');
+const dailyFindsKey = (userId) => `found_daily_finds:${userId}`;
 
 // Store daily finds in localStorage with date
 export function storeDailyFinds(dailyFinds, userId) {

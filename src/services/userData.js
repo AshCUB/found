@@ -227,12 +227,12 @@ export async function getSignedPhotoUrls(paths) {
 // --- Logs ---
 
 // Uploads the photo (if any) and saves the log. Nothing is left behind if either step fails.
-export async function createLog(userId, { listId, itemId, note = null, foundWithoutPhoto = false, photo = null, date, legacyId = null }) {
+export async function createLog(userId, { listId, itemId, note = null, foundWithoutPhoto = false, photo = null }) {
   const id = newId();
-  const foundAt = date || new Date().toISOString();
+  const foundAt = new Date().toISOString();
   if (isDev(userId)) {
     const thumbPath = photo ? await blobToDataUrl((await compressPhoto(photo)).thumb) : null;
-    const log = { id, listId, itemId, date: foundAt, note, foundWithoutPhoto, photoPath: null, thumbPath, legacyId };
+    const log = { id, listId, itemId, date: foundAt, note, foundWithoutPhoto, photoPath: null, thumbPath, legacyId: null };
     writeDev((d) => ({ logs: [log, ...d.logs] }));
     return log;
   }
@@ -249,7 +249,6 @@ export async function createLog(userId, { listId, itemId, note = null, foundWith
       found_at: foundAt,
       photo_path: paths.photoPath,
       thumb_path: paths.thumbPath,
-      legacy_id: legacyId,
     })
     .select(LOG_COLUMNS)
     .single();
@@ -281,40 +280,5 @@ export async function deleteLog(userId, log) {
   } catch (removeError) {
     console.error('Error removing photo files, will retry:', removeError);
     writePendingDeletes(userId, [...readPendingDeletes(userId), ...paths]);
-  }
-}
-
-// --- Used by the one-time import of this browser's old local data ---
-
-export async function fetchImportedLogs(userId) {
-  const { data, error } = await supabase
-    .from('logs')
-    .select('legacy_id, photo_path, thumb_path')
-    .eq('user_id', userId)
-    .not('legacy_id', 'is', null);
-  if (error) throw error;
-  return data;
-}
-
-export async function fetchListIds(userId) {
-  const { data, error } = await supabase.from('user_lists').select('list_id').eq('user_id', userId);
-  if (error) throw error;
-  return data.map((row) => row.list_id);
-}
-
-export async function fetchProfileStreak(userId) {
-  const { data, error } = await supabase.from('profiles').select('streak_data').eq('id', userId).maybeSingle();
-  if (error) throw error;
-  return data?.streak_data ?? null;
-}
-
-// Names of all files in the user's photo folder.
-export async function listPhotoFiles(userId) {
-  const names = new Set();
-  for (let offset = 0; ; offset += PAGE_SIZE) {
-    const { data, error } = await bucket().list(userId, { limit: PAGE_SIZE, offset });
-    if (error) throw error;
-    data.forEach((file) => names.add(`${userId}/${file.name}`));
-    if (data.length < PAGE_SIZE) return names;
   }
 }

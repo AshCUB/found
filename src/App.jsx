@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useRef } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Intro from './components/Intro';
 import Subscribe from './components/Subscribe';
 import Home from './components/Home';
@@ -11,14 +11,12 @@ import IntroVideo, { shouldShowIntroVideo, isIntroVideoDevice } from './componen
 import LoggedOutHome, { replayReveal } from './components/LoggedOutHome';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
-import ImportLocalData from './components/ImportLocalData';
-import { DEV_USER_ID, getCachedUserId, onUserIdChange, resolveUserId, signOut } from './auth/session';
+import { getCachedUserId, onUserIdChange, resolveUserId, signOut } from './auth/session';
 import { navigate, useRoute } from './utils/router';
 import { useCaptures, useStreakData, useEventLogs } from './hooks/useAppData';
 import { useOnboarding } from './hooks/useOnboarding';
 import { DEFAULT_STREAK, clearUserCache, useUserData } from './hooks/useUserData';
 import { clearSignedUrlCache } from './services/userData';
-import { getImportState, readLegacyData } from './services/legacyImport';
 import { getAllDailyFinds, storeDailyFinds, loadDailyFinds, shouldRefreshDailyFind, clearDailyFinds } from './utils/dailyFind';
 import { isListVisible } from './data/focusLists';
 
@@ -118,10 +116,6 @@ export default function App() {
   // Current capture state
   const [currentCaptureFind, setCurrentCaptureFind] = useState(null);
 
-  // One-time offer to import this browser's pre-account data: 'offer' | 'imported' | null.
-  const [importPrompt, setImportPrompt] = useState(null);
-  const [legacyData, setLegacyData] = useState(null);
-
   useEffect(() => {
     logAppOpen();
   }, []);
@@ -143,23 +137,6 @@ export default function App() {
       refreshDailyFinds();
     }
   }, [userId, dataLoaded]);
-
-  const importCheckedFor = useRef(null);
-  useEffect(() => {
-    setImportPrompt(null);
-    importCheckedFor.current = null;
-  }, [userId]);
-
-  // Offer the import (once per sign-in) after fresh data has arrived from Supabase.
-  useEffect(() => {
-    if (!userId || userId === DEV_USER_ID || !userData.synced || importCheckedFor.current === userId) return;
-    importCheckedFor.current = userId;
-    const legacy = readLegacyData();
-    const state = getImportState(userId);
-    if (!legacy || state === 'dismissed') return;
-    setLegacyData(legacy);
-    setImportPrompt(state === 'imported' ? 'imported' : 'offer');
-  }, [userId, userData.synced]);
 
   // Refresh daily finds when subscribed lists change
   useEffect(() => {
@@ -378,16 +355,6 @@ export default function App() {
   return (
     <div className="min-h-screen">
       {renderRoute()}
-      {importPrompt && legacyData && route === '/' && currentScreen === 'home' && !signingOut && (
-        <ImportLocalData
-          key={userId}
-          userId={userId}
-          legacy={legacyData}
-          initialStep={importPrompt}
-          onImported={userData.retry}
-          onClose={() => setImportPrompt(null)}
-        />
-      )}
       {showIntroVideo && (
         <IntroVideo
           onLeaveStart={() => setIntroLeaving(true)}
