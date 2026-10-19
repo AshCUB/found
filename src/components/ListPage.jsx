@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { focusLists } from '../data/focusLists';
+import { focusLists, visibleFocusLists } from '../data/focusLists';
 import ItemImage from './ItemImage';
 import ProgressBar from './ProgressBar';
 
@@ -44,6 +44,7 @@ export default function ListPage({
   const capturedItemIds = capturedItemIdsByList[selectedListId] || [];
   const { found = 0, total = list?.items.length ?? 0 } = listProgress.find((p) => p.listId === selectedListId) ?? {};
   const complete = total > 0 && found >= total;
+  const canAddList = visibleFocusLists.some((l) => !subscribedListIds.includes(l.id));
 
   const handleItemClick = (item) => {
     if (!capturedItemIds.includes(item.id)) {
@@ -63,9 +64,9 @@ export default function ListPage({
         </button>
 
         {/* List Selector */}
-        {subscribedListIds.length > 1 && (
+        {(subscribedListIds.length > 1 || canAddList) && (
           <div className="flex gap-xs overflow-x-auto pb-md">
-            {subscribedListIds.map((listId) => {
+            {subscribedListIds.length > 1 && subscribedListIds.map((listId) => {
               const l = focusLists.find((list) => list.id === listId);
               return (
                 <button
@@ -82,6 +83,14 @@ export default function ListPage({
                 </button>
               );
             })}
+            {canAddList && (
+              <button
+                onClick={onAddList}
+                className="font-buttons text-sm px-md py-sm rounded-full whitespace-nowrap transition-colors border-2 border-dashed border-green text-green bg-white hover:bg-green hover:text-white"
+              >
+                + Add list
+              </button>
+            )}
           </div>
         )}
       </div>

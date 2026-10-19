@@ -11,7 +11,6 @@ export default function Streak({
   const handleToggle = () => onToggleStreak(!showStreak);
 
   const weekData = streakData.weekData || [];
-  const rechargeDays = streakData.saverRechargeDays ?? 0;
 
   const getDayName = (dateStr) => {
     return fromDateKey(dateStr).toLocaleDateString('en-US', { weekday: 'short' });
@@ -83,29 +82,6 @@ export default function Streak({
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* Weekly Saver */}
-        <div className="bg-white p-md rounded-lg shadow-sm mb-lg">
-          <div className="flex items-center justify-between gap-md">
-            <div>
-              <p className="font-buttons text-sm text-black mb-xs">
-                Streak saver
-              </p>
-              <p className="font-body text-xs text-dark-grey">
-                Miss a day and your streak saver keeps it going. It recharges once a week.
-              </p>
-            </div>
-            <span
-              className={`font-buttons text-xs px-md py-xs rounded-full whitespace-nowrap ${
-                streakData.isWeeklySaverAvailable ? 'bg-green text-white' : 'bg-grey text-dark-grey'
-              }`}
-            >
-              {streakData.isWeeklySaverAvailable
-                ? 'Ready'
-                : `Back in ${rechargeDays} ${rechargeDays === 1 ? 'day' : 'days'}`}
-            </span>
           </div>
         </div>
 

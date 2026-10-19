@@ -136,7 +136,7 @@ export default function App() {
   const captures = useMemo(() => userData.data?.logs ?? [], [userData.data?.logs]);
   const { getCapturedItemIds, isItemCaptured } = useCaptures(captures);
   const streakData = userData.data?.streak ?? DEFAULT_STREAK;
-  const { markDayComplete, checkAndResetStreak, isWeeklySaverAvailable, getSaverRechargeDays, getWeekData } = useStreakData(streakData, userData.setStreak);
+  const { markDayComplete, checkAndResetStreak, getWeekData } = useStreakData(streakData, userData.setStreak);
   const settings = { showStreak: userData.data?.showStreak ?? true };
   const { logAppOpen, logDailyFindCompleted } = useEventLogs();
   const dataLoaded = !!userData.data;
@@ -315,10 +315,7 @@ export default function App() {
       case 'home':
         return (
           <Home
-            streakData={{
-              ...streakData,
-              isWeeklySaverAvailable: isWeeklySaverAvailable(),
-            }}
+            streakData={streakData}
             showStreak={settings.showStreak}
             dailyFinds={todaysDailyFinds}
             listProgress={listProgress}
@@ -388,8 +385,6 @@ export default function App() {
           <Streak
             streakData={{
               ...streakData,
-              isWeeklySaverAvailable: isWeeklySaverAvailable(),
-              saverRechargeDays: getSaverRechargeDays(),
               weekData: getWeekData(),
             }}
             totalFinds={captures.length}

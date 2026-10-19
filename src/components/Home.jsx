@@ -202,16 +202,6 @@ export default function Home({
               );
             })}
           </div>
-
-          {/* Add List Button */}
-          <button
-            onClick={onAddList}
-            className="w-full mt-lg p-md rounded-lg border-2 border-dashed border-dark-grey hover:border-green transition-colors"
-          >
-            <p className="font-buttons text-sm text-dark-grey text-center">
-              + Add a list
-            </p>
-          </button>
         </div>
       )}
 
