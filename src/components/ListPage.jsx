@@ -1,14 +1,19 @@
 import { useState } from 'react';
 import { focusLists } from '../data/focusLists';
+import ItemImage from './ItemImage';
+import ProgressBar from './ProgressBar';
 
 export default function ListPage({
   subscribedListIds,
+  initialListId,
+  listProgress,
   capturedItemIdsByList,
   onCaptureItem,
+  onAddList,
   onClose,
 }) {
-  const [selectedListId, setSelectedListId] = useState(
-    subscribedListIds[0] || null
+  const [selectedListId, setSelectedListId] = useState(() =>
+    subscribedListIds.includes(initialListId) ? initialListId : subscribedListIds[0] || null
   );
 
   if (!selectedListId) {
@@ -20,16 +25,25 @@ export default function ListPage({
         >
           ← Back
         </button>
-        <p className="font-body text-sm text-dark-grey">
-          No lists subscribed yet.
-        </p>
+        <div className="bg-white p-lg rounded-lg text-center shadow-sm max-w-md mx-auto">
+          <p className="font-body text-sm text-dark-grey mb-md">
+            No lists yet. Add one to start finding.
+          </p>
+          <button
+            onClick={onAddList}
+            className="font-buttons text-sm bg-green text-white px-lg py-md rounded-full hover:opacity-90 transition-opacity"
+          >
+            Add a list
+          </button>
+        </div>
       </div>
     );
   }
 
   const list = focusLists.find((l) => l.id === selectedListId);
   const capturedItemIds = capturedItemIdsByList[selectedListId] || [];
-  const capturedCount = capturedItemIds.length;
+  const { found = 0, total = list?.items.length ?? 0 } = listProgress.find((p) => p.listId === selectedListId) ?? {};
+  const complete = total > 0 && found >= total;
 
   const handleItemClick = (item) => {
     if (!capturedItemIds.includes(item.id)) {
@@ -40,7 +54,7 @@ export default function ListPage({
   return (
     <div className="min-h-screen bg-grey animate-fade-in pb-lg">
       {/* Header */}
-      <div className="p-lg pb-md">
+      <div className="p-lg pb-md max-w-md mx-auto">
         <button
           onClick={onClose}
           className="font-buttons text-sm text-dark-grey hover:text-green transition-colors mb-lg"
@@ -49,35 +63,49 @@ export default function ListPage({
         </button>
 
         {/* List Selector */}
-        <div className="flex gap-xs overflow-x-auto pb-md">
-          {subscribedListIds.map((listId) => {
-            const l = focusLists.find((list) => list.id === listId);
-            return (
-              <button
-                key={listId}
-                onClick={() => setSelectedListId(listId)}
-                className={`font-buttons text-sm px-md py-sm rounded-full whitespace-nowrap transition-colors ${
-                  selectedListId === listId
-                    ? 'bg-green text-white'
-                    : 'bg-white text-dark-grey hover:border-green border-2 border-transparent'
-                }`}
-              >
-                {l?.name}
-              </button>
-            );
-          })}
-        </div>
+        {subscribedListIds.length > 1 && (
+          <div className="flex gap-xs overflow-x-auto pb-md">
+            {subscribedListIds.map((listId) => {
+              const l = focusLists.find((list) => list.id === listId);
+              return (
+                <button
+                  key={listId}
+                  onClick={() => setSelectedListId(listId)}
+                  aria-pressed={selectedListId === listId}
+                  className={`font-buttons text-sm px-md py-sm rounded-full whitespace-nowrap transition-colors border-2 ${
+                    selectedListId === listId
+                      ? 'bg-green text-white border-green'
+                      : 'bg-white text-dark-grey border-transparent hover:border-green'
+                  }`}
+                >
+                  {l?.name}
+                </button>
+              );
+            })}
+          </div>
+        )}
       </div>
 
       {/* List Content */}
-      <div className="px-lg">
+      <div className="px-lg max-w-md mx-auto">
         <div className="mb-lg">
           <h1 className="font-primary text-3xl text-green mb-xs">
             {list?.name}
           </h1>
-          <p className="font-body text-sm text-dark-grey">
-            {capturedCount} of {list?.itemCount} found
-          </p>
+          {list?.description && (
+            <p className="font-body text-sm text-dark-grey mb-md">{list.description}</p>
+          )}
+          <div className="flex items-center gap-md">
+            <ProgressBar value={found} total={total} label={`${list?.name} progress`} className="h-sm" />
+            <p className="font-body text-xs text-dark-grey whitespace-nowrap">
+              {found} of {total} found
+            </p>
+          </div>
+          {complete && (
+            <p className="font-buttons text-sm text-green mt-md">
+              You've found everything on this list.
+            </p>
+          )}
         </div>
 
         {/* Warning for Wildflowers and Animals */}
@@ -93,39 +121,24 @@ export default function ListPage({
         <div className="grid grid-cols-2 gap-md">
           {list?.items.map((item) => {
             const isCaptured = capturedItemIds.includes(item.id);
-            return (
-              <div
+            return isCaptured ? (
+              <div key={item.id} className="p-md rounded-lg bg-white shadow-sm">
+                <ItemImage src={item.image} alt={item.name} fitPadding="p-sm" className="w-full h-24 rounded-lg mb-md" />
+                <p className="font-buttons text-sm text-black text-center">
+                  {item.name}
+                </p>
+              </div>
+            ) : (
+              <button
                 key={item.id}
                 onClick={() => handleItemClick(item)}
-                className={`p-md rounded-lg cursor-pointer transition-all ${
-                  isCaptured
-                    ? 'bg-white shadow-sm'
-                    : 'bg-dark-grey/10 opacity-50'
-                }`}
+                aria-label="Undiscovered item"
+                className="p-md rounded-lg bg-dark-grey/10 opacity-50 hover:opacity-70 transition-opacity"
               >
-                <div className="w-full h-24 rounded-lg bg-grey mb-md flex items-center justify-center overflow-hidden relative">
-                  {isCaptured ? (
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      loading="lazy"
-                      className={`w-full h-full ${/shape-|letters-numbers\//.test(item.image ?? '') ? 'object-contain p-sm' : 'object-cover'}`}
-                      onError={(e) => {
-                        e.target.style.display = 'none';
-                        e.target.nextSibling.style.display = 'flex';
-                      }}
-                    />
-                  ) : null}
-                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-green/20 to-blue/20" style={{ display: isCaptured ? 'none' : 'flex' }}>
-                    <span className="font-body text-xs text-dark-grey">?</span>
-                  </div>
+                <div className="w-full h-24 rounded-lg bg-green/10 flex items-center justify-center">
+                  <span className="font-body text-xs text-dark-grey">?</span>
                 </div>
-                {isCaptured && (
-                  <p className="font-buttons text-sm text-black text-center">
-                    {item.name}
-                  </p>
-                )}
-              </div>
+              </button>
             );
           })}
         </div>

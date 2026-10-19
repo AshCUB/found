@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 export default function Capture({
   dailyFind,
   onSave,
   onCancel,
-  onMarkWithoutPhoto,
+  onDone,
 }) {
   const [photo, setPhoto] = useState(null);
   const [note, setNote] = useState('');
@@ -12,11 +12,17 @@ export default function Capture({
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState(null);
 
+  // One preview URL per chosen photo, released when it changes or the screen closes.
+  const previewUrl = useMemo(() => (photo ? URL.createObjectURL(photo) : null), [photo]);
+  useEffect(() => () => previewUrl && URL.revokeObjectURL(previewUrl), [previewUrl]);
+
   const handlePhotoChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       setPhoto(file);
     }
+    // Lets the same file be picked again after removing it.
+    e.target.value = '';
   };
 
   // Only confirms once the find is saved to the account; on failure the photo and note stay so the user can retry.
@@ -44,23 +50,35 @@ export default function Capture({
 
   if (showConfirmation) {
     return (
-      <div className="fixed inset-0 bg-grey z-50 flex items-center justify-center p-lg animate-fade-in">
+      <div className="fixed inset-0 bg-grey z-50 flex items-center justify-center p-lg animate-fade-in overflow-y-auto">
         <div className="bg-white p-lg rounded-lg shadow-sm max-w-md w-full text-center">
-          <div className="w-16 h-16 rounded-full bg-green/10 flex items-center justify-center mx-auto mb-lg">
-            <svg
-              className="w-8 h-8 text-green"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M5 13l4 4L19 7"
-              />
-            </svg>
-          </div>
+          {previewUrl ? (
+            <div className="relative w-32 h-32 mx-auto mb-lg">
+              <img src={previewUrl} alt={dailyFind.item.name} className="w-full h-full object-cover rounded-lg" />
+              <div className="absolute -bottom-sm -right-sm w-8 h-8 rounded-full bg-green border-2 border-white flex items-center justify-center">
+                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+            </div>
+          ) : (
+            <div className="w-16 h-16 rounded-full bg-green/10 flex items-center justify-center mx-auto mb-lg">
+              <svg
+                className="w-8 h-8 text-green"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            </div>
+          )}
+          <p className="font-buttons text-base text-dark-grey mb-xs">{dailyFind.item.name}</p>
           <h3 className="font-primary text-2xl text-green mb-md">
             Added to your collection
           </h3>
@@ -68,7 +86,8 @@ export default function Capture({
             Now take a breath and look up.
           </p>
           <button
-            onClick={onCancel}
+            onClick={onDone}
+            autoFocus
             className="font-buttons text-lg bg-green text-white px-xl py-md rounded-full w-full hover:opacity-90 transition-opacity"
           >
             Done
@@ -79,7 +98,7 @@ export default function Capture({
   }
 
   return (
-    <div className="fixed inset-0 bg-grey z-50 animate-fade-in">
+    <div className="fixed inset-0 bg-grey z-50 animate-fade-in overflow-y-auto">
       {/* Header */}
       <div className="p-lg">
         <button
@@ -103,9 +122,9 @@ export default function Capture({
               Photo
             </label>
             <div className="w-full h-48 rounded-lg bg-grey flex items-center justify-center mb-md overflow-hidden">
-              {photo ? (
+              {previewUrl ? (
                 <img
-                  src={URL.createObjectURL(photo)}
+                  src={previewUrl}
                   alt="Preview"
                   className="w-full h-full object-cover"
                 />

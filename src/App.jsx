@@ -17,8 +17,11 @@ import { useCaptures, useStreakData, useEventLogs } from './hooks/useAppData';
 import { useOnboarding } from './hooks/useOnboarding';
 import { DEFAULT_STREAK, clearUserCache, useUserData } from './hooks/useUserData';
 import { clearSignedUrlCache } from './services/userData';
-import { getAllDailyFinds, storeDailyFinds, loadDailyFinds, shouldRefreshDailyFind, clearDailyFinds } from './utils/dailyFind';
+import { getAllDailyFinds, getAlternativeItem, storeDailyFinds, loadDailyFinds, shouldRefreshDailyFind, clearDailyFinds } from './utils/dailyFind';
 import { focusLists, isListVisible } from './data/focusLists';
+
+// Full-page screens open scrolled to the top; dailyFind and capture are overlays on top of home.
+const PAGE_SCREENS = ['intro', 'listPage', 'collection', 'streak'];
 
 const SIGNED_OUT_ONLY_ROUTES = ['/sign-in', '/create-account'];
 const GET_STARTED_ROUTE = '/get-started';
@@ -70,6 +73,7 @@ export default function App() {
   // Screen state
   const [currentScreen, setCurrentScreen] = useState('home');
   const [dailyFindIndex, setDailyFindIndex] = useState(0);
+  const [listPageListId, setListPageListId] = useState(null);
   const [showIntroVideo, setShowIntroVideo] = useState(shouldShowIntroVideo);
   const [introLeaving, setIntroLeaving] = useState(false);
   const route = useRoute();
@@ -98,6 +102,33 @@ export default function App() {
     setCurrentScreen('home');
   }, [userId]);
 
+  // Signed-in screens are kept in browser history (on the same URL), so the phone/browser back button closes them.
+  useEffect(() => {
+    const sync = () => setCurrentScreen(window.history.state?.screen ?? 'home');
+    window.addEventListener('popstate', sync);
+    // After a reload the screen's in-memory state is gone, so step back to the entry the screens were opened from.
+    const depth = window.history.state?.depth;
+    if (depth) window.history.go(-depth);
+    return () => window.removeEventListener('popstate', sync);
+  }, []);
+
+  const openScreen = (screen) => {
+    window.history.pushState({ screen, depth: (window.history.state?.depth ?? 0) + 1 }, '');
+    setCurrentScreen(screen);
+    if (PAGE_SCREENS.includes(screen)) window.scrollTo(0, 0);
+  };
+
+  const closeScreen = () => {
+    if (window.history.state?.depth) window.history.back();
+    else setCurrentScreen('home');
+  };
+
+  const goHome = () => {
+    const depth = window.history.state?.depth;
+    if (depth) window.history.go(-depth);
+    else setCurrentScreen('home');
+  };
+
   // Data hooks. Lists, logs, streak and settings are loaded from (and saved to) the user's Supabase account.
   const userData = useUserData(userId);
   const allSubscribedLists = useMemo(() => userData.data?.lists ?? [], [userData.data?.lists]);
@@ -105,7 +136,7 @@ export default function App() {
   const captures = useMemo(() => userData.data?.logs ?? [], [userData.data?.logs]);
   const { getCapturedItemIds, isItemCaptured } = useCaptures(captures);
   const streakData = userData.data?.streak ?? DEFAULT_STREAK;
-  const { markDayComplete, checkAndResetStreak, isWeeklySaverAvailable, getWeekData } = useStreakData(streakData, userData.setStreak);
+  const { markDayComplete, checkAndResetStreak, isWeeklySaverAvailable, getSaverRechargeDays, getWeekData } = useStreakData(streakData, userData.setStreak);
   const settings = { showStreak: userData.data?.showStreak ?? true };
   const { logAppOpen, logDailyFindCompleted } = useEventLogs();
   const dataLoaded = !!userData.data;
@@ -165,51 +196,76 @@ export default function App() {
 
   // A daily find is complete once something from its list has been logged today; show the item that was found.
   const todaysDailyFinds = dailyFinds.map((find) => {
+    const list = focusLists.find((l) => l.id === find.listId);
     const log = captures.find((c) => c.listId === find.listId && !shouldRefreshDailyFind(c.date));
-    if (!log) return { ...find, captured: false };
-    const item = focusLists.find((l) => l.id === find.listId)?.items.find((i) => i.id === log.itemId);
-    return { ...find, item: item ?? find.item, captured: true };
+    if (!log) {
+      const capturedIds = getCapturedItemIds(find.listId);
+      const canSwap = !!list?.items.some((i) => i.id !== find.item.id && !capturedIds.includes(i.id));
+      return { ...find, captured: false, canSwap };
+    }
+    const item = list?.items.find((i) => i.id === log.itemId);
+    return { ...find, item: item ?? find.item, captured: true, canSwap: false };
   }).sort((a, b) => a.captured - b.captured);
+
+  // How much of each selected list has been found, for the home page and list pages.
+  const listProgress = subscribedLists
+    .map((listId) => {
+      const list = focusLists.find((l) => l.id === listId);
+      return list && { listId, found: new Set(getCapturedItemIds(listId)).size, total: list.items.length };
+    })
+    .filter(Boolean);
 
   // Screen handlers
   // Opens the list picker outside onboarding; finishing returns to the page it was opened from.
   const openListPicker = () => {
-    setCurrentScreen('home');
     navigate(CHOOSE_LISTS_ROUTE, { state: { returnTo: route } });
   };
 
+  const closeListPicker = () => {
+    if (window.history.state?.returnTo) window.history.back();
+    else navigate('/', { replace: true });
+  };
+
+  // Throws an Error with a user-facing message, so the picker can show it and let the user retry.
   const handleSubscribe = async (listIds) => {
     if (onboarding.completed) {
-      try {
-        await userData.addLists(listIds);
-      } catch (error) {
-        console.error('Error saving lists:', error.cause ?? error);
-        alert(error.message);
-        return;
-      }
-      if (window.history.state?.returnTo) window.history.back();
-      else navigate('/', { replace: true });
+      await userData.addLists(listIds);
+      closeListPicker();
       return;
     }
     try {
       await userData.replaceLists(listIds);
       await onboarding.complete();
-      navigate('/', { replace: true });
     } catch (error) {
-      console.error('Error completing onboarding:', error);
-      alert("we couldn't save your progress. check your connection and try again.");
+      throw new Error("we couldn't save your progress. check your connection and try again.", { cause: error });
     }
+    navigate('/', { replace: true });
   };
 
   const handleViewDailyFind = (dailyFind) => {
     const index = todaysDailyFinds.findIndex(df => df.listId === dailyFind.listId);
     setDailyFindIndex(index);
-    setCurrentScreen('dailyFind');
+    openScreen('dailyFind');
+  };
+
+  // Swaps today's find for a different unfound item from the same list, and remembers it for the rest of the day.
+  const handleSwapDailyFind = (listId) => {
+    const current = dailyFinds.find((find) => find.listId === listId);
+    const item = getAlternativeItem(listId, getCapturedItemIds(listId), current?.item.id);
+    if (!item) return;
+    const next = dailyFinds.map((find) => (find.listId === listId ? { ...find, item } : find));
+    setDailyFinds(next);
+    if (userId) storeDailyFinds(next, userId);
   };
 
   const handleCapture = (dailyFind) => {
     setCurrentCaptureFind(dailyFind);
-    setCurrentScreen('capture');
+    openScreen('capture');
+  };
+
+  const handleViewList = (listId) => {
+    setListPageListId(listId);
+    openScreen('listPage');
   };
 
   // Throws if the find couldn't be saved, so the capture screen can show the error and let the user retry.
@@ -221,8 +277,8 @@ export default function App() {
   };
 
   const handleCaptureItem = (listId, item) => {
-    setCurrentCaptureFind({ listId, item });
-    setCurrentScreen('capture');
+    setCurrentCaptureFind({ listId, item, fromList: true });
+    openScreen('capture');
   };
 
   // Shows the loading screen until the session is cleared, so the logged-out landing page doesn't flash first.
@@ -265,13 +321,15 @@ export default function App() {
             }}
             showStreak={settings.showStreak}
             dailyFinds={todaysDailyFinds}
+            listProgress={listProgress}
             onViewDailyFind={handleViewDailyFind}
+            onViewList={handleViewList}
             onAddList={openListPicker}
-            onViewCollection={() => setCurrentScreen('collection')}
-            onViewStreak={() => setCurrentScreen('streak')}
+            onViewCollection={() => openScreen('collection')}
+            onViewStreak={() => openScreen('streak')}
             onSignOut={handleSignOut}
             onGoToIntro={() => {
-              setCurrentScreen('intro');
+              openScreen('intro');
               setShowIntroVideo(isIntroVideoDevice());
             }}
           />
@@ -283,7 +341,8 @@ export default function App() {
             dailyFinds={todaysDailyFinds}
             currentIndex={dailyFindIndex}
             onCapture={handleCapture}
-            onClose={() => setCurrentScreen('home')}
+            onSwap={handleSwapDailyFind}
+            onClose={closeScreen}
           />
         );
       
@@ -292,10 +351,8 @@ export default function App() {
           <Capture
             dailyFind={currentCaptureFind}
             onSave={handleSaveCapture}
-            onCancel={() => setCurrentScreen('home')}
-            onMarkWithoutPhoto={() => {
-              handleSaveCapture(currentCaptureFind, null, null, true);
-            }}
+            onCancel={closeScreen}
+            onDone={currentCaptureFind?.fromList ? closeScreen : goHome}
           />
         );
       
@@ -303,12 +360,15 @@ export default function App() {
         return (
           <ListPage
             subscribedListIds={subscribedLists}
+            initialListId={listPageListId}
+            listProgress={listProgress}
             capturedItemIdsByList={subscribedLists.reduce((acc, listId) => {
               acc[listId] = getCapturedItemIds(listId);
               return acc;
             }, {})}
             onCaptureItem={handleCaptureItem}
-            onClose={() => setCurrentScreen('home')}
+            onAddList={openListPicker}
+            onClose={closeScreen}
           />
         );
       
@@ -319,7 +379,7 @@ export default function App() {
             subscribedLists={subscribedLists}
             onUpdateNote={userData.updateLogNote}
             onDelete={userData.deleteLog}
-            onClose={() => setCurrentScreen('home')}
+            onClose={closeScreen}
           />
         );
       
@@ -329,11 +389,13 @@ export default function App() {
             streakData={{
               ...streakData,
               isWeeklySaverAvailable: isWeeklySaverAvailable(),
+              saverRechargeDays: getSaverRechargeDays(),
               weekData: getWeekData(),
             }}
+            totalFinds={captures.length}
             showStreak={settings.showStreak}
             onToggleStreak={handleToggleStreak}
-            onClose={() => setCurrentScreen('home')}
+            onClose={closeScreen}
           />
         );
       
@@ -360,7 +422,14 @@ export default function App() {
       case GET_STARTED_ROUTE:
         return <Intro onGetStarted={() => navigate(CHOOSE_LISTS_ROUTE)} />;
       case CHOOSE_LISTS_ROUTE:
-        return <Subscribe onSubscribe={handleSubscribe} subscribedLists={subscribedLists} />;
+        return (
+          <Subscribe
+            onSubscribe={handleSubscribe}
+            subscribedLists={subscribedLists}
+            adding={!!onboarding.completed}
+            onCancel={closeListPicker}
+          />
+        );
       default:
         if (userId) return renderScreen();
         return <LoggedOutHome introPhase={showIntroVideo ? (introLeaving ? 'leaving' : 'playing') : 'done'} />;

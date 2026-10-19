@@ -16,6 +16,7 @@ export const DEFAULT_STREAK = {
   completedDates: [], // Array of date strings (YYYY-MM-DD)
   weeklySaverUsed: false,
   weeklySaverDate: null, // Date when weekly saver was used
+  savedDates: [], // Days (YYYY-MM-DD) the weekly saver covered
 };
 
 // Per-user copy of the last data loaded from Supabase, so the app can render instantly while it refreshes.

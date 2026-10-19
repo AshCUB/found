@@ -1,4 +1,5 @@
 import { useLocalStorage } from './useLocalStorage';
+import { addDays, toDateKey } from '../utils/date';
 
 // Helpers over the user's logs (loaded from and saved to Supabase by useUserData)
 export function useCaptures(captures) {
@@ -24,11 +25,17 @@ export function useCaptures(captures) {
   };
 }
 
+const DAY_MS = 1000 * 60 * 60 * 24;
+const SAVER_RECHARGE_DAYS = 7;
+
+const isSaverAvailable = (data, date) =>
+  !data.weeklySaverUsed || !data.weeklySaverDate || date - new Date(data.weeklySaverDate) >= SAVER_RECHARGE_DAYS * DAY_MS;
+
 // Streak data hook. The data is saved to the user's Supabase profile by useUserData.
 export function useStreakData(streakData, setStreakData) {
 
   const markDayComplete = (date = new Date()) => {
-    const dateStr = date.toISOString().split('T')[0];
+    const dateStr = toDateKey(date);
     
     setStreakData((prev) => {
       if (prev.completedDates.includes(dateStr)) {
@@ -48,36 +55,28 @@ export function useStreakData(streakData, setStreakData) {
     });
   };
 
+  // Runs when fresh data loads. A streak survives if today or yesterday counted; if only yesterday was missed,
+  // the weekly saver (when recharged) is used automatically and yesterday is kept as a saved day.
   const checkAndResetStreak = (date = new Date()) => {
-    const dateStr = date.toISOString().split('T')[0];
-    const yesterday = new Date(date);
-    yesterday.setDate(yesterday.getDate() - 1);
-    const yesterdayStr = yesterday.toISOString().split('T')[0];
+    const today = toDateKey(date);
+    const yesterday = toDateKey(addDays(date, -1));
+    const dayBefore = toDateKey(addDays(date, -2));
 
     setStreakData((prev) => {
-      // If today is completed, do nothing
-      if (prev.completedDates.includes(dateStr)) {
+      const savedDates = prev.savedDates ?? [];
+      const counted = (key) => prev.completedDates.includes(key) || savedDates.includes(key);
+
+      if (prev.currentStreak === 0 || counted(today) || counted(yesterday)) {
         return prev;
       }
 
-      // If yesterday was completed, streak continues
-      if (prev.completedDates.includes(yesterdayStr)) {
-        return prev;
-      }
-
-      // Check if weekly saver is available
-      const weekAgo = new Date(date);
-      weekAgo.setDate(weekAgo.getDate() - 7);
-      const weekAgoStr = weekAgo.toISOString().split('T')[0];
-
-      // If weekly saver was used less than a week ago, preserve streak
-      if (prev.weeklySaverUsed && prev.weeklySaverDate) {
-        const saverDate = new Date(prev.weeklySaverDate);
-        const daysSinceSaver = Math.floor((date - saverDate) / (1000 * 60 * 60 * 24));
-        
-        if (daysSinceSaver < 7) {
-          return prev;
-        }
+      if (counted(dayBefore) && isSaverAvailable(prev, date)) {
+        return {
+          ...prev,
+          weeklySaverUsed: true,
+          weeklySaverDate: date.toISOString(),
+          savedDates: [...savedDates, yesterday],
+        };
       }
 
       // Reset streak
@@ -90,36 +89,27 @@ export function useStreakData(streakData, setStreakData) {
     });
   };
 
-  const useWeeklySaver = (date = new Date()) => {
-    setStreakData((prev) => ({
-      ...prev,
-      weeklySaverUsed: true,
-      weeklySaverDate: date.toISOString(),
-    }));
-  };
+  const isWeeklySaverAvailable = () => isSaverAvailable(streakData, new Date());
 
-  const isWeeklySaverAvailable = () => {
-    if (!streakData.weeklySaverUsed) return true;
-    
-    const saverDate = new Date(streakData.weeklySaverDate);
-    const now = new Date();
-    const daysSinceSaver = Math.floor((now - saverDate) / (1000 * 60 * 60 * 24));
-    
-    return daysSinceSaver >= 7;
+  // Whole days until a used saver is ready again (0 when available).
+  const getSaverRechargeDays = (date = new Date()) => {
+    if (isSaverAvailable(streakData, date)) return 0;
+    const readyAt = new Date(streakData.weeklySaverDate).getTime() + SAVER_RECHARGE_DAYS * DAY_MS;
+    return Math.max(1, Math.ceil((readyAt - date) / DAY_MS));
   };
 
   const getWeekData = (date = new Date()) => {
     const weekData = [];
-    const startOfWeek = new Date(date);
-    startOfWeek.setDate(startOfWeek.getDate() - startOfWeek.getDay()); // Sunday
+    const today = toDateKey(date);
+    const startOfWeek = addDays(date, -date.getDay()); // Sunday
 
     for (let i = 0; i < 7; i++) {
-      const day = new Date(startOfWeek);
-      day.setDate(day.getDate() + i);
-      const dateStr = day.toISOString().split('T')[0];
+      const dateStr = toDateKey(addDays(startOfWeek, i));
       weekData.push({
         date: dateStr,
         completed: streakData.completedDates.includes(dateStr),
+        saved: (streakData.savedDates ?? []).includes(dateStr),
+        isToday: dateStr === today,
       });
     }
 
@@ -131,8 +121,8 @@ export function useStreakData(streakData, setStreakData) {
     setStreakData,
     markDayComplete,
     checkAndResetStreak,
-    useWeeklySaver,
     isWeeklySaverAvailable,
+    getSaverRechargeDays,
     getWeekData,
   };
 }
