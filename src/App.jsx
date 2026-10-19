@@ -7,7 +7,7 @@ import Capture from './components/Capture';
 import ListPage from './components/ListPage';
 import Collection from './components/Collection';
 import Streak from './components/Streak';
-import IntroVideo, { shouldShowIntroVideo, isIntroVideoDevice } from './components/IntroVideo';
+import IntroVideo, { shouldShowIntroVideo } from './components/IntroVideo';
 import LoggedOutHome, { replayReveal } from './components/LoggedOutHome';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
@@ -325,10 +325,6 @@ export default function App() {
             onViewCollection={() => openScreen('collection')}
             onViewStreak={() => openScreen('streak')}
             onSignOut={handleSignOut}
-            onGoToIntro={() => {
-              openScreen('intro');
-              setShowIntroVideo(isIntroVideoDevice());
-            }}
           />
         );
       

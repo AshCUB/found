@@ -35,7 +35,6 @@ export default function Home({
   onAddList,
   onViewCollection,
   onViewStreak,
-  onGoToIntro,
   onSignOut,
 }) {
   const foundToday = dailyFinds.filter((find) => find.captured).length;
@@ -53,11 +52,7 @@ export default function Home({
       {/* Header */}
       <div className="p-lg pb-md max-w-md mx-auto">
         <div className="flex justify-between items-center mb-xs">
-          <h1>
-            <button onClick={onGoToIntro} className="font-primary text-3xl text-green hover:opacity-80 transition-opacity">
-              Found
-            </button>
-          </h1>
+          <h1 className="font-primary text-3xl text-green">Found</h1>
           <button
             onClick={onSignOut}
             className="font-buttons text-sm text-dark-grey hover:text-green transition-colors"
