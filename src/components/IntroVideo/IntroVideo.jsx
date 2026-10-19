@@ -63,6 +63,9 @@ export default function IntroVideo({ onFinish, onLeaveStart }) {
   const [leaving, setLeaving] = useState(false);
   const [soundOn, setSoundOn] = useState(false);
   const [icon, setIcon] = useState('hidden'); // 'hidden' | 'hint' | 'faint'
+  const [skipShown, setSkipShown] = useState(false);
+  // Skip mirrors the mute icon but stays faintly visible once shown.
+  const skipLevel = icon === 'hidden' ? (skipShown ? 'faint' : 'hidden') : icon;
 
   const scheduleIcon = (level, delay) => {
     clearTimeout(iconTimerRef.current);
@@ -131,6 +134,7 @@ export default function IntroVideo({ onFinish, onLeaveStart }) {
       clearTimeout(iconTimerRef.current);
       iconTimerRef.current = setTimeout(() => {
         setIcon('hint');
+        setSkipShown(true);
         iconTimerRef.current = setTimeout(() => setIcon('faint'), ICON_FAINT_AFTER_MS);
       }, ICON_DELAY_MS);
     };
@@ -241,6 +245,14 @@ export default function IntroVideo({ onFinish, onLeaveStart }) {
         <span className={`intro-video__icon is-${icon}`}>
           {soundOn ? <SoundOnIcon /> : <MutedIcon />}
         </span>
+      </button>
+      <button
+        type="button"
+        className={`intro-video__skip is-${skipLevel}`}
+        onClick={finish}
+        tabIndex={skipLevel === 'hidden' ? -1 : 0}
+      >
+        Skip
       </button>
     </div>,
     document.body

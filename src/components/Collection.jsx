@@ -185,7 +185,7 @@ function FindDetail({ captures, index, onNavigate, onClose, thumbUrls, describe,
       aria-modal="true"
       aria-label={itemName}
     >
-      <div className="max-w-md mx-auto p-lg">
+      <div className="max-w-md min-h-full mx-auto flex flex-col px-md pt-lg pb-[max(24px,env(safe-area-inset-bottom))]">
         <div className="flex items-center justify-between mb-md">
           <button
             onClick={onClose}
@@ -199,7 +199,7 @@ function FindDetail({ captures, index, onNavigate, onClose, thumbUrls, describe,
           </span>
         </div>
 
-        <article className="bg-white rounded-lg shadow-sm mx-xl">
+        <article className="bg-white rounded-lg shadow-sm mx-lg my-auto">
           <p className="font-buttons text-sm text-dark-grey px-md py-sm">{listName}</p>
           <div
             className="relative aspect-[4/5] bg-grey select-none"

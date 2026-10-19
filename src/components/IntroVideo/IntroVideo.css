@@ -80,17 +80,48 @@ html.intro-video-fading body {
   cursor: default;
 }
 
-.intro-video__icon {
+.intro-video__icon,
+.intro-video__skip {
   position: absolute;
+  color: #ffffff;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.55));
+  opacity: 0;
+  transition: opacity 600ms ease;
+  pointer-events: none;
+}
+
+.intro-video__icon {
   left: 50%;
   bottom: calc(env(safe-area-inset-bottom, 0px) + 28px);
   width: 22px;
   height: 22px;
   transform: translateX(-50%);
-  color: #ffffff;
-  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.55));
-  opacity: 0;
-  transition: opacity 600ms ease;
+}
+
+/* Same look as the mute icon; padding gives a larger tap area while keeping the text on the icon's line. */
+.intro-video__skip {
+  right: 12px;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 16px);
+  margin: 0;
+  padding: 12px;
+  border: 0;
+  background: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  font-family: "Roboto Slab", serif;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+}
+
+.intro-video__skip:not(.is-hidden) {
+  pointer-events: auto;
+}
+
+.intro-video.is-leaving .intro-video__skip {
   pointer-events: none;
 }
 
@@ -100,10 +131,12 @@ html.intro-video-fading body {
   height: 100%;
 }
 
-.intro-video__icon.is-hint {
+.intro-video__icon.is-hint,
+.intro-video__skip.is-hint {
   opacity: 0.6;
 }
 
-.intro-video__icon.is-faint {
+.intro-video__icon.is-faint,
+.intro-video__skip.is-faint {
   opacity: 0.25;
 }
