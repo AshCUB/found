@@ -48,6 +48,13 @@ export function resolveUserId() {
   ]);
 }
 
+// The name the signed-in user gave when creating their account (stored in their auth metadata), or null.
+export async function getUserName() {
+  if (devSignedIn() || !supabase) return null;
+  const session = await fetchSession();
+  return session?.user.user_metadata?.name?.trim() || null;
+}
+
 // Signs out on this device only. Supabase clears the stored session even if the network request fails.
 export async function signOut() {
   try {

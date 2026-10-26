@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
 import { loadEnvelopeAssets } from './assets';
 import FindCard from './FindCard';
+import { getUserName } from '../../auth/session';
+import { formatNumericDate } from '../../utils/date';
 import './Envelope.css';
-
-const RECIPIENT_NAME = 'JANE DOE';
 
 // All envelope durations (ms) and easings. Closing plays the same steps in reverse order.
 const TIMINGS = {
@@ -15,8 +15,10 @@ const TIMINGS = {
   flapFromEdge: { duration: 320, easing: 'ease-out' },
   cardPull: { duration: 450, easing: 'ease-in-out' },
   cardPresent: { duration: 450, easing: 'ease-in-out' },
-  // Going to the next find: the top card lifts, then tucks in behind the pile as the next card comes forward.
-  shuffleLift: { duration: 340, easing: 'ease-out' },
+  // After a swipe: the card leaves to the side, or springs back if the swipe was too short.
+  swipeAway: { duration: 280, easing: 'ease-out' },
+  swipeReturn: { duration: 220, easing: 'ease-out' },
+  // Saving for later: the card tucks in behind the pile as the next card comes forward.
   shuffleSettle: { duration: 480, easing: 'ease-in-out' },
 };
 
@@ -32,18 +34,43 @@ const CARD_IN = 'translateY(0)';
 const CARD_PULLED = 'translateY(-103.5%)';
 const CARD_PRESENTED = 'translateY(-45%) scale(1.15)';
 // The next find waits just behind the presented card, peeking out above it like the next card in a pile.
-const CARD_BACK = `${CARD_PRESENTED} translateY(-5%) scale(0.95)`;
-// How far the top card lifts before it tucks in behind the pile: far enough to clear the next card's top edge
-// (which peeks out about 7.5% above it), so dropping behind it is never seen.
-const CARD_LIFTED = `${CARD_PRESENTED} translateY(-110%)`;
+// (Its rotate(0) lines up with the swipe arc's rotate, so a swiped card animates smoothly into this position.)
+const CARD_BACK = `${CARD_PRESENTED} translateY(-5%) rotate(0rad) scale(0.95)`;
+// While swiped, the card swings along an arc like a card pivoting on a point well below it: it follows the pointer
+// sideways, dipping and tilting the further it goes. The pivot is ARC_RADIUS card heights below the card.
+const ARC_RADIUS = 5;
+// Past DRAG_SLOW_FROM card widths sideways, the card resists like a rubber band: it keeps following the pointer but
+// ever more slowly, never getting more than DRAG_SLOW_EXTRA card widths further. (Keep DRAG_SLOW_FROM above
+// SWIPE_THRESHOLD.)
+const DRAG_SLOW_FROM = 0.4;
+const DRAG_SLOW_EXTRA = 0.2;
+const resistDrag = (x, cardWidth) => {
+  const start = DRAG_SLOW_FROM * cardWidth;
+  const over = Math.abs(x) - start;
+  if (over <= 0) return x;
+  const extra = DRAG_SLOW_EXTRA * cardWidth;
+  return Math.sign(x) * (start + extra * (1 - 1 / (1 + over / extra)));
+};
+const arcPose = (x, card) => {
+  const radius = ARC_RADIUS * card.offsetHeight;
+  const angle = Math.asin(Math.max(-0.9, Math.min(0.9, x / radius)));
+  return `${CARD_PRESENTED} translate(${radius * Math.sin(angle)}px, ${radius * (1 - Math.cos(angle))}px) rotate(${angle}rad)`;
+};
+// Where a swiped card goes along the arc, in card widths: left far enough to clear the pile (so dropping behind it is
+// never seen), right off toward the capture page.
+const SWIPED_X = { left: -1.3, right: 1.4 };
+const swipedTo = (direction, card) => arcPose(SWIPED_X[direction] * card.offsetWidth, card);
+// How far (as a share of the card's width) the card must be dragged for the swipe to count.
+const SWIPE_THRESHOLD = 0.3;
 // The envelope drops down (by a share of its height) while the card is pulled out, so the card stays on screen.
 const ENVELOPE_RAISED = 'translateY(0)';
 const ENVELOPE_LOWERED = 'translateY(60%)';
 
 const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-export default function Envelope({ dailyFinds = [], onClose }) {
+export default function Envelope({ dailyFinds = [], onCapture, onClose }) {
   const [assets, setAssets] = useState(null);
+  const [userName, setUserName] = useState(null);
   const [loadError, setLoadError] = useState(false);
   const [phase, setPhase] = useState('idle'); // idle | busy | open | shuffling
   const [face, setFace] = useState('front');
@@ -51,6 +78,8 @@ export default function Envelope({ dailyFinds = [], onClose }) {
   const [cardInFront, setCardInFront] = useState(false);
   const [cardBehind, setCardBehind] = useState(false);
   const [findIndex, setFindIndex] = useState(0);
+  const [swipe, setSwipe] = useState(null); // { direction, label, progress } while the card is dragged
+  const dragRef = useRef(null);
   const overlayRef = useRef(null);
   const shiftRef = useRef(null);
   const liftRef = useRef(null);
@@ -62,8 +91,13 @@ export default function Envelope({ dailyFinds = [], onClose }) {
 
   useEffect(() => {
     let active = true;
-    loadEnvelopeAssets()
-      .then((result) => active && setAssets(result))
+    // The name is fetched alongside the images, so the envelope never appears without it.
+    Promise.all([loadEnvelopeAssets(), getUserName().catch(() => null)])
+      .then(([result, name]) => {
+        if (!active) return;
+        setUserName(name);
+        setAssets(result);
+      })
       .catch((error) => {
         console.error('Error loading envelope images:', error);
         if (active) setLoadError(true);
@@ -188,15 +222,30 @@ export default function Envelope({ dailyFinds = [], onClose }) {
     if (phase === 'idle') handleTap();
   };
 
-  // The top card lifts, drops behind the next card, and settles at the back of the pile while the next card
-  // comes forward. Then the two cards swap finds and positions in the same frame, so the swap is never seen.
-  const shuffle = async () => {
+  const find = dailyFinds.length ? dailyFinds[findIndex % dailyFinds.length] : null;
+  const upNext = dailyFinds.length > 1 ? dailyFinds[(findIndex + 1) % dailyFinds.length] : null;
+  const cardOut = phase === 'open' || phase === 'shuffling';
+  const closed = !cardOut;
+
+  // Swiping the card: left saves it for later (to the back of the pile), right captures it.
+  const SWIPES = {
+    left: { allowed: Boolean(upNext), label: upNext ? 'save for later' : 'no other finds today' },
+    right: { allowed: Boolean(find && !find.captured), label: find?.captured ? 'already found' : 'capture it' },
+  };
+
+  // The card slides off to the left, comes back behind the next card and settles at the back of the pile while the
+  // next card comes forward. Then the two cards swap finds and positions in the same frame, so it's never seen.
+  const saveForLater = async (from) => {
     const [card, nextCard] = [cardRef.current, nextCardRef.current];
-    await step(TIMINGS.shuffleLift, [card, { transform: [CARD_PRESENTED, CARD_LIFTED] }]);
-    flushSync(() => setCardBehind(true));
+    const away = swipedTo('left', card);
+    await step(TIMINGS.swipeAway, [card, { transform: [from, away] }]);
+    flushSync(() => {
+      setCardBehind(true);
+      setSwipe(null);
+    });
     await step(
       TIMINGS.shuffleSettle,
-      [card, { transform: [CARD_LIFTED, CARD_BACK] }],
+      [card, { transform: [away, CARD_BACK] }],
       [nextCard, { transform: [CARD_BACK, CARD_PRESENTED] }]
     );
     flushSync(() => {
@@ -207,16 +256,78 @@ export default function Envelope({ dailyFinds = [], onClose }) {
     nextCard.style.transform = CARD_BACK;
   };
 
-  const handleNextFind = () => {
-    if (phase !== 'open') return;
-    setPhase('shuffling');
-    shuffle().then(() => setPhase('open'), () => {});
+  const captureFind = async (from) => {
+    const card = cardRef.current;
+    await step(TIMINGS.swipeAway, [card, { transform: [from, swipedTo('right', card)], opacity: [1, 0] }]);
+    onCapture?.(find);
   };
 
-  const find = dailyFinds.length ? dailyFinds[findIndex % dailyFinds.length] : null;
-  const upNext = dailyFinds.length > 1 ? dailyFinds[(findIndex + 1) % dailyFinds.length] : null;
-  const cardOut = phase === 'open' || phase === 'shuffling';
-  const closed = !cardOut;
+  const snapBack = async (from) => {
+    await step(TIMINGS.swipeReturn, [cardRef.current, { transform: [from, CARD_PRESENTED] }]);
+    setSwipe(null);
+  };
+
+  const runSwipe = (animation) => {
+    setPhase('shuffling');
+    animation.then(() => setPhase('open'), () => {});
+  };
+
+  // Plays the outcome of a swipe in a direction, from wherever along the arc the card was dragged to.
+  const finishSwipe = (direction, from) => {
+    if (!SWIPES[direction].allowed) return runSwipe(snapBack(from));
+    setSwipe({ direction, label: SWIPES[direction].label, progress: 1 });
+    runSwipe(direction === 'left' ? saveForLater(from) : captureFind(from));
+  };
+
+  // The card swings along its arc with the pointer; the overlay fades in until it's solid at the swipe threshold.
+  const handlePointerDown = (event) => {
+    if (phase !== 'open' || event.button !== 0) return;
+    const card = cardRef.current;
+    const { width } = card.getBoundingClientRect();
+    card.setPointerCapture(event.pointerId);
+    // Screen pixels per card pixel, so the card stays under the pointer despite its scaling.
+    dragRef.current = { startX: event.clientX, dx: 0, width, scale: width / card.offsetWidth };
+  };
+
+  const handlePointerMove = (event) => {
+    const drag = dragRef.current;
+    if (!drag) return;
+    drag.dx = event.clientX - drag.startX;
+    const card = cardRef.current;
+    card.style.transform = arcPose(resistDrag(drag.dx / drag.scale, card.offsetWidth), card);
+    const direction = drag.dx < 0 ? 'left' : 'right';
+    const progress = Math.min(1, Math.abs(drag.dx) / (drag.width * SWIPE_THRESHOLD));
+    setSwipe(Math.abs(drag.dx) < 4 ? null : { direction, label: SWIPES[direction].label, progress });
+  };
+
+  // A cancelled pointer (e.g. the browser took over the gesture) always snaps back.
+  const handlePointerUp = (event) => {
+    const drag = dragRef.current;
+    if (!drag) return;
+    dragRef.current = null;
+    const from = cardRef.current.style.transform;
+    if (event.type === 'pointercancel' || Math.abs(drag.dx) < drag.width * SWIPE_THRESHOLD) {
+      if (drag.dx) runSwipe(snapBack(from));
+      else setSwipe(null);
+      return;
+    }
+    finishSwipe(drag.dx < 0 ? 'left' : 'right', from);
+  };
+
+  const handleCardKey = (event) => {
+    const direction = { ArrowLeft: 'left', ArrowRight: 'right' }[event.key];
+    if (!direction || phase !== 'open') return;
+    event.preventDefault();
+    finishSwipe(direction, CARD_PRESENTED);
+  };
+
+  const cardHandlers = {
+    onPointerDown: handlePointerDown,
+    onPointerMove: handlePointerMove,
+    onPointerUp: handlePointerUp,
+    onPointerCancel: handlePointerUp,
+    onKeyDown: handleCardKey,
+  };
 
   return (
     <div className="envelope-scene" onClick={handleSceneClick}>
@@ -244,7 +355,7 @@ export default function Envelope({ dailyFinds = [], onClose }) {
             tabIndex={closed ? 0 : undefined}
             onClick={phase === 'idle' ? handleTap : undefined}
             onKeyDown={closed ? handleEnvelopeKey : undefined}
-            aria-label={closed ? `Open envelope for ${RECIPIENT_NAME}` : undefined}
+            aria-label={closed ? (userName ? `Open envelope for ${userName}` : 'Open envelope') : undefined}
             aria-disabled={closed ? phase === 'busy' : undefined}
           >
             <div ref={shiftRef} className="envelope__layer">
@@ -253,7 +364,10 @@ export default function Envelope({ dailyFinds = [], onClose }) {
                   <div ref={flipRef} className="envelope__layer">
                     <div className="envelope__layer" style={{ visibility: face === 'front' ? 'visible' : 'hidden' }}>
                       <img className="envelope__front" src={assets.front} alt="" draggable="false" />
-                      <span className="envelope__name">{RECIPIENT_NAME}</span>
+                      <div className="envelope__address">
+                        {userName && <span className="envelope__name">{userName}</span>}
+                        <span className="envelope__date font-body">{formatNumericDate()}</span>
+                      </div>
                     </div>
                     <div className="envelope__layer" style={{ visibility: face === 'back' ? 'visible' : 'hidden' }}>
                       <img className="envelope__back" src={assets.back} alt="" draggable="false" />
@@ -269,10 +383,11 @@ export default function Envelope({ dailyFinds = [], onClose }) {
                         )}
                         <FindCard
                           find={find}
-                          onNext={upNext ? handleNextFind : null}
                           interactive={cardInFront}
                           cardRef={cardRef}
                           className={cardBehind ? 'is-behind' : ''}
+                          swipe={swipe}
+                          handlers={cardInFront ? cardHandlers : undefined}
                         />
                       </div>
                       <img className="envelope__pocket" src={assets.pocket} alt="" draggable="false" />
@@ -288,9 +403,7 @@ export default function Envelope({ dailyFinds = [], onClose }) {
 
           <p className="envelope-scene__hint font-body" aria-live="polite">
             {cardOut
-              ? upNext
-                ? 'tap the card for the next find, or outside to close'
-                : 'tap outside to close'
+              ? `drag the card ${upNext ? '← to save for later, ' : ''}→ to capture it · tap outside to close`
               : phase === 'idle'
                 ? 'tap the envelope'
                 : '\u00a0'}

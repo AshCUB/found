@@ -16,6 +16,11 @@ export function addDays(date, days) {
   return d;
 }
 
+// A numeric date like 03/03/2023.
+export function formatNumericDate(date = new Date()) {
+  return new Date(date).toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' });
+}
+
 // "Today", "Yesterday", or a short date (with the year only when it isn't this year).
 export function formatDayLabel(date, now = new Date()) {
   const key = toDateKey(date);

@@ -166,8 +166,45 @@
   z-index: 0;
 }
 
-.find-card[role='button'] {
-  cursor: pointer;
+/* The presented card is dragged sideways, so the browser shouldn't scroll or select text under the pointer. */
+.find-card.is-draggable {
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.find-card.is-draggable:active {
+  cursor: grabbing;
+}
+
+/* Shown over the whole card while swiping: off-white for "save for later" (left), green for "capture it" (right). */
+.find-card__swipe {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6cqw;
+  text-align: center;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.find-card__swipe span {
+  font-size: 8cqw;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.find-card__swipe.is-left {
+  background: #fff9eb;
+  color: #1f1f1f;
+}
+
+.find-card__swipe.is-right {
+  background: #5e7333;
+  color: #fff;
 }
 
 .find-card:focus-visible {
@@ -249,16 +286,30 @@
   height: 124.862%;
 }
 
-.envelope__name {
+/* The user's name with today's date underneath, centered on the front of the envelope. */
+.envelope__address {
   position: absolute;
   inset: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 1.6cqw;
+  padding: 0 8cqw;
   color: #fff;
-  font-family: 'PT Mono', ui-monospace, monospace;
-  font-weight: 700;
-  font-size: 6.4cqw;
+  text-align: center;
+}
+
+.envelope__name {
+  font-family: 'TAY Makawao', sans-serif;
+  font-size: 12cqw;
+  line-height: 1.05;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.envelope__date {
+  font-size: 2.8cqw;
   letter-spacing: 0.06em;
 }
 
