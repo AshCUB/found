@@ -20,15 +20,31 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const DESK_DIR = join(__dirname, '..', 'public/images/desk');
 const RASTER_EXTENSIONS = new Set(['.webp', '.jpg', '.jpeg', '.png']);
 
-// Desk photos cover a phone screen at 2-3x; decorations are drawn at most ~a third of the desk wide.
+// Desk photos cover the whole screen. A portrait photo is kept MATERIAL_WIDTH wide. A landscape one (e.g. wood with
+// horizontal grain) is kept MATERIAL_HEIGHT tall, since a portrait phone shows its full height, and cropped to at most
+// 16:9 from the center (the widest screens), since the sides beyond that are never seen.
+// Decorations are drawn at most ~a third of the desk wide.
 const MATERIAL_WIDTH = 1200;
+const MATERIAL_HEIGHT = 1800;
+const MATERIAL_MAX_RATIO = 16 / 9;
 const DECORATION_SIZE = 800;
+
+const isLandscape = ({ width, height }) => width > height;
 
 const FOLDERS = [
   {
     name: 'materials',
-    fits: ({ width }) => width <= MATERIAL_WIDTH,
-    convert: (image) => image.resize({ width: MATERIAL_WIDTH, withoutEnlargement: true }).webp({ quality: 80 }),
+    fits: (size) =>
+      isLandscape(size)
+        ? size.height <= MATERIAL_HEIGHT && size.width / size.height <= MATERIAL_MAX_RATIO + 0.01
+        : size.width <= MATERIAL_WIDTH,
+    convert: async (image) => {
+      const size = await image.metadata();
+      if (!isLandscape(size)) return image.resize({ width: MATERIAL_WIDTH, withoutEnlargement: true }).webp({ quality: 80 });
+      const height = Math.min(MATERIAL_HEIGHT, size.height);
+      const width = Math.min(Math.round(height * MATERIAL_MAX_RATIO), Math.round((size.width * height) / size.height));
+      return image.resize({ width, height, fit: 'cover' }).webp({ quality: 80 });
+    },
   },
   {
     name: 'decorations',
@@ -68,7 +84,7 @@ async function main() {
         continue;
       }
 
-      const output = await folder.convert(sharp(input).rotate()).toBuffer();
+      const output = await (await folder.convert(sharp(input).rotate())).toBuffer();
       writeFileSync(path, output);
       after += output.length;
       converted++;

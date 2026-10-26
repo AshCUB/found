@@ -24,13 +24,12 @@
   cursor: grab;
   touch-action: none;
   -webkit-tap-highlight-color: transparent;
-  transition: filter 0.15s ease, scale 0.15s ease;
+  transition: scale 0.15s ease;
 }
 
 .desk-decor__item.is-dragging {
   cursor: grabbing;
   scale: 1.04;
-  filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.35));
   z-index: 1;
 }
 
@@ -38,26 +37,9 @@
   outline: none;
 }
 
-.desk-decor__item.is-selected {
-  outline: 2px dashed rgba(255, 255, 255, 0.9);
+/* Only for keyboard users, so they can see which decoration the arrow keys will move. */
+.desk-decor__item:focus-visible {
+  outline: 2px solid #fff;
   outline-offset: 2px;
   border-radius: 4px;
-}
-
-/* Inside the decoration's corner, so it isn't cut off when the decoration is against the desk's edge. */
-.desk-decor__remove {
-  position: absolute;
-  top: 2px;
-  right: 2px;
-  width: 26px;
-  height: 26px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 9999px;
-  background: #fff;
-  color: #333;
-  font-size: 18px;
-  line-height: 1;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }

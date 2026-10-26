@@ -124,12 +124,10 @@ export function useUserData(userId) {
     saveProfileFields(userId, { streak: next }).catch((error) => console.error('Error saving streak:', error.cause ?? error));
   };
 
-  // The desk updates right away (so dragging stays smooth) and is saved in the background.
-  const setDeskSetup = (deskSetup) => {
-    if (!dataRef.current) return;
-    dataRef.current = { ...dataRef.current, deskSetup };
+  // Saved from the Desk tab's Save button; only updates the desk once it's saved, and throws if saving fails.
+  const setDeskSetup = async (deskSetup) => {
+    await saveProfileFields(userId, { deskSetup });
     update(() => ({ deskSetup }));
-    saveProfileFields(userId, { deskSetup }).catch((error) => console.error('Error saving desk:', error.cause ?? error));
   };
 
   const setShowStreak = async (showStreak) => {

@@ -91,7 +91,8 @@
 .envelope {
   position: absolute;
   left: 50%;
-  top: 60%;
+  /* Centered on the desk. (The Desk tab's "your letter" guide mirrors this: envelopeArea in DeskDecor.jsx.) */
+  top: 50%;
   width: var(--envelope-width);
   aspect-ratio: 515 / 356;
   transform: translate(-50%, -50%);

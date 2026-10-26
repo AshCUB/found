@@ -33,7 +33,7 @@ function envelopeArea({ width, height }) {
   const envelopeWidth = Math.min(0.7 * width, 420, 0.55 * height);
   const w = envelopeWidth / width;
   const h = (envelopeWidth * 356) / 515 / height;
-  return { left: 0.5 - w / 2, top: 0.6 - h / 2, width: w, height: h };
+  return { left: 0.5 - w / 2, top: 0.5 - h / 2, width: w, height: h };
 }
 
 // Keeps a decoration's center far enough from the desk's edges that the whole decoration stays on the desk.
@@ -68,9 +68,11 @@ const LockIcon = () => (
   </svg>
 );
 
-export default function DeskDecor({ deskSetup, onChange, onClose }) {
-  const setup = useMemo(() => normalizeDeskSetup(deskSetup), [deskSetup]);
-  const [selectedId, setSelectedId] = useState(null);
+// Changes are a draft until "Save desk" is pressed; leaving without saving keeps the previously saved desk.
+export default function DeskDecor({ deskSetup, onSave, onClose }) {
+  const saved = useMemo(() => normalizeDeskSetup(deskSetup), [deskSetup]);
+  const [setup, setSetup] = useState(saved);
+  const [saveState, setSaveState] = useState({ status: 'idle', error: null }); // idle | saving | saved | error
   const viewport = useViewportSize();
   const deskRef = useRef(null);
   const dragRef = useRef(null);
@@ -78,29 +80,40 @@ export default function DeskDecor({ deskSetup, onChange, onClose }) {
   const placedIds = new Set(setup.decorations.map((placed) => placed.id));
   const full = setup.decorations.length >= MAX_DECORATIONS;
   const envelope = envelopeArea(viewport);
+  const unsaved = JSON.stringify(setup) !== JSON.stringify(saved);
 
-  const save = (changes) => onChange({ ...setup, ...changes });
+  const change = (changes) => {
+    setSetup((current) => ({ ...current, ...changes }));
+    setSaveState({ status: 'idle', error: null });
+  };
+
+  const saveDesk = async () => {
+    setSaveState({ status: 'saving', error: null });
+    try {
+      await onSave(setup);
+      setSaveState({ status: 'saved', error: null });
+    } catch (error) {
+      console.error('Error saving desk:', error.cause ?? error);
+      setSaveState({ status: 'error', error: error.message });
+    }
+  };
 
   const chooseMaterial = (material) => {
-    if (material.unlocked && material.id !== setup.materialId) save({ materialId: material.id });
+    if (material.unlocked && material.id !== setup.materialId) change({ materialId: material.id });
   };
 
   const addDecoration = (decoration) => {
     if (!decoration.unlocked || placedIds.has(decoration.id) || full) return;
     const spot = nextPlacementSpot(setup.decorations);
-    save({ decorations: [...setup.decorations, { id: decoration.id, ...spot }] });
-    setSelectedId(decoration.id);
+    change({ decorations: [...setup.decorations, { id: decoration.id, ...spot }] });
   };
 
-  const removeDecoration = (id) => {
-    save({ decorations: setup.decorations.filter((placed) => placed.id !== id) });
-    if (selectedId === id) setSelectedId(null);
-  };
+  const removeDecoration = (id) => change({ decorations: setup.decorations.filter((placed) => placed.id !== id) });
 
   const moveDecoration = (id, position) =>
-    save({ decorations: setup.decorations.map((placed) => (placed.id === id ? { ...placed, ...position } : placed)) });
+    change({ decorations: setup.decorations.map((placed) => (placed.id === id ? { ...placed, ...position } : placed)) });
 
-  // Dragging moves the element directly (no re-render per frame, so it stays smooth) and saves once on release.
+  // Dragging moves the element directly (no re-render per frame, so it stays smooth) and updates the draft on release.
   const handlePointerDown = (event, placed) => {
     if (event.button !== 0) return;
     const element = event.currentTarget;
@@ -117,7 +130,6 @@ export default function DeskDecor({ deskSetup, onChange, onClose }) {
       moved: false,
       position: { x: placed.x, y: placed.y },
     };
-    setSelectedId(placed.id);
   };
 
   const handlePointerMove = (event) => {
@@ -160,37 +172,22 @@ export default function DeskDecor({ deskSetup, onChange, onClose }) {
     moveDecoration(placed.id, clampToDesk(position, event.currentTarget, deskRef.current.getBoundingClientRect()));
   };
 
-  const renderDecoration = (placed, decoration, image, props) => {
-    const selected = selectedId === placed.id;
-    return (
-      <div
-        {...props}
-        className={`${props.className} desk-decor__item${selected ? ' is-selected' : ''}`}
-        role="button"
-        tabIndex={0}
-        aria-label={`${decoration.name}. Drag or use the arrow keys to move it, Delete to remove it.`}
-        onPointerDown={(event) => handlePointerDown(event, placed)}
-        onPointerMove={handlePointerMove}
-        onPointerUp={handlePointerUp}
-        onPointerCancel={handlePointerUp}
-        onKeyDown={(event) => handleDecorationKey(event, placed)}
-        onFocus={() => setSelectedId(placed.id)}
-      >
-        {image}
-        {selected && (
-          <button
-            type="button"
-            className="desk-decor__remove"
-            aria-label={`Remove ${decoration.name}`}
-            onPointerDown={(event) => event.stopPropagation()}
-            onClick={() => removeDecoration(placed.id)}
-          >
-            ×
-          </button>
-        )}
-      </div>
-    );
-  };
+  const renderDecoration = (placed, decoration, image, props) => (
+    <div
+      {...props}
+      className={`${props.className} desk-decor__item`}
+      role="button"
+      tabIndex={0}
+      aria-label={`${decoration.name}. Drag or use the arrow keys to move it, Delete to remove it.`}
+      onPointerDown={(event) => handlePointerDown(event, placed)}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUp}
+      onPointerCancel={handlePointerUp}
+      onKeyDown={(event) => handleDecorationKey(event, placed)}
+    >
+      {image}
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-grey animate-fade-in pb-lg">
@@ -217,7 +214,6 @@ export default function DeskDecor({ deskSetup, onChange, onClose }) {
           className="desk-decor__preview rounded-lg shadow-sm mx-auto"
           style={{ '--viewport-ratio': viewport.width / viewport.height }}
           renderDecoration={renderDecoration}
-          onPointerDown={(event) => !event.target.closest('.desk-decor__item') && setSelectedId(null)}
         >
           <div
             className="desk-decor__envelope"
@@ -335,6 +331,31 @@ export default function DeskDecor({ deskSetup, onChange, onClose }) {
             </div>
           ))}
         </section>
+
+        {/* Save */}
+        <div>
+          <button
+            type="button"
+            onClick={saveDesk}
+            disabled={!unsaved || saveState.status === 'saving'}
+            className="font-buttons text-lg bg-green text-white px-xl py-md rounded-full w-full hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {saveState.status === 'saving' ? 'Saving…' : 'Save desk'}
+          </button>
+          <p
+            className={`font-body text-xs text-center mt-sm ${saveState.status === 'error' ? 'text-black' : 'text-dark-grey'}`}
+            role={saveState.status === 'error' ? 'alert' : undefined}
+            aria-live="polite"
+          >
+            {saveState.status === 'error'
+              ? saveState.error
+              : saveState.status === 'saved' && !unsaved
+                ? 'Desk saved.'
+                : unsaved
+                  ? "Unsaved changes won't be kept if you leave."
+                  : '\u00a0'}
+          </p>
+        </div>
       </div>
     </div>
   );

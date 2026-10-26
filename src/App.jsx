@@ -405,7 +405,7 @@ export default function App() {
         );
 
       case 'desk':
-        return <DeskDecor deskSetup={userData.data?.deskSetup} onChange={userData.setDeskSetup} onClose={closeScreen} />;
+        return <DeskDecor deskSetup={userData.data?.deskSetup} onSave={userData.setDeskSetup} onClose={closeScreen} />;
       
       default:
         return <Intro onGetStarted={openListPicker} />;
