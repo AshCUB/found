@@ -7,6 +7,7 @@ import Capture from './components/Capture';
 import ListPage from './components/ListPage';
 import Collection from './components/Collection';
 import Streak from './components/Streak';
+import Envelope from './components/Envelope';
 import IntroVideo, { shouldShowIntroVideo } from './components/IntroVideo';
 import LoggedOutHome, { replayReveal } from './components/LoggedOutHome';
 import SignUp from './components/SignUp';
@@ -324,6 +325,7 @@ export default function App() {
             onAddList={openListPicker}
             onViewCollection={() => openScreen('collection')}
             onViewStreak={() => openScreen('streak')}
+            onViewEnvelope={() => openScreen('envelope')}
             onSignOut={handleSignOut}
           />
         );
@@ -389,6 +391,9 @@ export default function App() {
             onClose={closeScreen}
           />
         );
+
+      case 'envelope':
+        return <Envelope onClose={closeScreen} />;
       
       default:
         return <Intro onGetStarted={openListPicker} />;

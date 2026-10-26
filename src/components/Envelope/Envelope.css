@@ -1,0 +1,155 @@
+.envelope-scene {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: #3b2416;
+  color: #fff;
+}
+
+.envelope-scene__desk {
+  position: absolute;
+  inset: 0;
+  background: center / cover no-repeat;
+  animation: envelope-fade-in 0.4s ease-out;
+}
+
+.envelope-scene__overlay {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.envelope-scene__header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: calc(env(safe-area-inset-top, 0px) + 16px) 20px 0;
+  z-index: 1;
+}
+
+.envelope-scene__wordmark {
+  margin: 0;
+  font-size: 32px;
+  line-height: 1;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+.envelope-scene__close {
+  font-size: 14px;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.envelope-scene__hint {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 32px);
+  margin: 0;
+  padding: 0 20px;
+  text-align: center;
+  font-size: 14px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* The stage is the envelope body; every envelope image is positioned in % of this box. */
+.envelope {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  width: min(70vw, 420px, 55svh);
+  aspect-ratio: 515 / 356;
+  transform: translate(-50%, -50%);
+  container-type: inline-size;
+  overflow: visible;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  animation: envelope-fade-in 0.4s ease-out;
+}
+
+.envelope[aria-disabled='true'] {
+  cursor: default;
+}
+
+.envelope:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 8px;
+  border-radius: 4px;
+}
+
+.envelope__layer {
+  position: absolute;
+  inset: 0;
+}
+
+/* Kept off the elements whose filter is animated, since brightness() would replace it. */
+.envelope__shadow {
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.35));
+}
+
+.envelope img {
+  position: absolute;
+  max-width: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+.envelope__inside {
+  left: -7.767%;
+  top: -12.079%;
+  width: 117.864%;
+  height: 126.685%;
+}
+
+/* Stretched ~1.7% vertically to line up with the back. */
+.envelope__front {
+  left: -7.767%;
+  top: -11.05%;
+  width: 117.864%;
+  height: 124.862%;
+}
+
+.envelope__name {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: 'PT Mono', ui-monospace, monospace;
+  font-weight: 700;
+  font-size: 6.4cqw;
+  letter-spacing: 0.06em;
+}
+
+/* The top edge is the hinge; the flap opens by scaling Y from 1 through 0 to -1. */
+.envelope__flap {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 62.079%;
+  transform-origin: 50% 0;
+}
+
+/* Percentages are relative to the flap box, not the stage. */
+.envelope__flap img {
+  left: -5.437%;
+  top: -11.312%;
+  width: 111.65%;
+  height: 127.602%;
+}
+
+@keyframes envelope-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

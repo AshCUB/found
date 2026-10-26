@@ -20,6 +20,7 @@ const NAV_ICONS = {
       <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
     </svg>
   ),
+  envelope: <svg {...navIconProps}><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>,
   streak: <svg {...navIconProps}><path d="M8 7V3m8 4V3M4 11h16M6 5h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V7a2 2 0 012-2z" /></svg>,
 };
 
@@ -35,6 +36,7 @@ export default function Home({
   onAddList,
   onViewCollection,
   onViewStreak,
+  onViewEnvelope,
   onSignOut,
 }) {
   const foundToday = dailyFinds.filter((find) => find.captured).length;
@@ -44,6 +46,7 @@ export default function Home({
   const navItems = [
     listProgress.length > 0 && { id: 'lists', label: 'Lists', onClick: () => onViewList(listProgress[0].listId) },
     { id: 'collection', label: 'Collection', onClick: onViewCollection },
+    { id: 'envelope', label: 'Envelope', onClick: onViewEnvelope },
     { id: 'streak', label: 'Streak', onClick: onViewStreak },
   ].filter(Boolean);
 
