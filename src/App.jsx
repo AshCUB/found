@@ -393,7 +393,7 @@ export default function App() {
         );
 
       case 'envelope':
-        return <Envelope onClose={closeScreen} />;
+        return <Envelope dailyFinds={todaysDailyFinds} onClose={closeScreen} />;
       
       default:
         return <Intro onGetStarted={openListPicker} />;

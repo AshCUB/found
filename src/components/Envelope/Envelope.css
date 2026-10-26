@@ -59,12 +59,12 @@
   transform: translate(-50%, -50%);
   container-type: inline-size;
   overflow: visible;
-  padding: 0;
-  border: 0;
-  background: none;
-  cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   animation: envelope-fade-in 0.4s ease-out;
+}
+
+.envelope[role='button'] {
+  cursor: pointer;
 }
 
 .envelope[aria-disabled='true'] {
@@ -87,7 +87,8 @@
   filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.35));
 }
 
-.envelope img {
+.envelope__layer > img,
+.envelope__flap > img {
   position: absolute;
   max-width: none;
   user-select: none;
@@ -118,16 +119,116 @@
   clip-path: none;
 }
 
-/* Placeholder card. */
+/* The find card. It's taller than the envelope, so while inside, the part below the envelope is hidden.
+   Sizes use cqw (1% of the envelope's width) so the card scales with the envelope. */
 .envelope__card {
   position: absolute;
   left: 5%;
   top: 8%;
   width: 90%;
-  height: 84%;
-  background: #fff;
-  border-radius: 2px;
+  aspect-ratio: 552 / 586;
+  display: flex;
+  flex-direction: column;
+  padding: 4cqw 4.5cqw 3cqw;
+  overflow: hidden;
+  background: #fff9eb;
+  color: #1f1f1f;
+  border-radius: 0.4cqw;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  cursor: default;
+}
+
+.find-card__photo {
+  position: relative;
+  display: block;
+  flex-shrink: 0;
+  width: 100%;
+  aspect-ratio: 1.4;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  background: #e8e1d2;
+}
+
+/* Within the slot: the next find waits behind the current card (hidden until the card is out), and the current
+   card drops behind it while it moves to the back of the pile. */
+.envelope__card {
+  z-index: 2;
+}
+
+.find-card--next {
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.envelope__card.is-behind {
+  z-index: 0;
+}
+
+.find-card[role='button'] {
+  cursor: pointer;
+}
+
+.find-card:focus-visible {
+  outline: 2px solid #5e7333;
+  outline-offset: 3px;
+}
+
+.find-card__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Shape and letter artwork is drawn on transparent backgrounds, so it's fitted instead of cropped. */
+.find-card__image.is-fitted {
+  object-fit: contain;
+  padding: 5cqw;
+}
+
+.find-card__image-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.4cqw;
+  color: #333;
+}
+
+.find-card__name {
+  flex-shrink: 0;
+  margin: 2.2cqw 0 0;
+  font-size: 5.6cqw;
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: #111;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.find-card__description {
+  min-height: 0;
+  margin: 1.4cqw 0 0;
+  font-size: 2.6cqw;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.find-card__meta {
+  display: flex;
+  justify-content: space-between;
+  flex-shrink: 0;
+  margin-top: auto;
+  padding-top: 1.4cqw;
+  font-size: 2.4cqw;
 }
 
 /* The pocket on its own, over the card, so the card slides out from between the interior and the pocket.
