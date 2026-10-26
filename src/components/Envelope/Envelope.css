@@ -82,8 +82,10 @@
   inset: 0;
 }
 
-/* Kept off the elements whose filter is animated, since brightness() would replace it. */
-.envelope__shadow {
+/* The envelope's shadow, on the body images themselves rather than a wrapper: a filter on an ancestor would replace
+   the animated brightness(), and Safari clips overflowing children (the card, the open flap) to filtered ancestors. */
+.envelope__front,
+.envelope__back {
   filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.35));
 }
 
@@ -111,7 +113,8 @@
   position: absolute;
   inset: 0;
   z-index: 2;
-  clip-path: inset(-500% 0 0 0);
+  /* A polygon rather than inset() with a negative top, which not every browser honours. */
+  clip-path: polygon(0 -500%, 100% -500%, 100% 100%, 0 100%);
 }
 
 .envelope__card-slot.is-front {

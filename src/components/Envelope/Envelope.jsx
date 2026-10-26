@@ -121,6 +121,9 @@ export default function Envelope({ dailyFinds = [], onCapture, onClose }) {
         running.current.delete(animation);
         animation.commitStyles();
         animation.cancel();
+        // Don't leave a do-nothing filter behind: Safari clips an element's overflowing children (here the card
+        // and the open flap) to the bounds of any filtered ancestor.
+        if (el.style.filter === 'brightness(1)') el.style.removeProperty('filter');
       })
     );
   };
@@ -360,40 +363,38 @@ export default function Envelope({ dailyFinds = [], onCapture, onClose }) {
           >
             <div ref={shiftRef} className="envelope__layer">
               <div ref={liftRef} className="envelope__layer">
-                <div className="envelope__layer envelope__shadow">
-                  <div ref={flipRef} className="envelope__layer">
-                    <div className="envelope__layer" style={{ visibility: face === 'front' ? 'visible' : 'hidden' }}>
-                      <img className="envelope__front" src={assets.front} alt="" draggable="false" />
-                      <div className="envelope__address">
-                        {userName && <span className="envelope__name">{userName}</span>}
-                        <span className="envelope__date font-body">{formatNumericDate()}</span>
-                      </div>
+                <div ref={flipRef} className="envelope__layer">
+                  <div className="envelope__layer" style={{ visibility: face === 'front' ? 'visible' : 'hidden' }}>
+                    <img className="envelope__front" src={assets.front} alt="" draggable="false" />
+                    <div className="envelope__address">
+                      {userName && <span className="envelope__name">{userName}</span>}
+                      <span className="envelope__date font-body">{formatNumericDate()}</span>
                     </div>
-                    <div className="envelope__layer" style={{ visibility: face === 'back' ? 'visible' : 'hidden' }}>
-                      <img className="envelope__back" src={assets.back} alt="" draggable="false" />
-                      <div className={`envelope__card-slot${cardInFront ? ' is-front' : ''}`}>
-                        {upNext && (
-                          <FindCard
-                            find={upNext}
-                            interactive={false}
-                            cardRef={nextCardRef}
-                            className="find-card--next"
-                            style={{ transform: CARD_BACK }}
-                          />
-                        )}
+                  </div>
+                  <div className="envelope__layer" style={{ visibility: face === 'back' ? 'visible' : 'hidden' }}>
+                    <img className="envelope__back" src={assets.back} alt="" draggable="false" />
+                    <div className={`envelope__card-slot${cardInFront ? ' is-front' : ''}`}>
+                      {upNext && (
                         <FindCard
-                          find={find}
-                          interactive={cardInFront}
-                          cardRef={cardRef}
-                          className={cardBehind ? 'is-behind' : ''}
-                          swipe={swipe}
-                          handlers={cardInFront ? cardHandlers : undefined}
+                          find={upNext}
+                          interactive={false}
+                          cardRef={nextCardRef}
+                          className="find-card--next"
+                          style={{ transform: CARD_BACK }}
                         />
-                      </div>
-                      <img className="envelope__pocket" src={assets.pocket} alt="" draggable="false" />
-                      <div ref={flapRef} className={`envelope__flap${flapOpen ? ' is-open' : ''}`}>
-                        <img src={assets.flap} alt="" draggable="false" />
-                      </div>
+                      )}
+                      <FindCard
+                        find={find}
+                        interactive={cardInFront}
+                        cardRef={cardRef}
+                        className={cardBehind ? 'is-behind' : ''}
+                        swipe={swipe}
+                        handlers={cardInFront ? cardHandlers : undefined}
+                      />
+                    </div>
+                    <img className="envelope__pocket" src={assets.pocket} alt="" draggable="false" />
+                    <div ref={flapRef} className={`envelope__flap${flapOpen ? ' is-open' : ''}`}>
+                      <img src={assets.flap} alt="" draggable="false" />
                     </div>
                   </div>
                 </div>
