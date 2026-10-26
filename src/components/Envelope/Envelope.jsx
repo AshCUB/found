@@ -16,8 +16,8 @@ const TIMINGS = {
   cardPull: { duration: 450, easing: 'ease-in-out' },
   cardPresent: { duration: 450, easing: 'ease-in-out' },
   // Going to the next find: the top card lifts, then tucks in behind the pile as the next card comes forward.
-  shuffleLift: { duration: 260, easing: 'ease-out' },
-  shuffleSettle: { duration: 420, easing: 'ease-in-out' },
+  shuffleLift: { duration: 340, easing: 'ease-out' },
+  shuffleSettle: { duration: 480, easing: 'ease-in-out' },
 };
 
 const SELECTED_SCALE = 1.18;
@@ -33,8 +33,9 @@ const CARD_PULLED = 'translateY(-103.5%)';
 const CARD_PRESENTED = 'translateY(-45%) scale(1.15)';
 // The next find waits just behind the presented card, peeking out above it like the next card in a pile.
 const CARD_BACK = `${CARD_PRESENTED} translateY(-5%) scale(0.95)`;
-// How far the top card lifts before it tucks in behind the pile.
-const CARD_LIFTED = `${CARD_PRESENTED} translateY(-40%)`;
+// How far the top card lifts before it tucks in behind the pile: far enough to clear the next card's top edge
+// (which peeks out about 7.5% above it), so dropping behind it is never seen.
+const CARD_LIFTED = `${CARD_PRESENTED} translateY(-110%)`;
 // The envelope drops down (by a share of its height) while the card is pulled out, so the card stays on screen.
 const ENVELOPE_RAISED = 'translateY(0)';
 const ENVELOPE_LOWERED = 'translateY(60%)';
