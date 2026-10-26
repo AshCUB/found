@@ -8,6 +8,7 @@ import ListPage from './components/ListPage';
 import Collection from './components/Collection';
 import Streak from './components/Streak';
 import Envelope from './components/Envelope';
+import DeskDecor from './components/DeskDecor';
 import IntroVideo, { shouldShowIntroVideo } from './components/IntroVideo';
 import LoggedOutHome, { replayReveal } from './components/LoggedOutHome';
 import SignUp from './components/SignUp';
@@ -22,7 +23,7 @@ import { getAllDailyFinds, getAlternativeItem, storeDailyFinds, loadDailyFinds, 
 import { focusLists, isListVisible } from './data/focusLists';
 
 // Full-page screens open scrolled to the top; dailyFind and capture are overlays on top of home.
-const PAGE_SCREENS = ['intro', 'listPage', 'collection', 'streak'];
+const PAGE_SCREENS = ['intro', 'listPage', 'collection', 'streak', 'desk'];
 
 const SIGNED_OUT_ONLY_ROUTES = ['/sign-in', '/create-account'];
 const GET_STARTED_ROUTE = '/get-started';
@@ -326,6 +327,7 @@ export default function App() {
             onViewCollection={() => openScreen('collection')}
             onViewStreak={() => openScreen('streak')}
             onViewEnvelope={() => openScreen('envelope')}
+            onViewDesk={() => openScreen('desk')}
             onSignOut={handleSignOut}
           />
         );
@@ -393,7 +395,17 @@ export default function App() {
         );
 
       case 'envelope':
-        return <Envelope dailyFinds={todaysDailyFinds} onCapture={handleCapture} onClose={closeScreen} />;
+        return (
+          <Envelope
+            dailyFinds={todaysDailyFinds}
+            deskSetup={userData.data?.deskSetup}
+            onCapture={handleCapture}
+            onClose={closeScreen}
+          />
+        );
+
+      case 'desk':
+        return <DeskDecor deskSetup={userData.data?.deskSetup} onChange={userData.setDeskSetup} onClose={closeScreen} />;
       
       default:
         return <Intro onGetStarted={openListPicker} />;

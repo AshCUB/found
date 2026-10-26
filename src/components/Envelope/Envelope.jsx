@@ -1,7 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
 import { loadEnvelopeAssets } from './assets';
 import FindCard from './FindCard';
+import { DeskScene, preloadDesk } from '../DeskDecor';
+import { normalizeDeskSetup } from '../../data/deskDecor';
 import { getUserName } from '../../auth/session';
 import { formatNumericDate } from '../../utils/date';
 import './Envelope.css';
@@ -68,7 +70,8 @@ const ENVELOPE_LOWERED = 'translateY(60%)';
 
 const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-export default function Envelope({ dailyFinds = [], onCapture, onClose }) {
+export default function Envelope({ dailyFinds = [], deskSetup, onCapture, onClose }) {
+  const desk = useMemo(() => normalizeDeskSetup(deskSetup), [deskSetup]);
   const [assets, setAssets] = useState(null);
   const [userName, setUserName] = useState(null);
   const [loadError, setLoadError] = useState(false);
@@ -91,8 +94,8 @@ export default function Envelope({ dailyFinds = [], onCapture, onClose }) {
 
   useEffect(() => {
     let active = true;
-    // The name is fetched alongside the images, so the envelope never appears without it.
-    Promise.all([loadEnvelopeAssets(), getUserName().catch(() => null)])
+    // The name and the user's desk are loaded alongside the envelope images, so the scene appears all at once.
+    Promise.all([loadEnvelopeAssets(), getUserName().catch(() => null), preloadDesk(desk)])
       .then(([result, name]) => {
         if (!active) return;
         setUserName(name);
@@ -334,6 +337,9 @@ export default function Envelope({ dailyFinds = [], onCapture, onClose }) {
 
   return (
     <div className="envelope-scene" onClick={handleSceneClick}>
+      {/* The user's desk (Desk tab), with the letter resting on it. */}
+      {assets && <DeskScene setup={desk} className="envelope-scene__desk" />}
+      <div className="envelope-scene__scrim" />
       <div ref={overlayRef} className="envelope-scene__overlay" />
 
       <header className="envelope-scene__header">

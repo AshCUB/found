@@ -4,8 +4,29 @@
   position: fixed;
   inset: 0;
   overflow: hidden;
-  background: #fff;
-  color: #333;
+  background: #6b4a33;
+  color: #fff;
+}
+
+/* The user's desk fills the screen behind the envelope. */
+.envelope-scene .envelope-scene__desk {
+  position: absolute;
+  inset: 0;
+  animation: envelope-fade-in 0.4s ease-out;
+}
+
+/* Darkens the top and bottom of the desk a little, so the header and hint stay readable on any desk. */
+.envelope-scene__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.38),
+    rgba(0, 0, 0, 0) 18%,
+    rgba(0, 0, 0, 0) 78%,
+    rgba(0, 0, 0, 0.38)
+  );
+  pointer-events: none;
 }
 
 .envelope-scene__overlay {
@@ -32,12 +53,13 @@
   margin: 0;
   font-size: 32px;
   line-height: 1;
-  color: #5e7333;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
 
 .envelope-scene__close {
   font-size: 14px;
-  color: #333;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .envelope-scene__hint {
@@ -49,6 +71,7 @@
   padding: 0 20px;
   text-align: center;
   font-size: 14px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
   z-index: 1;
 }
 

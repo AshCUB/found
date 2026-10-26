@@ -1,0 +1,33 @@
+/* The box is a size container, so decorations can be sized from its shorter side (cqmin). */
+.desk-scene {
+  position: relative;
+  overflow: hidden;
+  container-type: size;
+  /* Shown if the material photo can't load. */
+  background: #6b4a33;
+}
+
+.desk-scene__material {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Positioned by its center (left/top are set inline as shares of the desk). */
+.desk-scene__decoration {
+  position: absolute;
+  width: calc(var(--decoration-size) * 100cqmin);
+  transform: translate(-50%, -50%);
+}
+
+.desk-scene__decoration img {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  pointer-events: none;
+}

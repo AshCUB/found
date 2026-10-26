@@ -124,6 +124,14 @@ export function useUserData(userId) {
     saveProfileFields(userId, { streak: next }).catch((error) => console.error('Error saving streak:', error.cause ?? error));
   };
 
+  // The desk updates right away (so dragging stays smooth) and is saved in the background.
+  const setDeskSetup = (deskSetup) => {
+    if (!dataRef.current) return;
+    dataRef.current = { ...dataRef.current, deskSetup };
+    update(() => ({ deskSetup }));
+    saveProfileFields(userId, { deskSetup }).catch((error) => console.error('Error saving desk:', error.cause ?? error));
+  };
+
   const setShowStreak = async (showStreak) => {
     const prev = dataRef.current?.showStreak;
     update(() => ({ showStreak }));
@@ -148,5 +156,6 @@ export function useUserData(userId) {
     deleteLog,
     setStreak,
     setShowStreak,
+    setDeskSetup,
   };
 }

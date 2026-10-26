@@ -50,10 +50,11 @@ function fromRow(row) {
 // --- Dev-only signed-in shortcut: no Supabase user, so keep everything in this browser. ---
 
 function readDev() {
+  const empty = { lists: [], logs: [], streak: null, showStreak: true, deskSetup: null };
   try {
-    return { lists: [], logs: [], streak: null, showStreak: true, ...JSON.parse(localStorage.getItem(DEV_DATA_KEY)) };
+    return { ...empty, ...JSON.parse(localStorage.getItem(DEV_DATA_KEY)) };
   } catch {
-    return { lists: [], logs: [], streak: null, showStreak: true };
+    return empty;
   }
 }
 
@@ -89,14 +90,26 @@ async function fetchAllLogs(userId) {
   }
 }
 
-// Returns { lists: string[], logs, streak (object or null if never saved), showStreak }.
+// The saved desk, or null if never saved. Fetched on its own and never fails the load: the desk is decoration, so
+// if it can't be read (e.g. the desk_setup migration hasn't been run yet) the app just shows the default desk.
+async function fetchDeskSetup(userId) {
+  const { data, error } = await supabase.from('profiles').select('desk_setup').eq('id', userId).maybeSingle();
+  if (error) {
+    console.error('Error loading desk:', error);
+    return null;
+  }
+  return data?.desk_setup ?? null;
+}
+
+// Returns { lists: string[], logs, streak (object or null if never saved), showStreak, deskSetup (object or null) }.
 export async function fetchUserData(userId) {
   if (isDev(userId)) return readDev();
   try {
-    const [lists, logs, profile] = await Promise.all([
+    const [lists, logs, profile, deskSetup] = await Promise.all([
       supabase.from('user_lists').select('list_id').eq('user_id', userId).order('created_at'),
       fetchAllLogs(userId),
       supabase.from('profiles').select('streak_data, show_streak').eq('id', userId).maybeSingle(),
+      fetchDeskSetup(userId),
     ]);
     if (lists.error) throw lists.error;
     if (profile.error) throw profile.error;
@@ -105,6 +118,7 @@ export async function fetchUserData(userId) {
       logs,
       streak: profile.data?.streak_data ?? null,
       showStreak: profile.data?.show_streak ?? true,
+      deskSetup,
     };
   } catch (error) {
     throw fail(LOAD_MESSAGE, error);
@@ -131,13 +145,20 @@ export async function replaceLists(userId, listIds) {
   if (error) throw fail("we couldn't save your lists. check your connection and try again.", error);
 }
 
-// --- Streak and settings (columns on the profiles table) ---
+// --- Streak, settings and desk (columns on the profiles table) ---
 
-export async function saveProfileFields(userId, { streak, showStreak }) {
+export async function saveProfileFields(userId, { streak, showStreak, deskSetup }) {
   const fields = {};
   if (streak !== undefined) fields.streak_data = streak;
   if (showStreak !== undefined) fields.show_streak = showStreak;
-  if (isDev(userId)) return void writeDev(() => ({ ...(streak !== undefined && { streak }), ...(showStreak !== undefined && { showStreak }) }));
+  if (deskSetup !== undefined) fields.desk_setup = deskSetup;
+  if (isDev(userId)) {
+    return void writeDev(() => ({
+      ...(streak !== undefined && { streak }),
+      ...(showStreak !== undefined && { showStreak }),
+      ...(deskSetup !== undefined && { deskSetup }),
+    }));
+  }
   // Upsert so it still works if the profile row is missing; existing columns (e.g. onboarding) are left as they are.
   const { error } = await supabase.from('profiles').upsert({ id: userId, ...fields });
   if (error) throw fail("we couldn't save your changes. check your connection and try again.", error);
