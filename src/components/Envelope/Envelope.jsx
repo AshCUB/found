@@ -402,13 +402,17 @@ export default function Envelope({ dailyFinds = [], onCapture, onClose }) {
             </div>
           </div>
 
-          <p className="envelope-scene__hint font-body" aria-live="polite">
-            {cardOut
-              ? `drag the card ${upNext ? '← to save for later, ' : ''}→ to capture it · tap outside to close`
-              : phase === 'idle'
-                ? 'tap the envelope'
-                : '\u00a0'}
-          </p>
+          {/* While the card is out: which way to drag it for what, on the matching sides, over the dark overlay. */}
+          {cardOut ? (
+            <p className="envelope-scene__hint envelope-scene__hint--swipe font-body">
+              <span>{SWIPES.left.allowed && '← save for later'}</span>
+              <span>{SWIPES.right.allowed && 'capture it →'}</span>
+            </p>
+          ) : (
+            <p className="envelope-scene__hint font-body" aria-live="polite">
+              {phase === 'idle' ? 'tap the envelope' : '\u00a0'}
+            </p>
+          )}
         </>
       )}
     </div>

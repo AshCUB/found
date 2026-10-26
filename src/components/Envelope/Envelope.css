@@ -1,4 +1,6 @@
 .envelope-scene {
+  /* The envelope's width, shared with the swipe hint so it lines up with the envelope's sides. */
+  --envelope-width: min(70vw, 420px, 55svh);
   position: fixed;
   inset: 0;
   overflow: hidden;
@@ -47,6 +49,19 @@
   padding: 0 20px;
   text-align: center;
   font-size: 14px;
+  z-index: 1;
+}
+
+/* Spans the opened envelope's width (it's scaled up 1.18x when open), so each label sits at the envelope's edge. */
+.envelope-scene__hint--swipe {
+  left: 50%;
+  right: auto;
+  width: calc(var(--envelope-width) * 1.18);
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  color: #fff;
 }
 
 /* The stage is the envelope body; every envelope image is positioned in % of this box. */
@@ -54,7 +69,7 @@
   position: absolute;
   left: 50%;
   top: 60%;
-  width: min(70vw, 420px, 55svh);
+  width: var(--envelope-width);
   aspect-ratio: 515 / 356;
   transform: translate(-50%, -50%);
   container-type: inline-size;
@@ -247,6 +262,7 @@
   color: #111;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -258,6 +274,7 @@
   line-height: 1.35;
   display: -webkit-box;
   -webkit-line-clamp: 4;
+  line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
