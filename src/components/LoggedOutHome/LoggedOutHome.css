@@ -81,7 +81,32 @@ html.logged-out-home-active body {
   color: #767676;
 }
 
-/* Invisible 44px tap areas; they extend away from each other so they never overlap. */
+.logged-out-home__link--guest {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  text-transform: inherit;
+  color: #767676;
+  text-decoration-color: rgba(118, 118, 118, 0.45);
+  cursor: pointer;
+}
+
+.logged-out-home__link--guest:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.logged-out-home__error {
+  max-width: min(320px, 85vw);
+  margin: 0 0 0.4em;
+  color: #b3261e;
+  font-size: 0.8em;
+  text-align: center;
+}
+
+/* Invisible tap areas: the outer links extend away from the middle one, which fills the space between them. */
 .logged-out-home__link::after {
   content: '';
   position: absolute;
@@ -97,6 +122,12 @@ html.logged-out-home-active body {
 }
 
 .logged-out-home__link--secondary::after {
+  top: 50%;
+  height: calc(100% + 0.4em);
+  transform: translate(-50%, -50%);
+}
+
+.logged-out-home__link--guest::after {
   top: 0;
 }
 
@@ -130,7 +161,7 @@ html.logged-out-home-active body {
     transform: translate(-50%, -50%);
   }
 
-  /* "sign in" is centered 4% above the bottom (~96%), "create an account" one line above (~93%). */
+  /* "continue as guest" is centered 4% above the bottom (~96%), the other links stacked one line above each. */
   .logged-out-home__links {
     position: absolute;
     left: 0;

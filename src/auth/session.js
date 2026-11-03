@@ -55,6 +55,20 @@ export async function getUserName() {
   return session?.user.user_metadata?.name?.trim() || null;
 }
 
+// Starts an anonymous Supabase session (must be enabled under Authentication > Sign In / Providers).
+// Guests get a real user id, so their data is stored and protected exactly like a regular account's.
+export async function signInAsGuest() {
+  const { error } = await supabase.auth.signInAnonymously();
+  if (error) throw error;
+}
+
+// True when the current session is a guest (anonymous) one.
+export async function isGuest() {
+  if (devSignedIn() || !supabase) return false;
+  const session = await fetchSession();
+  return !!session?.user.is_anonymous;
+}
+
 // Signs out on this device only. Supabase clears the stored session even if the network request fails.
 export async function signOut() {
   try {

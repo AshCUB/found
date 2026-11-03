@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
+import { isAuthRetryableFetchError } from '@supabase/supabase-js';
 import { Link } from '../../utils/router';
+import { supabase } from '../../auth/supabase';
+import { signInAsGuest } from '../../auth/session';
 import './LoggedOutHome.css';
 
 const ACTIVE_CLASS = 'logged-out-home-active';
@@ -13,9 +16,17 @@ export function replayReveal() {
   hasRevealed = false;
 }
 
+function guestError(error) {
+  if (isAuthRetryableFetchError(error)) return "we couldn't reach the server. check your connection and try again.";
+  if (error.code === 'over_request_rate_limit') return 'too many attempts. please wait a few minutes and try again.';
+  return "guest mode isn't available right now. please try again later.";
+}
+
 // introPhase: 'playing' (intro video is on top), 'leaving' (video crossfading out), 'done' (no video).
 export default function LoggedOutHome({ introPhase = 'done' }) {
   const [animate] = useState(() => !hasRevealed);
+  const [guestPending, setGuestPending] = useState(false);
+  const [error, setError] = useState('');
   const waiting = introPhase === 'playing';
 
   useEffect(() => {
@@ -26,6 +37,24 @@ export default function LoggedOutHome({ introPhase = 'done' }) {
   useEffect(() => {
     if (!waiting) hasRevealed = true;
   }, [waiting]);
+
+  // On success the auth listener in App picks up the new session and routes to onboarding.
+  const continueAsGuest = async () => {
+    if (guestPending) return;
+    setError('');
+    if (!supabase) {
+      setError("guest mode isn't available right now. please try again later.");
+      return;
+    }
+    setGuestPending(true);
+    try {
+      await signInAsGuest();
+    } catch (err) {
+      console.error('Error starting guest session:', err);
+      setError(guestError(err));
+      setGuestPending(false);
+    }
+  };
 
   const state = !animate ? '' : waiting ? ' is-waiting' : ' is-revealing';
 
@@ -43,12 +72,26 @@ export default function LoggedOutHome({ introPhase = 'done' }) {
         />
       </div>
       <nav className="logged-out-home__links">
+        {error && (
+          <p className="logged-out-home__error" role="alert">
+            {error}
+          </p>
+        )}
         <Link to="/create-account" className="logged-out-home__link logged-out-home__link--primary">
           create an account
         </Link>
         <Link to="/sign-in" className="logged-out-home__link logged-out-home__link--secondary">
           sign in
         </Link>
+        <button
+          type="button"
+          onClick={continueAsGuest}
+          disabled={guestPending}
+          aria-busy={guestPending}
+          className="logged-out-home__link logged-out-home__link--guest"
+        >
+          {guestPending ? 'starting…' : 'continue as guest'}
+        </button>
       </nav>
     </main>
   );

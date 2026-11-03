@@ -13,7 +13,7 @@ import IntroVideo, { shouldShowIntroVideo } from './components/IntroVideo';
 import LoggedOutHome, { replayReveal } from './components/LoggedOutHome';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
-import { getCachedUserId, onUserIdChange, resolveUserId, signOut } from './auth/session';
+import { getCachedUserId, isGuest, onUserIdChange, resolveUserId, signOut } from './auth/session';
 import { navigate, useRoute } from './utils/router';
 import { useCaptures, useStreakData, useEventLogs } from './hooks/useAppData';
 import { useOnboarding } from './hooks/useOnboarding';
@@ -285,6 +285,9 @@ export default function App() {
 
   // Shows the loading screen until the session is cleared, so the logged-out landing page doesn't flash first.
   const handleSignOut = async () => {
+    // A guest session can't be signed back into, so leaving it loses everything saved in it.
+    const guest = await isGuest().catch(() => false);
+    if (guest && !window.confirm("you're using found as a guest. if you sign out, your finds and lists will be lost. sign out anyway?")) return;
     setSigningOut(true);
     // Don't leave this account's cached data on the device after signing out.
     if (userId) {
