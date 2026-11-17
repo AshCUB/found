@@ -91,8 +91,8 @@ const ENVELOPE_PRESENTED = 'translateY(34%)';
 
 const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-export default function Envelope({ dailyFinds = [], captures = [], deskSetup, onCapture, onViewCollection, onClose }) {
-  const desk = useMemo(() => normalizeDeskSetup(deskSetup), [deskSetup]);
+export default function Envelope({ dailyFinds = [], captures = [], deskSetup, ownedDecor, onCapture, onViewCollection, onClose }) {
+  const desk = useMemo(() => normalizeDeskSetup(deskSetup, ownedDecor), [deskSetup, ownedDecor]);
   const [assets, setAssets] = useState(null);
   const [userName, setUserName] = useState(null);
   const [loadError, setLoadError] = useState(false);

@@ -1,0 +1,336 @@
+{
+  "materials": [
+    {
+      "id": "dark-wood",
+      "name": "Dark wood",
+      "source": "Dark Wood.jpeg"
+    },
+    {
+      "id": "light-wood",
+      "name": "Light wood",
+      "source": "Light Wood.jpeg"
+    },
+    {
+      "id": "white-wood",
+      "name": "White wood",
+      "source": "White Wood.jpeg"
+    }
+  ],
+  "decorations": [
+    {
+      "id": "white-candle",
+      "name": "White candle",
+      "description": "A simple white candle to keep your desk glowing.",
+      "category": "Candles",
+      "tier": "free",
+      "size": 0.3,
+      "source": "AdobeStock_205704026.png"
+    },
+    {
+      "id": "black-candle",
+      "name": "Black candle",
+      "description": "A candle in a black jar, its cork lid set to one side.",
+      "category": "Candles",
+      "tier": "low",
+      "size": 0.3,
+      "source": "AdobeStock_989304071.png"
+    },
+    {
+      "id": "blue-candle",
+      "name": "Blue candle",
+      "description": "A candle in cool ocean blue.",
+      "category": "Candles",
+      "tier": "med",
+      "size": 0.26,
+      "source": "Blue Candle.png"
+    },
+    {
+      "id": "rustic-candle",
+      "name": "Rustic candle",
+      "description": "A deep red candle, burned down to a warm, rustic glow.",
+      "category": "Candles",
+      "tier": "med",
+      "size": 0.3,
+      "source": "AdobeStock_183457106.png"
+    },
+    {
+      "id": "tea-lights",
+      "name": "Tea lights",
+      "description": "A scattering of little tea lights for soft evening light.",
+      "category": "Candles",
+      "tier": "med",
+      "size": 0.38,
+      "source": "AdobeStock_389411278.png"
+    },
+    {
+      "id": "teal-candle",
+      "name": "Teal candle",
+      "description": "A creamy candle in a bright teal tin.",
+      "category": "Candles",
+      "tier": "med",
+      "size": 0.27,
+      "source": "Teal Candle.png"
+    },
+    {
+      "id": "candle-trio",
+      "name": "Candle trio",
+      "description": "Three dark glass candles tucked into fresh eucalyptus.",
+      "category": "Candles",
+      "tier": "high",
+      "size": 0.42,
+      "source": "AdobeStock_282545460.png"
+    },
+    {
+      "id": "black-coffee",
+      "name": "Black coffee",
+      "description": "A plain cup of black coffee to keep you going.",
+      "category": "Drinks",
+      "tier": "free",
+      "size": 0.33,
+      "source": "AdobeStock_549484846.png"
+    },
+    {
+      "id": "cappuccino",
+      "name": "Cappuccino",
+      "description": "A frothy cappuccino in a stoneware mug.",
+      "category": "Drinks",
+      "tier": "low",
+      "size": 0.33,
+      "source": "AdobeStock_2069098983.png"
+    },
+    {
+      "id": "latte",
+      "name": "Latte",
+      "description": "A creamy latte in a sturdy black mug.",
+      "category": "Drinks",
+      "tier": "low",
+      "size": 0.33,
+      "source": "AdobeStock_286531833.png"
+    },
+    {
+      "id": "glass-of-tea",
+      "name": "Glass of tea",
+      "description": "Amber tea in a clear glass cup and saucer.",
+      "category": "Drinks",
+      "tier": "med",
+      "size": 0.34,
+      "source": "AdobeStock_169272809.png"
+    },
+    {
+      "id": "tea",
+      "name": "Tea",
+      "description": "A cup of tea, still steeping.",
+      "category": "Drinks",
+      "tier": "med",
+      "size": 0.33,
+      "source": "Tea.png"
+    },
+    {
+      "id": "coffee",
+      "name": "Coffee",
+      "description": "A latte with a heart poured into the foam.",
+      "category": "Drinks",
+      "tier": "high",
+      "size": 0.32,
+      "source": "Coffee.png"
+    },
+    {
+      "id": "espresso",
+      "name": "Espresso",
+      "description": "A sunny yellow espresso cup with a few beans spilled around it.",
+      "category": "Drinks",
+      "tier": "high",
+      "size": 0.36,
+      "source": "AdobeStock_218582244.png"
+    },
+    {
+      "id": "hot-cocoa",
+      "name": "Hot cocoa",
+      "description": "Hot cocoa piled high with whipped cream and a dusting of cocoa.",
+      "category": "Drinks",
+      "tier": "high",
+      "size": 0.36,
+      "source": "Hot Coco.png"
+    },
+    {
+      "id": "lavender-tea",
+      "name": "Lavender tea",
+      "description": "Golden tea in a pink cup, with sprigs of lavender on the side.",
+      "category": "Drinks",
+      "tier": "high",
+      "size": 0.36,
+      "source": "AdobeStock_284802856.png"
+    },
+    {
+      "id": "lavender",
+      "name": "Lavender",
+      "description": "A few sprigs of lavender for a calm desk.",
+      "category": "Flowers",
+      "tier": "free",
+      "size": 0.36,
+      "source": "AdobeStock_580953057.png"
+    },
+    {
+      "id": "rose",
+      "name": "Rose",
+      "description": "A single red rose.",
+      "category": "Flowers",
+      "tier": "low",
+      "size": 0.36,
+      "source": "AdobeStock_570202526.png"
+    },
+    {
+      "id": "sunflower",
+      "name": "Sunflower",
+      "description": "One big, sunny sunflower.",
+      "category": "Flowers",
+      "tier": "low",
+      "size": 0.32,
+      "source": "AdobeStock_576376693.png"
+    },
+    {
+      "id": "hibiscus",
+      "name": "Hibiscus",
+      "description": "Bright pink hibiscus blooms.",
+      "category": "Flowers",
+      "tier": "med",
+      "size": 0.38,
+      "source": "AdobeStock_571795675.png"
+    },
+    {
+      "id": "peony",
+      "name": "Peony",
+      "description": "A full pink peony on a long stem.",
+      "category": "Flowers",
+      "tier": "med",
+      "size": 0.38,
+      "source": "AdobeStock_746143519.png"
+    },
+    {
+      "id": "pink-daisies",
+      "name": "Pink daisies",
+      "description": "A pair of soft pink daisies.",
+      "category": "Flowers",
+      "tier": "med",
+      "size": 0.36,
+      "source": "AdobeStock_304604153.png"
+    },
+    {
+      "id": "tulips",
+      "name": "Tulips",
+      "description": "A bunch of pink tulips, fresh from the garden.",
+      "category": "Flowers",
+      "tier": "med",
+      "size": 0.38,
+      "source": "AdobeStock_488653898.png"
+    },
+    {
+      "id": "bouquet",
+      "name": "Bouquet",
+      "description": "A lush bouquet of roses and garden blooms.",
+      "category": "Flowers",
+      "tier": "high",
+      "size": 0.45,
+      "source": "AdobeStock_534463666.png"
+    },
+    {
+      "id": "edelweiss",
+      "name": "Edelweiss",
+      "description": "Delicate white edelweiss flowers.",
+      "category": "Flowers",
+      "tier": "high",
+      "size": 0.34,
+      "source": "AdobeStock_233370181.png"
+    },
+    {
+      "id": "autumn-sprig",
+      "name": "Autumn sprig",
+      "description": "A golden sprig of autumn leaves.",
+      "category": "Leafs",
+      "tier": "low",
+      "size": 0.36,
+      "source": "WhatsApp Image 2026-11-17 at 8.43.45 AM.jpeg.png"
+    },
+    {
+      "id": "green-sprigs",
+      "name": "Green sprigs",
+      "description": "A few fresh green sprigs.",
+      "category": "Leafs",
+      "tier": "low",
+      "size": 0.4,
+      "source": "AdobeStock_545351969.png"
+    },
+    {
+      "id": "maple-leaves",
+      "name": "Maple leaves",
+      "description": "Fallen maple leaves in red and orange.",
+      "category": "Leafs",
+      "tier": "med",
+      "size": 0.38,
+      "source": "AdobeStock_520927510.png"
+    },
+    {
+      "id": "highlighters",
+      "name": "Highlighters",
+      "description": "A cup crammed with bright highlighters.",
+      "category": "Pens",
+      "tier": "free",
+      "size": 0.3,
+      "source": "AdobeStock_97946331.png"
+    },
+    {
+      "id": "scissors",
+      "name": "Scissors",
+      "description": "A pair of gold scissors.",
+      "category": "Pens",
+      "tier": "low",
+      "size": 0.36,
+      "source": "AdobeStock_288716600.png"
+    },
+    {
+      "id": "colored-pencils",
+      "name": "Colored pencils",
+      "description": "A cup full of colored pencils.",
+      "category": "Pens",
+      "tier": "med",
+      "size": 0.3,
+      "source": "Colored Pencils.png"
+    },
+    {
+      "id": "markers",
+      "name": "Markers",
+      "description": "A pot of grey sketch markers.",
+      "category": "Pens",
+      "tier": "high",
+      "size": 0.33,
+      "source": "Markers.png"
+    },
+    {
+      "id": "calathea",
+      "name": "Calathea",
+      "description": "A leafy calathea with striped leaves.",
+      "category": "Plants",
+      "tier": "low",
+      "size": 0.42,
+      "source": "Calathea.png"
+    },
+    {
+      "id": "fern",
+      "name": "Fern",
+      "description": "A lush, feathery fern.",
+      "category": "Plants",
+      "tier": "low",
+      "size": 0.42,
+      "source": "Fern.jpeg"
+    },
+    {
+      "id": "pothos",
+      "name": "Pothos",
+      "description": "A trailing pothos with heart-shaped leaves.",
+      "category": "Plants",
+      "tier": "low",
+      "size": 0.4,
+      "source": "Pothos.png"
+    }
+  ]
+}

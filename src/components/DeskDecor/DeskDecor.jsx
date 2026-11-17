@@ -4,10 +4,12 @@ import {
   decorationSize,
   deskDecorations,
   deskMaterials,
+  isDecorationOwned,
   nextPlacementSpot,
   normalizeDeskSetup,
 } from '../../data/deskDecor';
 import DeskScene from './DeskScene';
+import PurchasePanel from './PurchasePanel';
 import './DeskDecor.css';
 
 // How far an arrow key moves the selected decoration, as a share of the desk.
@@ -83,6 +85,16 @@ function Thumbnail({ src, fit }) {
   );
 }
 
+// Picker tiles and their name labels: green when chosen/placed, black on hover or keyboard focus (even if unavailable).
+const tileClass = (active) =>
+  `border-2 transition-colors ${active ? 'border-green' : 'border-transparent'} group-hover:border-black group-focus-visible:border-black`;
+const labelClass = (active) =>
+  `block font-body text-xs mt-xs px-xs py-[2px] rounded-sm transition-colors ${
+    active
+      ? 'bg-green text-white group-hover:bg-black group-focus-visible:bg-black'
+      : 'text-dark-grey group-hover:text-black group-focus-visible:text-black'
+  }`;
+
 const LockIcon = () => (
   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} aria-hidden="true">
     <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
@@ -90,10 +102,14 @@ const LockIcon = () => (
 );
 
 // Changes are a draft until "Save desk" is pressed; leaving without saving keeps the previously saved desk.
-export default function DeskDecor({ deskSetup, onSave, onClose }) {
-  const saved = useMemo(() => normalizeDeskSetup(deskSetup), [deskSetup]);
+// Purchases are saved right away (and a bought decoration is added to the draft if there's room).
+export default function DeskDecor({ deskSetup, ownedDecor = [], points, onSave, onPurchase, onClose }) {
+  const saved = useMemo(() => normalizeDeskSetup(deskSetup, ownedDecor), [deskSetup, ownedDecor]);
   const [setup, setSetup] = useState(saved);
   const [saveState, setSaveState] = useState({ status: 'idle', error: null }); // idle | saving | saved | error
+  // buyingId: purchase in progress; boughtId / error: result of the last purchase.
+  const [purchase, setPurchase] = useState({ buyingId: null, boughtId: null, error: null });
+  const [confirming, setConfirming] = useState(null); // decoration shown in the purchase panel
   const viewport = useViewportSize();
   const deskRef = useRef(null);
   const dragRef = useRef(null);
@@ -102,10 +118,13 @@ export default function DeskDecor({ deskSetup, onSave, onClose }) {
   const full = setup.decorations.length >= MAX_DECORATIONS;
   const envelope = envelopeArea(viewport);
   const unsaved = JSON.stringify(setup) !== JSON.stringify(saved);
+  const balance = points ? points.earned - points.spent : 0;
+  const bought = purchase.boughtId && deskDecorations.find((decoration) => decoration.id === purchase.boughtId);
 
   const change = (changes) => {
     setSetup((current) => ({ ...current, ...changes }));
     setSaveState({ status: 'idle', error: null });
+    setPurchase((current) => ({ ...current, boughtId: null, error: null }));
   };
 
   const saveDesk = async () => {
@@ -120,19 +139,58 @@ export default function DeskDecor({ deskSetup, onSave, onClose }) {
   };
 
   const chooseMaterial = (material) => {
-    if (material.unlocked && material.id !== setup.materialId) change({ materialId: material.id });
+    if (material.id !== setup.materialId) change({ materialId: material.id });
+  };
+
+  // Adds the decoration to the draft (from the latest draft, since it also runs after a purchase finishes).
+  const placeDecoration = (decoration) => {
+    const desk = deskRef.current?.getBoundingClientRect();
+    setSetup((current) => {
+      if (current.decorations.some((placed) => placed.id === decoration.id) || current.decorations.length >= MAX_DECORATIONS) {
+        return current;
+      }
+      let spot = nextPlacementSpot(current.decorations);
+      if (desk?.width && desk?.height) {
+        // Not drawn yet, so estimate its size as a square (it's sized from the desk's shorter side, see DeskScene.css).
+        const side = decorationSize(decoration) * Math.min(desk.width, desk.height);
+        spot = placeOnDesk(spot, { x: side / 2 / desk.width, y: side / 2 / desk.height }, envelope);
+      }
+      return { ...current, decorations: [...current.decorations, { id: decoration.id, ...spot }] };
+    });
+    setSaveState({ status: 'idle', error: null });
   };
 
   const addDecoration = (decoration) => {
-    if (!decoration.unlocked || placedIds.has(decoration.id) || full) return;
-    let spot = nextPlacementSpot(setup.decorations);
-    const desk = deskRef.current?.getBoundingClientRect();
-    if (desk?.width && desk?.height) {
-      // Not drawn yet, so estimate its size as a square (it's sized from the desk's shorter side, see DeskScene.css).
-      const side = decorationSize(decoration) * Math.min(desk.width, desk.height);
-      spot = placeOnDesk(spot, { x: side / 2 / desk.width, y: side / 2 / desk.height }, envelope);
+    if (!isDecorationOwned(decoration, ownedDecor) || placedIds.has(decoration.id) || full) return;
+    setPurchase((current) => ({ ...current, boughtId: null, error: null }));
+    placeDecoration(decoration);
+  };
+
+  // Opens the purchase panel; buying only happens from its button.
+  const openPurchase = (decoration) => {
+    if (purchase.buyingId) return;
+    setConfirming(decoration);
+    setPurchase({ buyingId: null, boughtId: null, error: null });
+  };
+
+  const closePurchase = () => {
+    if (purchase.buyingId) return;
+    setConfirming(null);
+    setPurchase((current) => ({ ...current, error: null }));
+  };
+
+  const buyDecoration = async (decoration) => {
+    if (purchase.buyingId || balance < decoration.price) return;
+    setPurchase({ buyingId: decoration.id, boughtId: null, error: null });
+    try {
+      await onPurchase(decoration);
+      setPurchase({ buyingId: null, boughtId: decoration.id, error: null });
+      setConfirming(null);
+      placeDecoration(decoration);
+    } catch (error) {
+      console.error('Error buying decoration:', error.cause ?? error);
+      setPurchase({ buyingId: null, boughtId: null, error: error.message });
     }
-    change({ decorations: [...setup.decorations, { id: decoration.id, ...spot }] });
   };
 
   const removeDecoration = (id) => change({ decorations: setup.decorations.filter((placed) => placed.id !== id) });
@@ -229,9 +287,15 @@ export default function DeskDecor({ deskSetup, onSave, onClose }) {
           ← Back
         </button>
 
-        <h1 className="font-primary text-3xl text-green mb-xs">Your Desk</h1>
+        <div className="flex items-center justify-between gap-md mb-xs">
+          <h1 className="font-primary text-3xl text-green">Your Desk</h1>
+          <p className="font-buttons text-sm text-white bg-green rounded-full px-md py-xs whitespace-nowrap" aria-live="polite">
+            {balance} {balance === 1 ? 'point' : 'points'}
+          </p>
+        </div>
         <p className="font-body text-xs text-dark-grey">
-          Your letters arrive here. Drag decorations to arrange them.
+          Your letters arrive here. Drag decorations to arrange them. Every find you add to your collection earns a point
+          to spend on new decorations.
         </p>
       </div>
 
@@ -272,26 +336,13 @@ export default function DeskDecor({ deskSetup, onSave, onClose }) {
                   type="button"
                   role="radio"
                   aria-checked={selected}
-                  disabled={!material.unlocked}
                   onClick={() => chooseMaterial(material)}
-                  className="text-left disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="group text-left"
                 >
-                  <span
-                    className={`block relative aspect-[3/4] rounded-md overflow-hidden bg-grey border-2 transition-colors ${
-                      selected ? 'border-green' : 'border-transparent'
-                    }`}
-                  >
+                  <span className={`block relative aspect-[3/4] rounded-md overflow-hidden bg-grey ${tileClass(selected)}`}>
                     <Thumbnail src={material.image} fit="cover" />
-                    {!material.unlocked && (
-                      <span className="absolute top-xs right-xs bg-white/90 rounded-full p-xs text-dark-grey">
-                        <LockIcon />
-                      </span>
-                    )}
                   </span>
-                  <span className={`block font-body text-xs mt-xs ${selected ? 'text-green' : 'text-dark-grey'}`}>
-                    {material.name}
-                    {!material.unlocked && <span className="sr-only"> (locked)</span>}
-                  </span>
+                  <span className={labelClass(selected)}>{material.name}</span>
                 </button>
               );
             })}
@@ -306,8 +357,14 @@ export default function DeskDecor({ deskSetup, onSave, onClose }) {
               {setup.decorations.length} of {MAX_DECORATIONS} placed
             </p>
           </div>
-          <p className="font-body text-xs text-dark-grey mb-md" aria-live="polite">
-            {full ? 'Your desk is full. Remove a decoration to add another.' : 'Tap a decoration to add or remove it.'}
+          <p className="font-body text-xs mb-md text-dark-grey" aria-live="polite">
+            {bought
+              ? placedIds.has(bought.id)
+                ? `${bought.name} is yours and on your desk. Save to keep it there.`
+                : `${bought.name} is yours. Remove a decoration to make room for it.`
+              : full
+                ? 'Your desk is full. Remove a decoration to add another.'
+                : 'Tap a decoration to add or remove it, or to buy it with your points.'}
           </p>
 
           {categories.map((category) => (
@@ -318,22 +375,27 @@ export default function DeskDecor({ deskSetup, onSave, onClose }) {
                   .filter((decoration) => decoration.category === category)
                   .map((decoration) => {
                     const placed = placedIds.has(decoration.id);
-                    const unavailable = !decoration.unlocked || (!placed && full);
+                    const owned = isDecorationOwned(decoration, ownedDecor);
+                    const buying = purchase.buyingId === decoration.id;
+                    const unavailable = owned
+                      ? !placed && full
+                      : !!purchase.buyingId;
                     return (
+                      // aria-disabled rather than disabled, so unavailable items still show hover (the handlers ignore them).
                       <button
                         key={decoration.id}
                         type="button"
-                        aria-pressed={placed}
-                        disabled={unavailable}
-                        onClick={() => (placed ? removeDecoration(decoration.id) : addDecoration(decoration))}
-                        className="text-left disabled:opacity-50 disabled:cursor-not-allowed"
+                        aria-pressed={owned ? placed : undefined}
+                        aria-disabled={unavailable}
+                        onClick={() =>
+                          unavailable ? undefined : !owned ? openPurchase(decoration) : placed ? removeDecoration(decoration.id) : addDecoration(decoration)
+                        }
+                        className="group text-left"
                       >
-                        <span
-                          className={`block relative aspect-square rounded-md overflow-hidden bg-grey border-2 transition-colors ${
-                            placed ? 'border-green' : 'border-transparent'
-                          }`}
-                        >
-                          <Thumbnail src={decoration.image} fit="contain" />
+                        <span className={`block relative aspect-square rounded-md overflow-hidden bg-grey ${tileClass(placed)}`}>
+                          <span className={`absolute inset-0 ${unavailable || !owned ? 'opacity-50' : ''}`}>
+                            <Thumbnail src={decoration.image} fit="contain" />
+                          </span>
                           {placed && (
                             <span className="absolute top-xs right-xs w-5 h-5 rounded-full bg-green flex items-center justify-center">
                               <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3} aria-hidden="true">
@@ -341,16 +403,21 @@ export default function DeskDecor({ deskSetup, onSave, onClose }) {
                               </svg>
                             </span>
                           )}
-                          {!decoration.unlocked && (
-                            <span className="absolute top-xs right-xs bg-white/90 rounded-full p-xs text-dark-grey">
+                          {!owned && (
+                            <span className="absolute top-xs right-xs bg-white/90 rounded-full px-sm py-xs flex items-center gap-xs font-body text-xs text-dark-grey">
                               <LockIcon />
+                              {buying ? '…' : decoration.price}
                             </span>
                           )}
                         </span>
-                        <span className={`block font-body text-xs mt-xs ${placed ? 'text-green' : 'text-dark-grey'}`}>
+                        <span className={labelClass(placed)}>
                           {decoration.name}
                           <span className="sr-only">
-                            {placed ? ' (on your desk, tap to remove)' : !decoration.unlocked ? ' (locked)' : ''}
+                            {placed
+                              ? ' (on your desk, tap to remove)'
+                              : owned
+                                ? ''
+                                : ` (costs ${decoration.price} points, tap to see it)`}
                           </span>
                         </span>
                       </button>
@@ -367,7 +434,7 @@ export default function DeskDecor({ deskSetup, onSave, onClose }) {
             type="button"
             onClick={saveDesk}
             disabled={!unsaved || saveState.status === 'saving'}
-            className="font-buttons text-lg bg-green text-white px-xl py-md rounded-full w-full hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+            className="font-buttons text-lg bg-green text-white px-xl py-md rounded-full w-full hover:opacity-90 transition-opacity disabled:opacity-50"
           >
             {saveState.status === 'saving' ? 'Saving…' : 'Save desk'}
           </button>
@@ -386,6 +453,17 @@ export default function DeskDecor({ deskSetup, onSave, onClose }) {
           </p>
         </div>
       </div>
+
+      {confirming && (
+        <PurchasePanel
+          decoration={confirming}
+          balance={balance}
+          buying={purchase.buyingId === confirming.id}
+          error={purchase.error}
+          onBuy={() => buyDecoration(confirming)}
+          onClose={closePurchase}
+        />
+      )}
     </div>
   );
 }

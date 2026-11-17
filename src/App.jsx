@@ -136,6 +136,7 @@ export default function App() {
   const allSubscribedLists = useMemo(() => userData.data?.lists ?? [], [userData.data?.lists]);
   const subscribedLists = allSubscribedLists.filter(isListVisible);
   const captures = useMemo(() => userData.data?.logs ?? [], [userData.data?.logs]);
+  const ownedDecor = useMemo(() => userData.data?.ownedDecor ?? [], [userData.data?.ownedDecor]);
   const { getCapturedItemIds, isItemCaptured } = useCaptures(captures);
   const streakData = userData.data?.streak ?? DEFAULT_STREAK;
   const { markDayComplete, checkAndResetStreak, getWeekData } = useStreakData(streakData, userData.setStreak);
@@ -403,6 +404,7 @@ export default function App() {
             dailyFinds={todaysDailyFinds}
             captures={captures}
             deskSetup={userData.data?.deskSetup}
+            ownedDecor={ownedDecor}
             onCapture={handleCapture}
             onViewCollection={() => openScreen('collection')}
             onClose={closeScreen}
@@ -410,7 +412,16 @@ export default function App() {
         );
 
       case 'desk':
-        return <DeskDecor deskSetup={userData.data?.deskSetup} onSave={userData.setDeskSetup} onClose={closeScreen} />;
+        return (
+          <DeskDecor
+            deskSetup={userData.data?.deskSetup}
+            ownedDecor={ownedDecor}
+            points={userData.data?.points}
+            onSave={userData.setDeskSetup}
+            onPurchase={userData.purchaseDecor}
+            onClose={closeScreen}
+          />
+        );
       
       default:
         return <Intro onGetStarted={openListPicker} />;

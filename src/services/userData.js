@@ -50,9 +50,10 @@ function fromRow(row) {
 // --- Dev-only signed-in shortcut: no Supabase user, so keep everything in this browser. ---
 
 function readDev() {
-  const empty = { lists: [], logs: [], streak: null, showStreak: true, deskSetup: null };
+  const empty = { lists: [], logs: [], streak: null, showStreak: true, deskSetup: null, points: null, ownedDecor: [] };
   try {
-    return { ...empty, ...JSON.parse(localStorage.getItem(DEV_DATA_KEY)) };
+    const data = { ...empty, ...JSON.parse(localStorage.getItem(DEV_DATA_KEY)) };
+    return { ...data, points: data.points ?? { earned: data.logs.length, spent: 0 } };
   } catch {
     return empty;
   }
@@ -101,15 +102,32 @@ async function fetchDeskSetup(userId) {
   return data?.desk_setup ?? null;
 }
 
-// Returns { lists: string[], logs, streak (object or null if never saved), showStreak, deskSetup (object or null) }.
+// Points ({ earned, spent }) and bought decoration ids. Like the desk, never fails the load: if they can't be read
+// (e.g. the desk_points migration hasn't been run yet) points are null and nothing is owned beyond the free items.
+async function fetchDeskShop(userId) {
+  const [points, owned] = await Promise.all([
+    supabase.from('user_points').select('earned, spent').eq('user_id', userId).maybeSingle(),
+    supabase.from('user_decor').select('decor_id').eq('user_id', userId),
+  ]);
+  const error = points.error ?? owned.error;
+  if (error) {
+    console.error('Error loading points:', error);
+    return { points: null, ownedDecor: [] };
+  }
+  return { points: points.data ?? { earned: 0, spent: 0 }, ownedDecor: owned.data.map((row) => row.decor_id) };
+}
+
+// Returns { lists: string[], logs, streak (object or null if never saved), showStreak, deskSetup (object or null),
+// points ({ earned, spent } or null if unavailable), ownedDecor: string[] }.
 export async function fetchUserData(userId) {
   if (isDev(userId)) return readDev();
   try {
-    const [lists, logs, profile, deskSetup] = await Promise.all([
+    const [lists, logs, profile, deskSetup, shop] = await Promise.all([
       supabase.from('user_lists').select('list_id').eq('user_id', userId).order('created_at'),
       fetchAllLogs(userId),
       supabase.from('profiles').select('streak_data, show_streak').eq('id', userId).maybeSingle(),
       fetchDeskSetup(userId),
+      fetchDeskShop(userId),
     ]);
     if (lists.error) throw lists.error;
     if (profile.error) throw profile.error;
@@ -119,6 +137,7 @@ export async function fetchUserData(userId) {
       streak: profile.data?.streak_data ?? null,
       showStreak: profile.data?.show_streak ?? true,
       deskSetup,
+      ...shop,
     };
   } catch (error) {
     throw fail(LOAD_MESSAGE, error);
@@ -162,6 +181,27 @@ export async function saveProfileFields(userId, { streak, showStreak, deskSetup 
   // Upsert so it still works if the profile row is missing; existing columns (e.g. onboarding) are left as they are.
   const { error } = await supabase.from('profiles').upsert({ id: userId, ...fields });
   if (error) throw fail("we couldn't save your changes. check your connection and try again.", error);
+}
+
+// --- Desk decorations ---
+
+// Buys a decoration with points (checked by Supabase, see the desk_points migration). Returns the user's points
+// afterwards ({ earned, spent }).
+export async function purchaseDecor(userId, decoration) {
+  const NOT_ENOUGH = "you don't have enough points for that yet.";
+  if (isDev(userId)) {
+    const { points } = readDev();
+    if (points.earned - points.spent < decoration.price) throw fail(NOT_ENOUGH);
+    return writeDev((d) => ({
+      ownedDecor: [...new Set([...d.ownedDecor, decoration.id])],
+      points: { ...d.points, spent: d.points.spent + decoration.price },
+    })).points;
+  }
+  const { data, error } = await supabase.rpc('purchase_desk_decor', { decor: decoration.id });
+  if (error) {
+    throw fail(error.message?.includes('not enough points') ? NOT_ENOUGH : "we couldn't buy that. check your connection and try again.", error);
+  }
+  return data;
 }
 
 // --- Photos ---
@@ -254,7 +294,7 @@ export async function createLog(userId, { listId, itemId, note = null, foundWith
   if (isDev(userId)) {
     const thumbPath = photo ? await blobToDataUrl((await compressPhoto(photo)).thumb) : null;
     const log = { id, listId, itemId, date: foundAt, note, foundWithoutPhoto, photoPath: null, thumbPath, legacyId: null };
-    writeDev((d) => ({ logs: [log, ...d.logs] }));
+    writeDev((d) => ({ logs: [log, ...d.logs], points: { ...d.points, earned: d.points.earned + 1 } }));
     return log;
   }
   const paths = photo ? await uploadPhoto(userId, id, photo) : { photoPath: null, thumbPath: null };

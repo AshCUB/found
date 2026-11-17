@@ -5,6 +5,7 @@ import {
   deleteLog as deleteLogRemote,
   fetchUserData,
   flushPendingPhotoDeletes,
+  purchaseDecor as purchaseDecorRemote,
   replaceLists as replaceListsRemote,
   saveProfileFields,
   updateLogNote as updateLogNoteRemote,
@@ -98,7 +99,8 @@ export function useUserData(userId) {
 
   const addLog = async (input) => {
     const log = await createLog(userId, input);
-    update((d) => ({ logs: [log, ...d.logs] }));
+    // Supabase awards the find's point; mirror it so the balance is right without reloading.
+    update((d) => ({ logs: [log, ...d.logs], points: d.points && { ...d.points, earned: d.points.earned + 1 } }));
     return log;
   };
 
@@ -130,6 +132,12 @@ export function useUserData(userId) {
     update(() => ({ deskSetup }));
   };
 
+  // Throws (with a user-facing message) if the purchase fails, e.g. not enough points.
+  const purchaseDecor = async (decoration) => {
+    const points = await purchaseDecorRemote(userId, decoration);
+    update((d) => ({ points, ownedDecor: [...new Set([...(d.ownedDecor ?? []), decoration.id])] }));
+  };
+
   const setShowStreak = async (showStreak) => {
     const prev = dataRef.current?.showStreak;
     update(() => ({ showStreak }));
@@ -155,5 +163,6 @@ export function useUserData(userId) {
     setStreak,
     setShowStreak,
     setDeskSetup,
+    purchaseDecor,
   };
 }

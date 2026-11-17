@@ -2,36 +2,35 @@
 // The user's desk (Desk tab) and the backdrop behind their envelope: a desk material photo with up to
 // MAX_DECORATIONS decorations placed on it.
 //
-// To add a material or decoration: put the image in public/images/desk/materials or public/images/desk/decorations,
-// run `npm run optimize-desk-decor`, and add one entry below. Ids are saved to user accounts, so never change or
-// reuse an existing id (removing an entry is safe: desks that used it fall back gracefully).
+// The catalog (deskDecorCatalog.json) and images are generated from the desk decor source folder by
+// `npm run import-desk-decor` (see scripts/import-desk-decor.mjs). Ids are saved to user accounts, so never change or
+// reuse an existing id (removing an item is safe: desks that used it fall back gracefully).
 //
-// `unlocked: false` shows an item in the picker but doesn't let users choose it (for future locked/purchasable items).
+// Materials are all free. Decorations cost points by tier (deskDecorTiers.js); free ones are owned by everyone, the
+// rest once bought (Supabase checks purchases and saved desks against supabase/desk_decor_prices.sql).
+import catalog from './deskDecorCatalog.json';
+import { TIER_PRICES } from './deskDecorTiers';
 
 // Desk photos fill the screen behind the envelope, so portrait images work best.
-export const deskMaterials = [
-  { id: 'dark-wood', name: 'Dark wood', image: 'images/desk/materials/dark-wood.webp', unlocked: true },
-  { id: 'light-wood', name: 'Light wood', image: 'images/desk/materials/light-wood.webp', unlocked: true },
-  { id: 'white-wood', name: 'White wood', image: 'images/desk/materials/white-wood.webp', unlocked: true },
-];
+export const deskMaterials = catalog.materials.map(({ id, name }) => ({
+  id,
+  name,
+  image: `images/desk/materials/${id}.webp`,
+}));
 
 export const DEFAULT_MATERIAL_ID = 'dark-wood';
 
 // Transparent images, seen from above. `size` is how wide the decoration is drawn, as a share of the desk's shorter
 // side (so it looks the same size on any screen).
-export const deskDecorations = [
-  { id: 'black-candle', name: 'Black candle', category: 'Candles', image: 'images/desk/decorations/black-candle.webp', size: 0.34, unlocked: true },
-  { id: 'blue-candle', name: 'Blue candle', category: 'Candles', image: 'images/desk/decorations/blue-candle.webp', size: 0.26, unlocked: true },
-  { id: 'teal-candle', name: 'Teal candle', category: 'Candles', image: 'images/desk/decorations/teal-candle.webp', size: 0.27, unlocked: true },
-  { id: 'coffee', name: 'Coffee', category: 'Drinks', image: 'images/desk/decorations/coffee.webp', size: 0.32, unlocked: true },
-  { id: 'hot-cocoa', name: 'Hot cocoa', category: 'Drinks', image: 'images/desk/decorations/hot-cocoa.webp', size: 0.36, unlocked: true },
-  { id: 'tea', name: 'Tea', category: 'Drinks', image: 'images/desk/decorations/tea.webp', size: 0.33, unlocked: true },
-  { id: 'colored-pencils', name: 'Colored pencils', category: 'Pens', image: 'images/desk/decorations/colored-pencils.webp', size: 0.3, unlocked: true },
-  { id: 'markers', name: 'Markers', category: 'Pens', image: 'images/desk/decorations/markers.webp', size: 0.33, unlocked: true },
-  { id: 'calathea', name: 'Calathea', category: 'Plants', image: 'images/desk/decorations/calathea.webp', size: 0.42, unlocked: true },
-  { id: 'fern', name: 'Fern', category: 'Plants', image: 'images/desk/decorations/fern.webp', size: 0.42, unlocked: true },
-  { id: 'pothos', name: 'Pothos', category: 'Plants', image: 'images/desk/decorations/pothos.webp', size: 0.4, unlocked: true },
-];
+export const deskDecorations = catalog.decorations.map(({ id, name, description, category, tier, size }) => ({
+  id,
+  name,
+  description,
+  category,
+  image: `images/desk/decorations/${id}.webp`,
+  size,
+  price: TIER_PRICES[tier],
+}));
 
 export const MAX_DECORATIONS = 4;
 const DEFAULT_DECORATION_SIZE = 0.3;
@@ -49,16 +48,23 @@ export const findDeskMaterial = (id) => deskMaterials.find((material) => materia
 export const findDeskDecoration = (id) => deskDecorations.find((decoration) => decoration.id === id);
 export const decorationSize = (decoration) => decoration.size ?? DEFAULT_DECORATION_SIZE;
 
+// Whether the user can place the decoration: it's free or they bought it (`ownedIds`: bought decoration ids).
+export const isDecorationOwned = (decoration, ownedIds = []) => decoration.price === 0 || ownedIds.includes(decoration.id);
+
 const clamp01 = (value) => (Number.isFinite(value) ? Math.min(1, Math.max(0, value)) : 0.5);
 
 // Turns a saved desk (or null for a new user) into one that's safe to show: unknown materials fall back to the default,
-// decorations no longer in the catalog (or repeated) are dropped, positions are kept on the desk, and at most
-// MAX_DECORATIONS are kept. Shape: { materialId, decorations: [{ id, x, y }] }.
-export function normalizeDeskSetup(saved) {
+// decorations no longer in the catalog, not owned (see isDecorationOwned) or repeated are dropped, positions are kept
+// on the desk, and at most MAX_DECORATIONS are kept. Shape: { materialId, decorations: [{ id, x, y }] }.
+export function normalizeDeskSetup(saved, ownedIds = []) {
   const materialId = findDeskMaterial(saved?.materialId) ? saved.materialId : DEFAULT_MATERIAL_ID;
   const seen = new Set();
+  const owned = (id) => {
+    const decoration = findDeskDecoration(id);
+    return decoration && isDecorationOwned(decoration, ownedIds);
+  };
   const decorations = (Array.isArray(saved?.decorations) ? saved.decorations : [])
-    .filter((placed) => placed && findDeskDecoration(placed.id) && !seen.has(placed.id) && seen.add(placed.id))
+    .filter((placed) => placed && owned(placed.id) && !seen.has(placed.id) && seen.add(placed.id))
     .slice(0, MAX_DECORATIONS)
     .map(({ id, x, y }) => ({ id, x: clamp01(x), y: clamp01(y) }));
   return { materialId, decorations };
