@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
 import { loadEnvelopeAssets } from './assets';
 import FindCard from './FindCard';
+import FindsPile from './FindsPile';
 import { DeskScene, preloadDesk } from '../DeskDecor';
 import { normalizeDeskSetup } from '../../data/deskDecor';
 import { getUserName } from '../../auth/session';
@@ -90,7 +91,7 @@ const ENVELOPE_PRESENTED = 'translateY(34%)';
 
 const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-export default function Envelope({ dailyFinds = [], deskSetup, onCapture, onClose }) {
+export default function Envelope({ dailyFinds = [], captures = [], deskSetup, onCapture, onViewCollection, onClose }) {
   const desk = useMemo(() => normalizeDeskSetup(deskSetup), [deskSetup]);
   const [assets, setAssets] = useState(null);
   const [userName, setUserName] = useState(null);
@@ -378,6 +379,11 @@ export default function Envelope({ dailyFinds = [], deskSetup, onCapture, onClos
     <div className="envelope-scene" onClick={handleSceneClick}>
       {/* The user's desk (Desk tab), with the letter resting on it. */}
       {assets && <DeskScene setup={desk} className="envelope-scene__desk" />}
+      {assets && onViewCollection && (
+        <div className="envelope-scene__pile">
+          <FindsPile captures={captures} disabled={phase !== 'idle'} onOpen={onViewCollection} />
+        </div>
+      )}
       <div className="envelope-scene__scrim" />
       <div ref={overlayRef} className="envelope-scene__overlay" />
 

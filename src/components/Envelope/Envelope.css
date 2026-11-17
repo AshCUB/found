@@ -73,6 +73,109 @@
   font-size: 14px;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
   z-index: 1;
+  /* Spans the screen's width, so it mustn't catch taps meant for the pile of finds below it. */
+  pointer-events: none;
+}
+
+/* The latest finds as a small pile of prints in the desk's bottom-left corner; opens the collection. Under the
+   overlay, so it darkens with the desk while a card is out (and can't be pressed then). */
+.envelope-scene__pile {
+  position: absolute;
+  left: calc(env(safe-area-inset-left, 0px) + 6vmin);
+  /* Clear of the hint text along the bottom. */
+  bottom: calc(env(safe-area-inset-bottom, 0px) + max(9vmin, 64px));
+  /* Turned a little clockwise, so the pile points to the right, toward the envelope. */
+  transform: rotate(12deg);
+  animation: envelope-fade-in 0.4s ease-out;
+}
+
+.finds-pile {
+  --print-size: clamp(96px, 26vmin, 190px);
+  position: relative;
+  display: block;
+  width: var(--print-size);
+  height: var(--print-size);
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.25s ease-out;
+}
+
+.finds-pile:disabled {
+  cursor: default;
+}
+
+.finds-pile:focus-visible {
+  outline: 2px solid #5e7333;
+  outline-offset: 10px;
+  border-radius: 4px;
+}
+
+/* A print: the photo in a white border, a little thicker at the bottom. */
+.finds-pile__print {
+  position: absolute;
+  inset: 0;
+  padding: 6% 6% 16%;
+  background: #fff9eb;
+  border-radius: 2px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transform: translate(var(--x, 0), var(--y, 0)) rotate(var(--turn, 0deg));
+  /* Slow enough that, as a print is tucked under, the others settle into place along with it. */
+  transition: transform 0.45s ease-in-out, opacity 0.45s ease-in-out;
+}
+
+/* Each print lies a little askew. The hidden ones wait under the back one, so they appear from beneath the pile. */
+.finds-pile__print[data-position='top'] { --turn: -4deg; }
+.finds-pile__print[data-position='middle'] { --turn: 7deg; --x: 6%; --y: -3%; }
+.finds-pile__print[data-position='bottom'] { --turn: -12deg; --x: -7%; --y: 2%; }
+.finds-pile__print[data-position='hidden'] { --turn: -12deg; --x: -7%; --y: 2%; opacity: 0; }
+
+/* On hover the pile lifts and the prints fan out a little, to show it can be picked up. */
+.finds-pile:not(:disabled):hover,
+.finds-pile:focus-visible {
+  transform: translateY(-6%) rotate(-2deg);
+}
+
+.finds-pile:not(:disabled):hover .finds-pile__print[data-position='top'],
+.finds-pile:focus-visible .finds-pile__print[data-position='top'] { --turn: -2deg; --y: -6%; }
+.finds-pile:not(:disabled):hover .finds-pile__print[data-position='middle'],
+.finds-pile:focus-visible .finds-pile__print[data-position='middle'] { --turn: 13deg; --x: 14%; --y: -4%; }
+.finds-pile:not(:disabled):hover .finds-pile__print:is([data-position='bottom'], [data-position='hidden']),
+.finds-pile:focus-visible .finds-pile__print:is([data-position='bottom'], [data-position='hidden']) {
+  --turn: -18deg;
+  --x: -14%;
+  --y: 3%;
+}
+
+.finds-pile:not(:disabled):active {
+  transform: translateY(-2%) rotate(-1deg) scale(0.97);
+}
+
+.finds-pile__photo {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #e8e1d2;
+}
+
+.finds-pile__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .finds-pile,
+  .finds-pile__print {
+    transition: none;
+  }
 }
 
 /* Spans the opened envelope's width (it's scaled up 1.18x when open), so each label sits at the envelope's edge. */

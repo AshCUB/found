@@ -401,8 +401,10 @@ export default function App() {
         return (
           <Envelope
             dailyFinds={todaysDailyFinds}
+            captures={captures}
             deskSetup={userData.data?.deskSetup}
             onCapture={handleCapture}
+            onViewCollection={() => openScreen('collection')}
             onClose={closeScreen}
           />
         );
