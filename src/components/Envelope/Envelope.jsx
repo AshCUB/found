@@ -84,6 +84,9 @@ const SWIPE_THRESHOLD = 0.3;
 // The envelope drops down (by a share of its height) while the card is pulled out, so the card stays on screen.
 const ENVELOPE_RAISED = 'translateY(0)';
 const ENVELOPE_LOWERED = 'translateY(60%)';
+// While the card is presented, everything moves down so the card (with the next one peeking above it) and the
+// envelope below it are centered on the screen together, rather than the card running off the top.
+const ENVELOPE_PRESENTED = 'translateY(34%)';
 
 const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -195,7 +198,7 @@ export default function Envelope({ dailyFinds = [], deskSetup, onCapture, onClos
     await step(
       TIMINGS.cardPresent,
       [card, { transform: [CARD_PULLED, CARD_PRESENTED] }],
-      [shift, { transform: [ENVELOPE_LOWERED, ENVELOPE_RAISED] }],
+      [shift, { transform: [ENVELOPE_LOWERED, ENVELOPE_PRESENTED] }],
       [nextCard, { opacity: [0, 1] }]
     );
   };
@@ -206,7 +209,7 @@ export default function Envelope({ dailyFinds = [], deskSetup, onCapture, onClos
     await step(
       TIMINGS.cardPresent,
       [card, { transform: [CARD_PRESENTED, CARD_PULLED] }],
-      [shift, { transform: [ENVELOPE_RAISED, ENVELOPE_LOWERED] }],
+      [shift, { transform: [ENVELOPE_PRESENTED, ENVELOPE_LOWERED] }],
       [nextCard, { opacity: [1, 0] }]
     );
     showCardInFront(false);
