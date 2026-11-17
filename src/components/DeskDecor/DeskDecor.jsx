@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   MAX_DECORATIONS,
+  decorationSize,
   deskDecorations,
   deskMaterials,
   nextPlacementSpot,
@@ -36,14 +37,34 @@ function envelopeArea({ width, height }) {
   return { left: 0.5 - w / 2, top: 0.5 - h / 2, width: w, height: h };
 }
 
-// Keeps a decoration's center far enough from the desk's edges that the whole decoration stays on the desk.
-function clampToDesk(position, element, desk) {
-  const clampAxis = (value, half) => (half >= 0.5 ? 0.5 : Math.min(1 - half, Math.max(half, value)));
-  return {
-    x: clampAxis(position.x, element.offsetWidth / 2 / desk.width),
-    y: clampAxis(position.y, element.offsetHeight / 2 / desk.height),
+// Keeps a decoration's center far enough from the desk's edges that the whole decoration stays on the desk, and
+// outside the letter's area. `half` is half the decoration's size as shares of the desk ({ x, y }). If it's inside
+// the letter, it's pushed out to the nearest side it fits on; if it fits on none, it goes to `fallback`.
+function placeOnDesk(position, half, envelope, fallback) {
+  const clampAxis = (value, h) => (h >= 0.5 ? 0.5 : Math.min(1 - h, Math.max(h, value)));
+  const clamp = ({ x, y }) => ({ x: clampAxis(x, half.x), y: clampAxis(y, half.y) });
+  const blocked = {
+    left: envelope.left - half.x,
+    right: envelope.left + envelope.width + half.x,
+    top: envelope.top - half.y,
+    bottom: envelope.top + envelope.height + half.y,
   };
+  const overlaps = ({ x, y }) => x > blocked.left && x < blocked.right && y > blocked.top && y < blocked.bottom;
+  const clamped = clamp(position);
+  if (!overlaps(clamped)) return clamped;
+  const candidates = [
+    { ...clamped, x: blocked.left },
+    { ...clamped, x: blocked.right },
+    { ...clamped, y: blocked.top },
+    { ...clamped, y: blocked.bottom },
+  ]
+    .map(clamp)
+    .filter((spot) => !overlaps(spot));
+  const distance = (spot) => Math.hypot(spot.x - clamped.x, spot.y - clamped.y);
+  return candidates.sort((a, b) => distance(a) - distance(b))[0] ?? fallback ?? clamped;
 }
+
+const halfSizeOf = (element, desk) => ({ x: element.offsetWidth / 2 / desk.width, y: element.offsetHeight / 2 / desk.height });
 
 function Thumbnail({ src, fit }) {
   const [broken, setBroken] = useState(false);
@@ -104,7 +125,13 @@ export default function DeskDecor({ deskSetup, onSave, onClose }) {
 
   const addDecoration = (decoration) => {
     if (!decoration.unlocked || placedIds.has(decoration.id) || full) return;
-    const spot = nextPlacementSpot(setup.decorations);
+    let spot = nextPlacementSpot(setup.decorations);
+    const desk = deskRef.current?.getBoundingClientRect();
+    if (desk?.width && desk?.height) {
+      // Not drawn yet, so estimate its size as a square (it's sized from the desk's shorter side, see DeskScene.css).
+      const side = decorationSize(decoration) * Math.min(desk.width, desk.height);
+      spot = placeOnDesk(spot, { x: side / 2 / desk.width, y: side / 2 / desk.height }, envelope);
+    }
     change({ decorations: [...setup.decorations, { id: decoration.id, ...spot }] });
   };
 
@@ -139,13 +166,14 @@ export default function DeskDecor({ deskSetup, onSave, onClose }) {
     drag.moved = true;
     drag.element.classList.add('is-dragging');
     const desk = deskRef.current.getBoundingClientRect();
-    drag.position = clampToDesk(
+    drag.position = placeOnDesk(
       {
         x: (event.clientX - drag.grabX - desk.left) / desk.width,
         y: (event.clientY - drag.grabY - desk.top) / desk.height,
       },
-      drag.element,
-      desk
+      halfSizeOf(drag.element, desk),
+      envelope,
+      drag.position
     );
     drag.element.style.left = `${drag.position.x * 100}%`;
     drag.element.style.top = `${drag.position.y * 100}%`;
@@ -169,7 +197,8 @@ export default function DeskDecor({ deskSetup, onSave, onClose }) {
     if (!step) return;
     event.preventDefault();
     const position = { x: placed.x + step[0] * KEY_STEP, y: placed.y + step[1] * KEY_STEP };
-    moveDecoration(placed.id, clampToDesk(position, event.currentTarget, deskRef.current.getBoundingClientRect()));
+    const desk = deskRef.current.getBoundingClientRect();
+    moveDecoration(placed.id, placeOnDesk(position, halfSizeOf(event.currentTarget, desk), envelope, placed));
   };
 
   const renderDecoration = (placed, decoration, image, props) => (
