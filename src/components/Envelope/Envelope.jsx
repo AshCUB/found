@@ -8,13 +8,28 @@ import { getUserName } from '../../auth/session';
 import { formatNumericDate } from '../../utils/date';
 import './Envelope.css';
 
+const curve = (x1, y1, x2, y2) => `cubic-bezier(${x1}, ${y1}, ${x2}, ${y2})`;
+// The same timing played backwards (for cubic-bezier easings), so closing is the opening run in reverse.
+const reverse = (timing) => {
+  const [x1, y1, x2, y2] = timing.easing.match(/[\d.]+/g).map(Number);
+  return { ...timing, easing: curve(1 - x2, 1 - y2, 1 - x1, 1 - y1) };
+};
+
 // All envelope durations (ms) and easings. Closing plays the same steps in reverse order.
+// The flip and flap are matched to the After Effects reference (30 fps), frame by frame.
 const TIMINGS = {
   select: { duration: 500, easing: 'ease-out' },
-  flipToEdge: { duration: 300, easing: 'ease-in' },
-  flipFromEdge: { duration: 300, easing: 'ease-out' },
-  flapToEdge: { duration: 320, easing: 'ease-in' },
-  flapFromEdge: { duration: 320, easing: 'ease-out' },
+  // Frames 0–12: the envelope first turns a little the other way, like a hand winding up to flip it.
+  flipWindUp: { duration: 400, easing: curve(0.85, 0.8, 0.65, 0.95) },
+  // Frames 12–30: it swings round to edge-on, gathering speed.
+  flipToEdge: { duration: 600, easing: curve(0.7, 0, 0.9, 0.95) },
+  // Frames 30–48: the back turns in at an almost steady pace and settles.
+  flipFromEdge: { duration: 600, easing: curve(0.3, 0.2, 0.7, 0.8) },
+  // Frames 48–62: it rests before the flap opens.
+  flipToFlapPause: { duration: 470, easing: 'linear' },
+  // Frames 62–71: the flap is lifted, slowing as it stands up; frames 72–83: it falls open, landing at full speed.
+  flapToEdge: { duration: 300, easing: curve(0.1, 0, 0.5, 0.9) },
+  flapFromEdge: { duration: 370, easing: curve(0.55, 0.1, 0.9, 0.9) },
   cardPull: { duration: 450, easing: 'ease-in-out' },
   cardPresent: { duration: 450, easing: 'ease-in-out' },
   // After a swipe: the card leaves to the side, or springs back if the swipe was too short.
@@ -26,9 +41,11 @@ const TIMINGS = {
 
 const SELECTED_SCALE = 1.18;
 const OVERLAY_OPACITY = 0.45;
-const FLIP_DIM = 0.8;
-const FLAP_DIM = 0.85;
 const FLAP_OPEN_BRIGHTNESS = 0.93;
+// How far the wind-up turns the envelope before the flip (left edge toward the viewer).
+const FLIP_WIND_UP = '7.6deg';
+// The flip and flap turn in 3D, seen from this many envelope widths away (as in the reference).
+const PERSPECTIVE = 4.3;
 // Card positions, as transforms of the card: tucked in the pocket, pulled up out of the envelope, and presented in
 // front of it. Pulled up must leave the card's bottom above the pocket, so moving it to the front is never seen.
 // The card is taller than the envelope (the part below the envelope is hidden while it's inside).
@@ -139,21 +156,35 @@ export default function Envelope({ dailyFinds = [], deskSetup, onCapture, onClos
   const elements = () =>
     [overlayRef, shiftRef, liftRef, flipRef, flapRef, cardRef, nextCardRef].map((ref) => ref.current);
 
+  // The envelope turns about its vertical middle (rotateY) and the flap about its hinge (rotateX), both in 3D.
+  const turns = (flip) => {
+    const perspective = `perspective(${PERSPECTIVE * flip.offsetWidth}px)`;
+    return {
+      flip: (...angles) => ({ transform: angles.map((angle) => `${perspective} rotateY(${angle})`) }),
+      flap: (...angles) => ({ transform: angles.map((angle) => `${perspective} rotateX(${angle})`) }),
+    };
+  };
+
   const open = async () => {
     const [overlay, shift, lift, flip, flap, card, nextCard] = elements();
+    const turn = turns(flip);
     await step(
       TIMINGS.select,
       [lift, { transform: ['scale(1)', `scale(${SELECTED_SCALE})`] }],
       [overlay, { opacity: [0, OVERLAY_OPACITY] }]
     );
-    await step(TIMINGS.flipToEdge, [flip, { transform: ['scaleX(1)', 'scaleX(0)'], filter: ['brightness(1)', `brightness(${FLIP_DIM})`] }]);
+    await step(TIMINGS.flipWindUp, [flip, turn.flip('0deg', FLIP_WIND_UP)]);
+    await step(TIMINGS.flipToEdge, [flip, turn.flip(FLIP_WIND_UP, '-90deg')]);
     showFace('back');
-    await step(TIMINGS.flipFromEdge, [flip, { transform: ['scaleX(0)', 'scaleX(1)'], filter: [`brightness(${FLIP_DIM})`, 'brightness(1)'] }]);
-    await step(TIMINGS.flapToEdge, [flap, { transform: ['scaleY(1)', 'scaleY(0)'], filter: ['brightness(1)', `brightness(${FLAP_DIM})`] }]);
+    await step(TIMINGS.flipFromEdge, [flip, turn.flip('90deg', '0deg')]);
+    // Flat again, so the card (inside the flip) isn't drawn through a 3D transform.
+    flip.style.removeProperty('transform');
+    await step(TIMINGS.flipToFlapPause, [flip, []]);
+    await step(TIMINGS.flapToEdge, [flap, turn.flap('0deg', '90deg')]);
     showFlapOpen(true);
     await step(TIMINGS.flapFromEdge, [
       flap,
-      { transform: ['scaleY(0)', 'scaleY(-1)'], filter: [`brightness(${FLAP_DIM})`, `brightness(${FLAP_OPEN_BRIGHTNESS})`] },
+      { ...turn.flap('90deg', '180deg'), filter: ['brightness(1)', `brightness(${FLAP_OPEN_BRIGHTNESS})`] },
     ]);
     await step(
       TIMINGS.cardPull,
@@ -171,6 +202,7 @@ export default function Envelope({ dailyFinds = [], deskSetup, onCapture, onClos
 
   const close = async () => {
     const [overlay, shift, lift, flip, flap, card, nextCard] = elements();
+    const turn = turns(flip);
     await step(
       TIMINGS.cardPresent,
       [card, { transform: [CARD_PRESENTED, CARD_PULLED] }],
@@ -183,15 +215,19 @@ export default function Envelope({ dailyFinds = [], deskSetup, onCapture, onClos
       [card, { transform: [CARD_PULLED, CARD_IN] }],
       [shift, { transform: [ENVELOPE_LOWERED, ENVELOPE_RAISED] }]
     );
-    await step(TIMINGS.flapToEdge, [
+    await step(reverse(TIMINGS.flapFromEdge), [
       flap,
-      { transform: ['scaleY(-1)', 'scaleY(0)'], filter: [`brightness(${FLAP_OPEN_BRIGHTNESS})`, `brightness(${FLAP_DIM})`] },
+      { ...turn.flap('180deg', '90deg'), filter: [`brightness(${FLAP_OPEN_BRIGHTNESS})`, 'brightness(1)'] },
     ]);
     showFlapOpen(false);
-    await step(TIMINGS.flapFromEdge, [flap, { transform: ['scaleY(0)', 'scaleY(1)'], filter: [`brightness(${FLAP_DIM})`, 'brightness(1)'] }]);
-    await step(TIMINGS.flipToEdge, [flip, { transform: ['scaleX(1)', 'scaleX(0)'], filter: ['brightness(1)', `brightness(${FLIP_DIM})`] }]);
+    await step(reverse(TIMINGS.flapToEdge), [flap, turn.flap('90deg', '0deg')]);
+    flap.style.removeProperty('transform');
+    await step(TIMINGS.flipToFlapPause, [flip, []]);
+    await step(reverse(TIMINGS.flipFromEdge), [flip, turn.flip('0deg', '90deg')]);
     showFace('front');
-    await step(TIMINGS.flipFromEdge, [flip, { transform: ['scaleX(0)', 'scaleX(1)'], filter: [`brightness(${FLIP_DIM})`, 'brightness(1)'] }]);
+    await step(reverse(TIMINGS.flipToEdge), [flip, turn.flip('-90deg', FLIP_WIND_UP)]);
+    await step(reverse(TIMINGS.flipWindUp), [flip, turn.flip(FLIP_WIND_UP, '0deg')]);
+    flip.style.removeProperty('transform');
     await step(
       TIMINGS.select,
       [lift, { transform: [`scale(${SELECTED_SCALE})`, 'scale(1)'] }],
