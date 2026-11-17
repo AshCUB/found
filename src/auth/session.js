@@ -55,6 +55,13 @@ export async function getUserName() {
   return session?.user.user_metadata?.name?.trim() || null;
 }
 
+// The signed-in user's name, email and whether they're a guest, for the profile page.
+export async function getAccount() {
+  if (devSignedIn() || !supabase) return { name: null, email: null, guest: false };
+  const user = (await fetchSession())?.user;
+  return { name: user?.user_metadata?.name?.trim() || null, email: user?.email || null, guest: !!user?.is_anonymous };
+}
+
 // Starts an anonymous Supabase session (must be enabled under Authentication > Sign In / Providers).
 // Guests get a real user id, so their data is stored and protected exactly like a regular account's.
 export async function signInAsGuest() {

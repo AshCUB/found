@@ -91,7 +91,8 @@ const ENVELOPE_PRESENTED = 'translateY(34%)';
 
 const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-export default function Envelope({ dailyFinds = [], captures = [], deskSetup, ownedDecor, onCapture, onViewCollection, onClose }) {
+// `nav` is the top bar's links to the other pages: [{ label, onClick }].
+export default function Envelope({ dailyFinds = [], captures = [], deskSetup, ownedDecor, nav = [], onCapture, onViewCollection }) {
   const desk = useMemo(() => normalizeDeskSetup(deskSetup, ownedDecor), [deskSetup, ownedDecor]);
   const [assets, setAssets] = useState(null);
   const [userName, setUserName] = useState(null);
@@ -389,9 +390,15 @@ export default function Envelope({ dailyFinds = [], captures = [], deskSetup, ow
 
       <header className="envelope-scene__header">
         <p className="envelope-scene__wordmark font-primary">FOUND</p>
-        <button onClick={onClose} className="envelope-scene__close font-buttons">
-          ← Back
-        </button>
+        {nav.length > 0 && (
+          <nav className="envelope-scene__nav" aria-label="Main">
+            {nav.map((link) => (
+              <button key={link.label} onClick={link.onClick} className="envelope-scene__link">
+                {link.label}
+              </button>
+            ))}
+          </nav>
+        )}
       </header>
 
       {loadError && (

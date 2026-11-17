@@ -1,3 +1,5 @@
+@import '@fontsource/cascadia-code/latin-400.css';
+
 .envelope-scene {
   /* The envelope's width, shared with the swipe hint so it lines up with the envelope's sides. */
   --envelope-width: min(70vw, 420px, 55svh);
@@ -43,8 +45,10 @@
   left: 0;
   right: 0;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  gap: 8px 24px;
   padding: calc(env(safe-area-inset-top, 0px) + 16px) 20px 0;
   z-index: 1;
 }
@@ -56,10 +60,33 @@
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
 
-.envelope-scene__close {
+/* Plain white links straight on the desk, with no bar behind them. Wraps under the wordmark on narrow screens. */
+.envelope-scene__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+}
+
+.envelope-scene__link {
+  padding: 4px 0;
+  border: 0;
+  background: none;
+  font-family: 'Cascadia Code', monospace;
   font-size: 14px;
   color: #fff;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.2s;
+}
+
+.envelope-scene__link:hover {
+  opacity: 0.75;
+}
+
+.envelope-scene__link:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: 4px;
 }
 
 .envelope-scene__hint {

@@ -1,7 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import Intro from './components/Intro';
 import Subscribe from './components/Subscribe';
-import Home from './components/Home';
 import DailyFind from './components/DailyFind';
 import Capture from './components/Capture';
 import ListPage from './components/ListPage';
@@ -9,6 +8,7 @@ import Collection from './components/Collection';
 import Streak from './components/Streak';
 import Envelope from './components/Envelope';
 import DeskDecor from './components/DeskDecor';
+import Profile from './components/Profile';
 import IntroVideo, { shouldShowIntroVideo } from './components/IntroVideo';
 import LoggedOutHome, { replayReveal } from './components/LoggedOutHome';
 import SignUp from './components/SignUp';
@@ -23,7 +23,7 @@ import { getAllDailyFinds, getAlternativeItem, storeDailyFinds, loadDailyFinds, 
 import { focusLists, isListVisible } from './data/focusLists';
 
 // Full-page screens open scrolled to the top; dailyFind and capture are overlays on top of home.
-const PAGE_SCREENS = ['intro', 'listPage', 'collection', 'streak', 'desk'];
+const PAGE_SCREENS = ['intro', 'listPage', 'collection', 'streak', 'desk', 'profile'];
 
 const SIGNED_OUT_ONLY_ROUTES = ['/sign-in', '/create-account'];
 const GET_STARTED_ROUTE = '/get-started';
@@ -318,21 +318,33 @@ export default function App() {
       case 'intro':
         return <Intro onGetStarted={openListPicker} />;
       
+      // The envelope on the user's desk is the home page; its top bar links to the other pages.
       case 'home':
         return (
-          <Home
-            streakData={streakData}
-            showStreak={settings.showStreak}
+          <Envelope
             dailyFinds={todaysDailyFinds}
-            listProgress={listProgress}
-            onViewDailyFind={handleViewDailyFind}
-            onViewList={handleViewList}
-            onAddList={openListPicker}
+            captures={captures}
+            deskSetup={userData.data?.deskSetup}
+            ownedDecor={ownedDecor}
+            nav={[
+              { label: 'streak', onClick: () => openScreen('streak') },
+              { label: 'profile', onClick: () => openScreen('profile') },
+              { label: 'collection', onClick: () => openScreen('collection') },
+              { label: 'lists', onClick: () => (subscribedLists.length ? handleViewList(subscribedLists[0]) : openListPicker()) },
+              { label: 'desk decor', onClick: () => openScreen('desk') },
+            ]}
+            onCapture={handleCapture}
             onViewCollection={() => openScreen('collection')}
-            onViewStreak={() => openScreen('streak')}
-            onViewEnvelope={() => openScreen('envelope')}
-            onViewDesk={() => openScreen('desk')}
+          />
+        );
+
+      case 'profile':
+        return (
+          <Profile
+            totalFinds={captures.length}
+            points={userData.data?.points}
             onSignOut={handleSignOut}
+            onClose={closeScreen}
           />
         );
       
@@ -394,19 +406,6 @@ export default function App() {
             totalFinds={captures.length}
             showStreak={settings.showStreak}
             onToggleStreak={handleToggleStreak}
-            onClose={closeScreen}
-          />
-        );
-
-      case 'envelope':
-        return (
-          <Envelope
-            dailyFinds={todaysDailyFinds}
-            captures={captures}
-            deskSetup={userData.data?.deskSetup}
-            ownedDecor={ownedDecor}
-            onCapture={handleCapture}
-            onViewCollection={() => openScreen('collection')}
             onClose={closeScreen}
           />
         );
