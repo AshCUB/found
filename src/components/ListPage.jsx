@@ -3,6 +3,9 @@ import { focusLists, visibleFocusLists } from '../data/focusLists';
 import ItemImage from './ItemImage';
 import ProgressBar from './ProgressBar';
 
+// Testing only: shows the image and name of finds that haven't been found yet. Set to false before release.
+const REVEAL_UNFOUND_FINDS = true;
+
 export default function ListPage({
   subscribedListIds,
   initialListId,
@@ -137,6 +140,17 @@ export default function ListPage({
                   {item.name}
                 </p>
               </div>
+            ) : REVEAL_UNFOUND_FINDS ? (
+              <button
+                key={item.id}
+                onClick={() => handleItemClick(item)}
+                className="p-md rounded-lg bg-white/60 border-2 border-dashed border-dark-grey/30 hover:border-green transition-colors"
+              >
+                <ItemImage src={item.image} alt={item.name} fitPadding="p-sm" className="w-full h-24 rounded-lg mb-md" />
+                <p className="font-buttons text-sm text-dark-grey text-center">
+                  {item.name}
+                </p>
+              </button>
             ) : (
               <button
                 key={item.id}

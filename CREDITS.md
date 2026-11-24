@@ -12,6 +12,54 @@ All images are sourced from free-to-use stock photo sites and Openverse under li
 
 ## Credits by Category
 
+### Chinese New Year
+
+| Item | Photographer | Source | License |
+|------|-------------|--------|---------|
+| Chinese New Year cover | [wal_172619](https://pixabay.com/users/wal_172619-12138562/) | [pixabay](https://pixabay.com/photos/chinese-lanterns-restaurant-lamps-7591296/) | Pixabay License (free to use) |
+| Red envelopes | [CDD20](https://pixabay.com/users/CDD20-1193381/) | [pixabay](https://pixabay.com/illustrations/red-envelope-chinese-new-year-6957469/) | Pixabay License (free to use) |
+| Dragons | [harshpatel590](https://pixabay.com/users/harshpatel590-15998043/) | [pixabay](https://pixabay.com/photos/dragon-dance-china-asia-10015413/) | Pixabay License (free to use) |
+| Fireworks | [r-q](https://pixabay.com/users/r-q-3635702/) | [pixabay](https://pixabay.com/photos/fireworks-firecrackers-7736705/) | Pixabay License (free to use) |
+| Lanterns | [tathanhtuan](https://pixabay.com/users/tathanhtuan-10219403/) | [pixabay](https://pixabay.com/photos/lantern-tradition-couple-love-4670043/) | Pixabay License (free to use) |
+| Dumplings | [Daria-Yakovleva](https://pixabay.com/users/Daria-Yakovleva-3938704/) | [pixabay](https://pixabay.com/photos/cooking-pies-vareniki-pelmeni-cook-2132874/) | Pixabay License (free to use) |
+| Red decorations | [wal_172619](https://pixabay.com/users/wal_172619-12138562/) | [pixabay](https://pixabay.com/photos/chinese-lanterns-restaurant-lamps-7591296/) | Pixabay License (free to use) |
+| Zodiac animal | [thwangfsdesign](https://pixabay.com/users/thwangfsdesign-178313/) | [pixabay](https://pixabay.com/photos/hai-pig-chinese-horoscope-animals-279651/) | Pixabay License (free to use) |
+| Tangerines or oranges | [pixel2013](https://pixabay.com/users/pixel2013-2364555/) | [pixabay](https://pixabay.com/photos/tangerines-fruit-food-clementines-1721590/) | Pixabay License (free to use) |
+| Sticky rice cake | [erlianzakia](https://pixabay.com/users/erlianzakia-10071442/) | [pixabay](https://pixabay.com/photos/traditional-food-food-photography-4477333/) | Pixabay License (free to use) |
+| Firecrackers | [nidan](https://pixabay.com/users/nidan-455298/) | [pixabay](https://pixabay.com/photos/fireworks-sky-new-year-879461/) | Pixabay License (free to use) |
+| Red clothing | [bongbabyhousevn](https://pixabay.com/users/bongbabyhousevn-15950077/) | [pixabay](https://pixabay.com/photos/newborn-camera-photography-sweet-5036846/) | Pixabay License (free to use) |
+
+### Christmas
+
+| Item | Photographer | Source | License |
+|------|-------------|--------|---------|
+| Christmas cover | [TanteTati](https://pixabay.com/users/TanteTati-77004/) | [pixabay](https://pixabay.com/photos/christmas-tree-fir-tree-4704706/) | Pixabay License (free to use) |
+| Presents | [JillWellington](https://pixabay.com/users/JillWellington-334088/) | [pixabay](https://pixabay.com/photos/merry-christmas-christmas-tree-santa-2999722/) | Pixabay License (free to use) |
+| Trees | [reijotelaranta](https://pixabay.com/users/reijotelaranta-6656376/) | [pixabay](https://pixabay.com/photos/nature-winter-season-trees-snow-4687676/) | Pixabay License (free to use) |
+| Sleigh | [TomaszProszek](https://pixabay.com/users/TomaszProszek-613139/) | [pixabay](https://pixabay.com/photos/sleigh-ride-horses-winter-snow-549727/) | Pixabay License (free to use) |
+| Santa | [mariya_m](https://pixabay.com/users/mariya_m-12752456/) | [pixabay](https://pixabay.com/photos/santa-claus-nicholas-christmas-time-6845491/) | Pixabay License (free to use) |
+| Ornament | [StudioFriluma](https://pixabay.com/users/StudioFriluma-49656328/) | [pixabay](https://pixabay.com/photos/christmas-decoration-christmas-tree-10521175/) | Pixabay License (free to use) |
+| Gingerbread cookies | [JillWellington](https://pixabay.com/users/JillWellington-334088/) | [pixabay](https://pixabay.com/photos/gingerbread-men-houses-background-3084961/) | Pixabay License (free to use) |
+| Christmas lights | [reijotelaranta](https://pixabay.com/users/reijotelaranta-6656376/) | [pixabay](https://pixabay.com/photos/nature-winter-season-trees-snow-4687676/) | Pixabay License (free to use) |
+| Wreath | [VinnyCiro](https://pixabay.com/users/VinnyCiro-219264/) | [pixabay](https://pixabay.com/photos/snowman-town-urban-321034/) | Pixabay License (free to use) |
+| Stockings | [JillWellington](https://pixabay.com/users/JillWellington-334088/) | [pixabay](https://pixabay.com/photos/merry-christmas-christmas-tree-santa-2999722/) | Pixabay License (free to use) |
+| Candy canes | [TerriC](https://pixabay.com/users/TerriC-4014469/) | [pixabay](https://pixabay.com/photos/cocoa-hot-chocolate-candy-cane-mug-1908020/) | Pixabay License (free to use) |
+| Poinsettia | [TerriC](https://pixabay.com/users/TerriC-4014469/) | [pixabay](https://pixabay.com/photos/poinsettia-christmas-3024434/) | Pixabay License (free to use) |
+| Nutcracker | [herbert2512](https://pixabay.com/users/herbert2512-2929941/) | [pixabay](https://pixabay.com/photos/nutcracker-figure-wooden-figurine-3023998/) | Pixabay License (free to use) |
+| Snow globe | [suju-foto](https://pixabay.com/users/suju-foto-165106/) | [pixabay](https://pixabay.com/photos/snow-globe-santa-claus-3852330/) | Pixabay License (free to use) |
+| Holiday cards | [BiljaST](https://pixabay.com/users/BiljaST-2868488/) | [pixabay](https://pixabay.com/photos/merry-christmas-merry-christmas-4684006/) | Pixabay License (free to use) |
+| Wrapping paper | [KAVOWO](https://pixabay.com/users/KAVOWO-6764465/) | [pixabay](https://pixabay.com/photos/paper-texture-wrapping-paper-3155438/) | Pixabay License (free to use) |
+| Ribbon or bow | [image4you](https://pixabay.com/users/image4you-2459255/) | [pixabay](https://pixabay.com/photos/gift-present-wood-package-gift-box-1420830/) | Pixabay License (free to use) |
+| Reindeer | [LTapsaH](https://pixabay.com/users/LTapsaH-2465371/) | [pixabay](https://pixabay.com/photos/deer-antler-animal-reindeer-forest-6781976/) | Pixabay License (free to use) |
+| Elf on the shelf | [JillWellington](https://pixabay.com/users/JillWellington-334088/) | [pixabay](https://pixabay.com/photos/merry-christmas-christmas-tree-santa-2999722/) | Pixabay License (free to use) |
+| Nativity scene | [Tutanchamun](https://pixabay.com/users/Tutanchamun-11221378/) | [pixabay](https://pixabay.com/photos/maria-josef-jesus-child-christmas-6917954/) | Pixabay License (free to use) |
+| Mistletoe | [stux](https://pixabay.com/users/stux-12364/) | [pixabay](https://pixabay.com/photos/mistletoe-parasitic-medicinal-plant-229836/) | Pixabay License (free to use) |
+| Eggnog | [JillWellington](https://pixabay.com/users/JillWellington-334088/) | [pixabay](https://pixabay.com/photos/egg-nog-christmas-drink-eggnog-2991133/) | Pixabay License (free to use) |
+| Santa hat | [miezekieze](https://pixabay.com/users/miezekieze-607096/) | [pixabay](https://pixabay.com/photos/cat-hat-christmas-santa-cute-5836297/) | Pixabay License (free to use) |
+| Tree topper (star or angel) | [StudioFriluma](https://pixabay.com/users/StudioFriluma-49656328/) | [pixabay](https://pixabay.com/photos/christmas-decoration-christmas-tree-10521175/) | Pixabay License (free to use) |
+| Holly | [PublicDomainPictures](https://pixabay.com/users/PublicDomainPictures-14/) | [pixabay](https://pixabay.com/photos/alpine-sea-holly-flowers-plant-14129/) | Pixabay License (free to use) |
+| Christmas movie on TV | [Space_Zandria](https://pixabay.com/users/Space_Zandria-17336699/) | [pixabay](https://pixabay.com/photos/camera-lens-decoration-interior-5727266/) | Pixabay License (free to use) |
+
 ### Colors
 
 | Item | Photographer | Source | License |
@@ -118,6 +166,126 @@ All images are sourced from free-to-use stock photo sites and Openverse under li
 | Pitch black | [moinzon](https://pixabay.com/users/moinzon-2433302/) | [pixabay](https://pixabay.com/photos/soccer-bundesliga-ball-stadium-1439082/) | Pixabay License (free to use) |
 | Bright white | [Anelka](https://pixabay.com/users/Anelka-217857/) | [pixabay](https://pixabay.com/photos/flowers-bouquet-arrangement-342532/) | Pixabay License (free to use) |
 
+### Easter
+
+| Item | Photographer | Source | License |
+|------|-------------|--------|---------|
+| Easter cover | [anncapictures](https://pixabay.com/users/anncapictures-1564471/) | [pixabay](https://pixabay.com/photos/easter-easter-bunny-egg-rabbit-3204589/) | Pixabay License (free to use) |
+| Bunny | [Alexas_Fotos](https://pixabay.com/users/Alexas_Fotos-686414/) | [pixabay](https://pixabay.com/photos/easter-easter-bunny-multicoloured-3270993/) | Pixabay License (free to use) |
+| Painted eggs | [Alexas_Fotos](https://pixabay.com/users/Alexas_Fotos-686414/) | [pixabay](https://pixabay.com/photos/easter-easter-eggs-multicoloured-1247539/) | Pixabay License (free to use) |
+| Chicken | [onefox](https://pixabay.com/users/onefox-25891/) | [pixabay](https://pixabay.com/photos/bird-chicks-baby-chicken-young-bird-349026/) | Pixabay License (free to use) |
+| Egg hunt | [Vladvictoria](https://pixabay.com/users/Vladvictoria-9785604/) | [pixabay](https://pixabay.com/photos/easter-egg-hunt-child-spring-4143537/) | Pixabay License (free to use) |
+| Church | [TheDigitalArtist](https://pixabay.com/users/TheDigitalArtist-202249/) | [pixabay](https://pixabay.com/photos/church-lake-building-architecture-2464899/) | Pixabay License (free to use) |
+| Bunny ears headband | [gabbrielleite](https://pixabay.com/users/gabbrielleite-8459808/) | [pixabay](https://pixabay.com/photos/easter-child-baby-spring-children-4119709/) | Pixabay License (free to use) |
+| Basket | [silviarita](https://pixabay.com/users/silviarita-3142410/) | [pixabay](https://pixabay.com/photos/easter-eggs-basket-easter-eggs-3165469/) | Pixabay License (free to use) |
+| Jelly beans | [FoodieFactor](https://pixabay.com/users/FoodieFactor-5992183/) | [pixabay](https://pixabay.com/photos/candy-sweets-colorful-sugar-2538878/) | Pixabay License (free to use) |
+| Chocolate bunny | [garten-gg](https://pixabay.com/users/garten-gg-201217/) | [pixabay](https://pixabay.com/photos/easter-easter-bunny-chocolate-gold-695096/) | Pixabay License (free to use) |
+| Lamb | [Drosera74](https://pixabay.com/users/Drosera74-48879945/) | [pixabay](https://pixabay.com/photos/sheep-animals-pasture-mammal-lamb-10074422/) | Pixabay License (free to use) |
+| Chick | [victorsteep](https://pixabay.com/users/victorsteep-9526460/) | [pixabay](https://pixabay.com/photos/ai-generated-chicken-chick-ranch-8327632/) | Pixabay License (free to use) |
+| Spring flowers | [Pezibear](https://pixabay.com/users/Pezibear-526143/) | [pixabay](https://pixabay.com/photos/liverflower-blue-flower-blue-flower-1393813/) | Pixabay License (free to use) |
+| Pastel colors | [silviarita](https://pixabay.com/users/silviarita-3142410/) | [pixabay](https://pixabay.com/photos/easter-eggs-basket-easter-eggs-3165469/) | Pixabay License (free to use) |
+| Egg dye kit | [JillWellington](https://pixabay.com/users/JillWellington-334088/) | [pixabay](https://pixabay.com/photos/easter-egg-coloring-egg-dye-easter-2211945/) | Pixabay License (free to use) |
+| Marshmallow chicks | [WikimediaImages](https://pixabay.com/users/WikimediaImages-1185597/) | [pixabay](https://pixabay.com/photos/candy-sugar-sweet-unhealthy-food-2201932/) | Pixabay License (free to use) |
+
+### Fall
+
+| Item | Photographer | Source | License |
+|------|-------------|--------|---------|
+| Acorn | [Ylanite](https://pixabay.com/users/Ylanite-2218222/) | [pixabay](https://pixabay.com/photos/acorns-leaves-foliage-season-5646979/) | Pixabay License (free to use) |
+| Fall cover | [Valiphotos](https://pixabay.com/users/Valiphotos-1720744/) | [pixabay](https://pixabay.com/photos/road-forest-fall-path-trail-trees-1072821/) | Pixabay License (free to use) |
+| Red leaf | [Nennieinszweidrei](https://pixabay.com/users/Nennieinszweidrei-10084616/) | [pixabay](https://pixabay.com/photos/red-leaf-leaf-structure-leaf-veins-8319391/) | Pixabay License (free to use) |
+| Orange leaf | [AliGoode](https://pixabay.com/users/AliGoode-57151594/) | [pixabay](https://pixabay.com/photos/ladybug-insect-autumn-leaves-beetle-10578264/) | Pixabay License (free to use) |
+| Yellow leaf | [Kanenori](https://pixabay.com/users/Kanenori-4749850/) | [pixabay](https://pixabay.com/photos/landscape-autumn-mountain-stream-4597742/) | Pixabay License (free to use) |
+| Brown leaf | [Nennieinszweidrei](https://pixabay.com/users/Nennieinszweidrei-10084616/) | [pixabay](https://pixabay.com/photos/forest-floor-acorns-oak-leaves-10104685/) | Pixabay License (free to use) |
+| A leaf still green | [Sweetaholic](https://pixabay.com/users/Sweetaholic-296788/) | [pixabay](https://pixabay.com/photos/maple-branch-leaf-maple-leaf-888807/) | Pixabay License (free to use) |
+| Pile of leaves | [ClickerHappy](https://pixabay.com/users/ClickerHappy-324082/) | [pixabay](https://pixabay.com/photos/girl-playing-leaves-autumn-happy-3740723/) | Pixabay License (free to use) |
+| Pinecone | [neelam279](https://pixabay.com/users/neelam279-9820894/) | [pixabay](https://pixabay.com/photos/pine-cones-tap-tschurtschen-seeds-9855502/) | Pixabay License (free to use) |
+| Pumpkin | [suju-foto](https://pixabay.com/users/suju-foto-165106/) | [pixabay](https://pixabay.com/photos/harvest-pumpkin-autumn-halloween-4454745/) | Pixabay License (free to use) |
+| Gourds | [Alexas_Fotos](https://pixabay.com/users/Alexas_Fotos-686414/) | [pixabay](https://pixabay.com/photos/pumpkin-orange-green-variety-10470647/) | Pixabay License (free to use) |
+| Apples | [pixel2013](https://pixabay.com/users/pixel2013-2364555/) | [pixabay](https://pixabay.com/photos/apples-red-apple-ripe-apple-orchard-2788599/) | Pixabay License (free to use) |
+| Apple cider | [u_uiv44oi92w](https://pixabay.com/users/u_uiv44oi92w-56552665/) | [pixabay](https://pixabay.com/photos/apple-press-apples-apple-cider-jug-10558712/) | Pixabay License (free to use) |
+| Corn stalks | [Couleur](https://pixabay.com/users/Couleur-1195798/) | [pixabay](https://pixabay.com/photos/corn-food-field-vegetable-corncob-1690387/) | Pixabay License (free to use) |
+| Hay bale | [rainerh11](https://pixabay.com/users/rainerh11-6660066/) | [pixabay](https://pixabay.com/photos/harvest-straw-bales-straw-barley-8118900/) | Pixabay License (free to use) |
+| Scarecrow | [stevepb](https://pixabay.com/users/stevepb-282134/) | [pixabay](https://pixabay.com/photos/farm-girl-harvest-agriculture-1509198/) | Pixabay License (free to use) |
+| Sweater | [Pexels](https://pixabay.com/users/Pexels-2286921/) | [pixabay](https://pixabay.com/photos/fashion-sweater-wool-clothing-1283863/) | Pixabay License (free to use) |
+| Scarf | [Be_Stasya](https://pixabay.com/users/Be_Stasya-11197808/) | [pixabay](https://pixabay.com/photos/cat-scarf-tabby-warm-portrait-5767334/) | Pixabay License (free to use) |
+| Bare branches | [Printeboek](https://pixabay.com/users/Printeboek-6033538/) | [pixabay](https://pixabay.com/photos/winter-landscape-trees-snow-nature-2571788/) | Pixabay License (free to use) |
+| Geese flying south | [12019](https://pixabay.com/users/12019-12019/) | [pixabay](https://pixabay.com/photos/geese-birds-flock-wildlife-flying-1990202/) | Pixabay License (free to use) |
+| Chimney smoke | [JuergenPM](https://pixabay.com/users/JuergenPM-129615/) | [pixabay](https://pixabay.com/photos/smoke-chimney-pollution-smoking-258786/) | Pixabay License (free to use) |
+| Cornucopia | [JillWellington](https://pixabay.com/users/JillWellington-334088/) | [pixabay](https://pixabay.com/photos/thanksgiving-cornucopia-fruit-3719249/) | Pixabay License (free to use) |
+
+### Fourth of July
+
+| Item | Photographer | Source | License |
+|------|-------------|--------|---------|
+| Fourth of July cover | [StockSnap](https://pixabay.com/users/StockSnap-894430/) | [pixabay](https://pixabay.com/photos/sparklers-american-flag-923029/) | Pixabay License (free to use) |
+| Beer can | [Matthias_Lemm](https://pixabay.com/users/Matthias_Lemm-5882917/) | [pixabay](https://pixabay.com/photos/can-beer-drink-lager-thailand-3980394/) | Pixabay License (free to use) |
+| American flags | [Aktim](https://pixabay.com/users/Aktim-1683993/) | [pixabay](https://pixabay.com/photos/american-flag-american-flag-waving-1208660/) | Pixabay License (free to use) |
+| Fireworks | [nck_gsl](https://pixabay.com/users/nck_gsl-3554748/) | [pixabay](https://pixabay.com/photos/new-years-eve-fireworks-city-sky-1953253/) | Pixabay License (free to use) |
+| Hot dogs | [Digital_Expert](https://pixabay.com/users/Digital_Expert-22525715/) | [pixabay](https://pixabay.com/photos/hot-dog-sausage-sandwich-fast-food-10195827/) | Pixabay License (free to use) |
+| Hamburgers | [niekverlaan](https://pixabay.com/users/niekverlaan-80788/) | [pixabay](https://pixabay.com/photos/hamburger-snack-burger-gourmet-494706/) | Pixabay License (free to use) |
+| Eagle | [suju-foto](https://pixabay.com/users/suju-foto-165106/) | [pixabay](https://pixabay.com/photos/bald-eagle-bird-of-prey-beak-10502248/) | Pixabay License (free to use) |
+| Lady Liberty | [Ronile](https://pixabay.com/users/Ronile-126846/) | [pixabay](https://pixabay.com/photos/statue-of-liberty-new-york-statue-267948/) | Pixabay License (free to use) |
+| Sparklers | [Pexels](https://pixabay.com/users/Pexels-2286921/) | [pixabay](https://pixabay.com/photos/new-years-eve-dark-fireworks-hands-1845065/) | Pixabay License (free to use) |
+| Something Red | [Kapa65](https://pixabay.com/users/Kapa65-61253/) | [pixabay](https://pixabay.com/photos/bricks-wall-red-bricks-brick-wall-450106/) | Pixabay License (free to use) |
+| Something White | [KIMDAEJEUNG](https://pixabay.com/users/KIMDAEJEUNG-7703165/) | [pixabay](https://pixabay.com/photos/rose-flower-plant-petals-bloom-8006850/) | Pixabay License (free to use) |
+| Something Blue | [seth0s](https://pixabay.com/users/seth0s-816508/) | [pixabay](https://pixabay.com/photos/door-entrance-facade-archway-arch-681835/) | Pixabay License (free to use) |
+| Parade | [GPoulsen](https://pixabay.com/users/GPoulsen-6673015/) | [pixabay](https://pixabay.com/photos/children-fourth-of-july-6665598/) | Pixabay License (free to use) |
+| Picnic | [em0rix](https://pixabay.com/users/em0rix-1479707/) | [pixabay](https://pixabay.com/photos/picnic-apples-grapes-flowers-hat-10410610/) | Pixabay License (free to use) |
+| Watermelon | [congerdesign](https://pixabay.com/users/congerdesign-509903/) | [pixabay](https://pixabay.com/photos/watermelon-juicy-fruits-sliced-815072/) | Pixabay License (free to use) |
+| Corn on the cob | [kumarsu6745_](https://pixabay.com/users/kumarsu6745_-4844249/) | [pixabay](https://pixabay.com/photos/miaze-corn-ripe-vegetable-food-10095201/) | Pixabay License (free to use) |
+| Apple pie | [Einladung_zum_Essen](https://pixabay.com/users/Einladung_zum_Essen-3625323/) | [pixabay](https://pixabay.com/photos/apple-pie-dough-apple-cake-dessert-5479993/) | Pixabay License (free to use) |
+| Stars and stripes | [Michael_Luenen](https://pixabay.com/users/Michael_Luenen-2998623/) | [pixabay](https://pixabay.com/photos/usa-flag-american-flag-banner-1561757/) | Pixabay License (free to use) |
+| Patriotic outfit | [Alexas_Fotos](https://pixabay.com/users/Alexas_Fotos-686414/) | [pixabay](https://pixabay.com/illustrations/fashion-design-drawing-t-shirt-771582/) | Pixabay License (free to use) |
+| Lawn chairs | [MagicDesk](https://pixabay.com/users/MagicDesk-930274/) | [pixabay](https://pixabay.com/photos/hotel-resort-beach-luxury-exterior-7885138/) | Pixabay License (free to use) |
+| Grill | [Pexels](https://pixabay.com/users/Pexels-2286921/) | [pixabay](https://pixabay.com/photos/burgers-fire-grill-grilling-cook-1839090/) | Pixabay License (free to use) |
+| Cooler | [marinacath](https://pixabay.com/users/marinacath-16567402/) | [pixabay](https://pixabay.com/photos/esky-summer-park-boat-fun-5312095/) | Pixabay License (free to use) |
+| Fireworks stand | [StockSnap](https://pixabay.com/users/StockSnap-894430/) | [pixabay](https://pixabay.com/photos/people-walking-boy-kid-child-back-2574046/) | Pixabay License (free to use) |
+| Lemonade | [JillWellington](https://pixabay.com/users/JillWellington-334088/) | [pixabay](https://pixabay.com/photos/pink-lemonade-summer-outdoors-795029/) | Pixabay License (free to use) |
+
+### Halloween
+
+| Item | Photographer | Source | License |
+|------|-------------|--------|---------|
+| Halloween cover | [JillWellington](https://pixabay.com/users/JillWellington-334088/) | [pixabay](https://pixabay.com/photos/girl-pumpkins-pumpkin-patch-8287665/) | Pixabay License (free to use) |
+| Carved pumpkins | [SzaboJanos](https://pixabay.com/users/SzaboJanos-712782/) | [pixabay](https://pixabay.com/photos/halloween-jack-o-lantern-pumpkin-4585684/) | Pixabay License (free to use) |
+| Costumes | [Sunriseforever](https://pixabay.com/users/Sunriseforever-6314823/) | [pixabay](https://pixabay.com/photos/halloween-woman-grotto-9900545/) | Pixabay License (free to use) |
+| Candy | [JillWellington](https://pixabay.com/users/JillWellington-334088/) | [pixabay](https://pixabay.com/photos/halloween-trick-or-treat-pumpkin-1773447/) | Pixabay License (free to use) |
+| Lit jack-o'-lantern | [ESD-SS](https://pixabay.com/users/ESD-SS-1393799/) | [pixabay](https://pixabay.com/photos/halloween-pumpkin-autumn-decoration-935259/) | Pixabay License (free to use) |
+| Ghost decoration | [Alexas_Fotos](https://pixabay.com/users/Alexas_Fotos-686414/) | [pixabay](https://pixabay.com/photos/halloween-ghosts-happy-halloween-1746354/) | Pixabay License (free to use) |
+| Spider web | [TBIT](https://pixabay.com/users/TBIT-715211/) | [pixabay](https://pixabay.com/photos/cobweb-web-nature-spider-web-959578/) | Pixabay License (free to use) |
+| Black cat | [rwgusev](https://pixabay.com/users/rwgusev-12765044/) | [pixabay](https://pixabay.com/photos/cat-mammal-eyes-animal-wild-7866716/) | Pixabay License (free to use) |
+| Bats | [Hans](https://pixabay.com/users/Hans-2/) | [pixabay](https://pixabay.com/photos/flying-dog-aethalops-mammal-4136563/) | Pixabay License (free to use) |
+| Skeleton | [Pexels](https://pixabay.com/users/Pexels-2286921/) | [pixabay](https://pixabay.com/photos/skull-creepy-dark-eerie-scary-1867707/) | Pixabay License (free to use) |
+| Witch hat | [Sunriseforever](https://pixabay.com/users/Sunriseforever-6314823/) | [pixabay](https://pixabay.com/photos/halloween-woman-grotto-9900545/) | Pixabay License (free to use) |
+| Haunted house | [sananthropis](https://pixabay.com/users/sananthropis-20391040/) | [pixabay](https://pixabay.com/photos/haunted-house-halloween-graveyard-7508035/) | Pixabay License (free to use) |
+| Trick-or-treat bucket | [JillWellington](https://pixabay.com/users/JillWellington-334088/) | [pixabay](https://pixabay.com/photos/halloween-candy-trick-or-treat-3738415/) | Pixabay License (free to use) |
+| Candy corn | [anncapictures](https://pixabay.com/users/anncapictures-1564471/) | [pixabay](https://pixabay.com/photos/popcorn-movie-theater-theatre-food-1433327/) | Pixabay License (free to use) |
+| Cobwebs | [AdinaVoicu](https://pixabay.com/users/AdinaVoicu-485024/) | [pixabay](https://pixabay.com/photos/dragonfly-dew-spider-web-cobweb-1729157/) | Pixabay License (free to use) |
+| Graveyard decoration | [Bru-nO](https://pixabay.com/users/Bru-nO-1161770/) | [pixabay](https://pixabay.com/photos/skeleton-bone-life-human-to-sit-2267910/) | Pixabay License (free to use) |
+| Orange and black | [Bessi](https://pixabay.com/users/Bessi-909086/) | [pixabay](https://pixabay.com/photos/tree-cat-silhouette-moon-full-moon-736877/) | Pixabay License (free to use) |
+| Caramel apple | [jp26jp](https://pixabay.com/users/jp26jp-308026/) | [pixabay](https://pixabay.com/photos/sweet-caramel-apple-candy-dessert-438774/) | Pixabay License (free to use) |
+| Pumpkin patch | [JillWellington](https://pixabay.com/users/JillWellington-334088/) | [pixabay](https://pixabay.com/photos/girl-pumpkins-pumpkin-patch-8287665/) | Pixabay License (free to use) |
+| Mask | [blackrabbitkdj](https://pixabay.com/users/blackrabbitkdj-13427895/) | [pixabay](https://pixabay.com/photos/bird-skull-skull-creepy-dark-4433244/) | Pixabay License (free to use) |
+| Spooky lights | [ArtTower](https://pixabay.com/users/ArtTower-5337/) | [pixabay](https://pixabay.com/photos/foggy-mist-forest-trees-spooky-545838/) | Pixabay License (free to use) |
+| Mummy | [reverendbacon0](https://pixabay.com/users/reverendbacon0-1475346/) | [pixabay](https://pixabay.com/photos/halloween-skeleton-head-skull-969374/) | Pixabay License (free to use) |
+
+### Hanukkah
+
+| Item | Photographer | Source | License |
+|------|-------------|--------|---------|
+| Hanukkah cover | [Ri_Ya](https://pixabay.com/users/Ri_Ya-12911237/) | [pixabay](https://pixabay.com/photos/oil-candles-burning-candles-hanukkah-7672890/) | Pixabay License (free to use) |
+| Menorah | [Ri_Ya](https://pixabay.com/users/Ri_Ya-12911237/) | [pixabay](https://pixabay.com/photos/oil-candles-burning-candles-hanukkah-7672890/) | Pixabay License (free to use) |
+| Star of David | [Ri_Ya](https://pixabay.com/users/Ri_Ya-12911237/) | [pixabay](https://pixabay.com/photos/star-of-david-emblem-jewish-bible-4703731/) | Pixabay License (free to use) |
+| Latkes | [manfredrichter](https://pixabay.com/users/manfredrichter-4055600/) | [pixabay](https://pixabay.com/photos/reibekuchen-potato-patties-3852022/) | Pixabay License (free to use) |
+| Dreidel | [Ri_Ya](https://pixabay.com/users/Ri_Ya-12911237/) | [pixabay](https://pixabay.com/photos/hanukkah-dreidel-mitzvah-jew-4713479/) | Pixabay License (free to use) |
+| Gelt (chocolate coins) | [41330](https://pixabay.com/users/41330-41330/) | [pixabay](https://pixabay.com/photos/coin-gold-cash-isolated-tower-1549048/) | Pixabay License (free to use) |
+| Candles | [Ri_Ya](https://pixabay.com/users/Ri_Ya-12911237/) | [pixabay](https://pixabay.com/photos/oil-candles-burning-candles-hanukkah-7672890/) | Pixabay License (free to use) |
+| Blue and white decorations | [Alexas_Fotos](https://pixabay.com/users/Alexas_Fotos-686414/) | [pixabay](https://pixabay.com/photos/christmas-santa-claus-993304/) | Pixabay License (free to use) |
+| Sufganiyot (jelly donuts) | [SnapwireSnaps](https://pixabay.com/users/SnapwireSnaps-692569/) | [pixabay](https://pixabay.com/photos/pastry-sweet-bakery-craller-jam-731829/) | Pixabay License (free to use) |
+| Candle lighting | [EvgeniT](https://pixabay.com/users/EvgeniT-4930349/) | [pixabay](https://pixabay.com/photos/hanukkah-judaism-chandelier-candles-2197684/) | Pixabay License (free to use) |
+| Blue and silver | [Pexels](https://pixabay.com/users/Pexels-2286921/) | [pixabay](https://pixabay.com/photos/christmas-baubles-balls-1867048/) | Pixabay License (free to use) |
+
 ### Letters and Numbers
 
 | Item | Photographer | Source | License |
@@ -171,6 +339,28 @@ All images are sourced from free-to-use stock photo sites and Openverse under li
 | Tile | [joncutrer](https://www.flickr.com/photos/47121680@N00) | [openverse/flickr](https://www.flickr.com/photos/47121680@N00/50102368486) | [CC0 1.0 (public domain)](https://creativecommons.org/publicdomain/zero/1.0/) |
 | Wax | [comedy_nose](https://www.flickr.com/photos/23408922@N07) | [openverse/flickr](https://www.flickr.com/photos/23408922@N07/49190446762) | [Public Domain Mark](https://creativecommons.org/publicdomain/mark/1.0/) |
 | Wire | [brenkee](https://www.flickr.com/photos/55128416@N05) | [openverse/flickr](https://www.flickr.com/photos/55128416@N05/14647781466) | [CC0 1.0 (public domain)](https://creativecommons.org/publicdomain/zero/1.0/) |
+
+### New Year's
+
+| Item | Photographer | Source | License |
+|------|-------------|--------|---------|
+| New Year's cover | [geralt](https://pixabay.com/users/geralt-9301/) | [pixabay](https://pixabay.com/photos/fireworks-new-years-eve-574739/) | Pixabay License (free to use) |
+| Fireworks | [nck_gsl](https://pixabay.com/users/nck_gsl-3554748/) | [pixabay](https://pixabay.com/photos/new-years-eve-fireworks-city-sky-1953253/) | Pixabay License (free to use) |
+| Champagne | [OleksandrPidvalnyi](https://pixabay.com/users/OleksandrPidvalnyi-4638469/) | [pixabay](https://pixabay.com/photos/wine-glasses-toast-holiday-6688901/) | Pixabay License (free to use) |
+| Confetti | [ktphotography](https://pixabay.com/users/ktphotography-5847971/) | [pixabay](https://pixabay.com/photos/concert-confetti-party-event-club-2527495/) | Pixabay License (free to use) |
+| Balloons | [Peggy_Marco](https://pixabay.com/users/Peggy_Marco-1553824/) | [pixabay](https://pixabay.com/photos/balloons-heart-sky-clouds-love-1046658/) | Pixabay License (free to use) |
+| Number glasses | [OleksandrPidvalnyi](https://pixabay.com/users/OleksandrPidvalnyi-4638469/) | [pixabay](https://pixabay.com/photos/wine-glasses-toast-holiday-6688901/) | Pixabay License (free to use) |
+| Party hat | [Pexels](https://pixabay.com/users/Pexels-2286921/) | [pixabay](https://pixabay.com/photos/woman-smiling-party-enjoying-fun-1284304/) | Pixabay License (free to use) |
+| Noisemaker | [anncapictures](https://pixabay.com/users/anncapictures-1564471/) | [pixabay](https://pixabay.com/photos/wig-confetti-streamer-multicoloured-3128515/) | Pixabay License (free to use) |
+| Party horn | [ulukasczyk](https://pixabay.com/users/ulukasczyk-12107032/) | [pixabay](https://pixabay.com/photos/carnival-confetti-clown-carneval-4874288/) | Pixabay License (free to use) |
+| Streamers | [5598375](https://pixabay.com/users/5598375-5598375/) | [pixabay](https://pixabay.com/photos/carnival-mask-masquerade-3075912/) | Pixabay License (free to use) |
+| Sparklers | [Pexels](https://pixabay.com/users/Pexels-2286921/) | [pixabay](https://pixabay.com/photos/new-years-eve-dark-fireworks-hands-1845065/) | Pixabay License (free to use) |
+| Glitter | [kristamonique](https://pixabay.com/users/kristamonique-76979/) | [pixabay](https://pixabay.com/photos/snowfall-winter-snow-snowflakes-201496/) | Pixabay License (free to use) |
+| Sequins | [KRiemer](https://pixabay.com/users/KRiemer-932379/) | [pixabay](https://pixabay.com/photos/sequins-carnival-party-7016649/) | Pixabay License (free to use) |
+| Black and gold decorations | [5598375](https://pixabay.com/users/5598375-5598375/) | [pixabay](https://pixabay.com/photos/carnival-mask-masquerade-3075912/) | Pixabay License (free to use) |
+| Countdown clock | [Bru-nO](https://pixabay.com/users/Bru-nO-1161770/) | [pixabay](https://pixabay.com/photos/sparkling-wine-spirits-bottle-7679665/) | Pixabay License (free to use) |
+| New calendar | [Ralf1403](https://pixabay.com/users/Ralf1403-21380246/) | [pixabay](https://pixabay.com/photos/calendar-meeting-planning-10045176/) | Pixabay License (free to use) |
+| Resolutions list | [StockSnap](https://pixabay.com/users/StockSnap-894430/) | [pixabay](https://pixabay.com/photos/checklist-goals-box-notebook-pen-2589418/) | Pixabay License (free to use) |
 
 ### Patterns
 
@@ -260,6 +450,23 @@ All images are sourced from free-to-use stock photo sites and Openverse under li
 | Berries on a plant | [mariya_m](https://pixabay.com/users/mariya_m-12752456/) | [pixabay](https://pixabay.com/photos/holly-ilex-red-berries-berry-fruit-7602422/) | Pixabay License (free to use) |
 | A leaf with a heart shape | [wavesummit](https://www.flickr.com/photos/78225097@N08) | [openverse/flickr](https://www.flickr.com/photos/78225097@N08/7576953820) | [CC0 1.0 (public domain)](https://creativecommons.org/publicdomain/zero/1.0/) |
 
+### Pride Month
+
+| Item | Photographer | Source | License |
+|------|-------------|--------|---------|
+| Pride Month cover | [Astrobobo](https://pixabay.com/users/Astrobobo-13925790/) | [pixabay](https://pixabay.com/photos/flag-pride-rainbow-symbol-lesbian-4552833/) | Pixabay License (free to use) |
+| Pride flag | [Astrobobo](https://pixabay.com/users/Astrobobo-13925790/) | [pixabay](https://pixabay.com/photos/flag-pride-rainbow-symbol-lesbian-4552833/) | Pixabay License (free to use) |
+| Rainbow | [Kanenori](https://pixabay.com/users/Kanenori-4749850/) | [pixabay](https://pixabay.com/photos/landscape-rainbow-tropical-atoll-7373484/) | Pixabay License (free to use) |
+| Stickers | [u_4mx5rfd1yn](https://pixabay.com/users/u_4mx5rfd1yn-57572066/) | [pixabay](https://pixabay.com/photos/backpack-rainbow-design-purple-color-10544561/) | Pixabay License (free to use) |
+| Drag Show | [rihaij](https://pixabay.com/users/rihaij-2145/) | [pixabay](https://pixabay.com/photos/pride-parade-pride-month-lgbtqia-2635603/) | Pixabay License (free to use) |
+| Heels | [Pexels](https://pixabay.com/users/Pexels-2286921/) | [pixabay](https://pixabay.com/photos/fashion-high-heels-shoes-pumps-1284496/) | Pixabay License (free to use) |
+| Makeup | [fotostrobi](https://pixabay.com/users/fotostrobi-5310373/) | [pixabay](https://pixabay.com/photos/makeup-cosmetics-glass-lipstick-3081015/) | Pixabay License (free to use) |
+| Pride parade | [Surprising_Media](https://pixabay.com/users/Surprising_Media-11873433/) | [pixabay](https://pixabay.com/photos/people-ladies-girls-colors-flags-8168554/) | Pixabay License (free to use) |
+| Glitter | [kristamonique](https://pixabay.com/users/kristamonique-76979/) | [pixabay](https://pixabay.com/photos/snowfall-winter-snow-snowflakes-201496/) | Pixabay License (free to use) |
+| Pins and buttons | [fsHH](https://pixabay.com/users/fsHH-1451325/) | [pixabay](https://pixabay.com/photos/people-man-tourist-backpack-2179640/) | Pixabay License (free to use) |
+| Rainbow lights | [geralt](https://pixabay.com/users/geralt-9301/) | [pixabay](https://pixabay.com/illustrations/bullet-abstract-template-lines-1023985/) | Pixabay License (free to use) |
+| Rainbow clothing | [ninocare](https://pixabay.com/users/ninocare-3266770/) | [pixabay](https://pixabay.com/photos/clothing-fashion-scarf-dress-3255414/) | Pixabay License (free to use) |
+
 ### Shapes
 
 | Item | Photographer | Source | License |
@@ -320,6 +527,90 @@ All images are sourced from free-to-use stock photo sites and Openverse under li
 | A recycling symbol | [flutie8211](https://pixabay.com/users/flutie8211-17475707/) | [pixabay](https://pixabay.com/photos/badge-icon-recycle-recycling-7305818/) | Pixabay License (free to use) |
 | A number on a building | [dimitrisvetsikas1969](https://pixabay.com/users/dimitrisvetsikas1969-1857980/) | [pixabay](https://pixabay.com/photos/skopje-north-macedonia-city-4732418/) | Pixabay License (free to use) |
 
+### Spring
+
+| Item | Photographer | Source | License |
+|------|-------------|--------|---------|
+| Spring cover | [Kanenori](https://pixabay.com/users/Kanenori-4749850/) | [pixabay](https://pixabay.com/photos/plant-plum-blossom-sunbeams-6055943/) | Pixabay License (free to use) |
+| Tulips | [Bellahu123](https://pixabay.com/users/Bellahu123-10783290/) | [pixabay](https://pixabay.com/photos/tulips-flowers-white-tulips-4112431/) | Pixabay License (free to use) |
+| Flower field | [diego_torres](https://pixabay.com/users/diego_torres-1118992/) | [pixabay](https://pixabay.com/photos/sunset-poppies-field-red-poppies-815270/) | Pixabay License (free to use) |
+| Dew drops | [michaelcalumross](https://pixabay.com/users/michaelcalumross-21106232/) | [pixabay](https://pixabay.com/photos/peacock-feather-dewdrop-dew-6185159/) | Pixabay License (free to use) |
+| Rabbit | [pen_ash](https://pixabay.com/users/pen_ash-5526837/) | [pixabay](https://pixabay.com/photos/rabbit-european-rabbit-9926492/) | Pixabay License (free to use) |
+| Baby animal | [uschi2807](https://pixabay.com/users/uschi2807-1481642/) | [pixabay](https://pixabay.com/photos/british-shorthair-kitten-cat-7880908/) | Pixabay License (free to use) |
+| Rain | [Mylene2401](https://pixabay.com/users/Mylene2401-10328767/) | [pixabay](https://pixabay.com/photos/raindrops-ripples-water-rain-4332152/) | Pixabay License (free to use) |
+| Condensation | [ChristopherPluta](https://pixabay.com/users/ChristopherPluta-108394/) | [pixabay](https://pixabay.com/photos/surface-rain-drops-raindrops-455124/) | Pixabay License (free to use) |
+| Clouds | [Mint_Foto](https://pixabay.com/users/Mint_Foto-25073177/) | [pixabay](https://pixabay.com/photos/clouds-sky-atmosphere-blue-sky-7050884/) | Pixabay License (free to use) |
+| Rainbow | [Kanenori](https://pixabay.com/users/Kanenori-4749850/) | [pixabay](https://pixabay.com/photos/landscape-rainbow-tropical-atoll-7373484/) | Pixabay License (free to use) |
+| Something blooming | [Hans](https://pixabay.com/users/Hans-2/) | [pixabay](https://pixabay.com/photos/pink-cherry-blossoms-flowers-branch-324175/) | Pixabay License (free to use) |
+| Budding branch | [Nennieinszweidrei](https://pixabay.com/users/Nennieinszweidrei-10084616/) | [pixabay](https://pixabay.com/photos/sparrow-flowering-branch-7920064/) | Pixabay License (free to use) |
+| Daffodil | [garten-gg](https://pixabay.com/users/garten-gg-201217/) | [pixabay](https://pixabay.com/photos/tulips-daffodils-flowers-field-1197602/) | Pixabay License (free to use) |
+| Robin | [sharkolot](https://pixabay.com/users/sharkolot-25467781/) | [pixabay](https://pixabay.com/photos/bird-european-robin-robin-redbreast-7930857/) | Pixabay License (free to use) |
+| Bird's nest | [fotoblend](https://pixabay.com/users/fotoblend-87167/) | [pixabay](https://pixabay.com/photos/stork-bird-wildlife-ornithology-10270726/) | Pixabay License (free to use) |
+| Butterfly | [miniformat65](https://pixabay.com/users/miniformat65-87415/) | [pixabay](https://pixabay.com/photos/postman-butterfly-butterfly-garden-224472/) | Pixabay License (free to use) |
+| Bee on a flower | [Ralphs_Fotos](https://pixabay.com/users/Ralphs_Fotos-1767157/) | [pixabay](https://pixabay.com/photos/bee-honey-bee-insect-pollen-nectar-4931194/) | Pixabay License (free to use) |
+| Mud puddle | [lubovlisitsa](https://pixabay.com/users/lubovlisitsa-14489667/) | [pixabay](https://pixabay.com/photos/child-puddle-water-play-fun-rain-5582986/) | Pixabay License (free to use) |
+| Umbrella | [photostockeditor](https://pixabay.com/users/photostockeditor-16592844/) | [pixabay](https://pixabay.com/photos/umbrella-beach-summer-sand-teal-9710962/) | Pixabay License (free to use) |
+| Rain boots | [JillWellington](https://pixabay.com/users/JillWellington-334088/) | [pixabay](https://pixabay.com/photos/rain-boots-umbrella-wet-791893/) | Pixabay License (free to use) |
+| Seedlings | [M_wie_Moehre](https://pixabay.com/users/M_wie_Moehre-31883482/) | [pixabay](https://pixabay.com/photos/plant-nature-growth-botany-leaves-8338691/) | Pixabay License (free to use) |
+| Fresh green grass | [ju1959jjj](https://pixabay.com/users/ju1959jjj-5013405/) | [pixabay](https://pixabay.com/photos/leaf-droplets-reflection-grass-2986837/) | Pixabay License (free to use) |
+| Earthworm | [garten-gg](https://pixabay.com/users/garten-gg-201217/) | [pixabay](https://pixabay.com/photos/bird-nest-feed-nature-animal-3350136/) | Pixabay License (free to use) |
+| Watering can | [Ylanite](https://pixabay.com/users/Ylanite-2218222/) | [pixabay](https://pixabay.com/photos/flowers-watering-can-vintage-6561379/) | Pixabay License (free to use) |
+| Picnic | [em0rix](https://pixabay.com/users/em0rix-1479707/) | [pixabay](https://pixabay.com/photos/picnic-apples-grapes-flowers-hat-10410610/) | Pixabay License (free to use) |
+
+### St. Patrick's Day
+
+| Item | Photographer | Source | License |
+|------|-------------|--------|---------|
+| St. Patrick's Day cover | [soramang](https://pixabay.com/users/soramang-1594796/) | [pixabay](https://pixabay.com/photos/leaf-clover-green-shamrock-spring-1482948/) | Pixabay License (free to use) |
+| Leprechaun | [Sunriseforever](https://pixabay.com/users/Sunriseforever-6314823/) | [pixabay](https://pixabay.com/photos/leprechaun-cosplay-image-7650823/) | Pixabay License (free to use) |
+| Clover | [damesophie](https://pixabay.com/users/damesophie-2127536/) | [pixabay](https://pixabay.com/photos/clover-leaves-green-plants-foliage-1225988/) | Pixabay License (free to use) |
+| Beer | [5598375](https://pixabay.com/users/5598375-5598375/) | [pixabay](https://pixabay.com/photos/beer-glass-drink-beer-garden-3378136/) | Pixabay License (free to use) |
+| Something gold | [Stevebidmead](https://pixabay.com/users/Stevebidmead-249424/) | [pixabay](https://pixabay.com/photos/gold-ingots-treasure-bullion-513062/) | Pixabay License (free to use) |
+| Pot of gold | [5598375](https://pixabay.com/users/5598375-5598375/) | [pixabay](https://pixabay.com/photos/coffee-christmas-angel-cookies-2864246/) | Pixabay License (free to use) |
+| Rainbow | [Kanenori](https://pixabay.com/users/Kanenori-4749850/) | [pixabay](https://pixabay.com/photos/landscape-rainbow-tropical-atoll-7373484/) | Pixabay License (free to use) |
+| Something green | [jarmoluk](https://pixabay.com/users/jarmoluk-143740/) | [pixabay](https://pixabay.com/photos/padlock-locked-secured-lock-428549/) | Pixabay License (free to use) |
+| Green beads necklace | [Lovesevenforty](https://pixabay.com/users/Lovesevenforty-14413/) | [pixabay](https://pixabay.com/photos/necklace-jewelry-accessory-green-2413006/) | Pixabay License (free to use) |
+| Four-leaf clover | [silviarita](https://pixabay.com/users/silviarita-3142410/) | [pixabay](https://pixabay.com/photos/four-leaf-clover-road-green-3336774/) | Pixabay License (free to use) |
+| Irish flag | [Ma_Frank](https://pixabay.com/users/Ma_Frank-1347708/) | [pixabay](https://pixabay.com/photos/ireland-cottage-architecture-rustic-2360850/) | Pixabay License (free to use) |
+| Green hat | [DtheDelinquent](https://pixabay.com/users/DtheDelinquent-14439364/) | [pixabay](https://pixabay.com/photos/st-patricks-day-st-patricks-day-4681473/) | Pixabay License (free to use) |
+| Parade | [12019](https://pixabay.com/users/12019-12019/) | [pixabay](https://pixabay.com/photos/new-york-city-st-patricks-day-83522/) | Pixabay License (free to use) |
+
+### Summer
+
+| Item | Photographer | Source | License |
+|------|-------------|--------|---------|
+| Summer cover | [moorpheus](https://pixabay.com/users/moorpheus-37844/) | [pixabay](https://pixabay.com/photos/beach-cliff-bay-sea-ocean-418742/) | Pixabay License (free to use) |
+| Ice cream | [silviarita](https://pixabay.com/users/silviarita-3142410/) | [pixabay](https://pixabay.com/photos/strawberry-ice-cream-strawberries-2239377/) | Pixabay License (free to use) |
+| Sunblock | [chezbeate](https://pixabay.com/users/chezbeate-1519166/) | [pixabay](https://pixabay.com/photos/sunblock-skincare-healthy-skin-1461397/) | Pixabay License (free to use) |
+| Fruit | [Couleur](https://pixabay.com/users/Couleur-1195798/) | [pixabay](https://pixabay.com/photos/peaches-fruits-food-ripe-sliced-2573836/) | Pixabay License (free to use) |
+| Sunglasses | [Ylanite](https://pixabay.com/users/Ylanite-2218222/) | [pixabay](https://pixabay.com/photos/summer-sunglasses-read-book-relax-3363788/) | Pixabay License (free to use) |
+| Tanning lotion | [chezbeate](https://pixabay.com/users/chezbeate-1519166/) | [pixabay](https://pixabay.com/photos/sunscreen-skincare-protection-1461335/) | Pixabay License (free to use) |
+| Pool | [Engin_Akyurt](https://pixabay.com/users/Engin_Akyurt-3656355/) | [pixabay](https://pixabay.com/photos/pool-house-luxury-swim-that-blue-5055009/) | Pixabay License (free to use) |
+| Ocean | [dimitrisvetsikas1969](https://pixabay.com/users/dimitrisvetsikas1969-1857980/) | [pixabay](https://pixabay.com/photos/waves-sea-ocean-beach-blue-water-3473335/) | Pixabay License (free to use) |
+| Sand | [Pexels](https://pixabay.com/users/Pexels-2286921/) | [pixabay](https://pixabay.com/photos/beach-beach-huts-colorful-facade-1867137/) | Pixabay License (free to use) |
+| Floatie | [PublicDomainPictures](https://pixabay.com/users/PublicDomainPictures-14/) | [pixabay](https://pixabay.com/photos/floating-tire-summer-water-wave-72963/) | Pixabay License (free to use) |
+| Coconuts | [huyenxu94](https://pixabay.com/users/huyenxu94-5033779/) | [pixabay](https://pixabay.com/photos/coconut-flatlay-background-4507974/) | Pixabay License (free to use) |
+| Cocktails | [Pexels](https://pixabay.com/users/Pexels-2286921/) | [pixabay](https://pixabay.com/photos/alcohol-cocktail-cocktail-glass-1850038/) | Pixabay License (free to use) |
+| Barbecue | [jwvein](https://pixabay.com/users/jwvein-5584447/) | [pixabay](https://pixabay.com/photos/grilling-sausage-meat-fork-chicken-10308297/) | Pixabay License (free to use) |
+| Swimsuits | [danielsampaioneto](https://pixabay.com/users/danielsampaioneto-5723932/) | [pixabay](https://pixabay.com/photos/sunglasses-woman-pool-girl-lying-2705642/) | Pixabay License (free to use) |
+| Lemonade | [JillWellington](https://pixabay.com/users/JillWellington-334088/) | [pixabay](https://pixabay.com/photos/pink-lemonade-summer-outdoors-795029/) | Pixabay License (free to use) |
+| Popsicle | [silviarita](https://pixabay.com/users/silviarita-3142410/) | [pixabay](https://pixabay.com/photos/ice-cream-raspberries-kiwi-fruit-2219574/) | Pixabay License (free to use) |
+| Watermelon | [congerdesign](https://pixabay.com/users/congerdesign-509903/) | [pixabay](https://pixabay.com/photos/watermelon-juicy-fruits-sliced-815072/) | Pixabay License (free to use) |
+| Sunset | [kordi_vahle](https://pixabay.com/users/kordi_vahle-4934524/) | [pixabay](https://pixabay.com/photos/sunset-beach-sky-dusk-nature-3726030/) | Pixabay License (free to use) |
+| Sun hat | [Pexels](https://pixabay.com/users/Pexels-2286921/) | [pixabay](https://pixabay.com/photos/woman-brunette-face-hat-head-1845148/) | Pixabay License (free to use) |
+| Flip-flops | [stux](https://pixabay.com/users/stux-12364/) | [pixabay](https://pixabay.com/photos/beach-sand-sea-sandy-beach-3369140/) | Pixabay License (free to use) |
+| Beach towel | [hisins30](https://pixabay.com/users/hisins30-3587860/) | [pixabay](https://pixabay.com/photos/summer-baby-beach-children-little-1765351/) | Pixabay License (free to use) |
+| Beach umbrella | [photostockeditor](https://pixabay.com/users/photostockeditor-16592844/) | [pixabay](https://pixabay.com/photos/umbrella-beach-summer-sand-teal-9710962/) | Pixabay License (free to use) |
+| Sprinkler | [manfredrichter](https://pixabay.com/users/manfredrichter-4055600/) | [pixabay](https://pixabay.com/photos/lawn-sprinkler-water-meadow-lawn-4971510/) | Pixabay License (free to use) |
+| Fan | [StockSnap](https://pixabay.com/users/StockSnap-894430/) | [pixabay](https://pixabay.com/photos/white-fan-hardwood-floor-wall-926202/) | Pixabay License (free to use) |
+| Sunflower | [suju-foto](https://pixabay.com/users/suju-foto-165106/) | [pixabay](https://pixabay.com/photos/sunflowers-flowers-sunflower-field-3790834/) | Pixabay License (free to use) |
+| Hammock | [pasja1000](https://pixabay.com/users/pasja1000-6355831/) | [pixabay](https://pixabay.com/photos/maldives-palm-tree-hammock-beach-3220702/) | Pixabay License (free to use) |
+| Cooler | [marinacath](https://pixabay.com/users/marinacath-16567402/) | [pixabay](https://pixabay.com/photos/esky-summer-park-boat-fun-5312095/) | Pixabay License (free to use) |
+| Corn on the cob | [kumarsu6745_](https://pixabay.com/users/kumarsu6745_-4844249/) | [pixabay](https://pixabay.com/photos/miaze-corn-ripe-vegetable-food-10095201/) | Pixabay License (free to use) |
+| Campfire | [Alexas_Fotos](https://pixabay.com/users/Alexas_Fotos-686414/) | [pixabay](https://pixabay.com/photos/fire-flames-fire-wood-campfire-2777580/) | Pixabay License (free to use) |
+| Boat | [Leolo212](https://pixabay.com/users/Leolo212-15013188/) | [pixabay](https://pixabay.com/photos/boat-barco-water-sea-nature-5509027/) | Pixabay License (free to use) |
+| Farmers market | [Couleur](https://pixabay.com/users/Couleur-1195798/) | [pixabay](https://pixabay.com/photos/berries-blueberries-raspberries-1493905/) | Pixabay License (free to use) |
+
 ### Textures
 
 | Item | Photographer | Source | License |
@@ -352,6 +643,79 @@ All images are sourced from free-to-use stock photo sites and Openverse under li
 | Metallic | [shaire productions](https://www.flickr.com/photos/9822107@N08) | [openverse/flickr](https://www.flickr.com/photos/9822107@N08/7501404862) | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) |
 | Fluffy | [jplenio](https://pixabay.com/users/jplenio-7645255/) | [pixabay](https://pixabay.com/photos/nature-dandelion-macro-close-up-3092555/) | Pixabay License (free to use) |
 | Engraved | [themet](https://www.rawpixel.com/image/12837669/plate) | [openverse/rawpixel](https://www.rawpixel.com/image/12837669/plate) | [CC0 1.0 (public domain)](https://creativecommons.org/publicdomain/zero/1.0/) |
+
+### Thanksgiving
+
+| Item | Photographer | Source | License |
+|------|-------------|--------|---------|
+| Thanksgiving cover | [30726203](https://pixabay.com/users/30726203-30726203/) | [pixabay](https://pixabay.com/photos/thanksgiving-dinner-dinner-7600226/) | Pixabay License (free to use) |
+| Macy's Thanksgiving Day Parade | [faust112670](https://pixabay.com/users/faust112670-1511102/) | [pixabay](https://pixabay.com/photos/kermit-thanksgiving-day-parade-985610/) | Pixabay License (free to use) |
+| Football | [Pexels](https://pixabay.com/users/Pexels-2286921/) | [pixabay](https://pixabay.com/photos/american-football-athlete-ball-1851168/) | Pixabay License (free to use) |
+| Earliest Christmas decor you see | [geralt](https://pixabay.com/users/geralt-9301/) | [pixabay](https://pixabay.com/photos/candle-advent-celebration-christmas-386607/) | Pixabay License (free to use) |
+| Turkey | [Ernest_Roy](https://pixabay.com/users/Ernest_Roy-1284978/) | [pixabay](https://pixabay.com/photos/turkey-bird-feathers-tom-avian-9162593/) | Pixabay License (free to use) |
+| Cranberry | [ivyeirlys](https://pixabay.com/users/ivyeirlys-18370291/) | [pixabay](https://pixabay.com/photos/cranberries-fruit-plant-vines-5752417/) | Pixabay License (free to use) |
+| Thanksgiving sides | [apbowman](https://pixabay.com/users/apbowman-7143408/) | [pixabay](https://pixabay.com/photos/thanksgiving-dinner-table-turkey-4673692/) | Pixabay License (free to use) |
+| Pumpkin pie | [Daria-Yakovleva](https://pixabay.com/users/Daria-Yakovleva-3938704/) | [pixabay](https://pixabay.com/photos/pumpkin-pie-autumn-pumpkin-orange-1887230/) | Pixabay License (free to use) |
+| Stuffing | [HeartlandMom](https://pixabay.com/users/HeartlandMom-7315202/) | [pixabay](https://pixabay.com/photos/cranberries-thanksgiving-wine-salad-4658414/) | Pixabay License (free to use) |
+| Gravy | [congerdesign](https://pixabay.com/users/congerdesign-509903/) | [pixabay](https://pixabay.com/photos/salad-dressing-herbs-seasoning-meal-7295630/) | Pixabay License (free to use) |
+| Cornucopia | [JillWellington](https://pixabay.com/users/JillWellington-334088/) | [pixabay](https://pixabay.com/photos/cornucopia-thanksgiving-autumn-fall-1789664/) | Pixabay License (free to use) |
+| Set table | [hudsoncrafted](https://pixabay.com/users/hudsoncrafted-5201554/) | [pixabay](https://pixabay.com/photos/thankful-thanksgiving-seasons-2947263/) | Pixabay License (free to use) |
+| Autumn centerpiece | [TerriC](https://pixabay.com/users/TerriC-4014469/) | [pixabay](https://pixabay.com/photos/holiday-table-thanksgiving-table-1926946/) | Pixabay License (free to use) |
+| Leftovers | [Ben_Kerckx](https://pixabay.com/users/Ben_Kerckx-69781/) | [pixabay](https://pixabay.com/photos/compost-fruit-and-vegetable-waste-709020/) | Pixabay License (free to use) |
+| Hand turkey drawing | [JennyT23](https://pixabay.com/users/JennyT23-40815189/) | [pixabay](https://pixabay.com/illustrations/turkey-thanksgiving-hand-9190882/) | Pixabay License (free to use) |
+| Black Friday ad | [uzair-ahmad](https://pixabay.com/users/uzair-ahmad-25610725/) | [pixabay](https://pixabay.com/photos/black-friday-sale-banner-7608705/) | Pixabay License (free to use) |
+| Something you're thankful for | [avi_acl](https://pixabay.com/users/avi_acl-5075433/) | [pixabay](https://pixabay.com/photos/morning-sunrise-woman-silhouette-2243465/) | Pixabay License (free to use) |
+
+### Valentine's Day
+
+| Item | Photographer | Source | License |
+|------|-------------|--------|---------|
+| Valentine's Day cover | [biancamentil](https://pixabay.com/users/biancamentil-2023852/) | [pixabay](https://pixabay.com/photos/valentines-day-background-heart-1192662/) | Pixabay License (free to use) |
+| Chocolate | [pixel2013](https://pixabay.com/users/pixel2013-2364555/) | [pixabay](https://pixabay.com/photos/chocolates-chocolate-confiserie-1737503/) | Pixabay License (free to use) |
+| Heart | [beasternchen](https://pixabay.com/users/beasternchen-32364022/) | [pixabay](https://pixabay.com/photos/sheet-music-rose-heart-love-8578311/) | Pixabay License (free to use) |
+| Cupid | [pixel2013](https://pixabay.com/users/pixel2013-2364555/) | [pixabay](https://pixabay.com/photos/love-angel-angel-amor-figure-1889683/) | Pixabay License (free to use) |
+| Bow and arrow | [pixel2013](https://pixabay.com/users/pixel2013-2364555/) | [pixabay](https://pixabay.com/photos/love-angel-angel-amor-figure-1889683/) | Pixabay License (free to use) |
+| Flowers | [Olessya](https://pixabay.com/users/Olessya-86040/) | [pixabay](https://pixabay.com/photos/flowers-bouquet-stairs-260897/) | Pixabay License (free to use) |
+| Roses | [Couleur](https://pixabay.com/users/Couleur-1195798/) | [pixabay](https://pixabay.com/photos/red-rose-flower-blossom-bloom-9792176/) | Pixabay License (free to use) |
+| Cheesy card | [autumnsgoddess0](https://pixabay.com/users/autumnsgoddess0-1086126/) | [pixabay](https://pixabay.com/photos/balloons-hearts-love-red-romantic-991680/) | Pixabay License (free to use) |
+| Teddy bear | [Alexas_Fotos](https://pixabay.com/users/Alexas_Fotos-686414/) | [pixabay](https://pixabay.com/photos/teddy-bear-stuffed-animal-teddy-3599680/) | Pixabay License (free to use) |
+| Candy hearts | [JillWellington](https://pixabay.com/users/JillWellington-334088/) | [pixabay](https://pixabay.com/photos/valentines-day-chocolates-candies-2057745/) | Pixabay License (free to use) |
+| Red balloons | [Peggy_Marco](https://pixabay.com/users/Peggy_Marco-1553824/) | [pixabay](https://pixabay.com/photos/balloons-heart-sky-clouds-love-1046658/) | Pixabay License (free to use) |
+| Pink decorations | [pixel2013](https://pixabay.com/users/pixel2013-2364555/) | [pixabay](https://pixabay.com/photos/background-heart-hearts-shiny-2062206/) | Pixabay License (free to use) |
+| Candles | [JillWellington](https://pixabay.com/users/JillWellington-334088/) | [pixabay](https://pixabay.com/photos/birthday-cake-candles-bithday-cake-2338813/) | Pixabay License (free to use) |
+| Heart-shaped box | [JillWellington](https://pixabay.com/users/JillWellington-334088/) | [pixabay](https://pixabay.com/photos/valentines-day-chocolates-candies-2057745/) | Pixabay License (free to use) |
+| Chocolate-covered strawberries | [Anrita1705](https://pixabay.com/users/Anrita1705-11109462/) | [pixabay](https://pixabay.com/photos/strawberries-fruit-food-chocolate-7968518/) | Pixabay License (free to use) |
+
+### Winter
+
+| Item | Photographer | Source | License |
+|------|-------------|--------|---------|
+| Winter cover | [Juncala](https://pixabay.com/users/Juncala-5111596/) | [pixabay](https://pixabay.com/photos/snow-winter-wintry-new-zealand-7641544/) | Pixabay License (free to use) |
+| Snowman | [Couleur](https://pixabay.com/users/Couleur-1195798/) | [pixabay](https://pixabay.com/photos/snowman-snow-christmas-winter-cold-1882635/) | Pixabay License (free to use) |
+| Gloves | [JillWellington](https://pixabay.com/users/JillWellington-334088/) | [pixabay](https://pixabay.com/photos/christmas-wallpaper-christmas-happy-2971961/) | Pixabay License (free to use) |
+| Skiing | [Up-Free](https://pixabay.com/users/Up-Free-427519/) | [pixabay](https://pixabay.com/photos/man-skier-ski-skiing-snow-slopes-498473/) | Pixabay License (free to use) |
+| Snowball | [StockSnap](https://pixabay.com/users/StockSnap-894430/) | [pixabay](https://pixabay.com/photos/snowball-hands-winter-people-cold-925600/) | Pixabay License (free to use) |
+| Earmuffs | [StockSnap](https://pixabay.com/users/StockSnap-894430/) | [pixabay](https://pixabay.com/photos/people-woman-cold-weather-snow-2593377/) | Pixabay License (free to use) |
+| Icicle | [Couleur](https://pixabay.com/users/Couleur-1195798/) | [pixabay](https://pixabay.com/photos/icicle-roof-water-cold-frost-3819301/) | Pixabay License (free to use) |
+| Hats | [StockSnap](https://pixabay.com/users/StockSnap-894430/) | [pixabay](https://pixabay.com/photos/beanie-guy-man-beard-jacket-grey-2562646/) | Pixabay License (free to use) |
+| Big coats | [u_e2wuuxnwxj](https://pixabay.com/users/u_e2wuuxnwxj-58598557/) | [pixabay](https://pixabay.com/photos/winter-snowy-forest-red-hat-10570201/) | Pixabay License (free to use) |
+| Snow angels | [PublicDomainPictures](https://pixabay.com/users/PublicDomainPictures-14/) | [pixabay](https://pixabay.com/photos/angel-christmas-cold-fun-season-15702/) | Pixabay License (free to use) |
+| Hot cocoa | [JillWellington](https://pixabay.com/users/JillWellington-334088/) | [pixabay](https://pixabay.com/photos/hot-chocolate-cozy-winter-dessert-1224044/) | Pixabay License (free to use) |
+| Snowflake | [wal_172619](https://pixabay.com/users/wal_172619-12138562/) | [pixabay](https://pixabay.com/photos/winter-frost-nature-texture-macro-6897046/) | Pixabay License (free to use) |
+| Snow-covered tree | [NickyPe](https://pixabay.com/users/NickyPe-10327513/) | [pixabay](https://pixabay.com/photos/winter-snow-trees-frost-9168141/) | Pixabay License (free to use) |
+| Footprints in snow | [pen_ash](https://pixabay.com/users/pen_ash-5526837/) | [pixabay](https://pixabay.com/photos/snow-winter-nature-landscape-frost-10476274/) | Pixabay License (free to use) |
+| Sled | [violetta](https://pixabay.com/users/violetta-37547/) | [pixabay](https://pixabay.com/photos/huskies-dogs-race-sled-dog-racing-273409/) | Pixabay License (free to use) |
+| Ice skates | [822640](https://pixabay.com/users/822640-822640/) | [pixabay](https://pixabay.com/photos/ice-skates-girl-snowing-kid-child-1082514/) | Pixabay License (free to use) |
+| Boots | [stevepb](https://pixabay.com/users/stevepb-282134/) | [pixabay](https://pixabay.com/photos/work-boots-footwear-protection-889816/) | Pixabay License (free to use) |
+| Frozen puddle | [Natalia_Kollegova](https://pixabay.com/users/Natalia_Kollegova-5226803/) | [pixabay](https://pixabay.com/photos/ice-puddle-lake-frost-autumn-2646315/) | Pixabay License (free to use) |
+| Frost on a window | [sergei_spas](https://pixabay.com/users/sergei_spas-9611130/) | [pixabay](https://pixabay.com/photos/window-pattern-winter-frost-6874834/) | Pixabay License (free to use) |
+| Fireplace | [LAWJR](https://pixabay.com/users/LAWJR-4448871/) | [pixabay](https://pixabay.com/photos/fire-flame-heat-fireplace-hot-3792951/) | Pixabay License (free to use) |
+| Cozy blanket | [Claudio_Scott](https://pixabay.com/users/Claudio_Scott-4913238/) | [pixabay](https://pixabay.com/photos/woman-asleep-girl-sleep-bed-cozy-2197947/) | Pixabay License (free to use) |
+| Steaming mug | [JillWellington](https://pixabay.com/users/JillWellington-334088/) | [pixabay](https://pixabay.com/photos/valentines-day-heart-cup-coffee-624440/) | Pixabay License (free to use) |
+| Breath you can see | [kasabubu](https://pixabay.com/users/kasabubu-1559919/) | [pixabay](https://pixabay.com/photos/yellowstone-national-park-wyoming-1760527/) | Pixabay License (free to use) |
+| Snow shovel | [HeartlandMom](https://pixabay.com/users/HeartlandMom-7315202/) | [pixabay](https://pixabay.com/photos/snow-shovel-dog-snow-patio-4658403/) | Pixabay License (free to use) |
+| Snowplow | [pixel2013](https://pixabay.com/users/pixel2013-2364555/) | [pixabay](https://pixabay.com/photos/snow-mountain-winter-3065350/) | Pixabay License (free to use) |
+| Bird at a feeder | [ambquinn](https://pixabay.com/users/ambquinn-4464111/) | [pixabay](https://pixabay.com/photos/bird-great-tit-passerine-avian-8122381/) | Pixabay License (free to use) |
 
 ---
 

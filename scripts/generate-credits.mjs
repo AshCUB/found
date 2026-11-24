@@ -71,7 +71,8 @@ if (byCategory['other']) {
     let categoryId = 'other';
     const path = item.localPath;
 
-    if (path.includes('/color-')) categoryId = 'colors';
+    if (path.includes('/seasonal/')) categoryId = path.split('/seasonal/')[1].split('/')[0];
+    else if (path.includes('/color-')) categoryId = 'colors';
     else if (path.includes('/shape-')) categoryId = 'shapes';
     else if (path.includes('/texture-')) categoryId = 'textures';
     else if (path.includes('/pattern-')) categoryId = 'patterns';

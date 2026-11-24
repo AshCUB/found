@@ -8,6 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "optimize-images": "node scripts/optimize-images.mjs",
+    "fetch-seasonal-images": "node --env-file=.env scripts/fetch-seasonal-images.mjs",
     "optimize-desk-decor": "node scripts/optimize-desk-decor.mjs",
     "import-desk-decor": "node scripts/import-desk-decor.mjs"
   },
